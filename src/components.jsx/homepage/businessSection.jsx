@@ -3,7 +3,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { titleToSlug } from "../../utils/slugFormat";
-import { formatDate } from "../../utils/dateFormat";
 import StarHeader from "../starHeader";
 import NewsHeader from "../newsHeader";
 

@@ -1,9 +1,12 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { titleToSlug } from "../utils/slugFormat";
+import { titleToSlug, capitalize } from "../utils/slugFormat";
 import { useSelector } from "react-redux";
 import { formatDate } from "../utils/dateFormat";
 import LoadingScreen from "../components.jsx/loadingScreen";
+import NewsHeader from "../components.jsx/newsHeader";
+import StarHeader from "../components.jsx/starHeader";
+import { useMemo } from "react";
 
 const Article = () => {
   let { articleTitle, category } = useParams();
@@ -11,73 +14,70 @@ const Article = () => {
   let article = newsData.find(
     (news) => titleToSlug(news.title) === articleTitle
   );
-  console.log(article);
-  if(!article) return <LoadingScreen/>
-  return (
-    <div className="post-single-area mt-60">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-8 single-blog-content">
-            <div className="post-single-wrapper">
-              <h1 className="post-title">{article?.title}</h1>
-              <div className="post-bottom-meta-list post-meta-wrapper">
-                <div className="post-left-details-meta">
-                  <div className="post-meta-author-box">
-                    By{" "}
-                    <a href="#">
-                      {article.author ? article.author : "anonymous"}
-                    </a>
-                  </div>
-                  <div className="post-meta-date-box">
-                    {formatDate(article?.publishedAt)}
-                  </div>
-                </div>
-              </div>
-              <div className="post-featured-image">
-                <img src={article?.urlToImage} alt="Post Image" />
-              </div>
-              <div className="theme-blog-details">
-                <p>{article?.description}</p>
-              </div>
-            </div>
-          </div>
 
-          {/* Sidebar */}
-          <div className="col-lg-4">
-            <div className="sidebar blog-sidebar">
-              <div className="section-title">
-                <h2 className="title-block">Related News</h2>
-              </div>
-              {newsData?.filter(news=>news!=article).slice(0, 3).map((news) => (
-                <article
-                  key={news.title}
-                  className="post-block-style-wrapper post-block-template-two most-read-block-list"
+  const relatedPosts = useMemo(() => {
+    if (!article || !newsData) return [];
+    
+    // Filter out the current article and shuffle the remaining articles
+    const shuffled = newsData
+      .filter(news => news.title !== article.title)
+      .sort(() => 0.5 - Math.random());
+    
+    // Return the first 3 articles from the shuffled array
+    return shuffled.slice(0, 3);
+  }, [article, newsData]);
+
+  if (!article) return <LoadingScreen />;
+
+  return (
+    <section className="article-section news-cycle-regular mt-10">
+      <div className="my-container mx-auto px-4 pb-4">
+        <NewsHeader text={`${capitalize(category)} News`} className="my-8" />
+        <div className="grid grid-cols-12 gap-8">
+          <article className="col-span-full lg:col-span-8">
+            <h1 className="~text-3xl/5xl mb-4 newsreader-700">{article.title}</h1>
+            <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
+              <span>By {article.author ? article.author : "anonymous"}</span>
+              <span>{formatDate(article.publishedAt)}</span>
+            </div>
+            <img 
+              src={article.urlToImage} 
+              alt={article.title} 
+              className="w-full aspect-video object-cover mb-6"
+            />
+            <p className="text-gray-700 newsreader-500">{article.description}</p>
+          </article>
+
+          <aside className="col-span-full lg:col-span-4">
+            <StarHeader title="Related News" className="mb-6" />
+            <div className="space-y-6">
+              {relatedPosts.map((news) => (
+                <Link 
+                  key={news.title} 
+                  to={`/category/${category}/${titleToSlug(news.title)}`}
+                  className="flex gap-4 group"
                 >
-                  <div className="post-block-style-inner post-block-list-style-inner">
-                    <div className="post-block-media-wrap">
-                      <img src={news.urlToImage} alt={news.title} />
-                    </div>
-                    <div className="post-block-content-wrap">
-                      <div className="post-item-title">
-                        <h2 className="post-title">
-                         {news.title}
-                        </h2>
-                      </div>
-                      <div className="post-bottom-meta-list">
-                        <div className="post-meta-author-box">
-                          <a href="#">{news.author? news.author : 'anonymous'}</a>
-                        </div>
-                        <div className="post-meta-date-box">{formatDate(news.publishedAt)}</div>
-                      </div>
+                  <img 
+                    src={news.urlToImage} 
+                    alt={news.title} 
+                    className="w-[100px] sm:w-[250px] lg:w-[100px] md:aspect-video object-cover"
+                  />
+                  <div>
+                    <h2 className="~text-xl/2xl mb-2 newsreader-500 group-hover:text-primary transition-colors">
+                      {news.title}
+                    </h2>
+                    <div className="flex justify-between items-center text-sm text-gray-500">
+                      <span>{news.author ? news.author : 'anonymous'}</span>
+                      <span>{formatDate(news.publishedAt)}</span>
                     </div>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
-          </div>
+          </aside>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk, nanoid } from "@reduxjs/toolkit";
 import axios from 'axios';
 
 // Replace with your actual API key
-const API_KEY = '511c1910ac754185af22ed6b70cde5bd'
+const API_KEY = import.meta.env.VITE_API_KEY
 
 // Async thunks for fetching news
 export const fetchBusinessNews = createAsyncThunk(

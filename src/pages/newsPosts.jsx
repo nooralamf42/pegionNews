@@ -24,7 +24,7 @@ const NewsPosts = () => {
           {articles.map((article, index) => (   
             <article key={nanoid()} className={`relative sm:px-4 ${index ===0 ? 'col-span-8 lg:col-span-4 ' : index<=2 ? 'col-span-full sm:col-span-4 lg:col-span-2 sm:border-l' : 'md:col-span-4'} ${index > 2 && 'flex gap-5 sm:flex-col flex-row col-span-full sm:col-span-4 sm:border-t sm:pb-8 sm:py-12 group'}`}>
               {
-                index == 3 && <StarHeader className="absolute top-2 left-0"/>
+                index == 3 && <StarHeader className="-mt-12 sm:-mt-0 absolute top-2 left-0"/>
               }
               <Link to={`/category/${category}/${titleToSlug(article.title)}`} className="">
                 <img 

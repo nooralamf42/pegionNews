@@ -26,17 +26,23 @@ const Header = () => {
   const dispatch = useDispatch();
   const formHandler = (e) => {
     e.preventDefault();
-    dispatch(fetchSearchNews(searchQuery));
-    setIsSearchActive(!isSearchActive);
-    setSearchQuery("");
-    navigate("/search/" + titleToSlug(searchQuery));
+    dispatch(fetchSearchNews(searchQuery))
+      .unwrap()
+      .then(() => {
+        setIsSearchActive(!isSearchActive);
+        setSearchQuery("");
+        navigate("/search/" + titleToSlug(searchQuery));
+      })
+      .catch((error) => {
+        console.error('Failed to fetch search news:', error);
+      });
   };
   return (
     <header className="sticky z-50 top-0 bg-white border-b border-gray-200">
       <nav className="my-container news-cycle-bold py-2 lg:py-0  flex justify-between items-center relative">
         <div className="flex items-center gap-2">
           <button
-            class="relative group lg:hidden block"
+            className="relative group lg:hidden block"
             onClick={() => setIsOpen(!isOpen)}
           >
             <div className="relative flex items-center justify-center w-[30px] h-[30px] transform transition-all duration-200 z-50">
@@ -64,7 +70,7 @@ const Header = () => {
               src={logo}
               className="~w-10/12 group-hover:rotate-45 transition-all duration-300"
               alt=""
-              srcset=""
+              srcSet=""
             />
             <span className="newsreader-700 ~text-xl/3xl">.news</span>
           </Link>
@@ -90,12 +96,10 @@ const Header = () => {
 
         <div className={``}>
           <form
-            onSubmitCapture={formHandler}
+            onSubmit={formHandler}
             role="search"
             method="get"
             className=" flex items-center gap-2"
-            onSubmit={(e) => e.preventDefault()}
-            onClick={(e) => e.stopPropagation()}
           >
             <div className="">
               <input
@@ -113,10 +117,6 @@ const Header = () => {
             </button>
           </form>
         </div>
-
-        {/* <button className="tp-header__bars tp-menu-bar" onClick={()=>setIsOpen(!isOpen)}>
-                      
-                    </button> */}
 
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       </nav>

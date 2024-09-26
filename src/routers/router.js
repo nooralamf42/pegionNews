@@ -5,7 +5,7 @@ import NewsPosts from "../pages/newsPosts";
 import Article from "../pages/article";
 import SearchPosts from "../pages/searchPosts";
 import SearchArticle from "../pages/searchArticle";
-
+import AboutUs from "../pages/aboutUs";
 export const router = createBrowserRouter([{
     path: "/",
     Component : App,
@@ -13,6 +13,10 @@ export const router = createBrowserRouter([{
         {
             path: '',
             Component : Home
+        },
+        {
+            path: '/about',
+            Component : AboutUs
         },
         {
             path: '/search/:query',
