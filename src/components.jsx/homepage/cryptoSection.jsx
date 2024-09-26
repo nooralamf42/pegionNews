@@ -1,53 +1,96 @@
-import { useSelector } from "react-redux";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { nanoid } from "@reduxjs/toolkit";
 import { formatDate } from "../../utils/dateFormat";
 import { titleToSlug } from "../../utils/slugFormat";
+import NewsHeader from "../newsHeader";
+import StarHeader from "../starHeader";
 
-const CryptoSection = () => {
-    const cryptoNews = useSelector(state=>state.newsData.crypto)
-    return (
-      <section className="popular-posts-column-area mt-60 mb-35">
-        <div className="container">
-          <div className="row">
-            <div className="section-title">
-              <h1>Crypto Market</h1>
+const CryptoNewsSection = () => {
+  // Use useSelector to get data from the Redux store
+  const cryptoNews = useSelector((state) => state.newsData.crypto);
+
+  return (
+    <section className="news-cycle-regular mt-10">
+      <div className="my-container space-y-14">
+        <NewsHeader text="Crypto Market" />
+
+        <div className="grid grid-cols-12 ~gap-5/14 group">
+          <article
+            key={nanoid()} // Ensure unique key if id is available
+            className="overflow-hidden transition-all duration-300 md:col-span-6 col-span-12"
+          >
+            <Link
+              className="overflow-hidden inline-block"
+              to={`/category/crypto/${titleToSlug(cryptoNews[0].title)}`}
+            >
+              <img
+                src={cryptoNews[0].urlToImage}
+                alt={cryptoNews[0].title}
+                className="aspect-[16/7] w-full object-cover"
+              />
+            </Link>
+            <div className="p-2 space-y-4">
+              <Link
+                className="~text-2xl/5xl font-bold newsreader-700"
+                to={`/category/crypto/${titleToSlug(cryptoNews[0].title)}`}
+              >
+                {cryptoNews[0].title}
+              </Link>
+              <h2 className="text-xl/2xl font-bold">
+                {cryptoNews[0].description}
+              </h2>
+              <h3>
+                By :
+                {cryptoNews[0].author ? cryptoNews[0].author : "Anonymous"}
+              </h3>
             </div>
-          </div>
-          <div className="row">
-            {cryptoNews.slice(0, 6).map((post, index) => (
-              <div className="col-lg-4" key={index}>
-                <article className="post-block-style-wrapper post-block-template-one post-block-template-medium mb-40">
-                  <div className="post-block-style-inner">
-                    <div className="post-block-media-wrap">
-                      <Link to={`/category/crypto/${titleToSlug(post.title)}`}>
-                        <img src={post.urlToImage} alt={post.postTitle} />
-                      </Link>
-                    </div>
-                    <div className="post-block-content-wrap">
-                      <div className="post-item-title">
-                        <h2 className="post-title">
-                          <Link to={`/category/crypto/${titleToSlug(post.title)}`}>{titleToSlug(post.title)}</Link>
-                        </h2>
-                      </div>
-                      <div className="post-excerpt-box">
-                        <p>{post.description}</p>
-                      </div>
-                      <div className="post-bottom-meta-list">
-                        <div className="post-meta-author-box">
-                          By <a href="javascript:void(0)">{post.author? post.author : 'anonymous'}</a>
-                        </div>
-                        <div className="post-meta-date-box">{formatDate(post.publishedAt)}</div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
+          </article>
+          <StarHeader className="md:hidden block col-span-12"/>
+          {cryptoNews.slice(1, 3).map((article, index) => (
+            
+            <article
+            key={nanoid()} // Ensure unique key if id is available
+            className={`space-y-4 md:col-span-3 col-span-6 overflow-hidden transition-all duration-300 relative`}
+            >
+              <Link
+                className="overflow-hidden inline-block"
+                to={`/category/crypto/${titleToSlug(article.title)}`}
+              >
+                <img
+                  src={article.urlToImage}
+                  alt={article.title}
+                  className="aspect-square w-full object-cover"
+                />
+              </Link>
+              <div className="p-2">
+                <Link
+                  className="newsreader-500 ~text-xl/2xl"
+                  to={`/category/crypto/${titleToSlug(article.title)}`}
+                >
+                  {article.title}
+                </Link>
+                <h3>By : {article.author ? article.author : "Anonymous"}</h3>
+                {/* <h3>{formatDate(article.publishedAt)}</h3> */}
               </div>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
-      </section>
-    );
-  };
-  
-  export default CryptoSection;
-  
+        <div className="border-t-4 border-dashed grid grid-cols-1 md:grid-cols-3 justify-between items-center space-y-4 md:space-y-6 py-6 px-10 md:px-0 group">
+          <StarHeader title="Trending News" className="col-span-full"/>
+            {
+              cryptoNews.slice(3,6).map((post)=>(
+                  <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
+                    <img src={post.urlToImage} alt={post.title} className="w-full aspect-square object-cover max-w-[100px] "/>
+                    <Link to={`/category/business/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600">{post.title}</Link>
+                  </div>
+              ))
+            }
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CryptoNewsSection;

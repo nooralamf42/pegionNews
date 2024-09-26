@@ -4,16 +4,18 @@ import StockMarketSection from "../components.jsx/homepage/stockMarketSection";
 import CryptoSection from "../components.jsx/homepage/cryptoSection";
 import BusinessSection from "../components.jsx/homepage/businessSection";
 import { useSelector } from "react-redux";
-import LoadingScreen from "../components.jsx/loadingScreen";
+
 function Home() {
   const status = useSelector(state=>state.status)
-  if(status!=='succeeded') return <LoadingScreen/>
+  const error = useSelector(state=>state.error)
+  
+ 
   return (
     <>
       <BusinessSection/>
       <FinanceNewsSection />
       <StockMarketSection />
-      <CryptoSection />
+      <CryptoSection /> 
     </>
   );
 }

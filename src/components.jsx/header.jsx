@@ -1,3 +1,4 @@
+import { BiSearchAlt2 } from "react-icons/bi"; 
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from '../public/images/logo.png'
@@ -8,7 +9,6 @@ import { titleToSlug } from "../utils/slugFormat";
 
 
 const menuData = [
-  { name: "Home", link: "/" },
   { name: "Business",link: "/category/business" },
   { name: "Finance", link: "/category/finance" },
   { name: "Stocks", link: "/category/stock" },
@@ -34,94 +34,62 @@ const Header = () => {
     navigate('/search/' + titleToSlug(searchQuery))
   }
   return (
-    <header
-      id="theme-header-one"
-      className="theme-header-main header-style-one"
-    >
-      <div className="theme-header-area">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-2">
-              <div className="logo">
-                <a href="/" className=" w-fit"><img src={logo} className="max-w-[20px] sm:max-w-[30px] lg:max-w-[60px] inline-block" alt="" srcset="" />.news</a>
+    <header className="sticky z-50 top-0 bg-white border-b border-gray-200">
+    <nav className="my-container news-cycle-bold py-2 lg:py-0  flex justify-between items-center ">
+              <div className="flex items-center gap-2 group">
+                <Link to="/" className="w-fit flex items-end"><img src={logo} className="~w-10/12 group-hover:rotate-45 transition-all duration-300" alt="" srcset="" /><span className="newsreader-700 ~text-xl/3xl">.news</span></Link>
+                
               </div>
-            </div>
 
             {/* Navigation Menu */}
-            <div className="col-lg-6 visible">
-              <div className="nav-menu-wrapper">
-                <div className="mainmenu">
-                  <nav className="nav-main-wrap">
-                    <ul className="theme-navigation-wrap theme-main-menu">
+       
+                <ul className="hidden lg:flex items-center gap-8">
                       {menuData.map((item, index) => (
-                        <li key={index}>
-                          <Link to={item.link}>{item.name}</Link>
+                        <li key={index} className="relative group tracking-wider  overflow-hidden">
+                          <Link className='relative z-50' to={item.link}>{item.name}</Link>
+                          <div className="absolute inset-0 w-full bg-primary/50 transform transition-transform duration-700 group-hover:translate-x-full -translate-x-full"></div>
                         </li>
                       ))}
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-
+                </ul>
+     
             {/* Search and Other Header Options */}
-            <div className="col-lg-4">
-              <div className="header-right-wrapper">
-                {/* Search Input */}
-                <div className="header_search_wrap" onClick={handleSearch}>
-                  <div className="search-icon theme-search-custom-iconn">
-                    <i className="icofont-search-1"></i>
-                  </div>
-                  <div id="theme-serach-box_Inner" className={`${isSearchActive && "toggled"}`}>
-                    <div className="theme-serach-box_inner_wrapper d-flex align-items-center">
+          
+                  <div className={``}>
                       <form
                         onSubmitCapture={formHandler}
                         role="search"
                         method="get"
-                        className="search-form"
+                        className=" flex items-center gap-2"
                         onSubmit={(e) => e.preventDefault()}
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <div className="form-group">
+                        <div className="">
                           <input
                             type="text"
-                            className="search-input relative"
+                            className="relative w-24 sm:w-fit px-1 border-b focus:outline-none focus:border-green-400"
                             id="popup-search"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder="Type keywords here....."
+                            placeholder="Search News"
                           />
                         </div>
                         <button
                           type="submit"
-                          className="search-button submit-btn cursor-pointer"
+                          className="cursor-pointer"
                         >
-                          <i className="icofont-search-1"></i>
+                          <BiSearchAlt2 />
                         </button>
                       </form>
-                    </div>
-                  </div>
-                </div>
+                      </div>
 
-                {/* Subscribe Button */}
-                {/* <div className="header-subscribe">
-                  <button className="subscribe-btn">Subscribe</button>
-                </div> */}
-
-                {/* Burger Menu */}
-                <div className="header-burger-menu sm:hidden">
-                  <div className="burger-nav-bar">
-                    <button className="tp-header__bars tp-menu-bar" onClick={()=>setIsOpen(!isOpen)}>
-                      <i className="ri-menu-fill"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+            
+                    {/* <button className="tp-header__bars tp-menu-bar" onClick={()=>setIsOpen(!isOpen)}>
+                      
+                    </button> */}
+        
+    
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen}/>
+    </nav>
     </header>
   );
 };

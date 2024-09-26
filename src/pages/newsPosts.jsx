@@ -13,7 +13,7 @@ const NewsPosts = () => {
     (state) => state.newsData[category.toLowerCase()]
   );
   console.log(articles)
-  if(articles.length<1) return <LoadingScreen/>
+  // if(articles.length<1) return <LoadingScreen/>
   return (
     <>
       <Breadcrumb />

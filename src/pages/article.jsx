@@ -11,6 +11,7 @@ const Article = () => {
   let article = newsData.find(
     (news) => titleToSlug(news.title) === articleTitle
   );
+  console.log(article);
   if(!article) return <LoadingScreen/>
   return (
     <div className="post-single-area mt-60">

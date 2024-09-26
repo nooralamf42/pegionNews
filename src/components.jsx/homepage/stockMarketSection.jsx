@@ -1,123 +1,68 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux"; 
 import { nanoid } from "@reduxjs/toolkit";
-import { formatDate } from "../../utils/dateFormat";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { titleToSlug } from "../../utils/slugFormat";
+import { formatDate } from "../../utils/dateFormat";
+import StarHeader from "../starHeader";
+import NewsHeader from "../newsHeader";
 
-const StockMarketSection = () => {
-  const stockNews = useSelector((state) => state.newsData.stock);
-
-  // Check if stockNews has data to avoid errors
-  if (!stockNews || stockNews.length === 0) {
-    return <div>No stock market news available.</div>;
-  }
+function StockMarketSection() {
+  const {newsData, error, loading} = useSelector(state=>state) 
+  console.log(newsData)
 
   return (
-    <section className="most-popular-area mt-60">
-      <div className="container">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="section-title">
-              <h1>Stock Markets</h1>
+    <section className="hero-section news-cycle-regular ~mt-5/10">
+      <div className="my-container mx-auto px-4 pb-8">
+        <div className="grid grid-cols-12 gap-8 pb-4 ">
+          <div className="col-span-full md:col-span-6 lg:col-span-8 order-2">
+            <img className="w-full aspect-video object-cover" src={newsData.stock[0].urlToImage} alt={newsData.stock[0].title} />
+            <div className="ml-10 relative z-20 bg-white shadow-md p-4 -mt-10 ">
+            <Link to={`/category/stock/${titleToSlug(newsData.stock[0].title)}`}>
+            <h1 className="~text-2xl/5xl font-bold newsreader-700">{newsData.stock[0].title}</h1>
+            </Link>
+            <p className="text-gray-700 newsreader-500">{newsData.stock[0].description}</p>
+            <div className="text-sm text-gray-500">
+                  By <span className="font-semibold">{newsData.stock[0].author ? newsData.stock[0].author : 'anonymous'}</span>
+                </div>
             </div>
           </div>
-        </div>
+          <div className="col-span-full md:col-span-6 lg:col-span-4 mt-4 space-y-4 group">
+            <Link to={`/category/stock`} className="flex gap-4 items-center">
+            <NewsHeader text="Stock Market"/>
+            </Link>
+            <StarHeader/>
 
-        <div className="row mb-50">
-          {/* Feature the first news item */}
-          <div className="col-lg-5">
-            <article className="post-block-style-wrapper post-block-template-one custom-spacing">
-              <div className="post-block-style-inner">
-                <div className="post-block-media-wrap">
-                  <Link to={`/category/stock/${titleToSlug(stockNews[0].title)}`}>
-                    <img src={stockNews[0].urlToImage} alt={stockNews[0].title} />
-                  </Link>
-                </div>
-                <div className="post-block-content-wrap">
-                  <div className="post-item-title">
-                    <h2 className="post-title">
-                      <Link to={`/category/stock/${titleToSlug(stockNews[0].title)}`}>{stockNews[0].title}</Link>
-                    </h2>
-                  </div>
-                  <div className="post-excerpt-box">
-                    <p>{stockNews[0].description}</p>
-                  </div>
-                  <div className="post-bottom-meta-list">
-                    <div className="post-meta-author-box">
-                      By <a href="javascript:void(0)">{stockNews[0].author ? stockNews[0].author : 'anonymous'}</a>
-                    </div>
-                    <div className="post-meta-date-box">{formatDate(stockNews[0].publishedAt)}</div>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          {/* Render two more news items */}
-          <div className="col-lg-7">
-            {[1, 2].map((index) => (
-              <article key={nanoid()} className="post-block-style-wrapper post-block-template-four">
-                <div className="post-block-style-inner post-block-list-style-inner">
-                  <div className="post-block-content-wrap">
-                    <div className="post-item-title">
-                      <h2 className="post-title">
-                        <Link to={`/category/stock/${titleToSlug(stockNews[index].title)}`}>{stockNews[index].title}</Link>
-                      </h2>
-                    </div>
-                    <div className="post-excerpt-box">
-                      <p>{stockNews[index].description}</p>
-                    </div>
-                    <div className="post-bottom-meta-list">
-                      <div className="post-meta-author-box">
-                        By <a href="javascript:void(0)">{stockNews[index].author ? stockNews[index].author : 'anonymous'}</a>
-                      </div>
-                      <div className="post-meta-date-box">{formatDate(stockNews[index].publishedAt)}</div>
-                    </div>
-                  </div>
-                  <div className="post-block-media-wrap">
-                    <Link to={`/category/stock/${titleToSlug(stockNews[index].title)}`}>
-                      <img src={stockNews[index].urlToImage} alt={stockNews[index].title} />
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-
-        <div className="row divider-border">
-          {/* Render the next three news items */}
-          {[3, 4, 5].map((index) => (
-            <div key={nanoid()} className={`col-lg-4  border-gray-500 ${index!==5 && 'lg:border-r-[0.5px]'}`}>
-              <div className="post-block-template-three-wrapper popular-post-block-bottom-wrapper">
-                <article className="post-block-style-wrapper post-block-template-three">
-                  <div className="post-block-style-inner post-block-list-style-inner-three">
-                    <div className="post-block-number-wrap">
-                      <span className="post-number-counter">{index - 2}</span>
-                    </div>
-                    <div className="post-block-content-wrap">
-                      <div className="post-item-title">
-                        <h2 className="post-title">
-                          <Link to={`/category/stock/${titleToSlug(stockNews[index]?.title)}`}>{stockNews[index]?.title}</Link>
-                        </h2>
-                      </div>
-                      <div className="post-bottom-meta-list">
-                        <div className="post-meta-author-box">
-                          By <a href="javascript:void(0)">{stockNews[index].author ? stockNews[index].author : 'anonymous'}</a>
-                        </div>
-                        <div className="post-meta-date-box">{formatDate(stockNews[index]?.publishedAt)}</div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
+          <Link to={`/category/stock/${titleToSlug(newsData.stock[4].title)}`} className="gap-1 items-center grid grid-cols-5 border-b py-3">
+            <h1 className="~text-xl/2xl col-span-full md:col-span-4 newsreader-500">{newsData.stock[4].title}</h1>
+            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={newsData.stock[4].urlToImage} alt={newsData.stock[4].title} />
+            </Link>
+            <Link to={`/category/stock/${titleToSlug(newsData.stock[5].title)}`} className="gap-1 items-center grid grid-cols-5 border-b py-3">
+            <h1 className="~text-xl/2xl col-span-full md:col-span-4 newsreader-500">{newsData.stock[5].title}</h1>
+            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={newsData.stock[5].urlToImage} alt={newsData.stock[5].title} />
+            </Link>
+          {newsData.stock.slice(5, 8).map((post) => (
+            <div key={nanoid()} className={`pl-4 ${newsData.stock.indexOf(post) === 7 ? '' : 'border-b'} py-1 newsreader-500`}>
+              {/* <img className="w-full h-48 object-cover" src={post.urlToImage} alt={post.title} /> */}
+                  <Link to={`/category/stock/${titleToSlug(post.title)}`} className="">{post.title}</Link>
+  
             </div>
           ))}
+          </div>
+        </div>
+        <div className="border-y-4 border-dashed grid grid-cols-1 md:grid-cols-3 justify-between items-center space-y-4 md:space-y-6 py-6 px-10 md:px-0 group">
+          <StarHeader title="Recent News" className="col-span-full ml-auto"/>
+            {
+              newsData.stock.slice(1,4).map((post, index)=>(
+                  <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
+                    <h1 className="~text-6xl/8xl relative font-bold italic before:content-[''] before:translate-x-1/2  before:-z-10 before:absolute before:rotate-12 before:w-8 before:h-full before:bg-primary">{index+1}</h1><Link to={`/category/stock/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600">{post.title}</Link>
+                  </div>
+              ))
+            }
         </div>
       </div>
     </section>
   );
-};
+}
 
 export default StockMarketSection;

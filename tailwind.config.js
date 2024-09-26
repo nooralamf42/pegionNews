@@ -1,11 +1,20 @@
+import fluid, { extract, screens, fontSize } from 'fluid-tailwind'
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
-  theme: {
-    extend: {},
+  content: {files: [
+    "./src/**/*.{js,ts,jsx,tsx}"],
+    extract
   },
-  plugins: [],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#FFD700',
+      }
+    },
+    fontSize,
+    screens,
+  },
+  plugins: [fluid({
+    checkSC144: false
+}),],
 }

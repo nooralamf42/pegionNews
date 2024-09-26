@@ -1,3 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.news-cycle-regular {
+font-family: "News Cycle", sans-serif;
+font-weight: 400;
+font-style: normal;
+}
+
+.news-cycle-bold {
+font-family: "News Cycle", sans-serif;
+font-weight: 700;
+font-style: normal;
+}
+
+.newsreader-200 {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.newsreader-300 {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.newsreader-400 {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}       
+
+.newsreader-500 {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.newsreader-600 {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.newsreader-700 {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}   
+.newsreader-800 {
+  font-family: "Newsreader", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+@layer components{
+    a{
+        @apply hover:underline transition-all duration-300;
+    }
+}
+
+@layer base {
+  .my-container {
+    @apply max-w-[1200px] mx-auto px-4 container;
+  }
+}
+  
