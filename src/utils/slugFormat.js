@@ -13,5 +13,8 @@ export function slugToTitle(slug) {
       .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize the first letter of each word
   }
 
+export function capitalize(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
   
   

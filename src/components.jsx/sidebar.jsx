@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   return (
-    <div className={`tpoffcanvas ${!isOpen && "hidden"}`}>
+    <div className={`fixed top-0 left-0 w-full h-full bg-white z-20 pt-20 transition-all duration-300 flex justify-center items-center lg:hidden ${!isOpen ? "translate-x-full" : "translate-x-0"}`}>
       <div className="site-nav-wrap">
         <h2>
           <Link to="/category/business">Business News</Link>
