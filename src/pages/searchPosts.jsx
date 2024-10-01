@@ -13,11 +13,14 @@ const SearchPosts = () => {
   const { query } = useParams();
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.searchNews);
+  const error = useSelector((state) => state.error);
 
   if (articles.length < 1) {
     dispatch(fetchSearchNews(slugToTitle(query)));
     return <LoadingScreen />;
   }
+
+  console.log(error);
 
   return (
     <section className="search-posts-section news-cycle-regular mt-10">

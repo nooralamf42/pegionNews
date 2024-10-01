@@ -50,12 +50,13 @@ function StockMarketSection() {
           ))}
           </div>
         </div>
-        <div className="border-y-4 border-dashed grid grid-cols-1 md:grid-cols-3 justify-between items-center space-y-4 md:space-y-6 py-6 px-10 md:px-0 group">
-          <StarHeader title="Recent News" className="col-span-full ml-auto"/>
+        <div className="border-y-4 border-dashed grid grid-cols-1 md:grid-cols-3 justify-between items-start space-y-4 md:space-y-6 py-6 px-10 md:px-0 group md:gap-10 ~text-xl/3xl">
+          <StarHeader title="Recent News" className="col-span-full"/>
             {
               newsData.stock.slice(1,4).map((post, index)=>(
                   <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
-                    <h1 className="~text-6xl/8xl relative font-bold italic before:content-[''] before:translate-x-1/2  before:-z-10 before:absolute before:rotate-12 before:w-8 before:h-full before:bg-primary">{index+1}</h1><Link to={`/category/stock/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600">{post.title}</Link>
+                    {/* <h1 className="~text-6xl/8xl relative font-bold italic before:content-[''] before:translate-x-1/2  before:-z-10 before:absolute before:rotate-12 before:w-8 before:h-full before:bg-primary">{index+1}</h1> */}
+                    <Link to={`/category/stock/${titleToSlug(post.title)}`} className="md:max-w-[350px] newsreader-600">{post.title}</Link>
                   </div>
               ))
             }

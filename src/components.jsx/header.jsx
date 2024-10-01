@@ -1,20 +1,53 @@
 import { BiSearchAlt2 } from "react-icons/bi";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import logo from "../public/images/logo.png";
+import logo from "../public/images/blue-logo.png";
 import Sidebar from "./sidebar";
 import { fetchSearchNews } from "../feature/news/newsSlice";
+import dot from "../public/images/dot.png";
 import { useDispatch } from "react-redux";
 import { titleToSlug } from "../utils/slugFormat";
+import axios from "axios";
 
 const menuData = [
   { name: "Business", link: "/category/business" },
   { name: "Finance", link: "/category/finance" },
   { name: "Stocks", link: "/category/stock" },
   { name: "Crypto", link: "/category/crypto" },
+  { name: "Tech", link: "/category/tech" },
+  { name: "Wealth", link: "/category/wealth" },
+  { name: "World", link: "/category/world" },
+  { name: "IPO", link: "/category/ipo" },
+  { name: "Mutual Fund", link: "/category/mutualfund" },
 ];
 
+
 const Header = () => {
+  const [initialDateTime, setInitialDateTime] = useState(null);
+  const [dateTime, setDateTime] = useState(new Date().toUTCString());
+
+  useEffect(() => {
+    const fetchInitialDateTime = () => {
+      axios.get('http://worldtimeapi.org/api/timezone/America/new_york')
+        .then(response => {
+          const newDateTime = new Date(response.data.datetime);
+          setInitialDateTime(newDateTime);
+          setDateTime(newDateTime.toUTCString());
+        })
+        .catch(error => console.error('Error fetching initial date time:', error));
+    };
+
+    fetchInitialDateTime(); // Initial fetch
+
+    const timer = setInterval(() => {
+      if (initialDateTime) {
+        const currentDateTime = new Date(initialDateTime.getTime() + (Date.now() - initialDateTime.getTime()));
+        setDateTime(currentDateTime.toUTCString());
+      }
+    }, 1000); // Update every second
+
+    return () => clearInterval(timer); // Cleanup on component unmount
+  }, [initialDateTime]);
   const [isOpen, setIsOpen] = useState(false);
   // Search input state
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,17 +67,30 @@ const Header = () => {
         navigate("/search/" + titleToSlug(searchQuery));
       })
       .catch((error) => {
-        console.error('Failed to fetch search news:', error);
+        console.error("Failed to fetch search news:", error);
       });
   };
   return (
-    <header className="sticky z-50 top-0 bg-white border-b border-gray-200">
-      <nav className="my-container news-cycle-bold py-2 lg:py-0  flex justify-between items-center relative">
-        <div className="flex items-center gap-2">
-          <button
-            className="relative group lg:hidden block"
-            onClick={() => setIsOpen(!isOpen)}
-          >
+    <header className="sticky z-50 overflow-hidden top-0 bg-white border-gray-200 py-2">
+      <div className="w-fit mx-auto flex items-end justify-center group cursor-pointer">
+        <img
+          src={logo}
+          className="~w-8/12 group-hover:rotate-45 transition-all duration-300"
+          alt=""
+          srcSet=""
+        />
+        <img src={dot} className="w-3 mb-1" alt="" srcset="" />
+        <span className="pirata-one-regular uppercase text-primary ~text-2xl/4xl">
+          news
+        </span>
+      </div>
+      <div className="text-center mt-2">
+        <h1 className="news-cycle-regular text-sm font-thin text-neutral-600">{dateTime}</h1>
+      </div>
+
+      <nav className="bg-blue-100 p-2 my-container mt-4 news-cycle-bold flex justify-between items-center relative ">
+        <div className="items-center gap-2 lg:hidden flex">
+          <button className="relative group" onClick={() => setIsOpen(!isOpen)}>
             <div className="relative flex items-center justify-center w-[30px] h-[30px] transform transition-all duration-200 z-50">
               <div
                 className={`flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 ${
@@ -65,15 +111,6 @@ const Header = () => {
               </div>
             </div>
           </button>
-          <Link to="/" className="w-fit flex items-end group">
-            <img
-              src={logo}
-              className="~w-10/12 group-hover:rotate-45 transition-all duration-300"
-              alt=""
-              srcSet=""
-            />
-            <span className="newsreader-700 ~text-xl/3xl">.news</span>
-          </Link>
         </div>
 
         {/* Navigation Menu */}
@@ -87,7 +124,7 @@ const Header = () => {
               <Link className="relative z-50" to={item.link}>
                 {item.name}
               </Link>
-              <div className="absolute inset-0 w-full bg-primary/50 transform transition-transform duration-700 group-hover:translate-x-full -translate-x-full"></div>
+              <div className="absolute inset-0 w-full bg-primary transform transition-transform duration-700 group-hover:translate-x-full -translate-x-full"></div>
             </li>
           ))}
         </ul>
@@ -105,7 +142,7 @@ const Header = () => {
               <input
                 type="text"
                 required
-                className="relative w-24 sm:w-fit px-1 border-b focus:outline-none focus:border-green-400"
+                className="relative w-24 sm:w-fit px-1 border-b focus:outline-none focus:border-secondry"
                 id="popup-search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

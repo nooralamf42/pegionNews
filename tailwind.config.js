@@ -8,7 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#FFD700',
+        primary: 'red',
+        secondry: '#1e40af'
       }
     },
     fontSize,
