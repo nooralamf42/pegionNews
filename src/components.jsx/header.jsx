@@ -111,13 +111,13 @@ const Header = () => {
                 } origin-center`}
               >
                 <div
-                  className={`bg-black h-[2px] w-1/2 rounded transform transition-all duration-300  origin-right delay-75 ${
+                  className={`${isOpen ? "bg-black": "bg-white"} h-[2px] w-1/2 rounded transform transition-all duration-300  origin-right delay-75 ${
                     isOpen && "-rotate-90 h-[1px] -translate-y-[1px]"
                   }`}
                 ></div>
-                <div className="bg-black h-[1px] rounded"></div>
+                <div className={`${isOpen ? "bg-black": "bg-white"} h-[1px] rounded`}></div>
                 <div
-                  className={`bg-black h-[2px] w-1/2 rounded self-end transform transition-all duration-300 origin-left delay-75 ${
+                  className={`${isOpen ? "bg-black": "bg-white"} h-[2px] w-1/2 rounded self-end transform transition-all duration-300 origin-left delay-75 ${
                     isOpen && "-rotate-90 h-[1px] translate-y-[1px]"
                   }`}
                 ></div>
