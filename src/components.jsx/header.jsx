@@ -1,10 +1,10 @@
 import { BiSearchAlt2 } from "react-icons/bi";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../public/images/blue-logo.png";
 import Sidebar from "./sidebar";
 import { fetchSearchNews } from "../feature/news/newsSlice";
-import dot from "../public/images/dot.png";
+import dot from "../public/images/dot3.png";
 import { useDispatch } from "react-redux";
 import { titleToSlug } from "../utils/slugFormat";
 import axios from "axios";
@@ -57,6 +57,15 @@ const Header = () => {
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  let newsPaperTimeout;
+  const newsPaperRef = useRef(null)
+  const handleNewsPaper = () =>{
+    clearTimeout(newsPaperTimeout)
+    newsPaperRef.current.classList.add('absolute')
+    newsPaperTimeout = setTimeout(()=>{
+    newsPaperRef.current.classList.remove('absolute')
+    }, 750)
+  }
   const formHandler = (e) => {
     e.preventDefault();
     dispatch(fetchSearchNews(searchQuery))
@@ -72,15 +81,19 @@ const Header = () => {
   };
   return (
     <header className="sticky z-50 overflow-hidden top-0 bg-white border-gray-200 py-2">
-      <div className="w-fit mx-auto flex items-end justify-center group cursor-pointer">
+      <div onClick={()=>navigate('/')} className="w-fit mx-auto flex items-end justify-center cursor-pointer group" onMouseEnter={handleNewsPaper}>
+        <div className="flex items-end group-hover:rotate-45 relative">
         <img
           src={logo}
-          className="~w-8/12 group-hover:rotate-45 transition-all duration-300"
+          className="~w-10/16 transition-all duration-300"
           alt=""
           srcSet=""
         />
-        <img src={dot} className="w-3 mb-1" alt="" srcset="" />
-        <span className="pirata-one-regular uppercase text-primary ~text-2xl/4xl">
+        <div className="~w-5/8 mb-1 -ml-2">
+        <img ref={newsPaperRef} src={dot} className="~w-5/8 group-hover:-rotate-[60deg] top-2 right-3" alt="" srcset="" />
+        </div>
+        </div>
+        <span className="pirata-one-regular uppercase text-primary ~text-3xl/5xl">
           news
         </span>
       </div>
@@ -88,7 +101,7 @@ const Header = () => {
         <h1 className="news-cycle-regular text-sm font-thin text-neutral-600">{dateTime}</h1>
       </div>
 
-      <nav className="bg-blue-100 p-2 my-container mt-4 news-cycle-bold flex justify-between items-center relative ">
+      <nav className="bg-secondry text-white p-2 my-container mt-4 news-cycle-bold flex justify-between items-center relative ">
         <div className="items-center gap-2 lg:hidden flex">
           <button className="relative group" onClick={() => setIsOpen(!isOpen)}>
             <div className="relative flex items-center justify-center w-[30px] h-[30px] transform transition-all duration-200 z-50">
@@ -115,11 +128,11 @@ const Header = () => {
 
         {/* Navigation Menu */}
 
-        <ul className="hidden lg:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-8 font-thin">
           {menuData.map((item, index) => (
             <li
               key={index}
-              className="relative group tracking-wider  overflow-hidden"
+              className="relative group overflow-hidden"
             >
               <Link className="relative z-50" to={item.link}>
                 {item.name}

@@ -6,6 +6,8 @@ import Article from "../pages/article";
 import SearchPosts from "../pages/searchPosts";
 import SearchArticle from "../pages/searchArticle";
 import AboutUs from "../pages/aboutUs";
+import PrivacyPolicy from "../pages/privacyPolicy";
+import TermsOfUse from "../pages/termsOfUse";
 export const router = createBrowserRouter([{
     path: "/",
     Component : App,
@@ -17,6 +19,14 @@ export const router = createBrowserRouter([{
         {
             path: '/about',
             Component : AboutUs
+        },
+        {
+            path: '/privacy-policy',
+            Component : PrivacyPolicy
+        },
+        {
+            path: '/terms-of-use',
+            Component : TermsOfUse
         },
         {
             path: '/search/:query',

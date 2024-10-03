@@ -7,6 +7,7 @@ import LoadingScreen from "../components.jsx/loadingScreen";
 import NewsHeader from "../components.jsx/newsHeader";
 import StarHeader from "../components.jsx/starHeader";
 import { useMemo } from "react";
+import fixImgUrl from "../utils/fixImgUrl";
 
 const Article = () => {
   let { articleTitle, category } = useParams();
@@ -37,15 +38,15 @@ const Article = () => {
           <article className="col-span-full lg:col-span-8">
             <h1 className="~text-3xl/5xl mb-4 newsreader-700">{article.title}</h1>
             <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
-              <span>By {article.author ? article.author : "anonymous"}</span>
+              <span>By {article.source_name ? article.source_name : "anonymous"}</span>
               <span>{formatDate(article.publishedAt)}</span>
             </div>
             <img 
-              src={article.urlToImage} 
+              src={fixImgUrl(article.image_url)} 
               alt={article.title} 
               className="w-full aspect-video object-cover mb-6"
             />
-            <p className="text-gray-700 newsreader-500">{article.description}</p>
+            <p className="text-gray-700 newsreader-500">{article.content}</p>
           </article>
 
           <aside className="col-span-full lg:col-span-4">
@@ -58,7 +59,7 @@ const Article = () => {
                   className="flex gap-4 group"
                 >
                   <img 
-                    src={news.urlToImage} 
+                    src={fixImgUrl(news.image_url)} 
                     alt={news.title} 
                     className="w-[100px] sm:w-[250px] lg:w-[100px] md:aspect-video object-cover"
                   />
@@ -67,8 +68,8 @@ const Article = () => {
                       {news.title}
                     </h2>
                     <div className="flex justify-between items-center text-sm text-gray-500">
-                      <span>{news.author ? news.author : 'anonymous'}</span>
-                      <span>{formatDate(news.publishedAt)}</span>
+                      <span>{news.source_name ? news.source_name : 'anonymous'}</span>
+                      <span>{formatDate(news.pubDate)}</span>
                     </div>
                   </div>
                 </Link>

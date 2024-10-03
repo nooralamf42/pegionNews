@@ -10,9 +10,10 @@ import StarHeader from "../components.jsx/starHeader";
 
 const NewsPosts = () => {
   const { category } = useParams();
-  const articles = useSelector(
+  let articles = useSelector(
     (state) => state.newsData[category.toLowerCase()]
   );
+  articles = articles.filter(article=>article.image_url!==null || '')
 
   if (!articles || articles.length < 1) return <LoadingScreen />;
 
@@ -28,7 +29,7 @@ const NewsPosts = () => {
               }
               <Link to={`/category/${category}/${titleToSlug(article.title)}`} className="">
                 <img 
-                  src={article.urlToImage} 
+                  src={article.image_url} 
                   alt={article.title} 
                   className={`object-cover mb-4 ${index > 2 ? 'w-[100px] max-w-[100px] sm:max-w-full h-[100px] sm:h-full sm:w-full md:aspect-video' : 'aspect-video sm:aspect-square w-full'}`}
                 />
@@ -42,10 +43,10 @@ const NewsPosts = () => {
                     {article.title}
                   </Link>
                 </h2>
-                <p className=" text-gray-700 mb-4 newsreader-500">{article.description}</p>
+                <p className=" text-gray-700 line-clamp-3 mb-4 newsreader-500">{article.description}</p>
                 <div className="flex justify-between items-center text-sm text-gray-500">
-                  <span>By {article.author ? article.author : "anonymous"}</span>
-                  <span>{formatDate(article.publishedAt)}</span>
+                  <span>By {article.source_name ? article.source_name : "anonymous"}</span>
+                  <span>{formatDate(article.pubDate)}</span>
                 </div>
               </div>
             </article>

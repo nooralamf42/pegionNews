@@ -6,6 +6,7 @@ import { formatDate } from "../../utils/dateFormat";
 import { titleToSlug } from "../../utils/slugFormat";
 import NewsHeader from "../newsHeader";
 import StarHeader from "../starHeader";
+import fixImgUrl from "../../utils/fixImgUrl";
 
 const FinanceNewsSection = () => {
   // Use useSelector to get data from the Redux store
@@ -26,7 +27,7 @@ const FinanceNewsSection = () => {
               to={`/category/finance/${titleToSlug(financeNews[0].title)}`}
             >
               <img
-                src={financeNews[0].urlToImage}
+                src={financeNews[0].image_url}
                 alt={financeNews[0].title}
                 className="aspect-[16/7] w-full object-cover"
               />
@@ -43,7 +44,7 @@ const FinanceNewsSection = () => {
               </h2>
               <h3>
                 By :
-                {financeNews[0].author ? financeNews[0].author : "Anonymous"}
+                {financeNews[0].source_name ? financeNews[0].source_name : "Anonymous"}
               </h3>
             </div>
           </article>
@@ -60,7 +61,7 @@ const FinanceNewsSection = () => {
                 to={`/category/finance/${titleToSlug(article.title)}`}
               >
                 <img
-                  src={article.urlToImage}
+                  src={article.image_url}
                   alt={article.title}
                   className="aspect-square w-full object-cover"
                 />
@@ -72,7 +73,7 @@ const FinanceNewsSection = () => {
                 >
                   {article.title}
                 </Link>
-                <h3>By : {article.author ? article.author : "Anonymous"}</h3>
+                <h3>By : {article.source_name ? article.source_name : "Anonymous"}</h3>
                 {/* <h3>{formatDate(article.publishedAt)}</h3> */}
               </div>
             </article>

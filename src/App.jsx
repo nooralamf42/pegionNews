@@ -9,10 +9,10 @@ import { fetchBusinessNews, fetchCryptoNews, fetchFinanceNews, fetchStockNews} f
 function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
-    // dispatch(fetchBusinessNews())
-    // dispatch(fetchFinanceNews())
-    // dispatch(fetchStockNews())
-    // dispatch(fetchCryptoNews())
+    dispatch(fetchBusinessNews())
+    dispatch(fetchFinanceNews())
+    dispatch(fetchStockNews())
+    dispatch(fetchCryptoNews())
   },[])
   return (
     <>
