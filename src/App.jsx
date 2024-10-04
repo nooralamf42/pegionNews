@@ -14,9 +14,9 @@ function App() {
     const fetchAll = async () => {
       await Promise.all([
         dispatch(fetchBusinessNews()),
-        // dispatch(fetchFinanceNews()),
-        // dispatch(fetchStockNews()),
-        // dispatch(fetchCryptoNews())
+        dispatch(fetchFinanceNews()),
+        dispatch(fetchStockNews()),
+        dispatch(fetchCryptoNews())
       ]);
       setIsLoading(false);
     };
