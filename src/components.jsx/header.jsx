@@ -1,6 +1,6 @@
 import { BiSearchAlt2 } from "react-icons/bi";
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../public/images/blue-logo.png";
 import Sidebar from "./sidebar";
 import { fetchSearchNews } from "../feature/news/newsSlice";
@@ -25,6 +25,10 @@ const menuData = [
 const Header = () => {
   const [initialDateTime, setInitialDateTime] = useState(null);
   const [dateTime, setDateTime] = useState(new Date().toUTCString());
+  const pathName = useLocation().pathname
+  useEffect(()=>{
+    window.scrollTo(0,0)
+  }, [pathName])
 
   useEffect(() => {
     const fetchInitialDateTime = () => {
@@ -36,6 +40,7 @@ const Header = () => {
         })
         .catch(error => console.error('Error fetching initial date time:', error));
     };
+
 
     fetchInitialDateTime(); // Initial fetch
 

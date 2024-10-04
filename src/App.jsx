@@ -10,9 +10,9 @@ function App() {
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(fetchBusinessNews())
-    dispatch(fetchFinanceNews())
-    dispatch(fetchStockNews())
-    dispatch(fetchCryptoNews())
+    // dispatch(fetchFinanceNews())
+    // dispatch(fetchStockNews())
+    // dispatch(fetchCryptoNews())
   },[])
   return (
     <>
