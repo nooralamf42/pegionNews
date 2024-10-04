@@ -7,7 +7,7 @@ import { slugToTitle, titleToSlug } from "../utils/slugFormat";
 import { fetchSearchNews } from "../feature/news/newsSlice";
 import NewsHeader from "../components/newsHeader";
 import StarHeader from "../components/starHeader";
-import Loading from "../components/loading/Loading";
+import Loading from "../components/loading";
 
 const SearchPosts = () => {
   const { query } = useParams();

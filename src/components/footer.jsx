@@ -35,15 +35,15 @@ const Footer = () => {
     }
   };
 
-  const newsPaperRef = useRef(null);
-  let newsPaperTimeout;
-  const handleNewsPaper = () => {
-    clearTimeout(newsPaperTimeout);
-    newsPaperRef.current.classList.add("absolute");
-    newsPaperTimeout = setTimeout(() => {
-      newsPaperRef.current.classList.remove("absolute");
-    }, 750);
-  };
+  // const newsPaperRef = useRef(null);
+  // let newsPaperTimeout;
+  // const handleNewsPaper = () => {
+  //   clearTimeout(newsPaperTimeout);
+  //   newsPaperRef.current.classList.add("absolute");
+  //   newsPaperTimeout = setTimeout(() => {
+  //     newsPaperRef.current.classList.remove("absolute");
+  //   }, 750);
+  // };
   const navigate = useNavigate();
 
   return (
@@ -54,9 +54,8 @@ const Footer = () => {
             <div
               onClick={() => navigate("/")}
               className="w-fit mx-auto flex gap-4 flex-col items-center justify-center cursor-pointer group"
-              onMouseEnter={handleNewsPaper}
             >
-              <div className="flex items-end group-hover:rotate-45 relative mix-blend-screen">
+              <div className="flex items-end animate_pegion_body relative mix-blend-screen">
                 <img
                   src={logo}
                   className="~w-20/24 mix-blend-screen"
@@ -65,9 +64,8 @@ const Footer = () => {
                 />
                 <div className="~w-8/12 mb-1 -ml-2">
                   <img
-                    ref={newsPaperRef}
                     src={dot}
-                    className="~w-8/12 group-hover:-rotate-[60deg] top-2 right-3"
+                    className="~w-8/12 animate_news_scroll top-2 right-3"
                     alt=""
                     srcset=""
                   />

@@ -62,15 +62,15 @@ const Header = () => {
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  let newsPaperTimeout;
-  const newsPaperRef = useRef(null)
-  const handleNewsPaper = () =>{
-    clearTimeout(newsPaperTimeout)
-    newsPaperRef.current.classList.add('absolute')
-    newsPaperTimeout = setTimeout(()=>{
-    newsPaperRef.current.classList.remove('absolute')
-    }, 750)
-  }
+  // let newsPaperTimeout;
+  // const newsPaperRef = useRef(null)
+  // const handleNewsPaper = () =>{
+  //   clearTimeout(newsPaperTimeout)
+  //   newsPaperRef.current.classList.add('absolute')
+  //   newsPaperTimeout = setTimeout(()=>{
+  //   newsPaperRef.current.classList.remove('absolute')
+  //   }, 750)
+  // }
   const formHandler = (e) => {
     e.preventDefault();
     dispatch(fetchSearchNews(searchQuery))
@@ -86,8 +86,8 @@ const Header = () => {
   };
   return (
     <header className="sticky z-50 overflow-hidden top-0 bg-white border-gray-200 py-2">
-      <div onClick={()=>navigate('/')} className="w-fit mx-auto flex items-end justify-center cursor-pointer group" onMouseEnter={handleNewsPaper}>
-        <div className="flex items-end group-hover:rotate-45 relative">
+      <div onClick={()=>navigate('/')} className="w-fit mx-auto flex items-end justify-center cursor-pointer group">
+        <div className="flex items-end animate_pegion_body relative">
         <img
           src={logo}
           className="~w-10/16 transition-all duration-300"
@@ -95,7 +95,7 @@ const Header = () => {
           srcSet=""
         />
         <div className="~w-5/8 mb-1 -ml-2">
-        <img ref={newsPaperRef} src={dot} className="~w-5/8 group-hover:-rotate-[60deg] top-2 right-3" alt="" srcset="" />
+        <img src={dot} className="~w-5/8 animate_news_scroll top-2 right-3" alt="" srcset="" />
         </div>
         </div>
         <span className="pirata-one-regular uppercase text-primary ~text-3xl/5xl">
@@ -160,7 +160,7 @@ const Header = () => {
               <input
                 type="text"
                 required
-                className="relative w-24 sm:w-fit px-1 border-b focus:outline-none focus:border-secondry"
+                className="relative w-24 sm:w-fit px-1 border-b focus:outline-none focus:border-secondry text-black font-semibold"
                 id="popup-search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

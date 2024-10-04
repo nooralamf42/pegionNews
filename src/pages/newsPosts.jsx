@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { formatDate } from "../utils/dateFormat";
 import { titleToSlug, capitalize } from "../utils/slugFormat";
-import LoadingScreen from "../components/loading/Loading";
+import LoadingScreen from "../components/loading";
 import NewsHeader from "../components/newsHeader";
 import StarHeader from "../components/starHeader";
 

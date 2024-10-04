@@ -10,7 +10,7 @@ import fixImgUrl from "../utils/fixImgUrl";
 import generateParagraphs from "../utils/generateParas";
 import { nanoid } from "@reduxjs/toolkit";
 import { fetchCurrentPageNews } from "../feature/news/newsSlice";
-import Loading from "../components/loading/Loading";
+import Loading from "../components/loading";
 
 const Article = () => {
   let { articleTitle, category } = useParams();
