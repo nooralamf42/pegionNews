@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { formatDate } from "../utils/dateFormat";
 import { titleToSlug, capitalize } from "../utils/slugFormat";
-import LoadingScreen from "../components.jsx/loadingScreen";
-import NewsHeader from "../components.jsx/newsHeader";
-import StarHeader from "../components.jsx/starHeader";
+import LoadingScreen from "../components/loading/Loading";
+import NewsHeader from "../components/newsHeader";
+import StarHeader from "../components/starHeader";
 
 const NewsPosts = () => {
   const { category } = useParams();
@@ -27,6 +27,7 @@ const NewsPosts = () => {
               {
                 index == 3 && <StarHeader className="-mt-12 sm:-mt-0 absolute top-2 left-0"/>
               }
+              
               <Link to={`/category/${category}/${titleToSlug(article.title)}`} className="">
                 <img 
                   src={article.image_url} 

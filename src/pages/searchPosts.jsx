@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { formatDate } from "../utils/dateFormat";
 import { slugToTitle, titleToSlug } from "../utils/slugFormat";
-import LoadingScreen from "../components.jsx/loadingScreen";
 import { fetchSearchNews } from "../feature/news/newsSlice";
-import NewsHeader from "../components.jsx/newsHeader";
-import StarHeader from "../components.jsx/starHeader";
+import NewsHeader from "../components/newsHeader";
+import StarHeader from "../components/starHeader";
+import Loading from "../components/loading/Loading";
 
 const SearchPosts = () => {
   const { query } = useParams();
@@ -17,7 +17,7 @@ const SearchPosts = () => {
 
   if (articles.length < 1) {
     dispatch(fetchSearchNews(slugToTitle(query)));
-    return <LoadingScreen />;
+    return <Loading/>
   }
 
   console.log(error);

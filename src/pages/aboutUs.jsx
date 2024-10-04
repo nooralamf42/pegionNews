@@ -1,5 +1,5 @@
-import NewsHeader from "../components.jsx/newsHeader";
-import StarHeader from "../components.jsx/starHeader";
+import NewsHeader from "../components/newsHeader";
+import StarHeader from "../components/starHeader";
 
 const AboutUs = () => {
     return (

@@ -3,10 +3,10 @@ import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { slugToTitle, titleToSlug, capitalize } from "../utils/slugFormat";
 import { formatDate } from "../utils/dateFormat";
-import LoadingScreen from "../components.jsx/loadingScreen";
 import { fetchSearchNews } from "../feature/news/newsSlice";
-import NewsHeader from "../components.jsx/newsHeader";
-import StarHeader from "../components.jsx/starHeader";
+import NewsHeader from "../components/newsHeader";
+import StarHeader from "../components/starHeader";
+import Loading from "../components/loading/Loading";
 
 const SearchArticle = () => {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ const SearchArticle = () => {
 
   if (!article) {
     dispatch(fetchSearchNews(slugToTitle(query)))
-    return <LoadingScreen />
+    return <Loading/>
   }
 
   return (

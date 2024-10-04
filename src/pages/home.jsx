@@ -1,8 +1,8 @@
 import React from "react";
-import FinanceNewsSection from "../components.jsx/homepage/financeSection";
-import StockMarketSection from "../components.jsx/homepage/stockMarketSection";
-import CryptoSection from "../components.jsx/homepage/cryptoSection";
-import BusinessSection from "../components.jsx/homepage/businessSection";
+import FinanceNewsSection from "../components/homepage/financeSection";
+import StockMarketSection from "../components/homepage/stockMarketSection";
+import CryptoSection from "../components/homepage/cryptoSection";
+import BusinessSection from "../components/homepage/businessSection";
 import { useSelector } from "react-redux";
 
 function Home() {

@@ -1,7 +1,4 @@
-import NewsHeader from "../components.jsx/newsHeader";
-import StarHeader from "../components.jsx/starHeader";
-
-
+import StarHeader from "../components/starHeader";
 const TermsOfUse = () => {
   return (
     <section className="terms-of-use-section news-cycle-regular mt-10">

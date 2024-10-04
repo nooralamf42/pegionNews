@@ -1,36 +1,45 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { titleToSlug, capitalize } from "../utils/slugFormat";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { formatDate } from "../utils/dateFormat";
-import LoadingScreen from "../components.jsx/loadingScreen";
-import NewsHeader from "../components.jsx/newsHeader";
-import StarHeader from "../components.jsx/starHeader";
+import NewsHeader from "../components/newsHeader";
+import StarHeader from "../components/starHeader";
 import { useMemo } from "react";
 import fixImgUrl from "../utils/fixImgUrl";
 import generateParagraphs from "../utils/generateParas";
 import { nanoid } from "@reduxjs/toolkit";
+import { fetchCurrentPageNews } from "../feature/news/newsSlice";
+import Loading from "../components/loading/Loading";
 
 const Article = () => {
   let { articleTitle, category } = useParams();
   const newsData = useSelector((state) => state.newsData[category]);
-  let article = newsData.find(
+  let article = newsData?.find(
     (news) => titleToSlug(news.title) === articleTitle
   );
 
+  const dispatch = useDispatch()
+
   const relatedPosts = useMemo(() => {
-    if (!article || !newsData) return [];
+    if (!article || !newsData) {
+      return []
+    };
     
     // Filter out the current article and shuffle the remaining articles
     const shuffled = newsData
-      .filter(news => news.title !== article.title)
+      .filter(news => news?.title !== article?.title)
       .sort(() => 0.5 - Math.random());
     
     // Return the first 3 articles from the shuffled array
     return shuffled.slice(0, 3);
   }, [article, newsData]);
+ 
 
-  if (!article) return <LoadingScreen />;
+  if (!article && newsData.length>0) {
+    dispatch(fetchCurrentPageNews({query: articleTitle, category}))
+    return <Loading/>
+  }
 
   return (
     <section className="article-section news-cycle-regular mt-10">
@@ -49,7 +58,7 @@ const Article = () => {
               className="w-full aspect-video object-cover mb-6"
             />
             {
-              generateParagraphs(article.content).map(article=>(
+              generateParagraphs(article.content ? article.content : article.description).map(article=>(
                 <p id={nanoid()} className="mt-6 text-gray-700 newsreader-400 ~text-lg/2xl leading-snug">{article}</p>
               ))
             }
@@ -60,7 +69,7 @@ const Article = () => {
             <div className="space-y-6">
               {relatedPosts.map((news) => (
                 <Link 
-                  key={news.title} 
+                  key={nanoid()}
                   to={`/category/${category}/${titleToSlug(news.title)}`}
                   className="flex gap-4 group"
                 >
@@ -82,6 +91,16 @@ const Article = () => {
               ))}
             </div>
           </aside>
+        </div>
+        <div className="border-y-4 border-dashed grid grid-cols-1 md:grid-cols-3 justify-between items-start space-y-4 md:space-y-6 py-6 px-10 md:px-0 group md:gap-10 ~text-xl/3xl">
+          <StarHeader title="Recent News" className="col-span-full"/>
+            {
+              newsData.slice(1,4).map((post, index)=>(
+                  <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
+                    <Link to={`/category/stock/${titleToSlug(post.title)}`} className="md:max-w-[350px] newsreader-600 line-clamp-3">{post.title}</Link>
+                  </div>
+              ))
+            }
         </div>
       </div>
     </section>

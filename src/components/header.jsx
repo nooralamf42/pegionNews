@@ -99,7 +99,7 @@ const Header = () => {
         </div>
         </div>
         <span className="pirata-one-regular uppercase text-primary ~text-3xl/5xl">
-          news
+          pegion  news
         </span>
       </div>
       <div className="text-center mt-2">
