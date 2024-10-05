@@ -13,16 +13,21 @@ import { fetchCurrentPageNews } from "../feature/news/newsSlice";
 import Loading from "../components/loading";
 
 const Article = () => {
-  let { articleTitle, category } = useParams();
+  let { articleTitle, category, query} = useParams();
+  const searched = useSelector(state=>state.searched)
+  if(query){
+    category = "search"
+  }
+  alert(searched)
   const newsData = useSelector((state) => state.newsData[category]);
-  let article = newsData?.find(
-    (news) => titleToSlug(news.title) === articleTitle
+  console.log(newsData)
+  let article = newsData.find((news) => titleToSlug(news.title) === articleTitle
   );
 
   const dispatch = useDispatch()
 
   const relatedPosts = useMemo(() => {
-    if (!article || !newsData) {
+    if (!article || !newsData || searched) {
       return []
     };
     
@@ -35,10 +40,12 @@ const Article = () => {
     return shuffled.slice(0, 3);
   }, [article, newsData]);
  
-
-  if (!article && newsData.length>0) {
+  if (!article && !searched) {
     dispatch(fetchCurrentPageNews({query: articleTitle, category}))
     return <Loading/>
+  }
+  if(searched && (!article || newsData.length>0)){
+    return <h1>no article found</h1>
   }
 
   return (

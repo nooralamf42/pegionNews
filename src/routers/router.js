@@ -34,7 +34,7 @@ export const router = createBrowserRouter([{
         },
         {
             path: '/search/:query/:articleTitle',
-            Component : SearchArticle,
+            Component : Article,
         },
         {
             path : '/category/:category',

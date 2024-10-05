@@ -35,7 +35,7 @@ export const fetchStockNews = createAsyncThunk(
     const response = await axios.get(
       `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&q=stock%20market`
     );
-    console.log(response)
+    console.log(response);
     return response.data.results.filter(
       (article) => article.image_url !== null || ""
     );
@@ -48,7 +48,7 @@ export const fetchCryptoNews = createAsyncThunk(
     const response = await axios.get(
       `https://newsdata.io/api/1/crypto?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1`
     );
-    console.log(response)
+    console.log(response);
     return response.data.results.filter(
       (article) => article.image_url !== null || ""
     );
@@ -60,9 +60,9 @@ export const fetchSearchNews = createAsyncThunk(
   "news/fetchSearchNews",
   async (query) => {
     const response = await axios.get(
-      `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}`
+      `https://newsdata.io/api/1/news?apikey=${API_KEY}&removeduplicate=1&size=50&image=1&q=${query}&language=en`
     );
-    return response.data.articles.filter(
+    return response.data.results.filter(
       (article) => article.urlToImage !== null || ""
     );
   }
@@ -71,13 +71,15 @@ export const fetchSearchNews = createAsyncThunk(
 // Fetch current page news
 export const fetchCurrentPageNews = createAsyncThunk(
   "news/fetchCurrentPageNews",
-  async({query, category}) => {
+  async ({ query, category }) => {
     const response = await axios.get(
       `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=${query}`
     );
-    return {article : response.data.results[0], category}
+    if (category == "search")
+      return { articles: response.data.results, category };
+    else return { article: response.data.results[0], category };
   }
-)
+);
 
 let data = {
   business: [
@@ -715,11 +717,12 @@ const initialState = {
     business: [],
     finance: data.crypto,
     stock: data.business,
-    crypto: data.crypto
+    crypto: data.crypto,
+    search: [], // New state for search results
   },
-  searchNews: [], // New state for search results
   status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
+  searched: false,
 };
 
 const newsDataSlice = createSlice({
@@ -784,8 +787,9 @@ const newsDataSlice = createSlice({
       state.status = "loading";
     });
     builder.addCase(fetchSearchNews.fulfilled, (state, action) => {
+      state.searched = true
       state.status = "succeeded";
-      state.searchNews = action.payload; // Set search news data
+      state.newsData.search = action.payload; // Set search news data
     });
     builder.addCase(fetchSearchNews.rejected, (state, action) => {
       state.status = "failed";
@@ -793,13 +797,21 @@ const newsDataSlice = createSlice({
     });
 
     //Current Page News
-    builder.addCase(fetchCurrentPageNews.pending, (state)=>{
+    builder.addCase(fetchCurrentPageNews.pending, (state) => {
       state.status = "loading";
-    })
-    builder.addCase(fetchCurrentPageNews.fulfilled, (state, action) =>{
+    });
+    builder.addCase(fetchCurrentPageNews.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.newsData[action.payload.category] = [...state.newsData[action.payload.category], action.payload.article]
-    })
+      state.searched = true;
+      if (action.payload.category == "search") {
+        state.newsData.search = action.payload.articles;
+      } else {
+        if(action.payload.article)state.newsData[action.payload.category] = [
+          ...state.newsData[action.payload.category],
+          action.payload.article
+        ];
+      }
+    });
     builder.addCase(fetchCurrentPageNews.rejected, (state, action) => {
       state.status = "failed";
       state.error = action.error.message;

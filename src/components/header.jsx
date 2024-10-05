@@ -8,6 +8,7 @@ import dot from "../public/images/dot3.png";
 import { useDispatch } from "react-redux";
 import { titleToSlug } from "../utils/slugFormat";
 import axios from "axios";
+import Loading from "./loading";
 
 const menuData = [
   { name: "Business", link: "/category/business" },
@@ -42,7 +43,7 @@ const Header = () => {
     };
 
 
-    fetchInitialDateTime(); // Initial fetch
+    !initialDateTime && fetchInitialDateTime(); // Initial fetch
 
     const timer = setInterval(() => {
       if (initialDateTime) {
@@ -73,10 +74,11 @@ const Header = () => {
   // }
   const formHandler = (e) => {
     e.preventDefault();
+    setIsSearchActive(true);
     dispatch(fetchSearchNews(searchQuery))
       .unwrap()
       .then(() => {
-        setIsSearchActive(!isSearchActive);
+        setIsSearchActive(false);
         setSearchQuery("");
         navigate("/search/" + titleToSlug(searchQuery));
       })
@@ -84,6 +86,7 @@ const Header = () => {
         console.error("Failed to fetch search news:", error);
       });
   };
+  if(isSearchActive) return <Loading/>
   return (
     <header className="sticky z-50 overflow-hidden top-0 bg-white border-gray-200 py-2">
       <div onClick={()=>navigate('/')} className="w-fit mx-auto flex items-end justify-center cursor-pointer group">

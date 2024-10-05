@@ -9,9 +9,12 @@ import NewsHeader from "../components/newsHeader";
 import StarHeader from "../components/starHeader";
 
 const NewsPosts = () => {
-  const { category } = useParams();
+  let { category } = useParams();
+  category = category.toLowerCase()
+  const categories = useSelector(state=>Object.keys(state.newsData))
+  if(!categories.includes(category)) return <h1>category not found</h1>
   let articles = useSelector(
-    (state) => state.newsData[category.toLowerCase()]
+    (state) => state.newsData[category]
   );
   articles = articles.filter(article=>article.image_url!==null || '')
 
