@@ -4,7 +4,7 @@ import {Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../public/images/blue-logo.png";
 import Sidebar from "./sidebar";
 import { fetchSearchNews } from "../feature/news/newsSlice";
-import dot from "../public/images/dot3.png";
+import dot from "../public/images/scroll.png";
 import { useDispatch } from "react-redux";
 import { titleToSlug } from "../utils/slugFormat";
 import axios from "axios";
@@ -19,8 +19,8 @@ const menuData = [
   { name: "Tech", link: "/category/tech" },
   { name: "Wealth", link: "/category/wealth" },
   { name: "World", link: "/category/world" },
-  { name: "IPO", link: "/category/ipo" },
-  { name: "Mutual Fund", link: "/category/mutualfund" },
+  // { name: "IPO", link: "/category/ipo" },
+  { name: "Mutual Fund", link: "/category/mutual_fund" },
 ];
 
 
@@ -31,7 +31,7 @@ const Header = () => {
   useEffect(()=>{
     window.scrollTo(0,0)
   }, [pathName])
-
+  const navigate = useNavigate()
   useEffect(() => {
     const fetchInitialDateTime = () => {
       axios.get('http://worldtimeapi.org/api/timezone/America/new_york')
@@ -109,7 +109,7 @@ export const Navbar = () =>{
   };
   if(isSearchActive) return <Loading/>
   return (
-    <nav className="bg-secondry sticky top-0 z-50 text-white p-2 my-container mt-4 news-cycle-bold flex justify-between items-center px-4">
+    <nav className="bg-secondry shadow-lg sticky top-0 z-50 text-white p-2 my-container mt-4 news-cycle-bold flex justify-between items-center px-4">
         <div className="items-center gap-2 lg:hidden flex">
           <button className="relative group" onClick={() => setIsOpen(!isOpen)}>
             <div className="relative flex items-center justify-center w-[30px] h-[30px] transform transition-all duration-200 z-50">

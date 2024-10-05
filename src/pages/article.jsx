@@ -26,7 +26,7 @@ const Article = () => {
   const dispatch = useDispatch()
 
   const relatedPosts = useMemo(() => {
-    if (!article || !newsData || searched) {
+    if (!article || !newsData) {
       return []
     };
     
@@ -52,7 +52,7 @@ const Article = () => {
     <section className="article-section news-cycle-regular mt-10">
       <div className="my-container mx-auto px-4 pb-4">
         <NewsHeader text={`${capitalize(category)} News`} className="my-8" />
-        <div className="grid grid-cols-12 gap-8 ~pb-14/20">
+        <div className="grid grid-cols-12 lg:gap-8">
           <article className="col-span-full lg:col-span-8">
             <h1 className="~text-3xl/5xl mb-4 newsreader-700">{article.title}</h1>
             <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
@@ -64,14 +64,9 @@ const Article = () => {
               alt={article.title} 
               className="w-full aspect-video object-cover mb-6"
             />
-            {
-              generateParagraphs(article.content ? article.content : article.description).map(article=>(
-                <p id={nanoid()} className="mt-6 text-gray-700 newsreader-400 ~text-lg/2xl leading-snug">{article}</p>
-              ))
-            }
           </article>
 
-          <aside className="col-span-full lg:col-span-4">
+          <aside className="col-span-full lg:col-span-4 order-3 lg:order-2">
             <StarHeader title="Related News" className="mb-6" />
             <div className="space-y-6">
               {relatedPosts.map((news) => (
@@ -82,11 +77,11 @@ const Article = () => {
                 >
                   <img 
                     src={fixImgUrl(news.image_url)} 
-                    alt={news.title} 
+                    alt={"news image"} 
                     className="w-[100px] sm:w-[250px] lg:w-[100px] md:aspect-video object-cover"
                   />
                   <div>
-                    <h2 className="~text-xl/2xl mb-2 newsreader-500 group-hover:text-primary transition-colors">
+                    <h2 className="~text-xl/2xl mb-2 line-clamp-4 newsreader-500 group-hover:text-primary transition-colors">
                       {news.title}
                     </h2>
                     <div className="flex justify-between items-center text-sm text-gray-500">
@@ -98,8 +93,15 @@ const Article = () => {
               ))}
             </div>
           </aside>
+          <article className="col-span-12 order-2 lg:order-3">
+        {
+              generateParagraphs(article.content ? article.content : article.description).map(article=>(
+                <p id={nanoid()} className="mb-6 text-gray-700 newsreader-400 ~text-lg/2xl leading-snug">{article}</p>
+              ))
+            }
+        </article>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-start py-6 group gap-5 md:gap-10 ~text-xl/3xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-start pt-6 pb-14 group gap-5 md:gap-10 ~text-xl/3xl">
           <StarHeader title="Recent News" className="col-span-full"/>
             {
               newsData.slice(1,4).map((post, index)=>(

@@ -8,14 +8,14 @@ import NewsHeader from "../newsHeader";
 import StarHeader from "../starHeader";
 import fixImgUrl from "../../utils/fixImgUrl";
 
-const FinanceNewsSection = () => {
+const WealthNewsSection = () => {
   // Use useSelector to get data from the Redux store
-  const financeNews = useSelector((state) => state.newsData.finance);
+  const wealthNews = useSelector((state) => state.newsData.wealth);
 
   return (
     <section className="news-cycle-regular mt-10">
       <div className="my-container space-y-14">
-        <Link to="/category/finance"><NewsHeader text="Finance" /></Link>
+        <Link to="/category/wealth"><NewsHeader text="Wealth" /></Link>
 
         <div className="grid grid-cols-6 ~gap-5/14 group items-center">
           <article
@@ -24,32 +24,32 @@ const FinanceNewsSection = () => {
           >
             <Link
               className="overflow-hidden inline-block"
-              to={`/category/finance/${titleToSlug(financeNews[0].title)}`}
+              to={`/category/wealth/${titleToSlug(wealthNews[0].title)}`}
             >
               <img
-                src={fixImgUrl(financeNews[0].image_url)}
-                alt={financeNews[0].title}
+                src={fixImgUrl(wealthNews[0].image_url)}
+                alt={wealthNews[0].title}
                 className="aspect-[16/7] w-full object-cover"
               />
             </Link>
             <div className="p-2 space-y-4">
               <Link
                 className="~text-2xl/5xl font-bold newsreader-700"
-                to={`/category/finance/${titleToSlug(financeNews[0].title)}`}
+                to={`/category/wealth/${titleToSlug(wealthNews[0].title)}`}
               >
-                {financeNews[0].title}
+                {wealthNews[0].title}
               </Link>
               <h2 className="text-xl/2xl font-bold">
-                {financeNews[0].description}
+                {wealthNews[0].description}
               </h2>
               <h3>
                 By :
-                {financeNews[0].source_name ? financeNews[0].source_name : "Anonymous"}
+                {wealthNews[0].source_name ? wealthNews[0].source_name : "Anonymous"}
               </h3>
             </div>
           </article>
           <StarHeader className="md:hidden block col-span-6"/>
-          {financeNews.slice(1, 5).map((article, index) => (
+          {wealthNews.slice(1, 5).map((article, index) => (
             
             <article
             key={nanoid()} // Ensure unique key if id is available
@@ -58,7 +58,7 @@ const FinanceNewsSection = () => {
             {index === 0 && <StarHeader className="md:flex hidden"/>}
               <Link
                 className="overflow-hidden inline-block"
-                to={`/category/finance/${titleToSlug(article.title)}`}
+                to={`/category/wealth/${titleToSlug(article.title)}`}
               >
                 <img
                   src={fixImgUrl(article.image_url)}
@@ -69,7 +69,7 @@ const FinanceNewsSection = () => {
               <div className="p-2">
                 <Link
                   className="newsreader-500 ~text-xl/2xl"
-                  to={`/category/finance/${titleToSlug(article.title)}`}
+                  to={`/category/wealth/${titleToSlug(article.title)}`}
                 >
                   {article.title}
                 </Link>
@@ -84,4 +84,4 @@ const FinanceNewsSection = () => {
   );
 };
 
-export default FinanceNewsSection;
+export default WealthNewsSection;

@@ -4,6 +4,10 @@ import StockMarketSection from "../components/homepage/stockMarketSection";
 import CryptoSection from "../components/homepage/cryptoSection";
 import BusinessSection from "../components/homepage/businessSection";
 import { useSelector } from "react-redux";
+import TechSection from "../components/homepage/techSection";
+import WealthNewsSection from "../components/homepage/wealthSection";
+import WorldSection from "../components/homepage/worldSection";
+import MutualFundSection from "../components/homepage/mutualFundSection";
 
 function Home() {
   const status = useSelector(state=>state.status)
@@ -16,6 +20,10 @@ function Home() {
       <FinanceNewsSection />
       <StockMarketSection />
       <CryptoSection /> 
+      <TechSection/>
+      <WealthNewsSection/>
+      <WorldSection/>
+      <MutualFundSection/>
     </>
   );
 }
