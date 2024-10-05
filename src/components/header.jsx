@@ -1,6 +1,6 @@
 import { BiSearchAlt2 } from "react-icons/bi";
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../public/images/blue-logo.png";
 import Sidebar from "./sidebar";
 import { fetchSearchNews } from "../feature/news/newsSlice";
@@ -11,6 +11,7 @@ import axios from "axios";
 import Loading from "./loading";
 
 const menuData = [
+  { name: "Home", link: "/" },
   { name: "Business", link: "/category/business" },
   { name: "Finance", link: "/category/finance" },
   { name: "Stocks", link: "/category/stock" },
@@ -54,41 +55,9 @@ const Header = () => {
 
     return () => clearInterval(timer); // Cleanup on component unmount
   }, [initialDateTime]);
-  const [isOpen, setIsOpen] = useState(false);
-  // Search input state
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isSearchActive, setIsSearchActive] = useState(false);
-  const handleSearch = () => {
-    setIsSearchActive(!isSearchActive);
-  };
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  // let newsPaperTimeout;
-  // const newsPaperRef = useRef(null)
-  // const handleNewsPaper = () =>{
-  //   clearTimeout(newsPaperTimeout)
-  //   newsPaperRef.current.classList.add('absolute')
-  //   newsPaperTimeout = setTimeout(()=>{
-  //   newsPaperRef.current.classList.remove('absolute')
-  //   }, 750)
-  // }
-  const formHandler = (e) => {
-    e.preventDefault();
-    setIsSearchActive(true);
-    dispatch(fetchSearchNews(searchQuery))
-      .unwrap()
-      .then(() => {
-        setIsSearchActive(false);
-        setSearchQuery("");
-        navigate("/search/" + titleToSlug(searchQuery));
-      })
-      .catch((error) => {
-        console.error("Failed to fetch search news:", error);
-      });
-  };
-  if(isSearchActive) return <Loading/>
+ 
   return (
-    <header className="sticky z-50 overflow-hidden top-0 bg-white border-gray-200 py-2">
+    <header className="overflow-hidden bg-white border-gray-200 py-2">
       <div onClick={()=>navigate('/')} className="w-fit mx-auto flex items-end justify-center cursor-pointer group">
         <div className="flex items-end animate_pegion_body relative">
         <img
@@ -108,8 +77,39 @@ const Header = () => {
       <div className="text-center mt-2">
         <h1 className="news-cycle-regular text-sm font-thin text-neutral-600">{dateTime}</h1>
       </div>
+    </header>
+  );
+};
 
-      <nav className="bg-secondry text-white p-2 my-container mt-4 news-cycle-bold flex justify-between items-center relative ">
+export default Header;
+
+export const Navbar = () =>{
+  const [isOpen, setIsOpen] = useState(false);
+  // Search input state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchActive, setIsSearchActive] = useState(false);
+  const handleSearch = () => {
+    setIsSearchActive(!isSearchActive);
+  };
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const formHandler = (e) => {
+    e.preventDefault();
+    setIsSearchActive(true);
+    dispatch(fetchSearchNews(searchQuery))
+      .unwrap()
+      .then(() => {
+        setIsSearchActive(false);
+        setSearchQuery("");
+        navigate("/search/" + titleToSlug(searchQuery));
+      })
+      .catch((error) => {
+        console.error("Failed to fetch search news:", error);
+      });
+  };
+  if(isSearchActive) return <Loading/>
+  return (
+    <nav className="bg-secondry sticky top-0 z-50 text-white p-2 my-container mt-4 news-cycle-bold flex justify-between items-center px-4">
         <div className="items-center gap-2 lg:hidden flex">
           <button className="relative group" onClick={() => setIsOpen(!isOpen)}>
             <div className="relative flex items-center justify-center w-[30px] h-[30px] transform transition-all duration-200 z-50">
@@ -178,8 +178,5 @@ const Header = () => {
 
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       </nav>
-    </header>
-  );
-};
-
-export default Header;
+  )
+}

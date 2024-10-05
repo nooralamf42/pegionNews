@@ -55,6 +55,58 @@ export const fetchCryptoNews = createAsyncThunk(
   }
 );
 
+export const fetchTechNews = createAsyncThunk(
+  "news/fetchCryptoNews",
+  async () => {
+    const response = await axios.get(
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&category=technology`
+    );
+    console.log(response);
+    return response.data.results.filter(
+      (article) => article.image_url !== null || ""
+    );
+  }
+);
+
+export const fetchWorldNews = createAsyncThunk(
+  "news/fetchCryptoNews",
+  async () => {
+    const response = await axios.get(
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&category=world`
+    );
+    console.log(response);
+    return response.data.results.filter(
+      (article) => article.image_url !== null || ""
+    );
+  }
+);
+
+export const fetchWealthNews = createAsyncThunk(
+  "news/fetchCryptoNews",
+  async () => {
+    const response = await axios.get(
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&q=wealth`
+    );
+    console.log(response);
+    return response.data.results.filter(
+      (article) => article.image_url !== null || ""
+    );
+  }
+);
+
+export const fetchMutualFundNews = createAsyncThunk(
+  "news/fetchCryptoNews",
+  async () => {
+    const response = await axios.get(
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&q=mutual%20fund`
+    );
+    console.log(response);
+    return response.data.results.filter(
+      (article) => article.image_url !== null || ""
+    );
+  }
+);
+
 // Fetch search news
 export const fetchSearchNews = createAsyncThunk(
   "news/fetchSearchNews",

@@ -9,17 +9,18 @@ import { fetchSearchNews } from "../feature/news/newsSlice";
 import NewsHeader from "../components/newsHeader";
 import StarHeader from "../components/starHeader";
 import Loading from "../components/loading";
+import NothingFound from "../components/nothingFound";
 
 const SearchPosts = () => {
   const { query } = useParams();
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.newsData.search);
   const searched = useSelector((state) => state.searched);
-  console.log(searched)
   if (articles.length < 1 && !searched) {
     dispatch(fetchSearchNews(slugToTitle(query)));
     return <Loading/>
   }
+  if(searched && articles.length==0) return <NothingFound/>
 
   return (
     <section className="search-posts-section news-cycle-regular mt-10">
@@ -48,7 +49,7 @@ const SearchPosts = () => {
                     {article.title}
                   </Link>
                 </h2>
-                <p className="text-gray-700 mb-4 newsreader-500">{article.description}</p>
+                <p className={`text-gray-700 mb-4 newsreader-500 ${index===0 ? 'line-clamp-3' : 'line-clamp-6'}`}>{article.description}</p>
                 <div className="flex justify-between items-center text-sm text-gray-500">
                   <span>By {article.author ? article.author : "anonymous"}</span>
                   <span>{formatDate(article.pubDate)}</span>

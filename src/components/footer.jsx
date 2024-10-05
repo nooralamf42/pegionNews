@@ -179,7 +179,7 @@ const Footer = () => {
                   checked={isChecked}
                   onChange={(e) => setIsChecked(e.target.checked)}
                 />
-                <span className="text-sm text-gray-600">
+                <span className="text-sm text-white">
                   I have read and accept the Terms & Policy
                 </span>
               </label>

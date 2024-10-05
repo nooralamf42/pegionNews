@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Header from './components/header'
+import Header, { Navbar } from './components/header'
 import Footer from './components/footer'
 import { Outlet } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,9 +14,9 @@ function App() {
     const fetchAll = async () => {
       await Promise.all([
         dispatch(fetchBusinessNews()),
-        dispatch(fetchFinanceNews()),
-        dispatch(fetchStockNews()),
-        dispatch(fetchCryptoNews())
+        // dispatch(fetchFinanceNews()),
+        // dispatch(fetchStockNews()),
+        // dispatch(fetchCryptoNews())
       ]);
       setIsLoading(false);
     };
@@ -30,6 +30,7 @@ function App() {
   return (
     <>
       <Header/>
+      <Navbar/>
       <Outlet/>
       <Footer/>
     </>

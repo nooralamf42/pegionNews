@@ -11,6 +11,7 @@ import generateParagraphs from "../utils/generateParas";
 import { nanoid } from "@reduxjs/toolkit";
 import { fetchCurrentPageNews } from "../feature/news/newsSlice";
 import Loading from "../components/loading";
+import NothingFound from "../components/nothingFound";
 
 const Article = () => {
   let { articleTitle, category, query} = useParams();
@@ -18,9 +19,7 @@ const Article = () => {
   if(query){
     category = "search"
   }
-  alert(searched)
   const newsData = useSelector((state) => state.newsData[category]);
-  console.log(newsData)
   let article = newsData.find((news) => titleToSlug(news.title) === articleTitle
   );
 
@@ -44,8 +43,9 @@ const Article = () => {
     dispatch(fetchCurrentPageNews({query: articleTitle, category}))
     return <Loading/>
   }
-  if(searched && (!article || newsData.length>0)){
-    return <h1>no article found</h1>
+
+  if(searched && !article){
+    return <NothingFound text="The Article the you looking for does not exist"/>
   }
 
   return (
@@ -57,7 +57,7 @@ const Article = () => {
             <h1 className="~text-3xl/5xl mb-4 newsreader-700">{article.title}</h1>
             <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
               <span>By {article.source_name ? article.source_name : "anonymous"}</span>
-              <span>{formatDate(article.publishedAt)}</span>
+              <span>{formatDate(article.pubDate)}</span>
             </div>
             <img 
               src={fixImgUrl(article.image_url)} 
@@ -99,7 +99,7 @@ const Article = () => {
             </div>
           </aside>
         </div>
-        <div className="border-y-4 border-dashed grid grid-cols-1 md:grid-cols-3 justify-between items-start space-y-4 md:space-y-6 py-6 px-10 md:px-0 group md:gap-10 ~text-xl/3xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-start py-6 group gap-5 md:gap-10 ~text-xl/3xl">
           <StarHeader title="Recent News" className="col-span-full"/>
             {
               newsData.slice(1,4).map((post, index)=>(
