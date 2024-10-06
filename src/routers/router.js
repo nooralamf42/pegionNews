@@ -4,7 +4,7 @@ import Home from "../pages/home";
 import NewsPosts from "../pages/newsPosts";
 import Article from "../pages/article";
 import SearchPosts from "../pages/searchPosts";
-import SearchArticle from "../pages/searchArticle";
+// import SearchArticle from "../pages/searchArticle";
 import AboutUs from "../pages/aboutUs";
 import PrivacyPolicy from "../pages/privacyPolicy";
 import TermsOfUse from "../pages/termsOfUse";

@@ -10,12 +10,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     { name: "Tech", link: "/category/tech" },
     { name: "Wealth", link: "/category/wealth" },
     { name: "World", link: "/category/world" },
-    { name: "IPO", link: "/category/ipo" },
     { name: "Mutual Fund", link: "/category/mutualfund" },
   ];
 
   return (
-    <div className={`fixed top-0 left-0 w-full h-full bg-white text-black z-20 pt-20 transition-all duration-300 flex justify-center items-center lg:hidden ${!isOpen ? "translate-x-full" : "translate-x-0"}`}>
+    <div className={`fixed top-0 left-0 w-full md:w-1/2 h-full bg-white text-black z-20 pt-20 transition-all duration-300 flex justify-center items-center lg:hidden ${!isOpen ? "translate-x-[-100%]" : "translate-x-0"}`}>
       <div className="site-nav-wrap">
         {menuItems.map((item, index) => (
           <Link

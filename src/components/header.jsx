@@ -4,7 +4,7 @@ import {Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../public/images/blue-logo.png";
 import Sidebar from "./sidebar";
 import { fetchSearchNews } from "../feature/news/newsSlice";
-import dot from "../public/images/scroll.png";
+import dot from "../public/images/scroll.jpg";
 import { useDispatch } from "react-redux";
 import { titleToSlug } from "../utils/slugFormat";
 import axios from "axios";
@@ -33,24 +33,24 @@ const Header = () => {
   }, [pathName])
   const navigate = useNavigate()
   useEffect(() => {
-    const fetchInitialDateTime = () => {
-      axios.get('http://worldtimeapi.org/api/timezone/America/new_york')
-        .then(response => {
-          const newDateTime = new Date(response.data.datetime);
-          setInitialDateTime(newDateTime);
-          setDateTime(newDateTime.toUTCString());
-        })
-        .catch(error => console.error('Error fetching initial date time:', error));
-    };
+    // const fetchInitialDateTime = () => {
+    //   axios.get('http://worldtimeapi.org/api/timezone/America/new_york')
+    //     .then(response => {
+    //       const newDateTime = new Date(response.data.datetime);
+    //       setInitialDateTime(newDateTime);
+    //       setDateTime(newDateTime.toUTCString());
+    //     })
+    //     .catch(error => console.error('Error fetching initial date time:', error));
+    // };
 
 
-    !initialDateTime && fetchInitialDateTime(); // Initial fetch
+    // !initialDateTime && fetchInitialDateTime(); // Initial fetch
 
     const timer = setInterval(() => {
-      if (initialDateTime) {
-        const currentDateTime = new Date(initialDateTime.getTime() + (Date.now() - initialDateTime.getTime()));
-        setDateTime(currentDateTime.toUTCString());
-      }
+      // if (initialDateTime) {
+        const currentDateTime = new Date();
+        setDateTime(currentDateTime.toLocaleString());
+      // }
     }, 1000); // Update every second
 
     return () => clearInterval(timer); // Cleanup on component unmount
@@ -62,7 +62,7 @@ const Header = () => {
         <div className="flex items-end animate_pegion_body relative">
         <img
           src={logo}
-          className="~w-10/16 transition-all duration-300"
+          className="~w-10/16"
           alt=""
           srcSet=""
         />
@@ -75,7 +75,7 @@ const Header = () => {
         </span>
       </div>
       <div className="text-center mt-2">
-        <h1 className="news-cycle-regular text-sm font-thin text-neutral-600">{dateTime}</h1>
+        <h1 className="news-cycle-regular text-sm font-thin text-neutral-600 uppercase">{dateTime}</h1>
       </div>
     </header>
   );
@@ -111,8 +111,8 @@ export const Navbar = () =>{
   return (
     <nav className="bg-secondry shadow-lg sticky top-0 z-50 text-white p-2 my-container mt-4 news-cycle-bold flex justify-between items-center px-4">
         <div className="items-center gap-2 lg:hidden flex">
-          <button className="relative group" onClick={() => setIsOpen(!isOpen)}>
-            <div className="relative flex items-center justify-center w-[30px] h-[30px] transform transition-all duration-200 z-50">
+          <button className="relative group z-50" onClick={() => setIsOpen(!isOpen)}>
+            <div className="relative flex items-center justify-center w-[30px] h-[30px] transform transition-all duration-200">
               <div
                 className={`flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 ${
                   isOpen && "rotate-[45deg]"
@@ -132,6 +132,7 @@ export const Navbar = () =>{
               </div>
             </div>
           </button>
+            <Link to={"/"} className="font-thin">Home</Link>
         </div>
 
         {/* Navigation Menu */}

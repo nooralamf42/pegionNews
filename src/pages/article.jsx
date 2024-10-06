@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { titleToSlug, capitalize } from "../utils/slugFormat";
 import { useDispatch, useSelector } from "react-redux";
-import { formatDate } from "../utils/dateFormat";
+import { formatDate, formatDateTime } from "../utils/dateFormat";
 import NewsHeader from "../components/newsHeader";
 import StarHeader from "../components/starHeader";
 import { useMemo } from "react";
@@ -55,9 +55,9 @@ const Article = () => {
         <div className="grid grid-cols-12 lg:gap-8">
           <article className="col-span-full lg:col-span-8">
             <h1 className="~text-3xl/5xl mb-4 newsreader-700">{article.title}</h1>
-            <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
-              <span>By {article.source_name ? article.source_name : "anonymous"}</span>
-              <span>{formatDate(article.pubDate)}</span>
+            <div className="flex flex-col justify-start items-start text-xs text-gray-900 mb-6">
+              <span>By <strong className="news-cycle-bold text-sm">{article.source_name ? article.source_name : "anonymous"}</strong></span>
+              <span>{formatDateTime(article.pubDate)}</span>
             </div>
             <img 
               src={fixImgUrl(article.image_url)} 
@@ -96,15 +96,20 @@ const Article = () => {
           <article className="col-span-12 order-2 lg:order-3">
         {
               generateParagraphs(article.content ? article.content : article.description).map(article=>(
-                <p id={nanoid()} className="mb-6 text-gray-700 newsreader-400 ~text-lg/2xl leading-snug">{article}</p>
+                <p key={nanoid()} className="mb-6 text-gray-700 newsreader-400 ~text-lg/2xl leading-snug">{article}</p>
               ))
             }
+            <div className={`${article.ai_tag? "block" : "hidden"} mb-8`}>
+            <span>Tags : </span>{
+              article.ai_tag.map(tag=><span className="inline-block mr-4 px-2 bg-black text-white" key={nanoid()}>{tag}</span>)
+            }
+            </div>
         </article>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-start pt-6 pb-14 group gap-5 md:gap-10 ~text-xl/3xl">
           <StarHeader title="Recent News" className="col-span-full"/>
             {
-              newsData.slice(1,4).map((post, index)=>(
+              newsData.slice(1,4).map((post)=>(
                   <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
                     <Link to={`/category/stock/${titleToSlug(post.title)}`} className="md:max-w-[350px] newsreader-600 line-clamp-3">{post.title}</Link>
                   </div>
