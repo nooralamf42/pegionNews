@@ -112,7 +112,7 @@ const Article = () => {
             {
               newsData.slice(1,4).map((post)=>(
                   <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
-                    <Link to={`/category/stock/${titleToSlug(post.title)}`} className="md:max-w-[350px] newsreader-600 line-clamp-3">{post.title}</Link>
+                    <Link to={`/category/${category}/${titleToSlug(post.title)}`} className="md:max-w-[350px] newsreader-600 line-clamp-3">{post.title}</Link>
                   </div>
               ))
             }

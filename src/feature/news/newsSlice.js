@@ -3,6 +3,7 @@ import axios from "axios";
 
 // Replace with your actual API key
 const API_KEY = import.meta.env.VITE_API_KEY;
+const CRYPTO_API_KEY = import.meta.env.VITE_CRYPTO_API_KEY;
 
 // Async thunks for fetching news
 export const fetchBusinessNews = createAsyncThunk(
@@ -157,6 +158,18 @@ export const fetchCurrentPageNews = createAsyncThunk(
     else return { article: response.data.results[0], category };
   }
 );
+
+// Fetch crypto data
+export const fetchCryptoCoinData = createAsyncThunk(
+  "news/fetchCryptoCoinData",
+  async (coinName) => {
+    const response = await axios.get(
+      `https://rest.cryptoapis.io/market-data/assets/${query}`
+    );
+    return response.data
+  }
+);
+
 
 let data = {
   "business": [
