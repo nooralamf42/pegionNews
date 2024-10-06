@@ -8,6 +8,7 @@ import TechSection from "../components/homepage/techSection";
 import WealthNewsSection from "../components/homepage/wealthSection";
 import WorldSection from "../components/homepage/worldSection";
 import MutualFundSection from "../components/homepage/mutualFundSection";
+import SpringyLine from "../components/springyDivider";
 
 function Home() {
   const status = useSelector(state=>state.status)
@@ -18,6 +19,7 @@ function Home() {
     <>
       <BusinessSection/>
       <FinanceNewsSection />
+      {/* <SpringyLine/> */}
       <StockMarketSection />
       <CryptoSection /> 
       <TechSection/>

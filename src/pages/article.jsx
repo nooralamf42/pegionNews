@@ -12,6 +12,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { fetchCurrentPageNews } from "../feature/news/newsSlice";
 import Loading from "../components/loading";
 import NothingFound from "../components/nothingFound";
+import { animate, easeInOut, motion } from "framer-motion";
 
 const Article = () => {
   let { articleTitle, category, query} = useParams();
@@ -50,7 +51,7 @@ const Article = () => {
 
   return (
     <section className="article-section news-cycle-regular mt-10">
-      <div className="my-container mx-auto px-4 pb-4">
+      <motion.div key={nanoid()} initial={{opacity:0}} transition={{duration: .75, ease: easeInOut}} animate={{opacity:1}} exit={{opacity:0}} className="my-container mx-auto px-4 pb-4">
         <NewsHeader text={`${capitalize(category)} News`} className="my-8" />
         <div className="grid grid-cols-12 lg:gap-8">
           <article className="col-span-full lg:col-span-8">
@@ -101,7 +102,7 @@ const Article = () => {
             }
             <div className={`${article.ai_tag? "block" : "hidden"} mb-8`}>
             <span>Tags : </span>{
-              article.ai_tag.map(tag=><span className="inline-block mr-4 px-2 bg-black text-white" key={nanoid()}>{tag}</span>)
+              article.ai_tag && article.ai_tag.map(tag=><span className="inline-block mr-4 px-2 bg-black text-white" key={nanoid()}>{tag}</span>)
             }
             </div>
         </article>
@@ -116,7 +117,7 @@ const Article = () => {
               ))
             }
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

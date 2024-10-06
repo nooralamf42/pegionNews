@@ -11,17 +11,17 @@ import axios from "axios";
 import Loading from "./loading";
 
 const menuData = [
-  { name: "Home", link: "/" },
   { name: "Business", link: "/category/business" },
   { name: "Finance", link: "/category/finance" },
   { name: "Stocks", link: "/category/stock" },
   { name: "Crypto", link: "/category/crypto" },
+  { name: "Politics", link: "/category/politics" },
   { name: "Tech", link: "/category/tech" },
   { name: "Wealth", link: "/category/wealth" },
   { name: "World", link: "/category/world" },
-  // { name: "IPO", link: "/category/ipo" },
   { name: "Mutual Fund", link: "/category/mutual_fund" },
-];
+  { name: "Sports", link: "/category/sports" },
+];;
 
 
 const Header = () => {
@@ -177,7 +177,7 @@ export const Navbar = () =>{
           </form>
         </div>
 
-        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} menuItems={menuData}/>
       </nav>
   )
 }

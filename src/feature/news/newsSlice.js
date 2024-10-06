@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, nanoid } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Replace with your actual API key
@@ -54,6 +54,18 @@ export const fetchCryptoNews = createAsyncThunk(
     );
   }
 );
+export const fetchPoliticsNews = createAsyncThunk(
+  "news/fetchPoliticsNews",
+  async () => {
+    const response = await axios.get(
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&category=politics`
+    );
+    console.log(response);
+    return response.data.results.filter(
+      (article) => article.image_url !== null || ""
+    );
+  }
+);
 
 export const fetchTechNews = createAsyncThunk(
   "news/fetchTechNews",
@@ -99,6 +111,19 @@ export const fetchMutualFundNews = createAsyncThunk(
   async () => {
     const response = await axios.get(
       `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&q=mutual%20fund`
+    );
+    console.log(response);
+    return response.data.results.filter(
+      (article) => article.image_url !== null || ""
+    );
+  }
+);
+
+export const fetchSportsNews = createAsyncThunk(
+  "news/fetchSportsNews",
+  async () => {
+    const response = await axios.get(
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&category=sports`
     );
     console.log(response);
     return response.data.results.filter(
@@ -8800,6 +8825,2179 @@ let data = {
         "positive": 9.19,
         "neutral": 66.66,
         "negative": 24.15
+      },
+      "duplicate": false
+    }
+  ],
+  "politics": [
+    {
+      "article_id": "1856dfff47b743cd9aff5d3f1d4d4034",
+      "title": "Sunday's letters: Will free speech and informed debate prevail at Wake Forest?",
+      "link": "https://journalnow.com/opinion/letters/sundays-letters-will-free-speech-and-informed-debate-prevail-at-wake-forest/article_d99cf0f6-81bb-11ef-be9b-b79cf6ae8807.html",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "A test for WFU",
+      "content": "Wake Forest University is facing a crucial test of its quality as a university. Will free speech and informed debate prevail, or will Wake Forest abandon essential elements of a university’s mission? It is understandable that a lecture by a scholar who focuses on the plight of the Palestinians was cancelled because it would fall on the anniversary of Oct. 7. But the examination of opposing and controversial viewpoints is part of the search for truth. Unless Wake Forest reschedules such a presentation at a later date, it will condemn itself as a frightened, second- or third-rate institution. Paul D. Escott Winston-Salem The writer is a history professor at Wake Forest University. People are also reading... There has been a lot of disinformation out there surrounding the International Longshoremen’s Association strike at East Coast ports after their contract expired at the end of September. Shipping industry bosses want us to blame workers for disruption when they themselves are to blame. The reality is that strikes are disruptive. But an industry that made $400 billion in profits since 2020 doesn’t care about that if it means they can keep giving workers the short end of the stick, even when these shipping industry tycoons would be worth $0 without workers. It is infuriating that, until a tentative agreement last week, shipping companies had refused to share their immense gains with workers who risked their lives during the height of COVID to create them, nor protect their jobs by adopting safeguards in regard to automation. Longshore workers’ fight is our fight as well — against obscene corporate profits on our backs, and for control over how technology is used in our workplaces. Dan Taylor Winston-Salem Every election in recent history has been touted as the most important in our history. But it has never been truer than it is for this election. We have one party that is actively working to undermine the foundations of our democracy by sowing doubt about the integrity of our election process. All the rhetoric about this is unfounded. The tedious and clerical process of processing voter registration and votes renders it practically impossible for fraud to be carried out. Anyone who thinks it is so easy to perpetrate fraud should work or at least observe in a Board of Elections office. At least do a little research to see that it just isn’t a reality. I urge your readers to vote for Justice Allison Riggs for the N.C. Supreme Court because she will fight to protect our democracy and its processes. Justice Riggs will also work to reinstate a woman’s right to make her health care reproductive decisions. She is the only woman of childbearing age on any of N.C. appellate courts Her opponent signed onto a judicial opinion, since withdrawn, that says “life begins at conception.” This is the same misguided logic used in other states to stop women’s access to reproductive health care. This election is not about party; it’s about deciding what kind of country we want to live in. Angela Pearman Winston-Salem In reference to the article “Trump ‘resorted to crimes’ after losing 2020 election in bid to keep power, prosecutors say”: Leave it to the Winston-Salem Journal to headline old news to sway opinion concerning the election. You don’t even pretend to be unbiased; way too obvious. These are the reasons I want to cancel my subscription. Craig Bradley Clemmons In the Oct. 1 vice-presidential debate, JD Vance lit into the governor of Minnesota (why him?) for Vice President Harris’ failure to stop the flood of migrants as “border czar.” It’s a favorite Republican talking point, just assumed; but there is no such position. In reality, President Biden tasked Harris in 2021 with investigating the causes of the migrant surge from Central America; he never assigned her to supervise and police the border. That wasn’t her job. It was Republicans who made up the term to belittle her and set her up for public shaming as migrants kept entering. This is what happens when a party that used to proudly state a platform of the values it stood for, settles instead for name-calling and glib talking points — easy, unsubstantiated claims that can be constantly repeated until people believe them. It’s the age-old strategy of the con man. Voters, please find out the truth before casting your votes. (In this case, just Google: “’Border Czar’ attribution.”) Stan Whitley Pfafftown Get opinion pieces, letters and editorials sent directly to your inbox weekly!",
+      "pubDate": "2024-10-06 11:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://bloximages.newyork1.vip.townnews.com/journalnow.com/content/tncms/assets/v3/editorial/4/78/478da95c-0a35-11ee-b330-67c1db1520ab/60a412dc34078.image.jpg?resize=300%2C200",
+      "source_id": "journalnow",
+      "source_priority": 18768,
+      "source_name": "Winston-salem Journal",
+      "source_url": "https://journalnow.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/journalnow.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": [
+        "wake forest,north carolina,united states of america,north america"
+      ],
+      "ai_org": [
+        "wfu",
+        "wake forest university"
+      ],
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 99.27,
+        "neutral": 0.5,
+        "negative": 0.23
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "496150a9142e31c3dcc5466b9f8de588",
+      "title": "Abu Dhabi: Now, check restaurant's food safety rating with new app",
+      "link": "https://www.khaleejtimes.com/uae/abu-dhabi-now-check-restaurants-food-safety-rating-with-new-app",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": null,
+      "content": "Abu Dhabi launched a food safety rating app in the emirate for customers, the authority's media office announced on Sunday. The Zadna Rating app will provide information about food establishments across 9,000 venues in the capital city. These venues have been evaluated by the Abu Dhabi Agriculture and Food and Safety Authority, with the Abu Dhabi Public Health Centre overlooking the safety of the ingredients. Stay up to date with the latest news. Follow KT on WhatsApp Channels. Users can access the information by simply scanning QR codes available at the eatery. Once scanned, customers will get information on hygiene practices and ratings of these establishments. These stickers will be placed at the front side of the establishments. Evaluation scores will be given after routine inspections. The following aspects are examined during the evaluations:",
+      "pubDate": "2024-10-06 10:56:10",
+      "pubDateTZ": "UTC",
+      "image_url": "https://image.khaleejtimes.com/?function=fit&maxsize=1200&q=75&scaleup=0&source=false&type=preview&uuid=86f0e6b3-8a25-55ef-9b2d-a6f1a9c0a6d1",
+      "source_id": "khaleejtimes",
+      "source_priority": 7688,
+      "source_name": "Khaleej Times",
+      "source_url": "https://www.khaleejtimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/khaleejtimes.png",
+      "language": "english",
+      "country": [
+        "united arab emirates"
+      ],
+      "category": [
+        "top",
+        "politics"
+      ],
+      "ai_tag": null,
+      "ai_region": [
+        "abu dhabi"
+      ],
+      "ai_org": [
+        "zadn"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.14,
+        "neutral": 99.78,
+        "negative": 0.08
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "94a620b8bb8a368e510f61fcf9fc9b21",
+      "title": "My aim is so much bigger says Rayan Ahmed as he sets sights on winning AAC for UAE in 2025 Dubai showdown",
+      "link": "https://www.khaleejtimes.com/sports/my-aim-is-so-much-bigger-says-rayan-ahmed-as-he-sets-sights-on-winning-aac-for-uae-in-2025-dubai-sho",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": null,
+      "content": "UAE’s rising golf star, Rayan Ahmed, says his experience competing in the electrifying 15th edition of the Asia-Pacific Amateur Championship (AAC) at Japan's prestigious Taiheiyo Club has supercharged his ambitions for the upcoming year. The tournament saw intense competition, with China’s Wenyi Ding delivering a masterclass, carding four rounds of 67 to claim victory with a stunning 12-under-par 268. Ahmed's performance on this elite stage has only ignited his drive for future success. Having finished second last year, the World Amateur Golf Ranking (WAGR) No 5 Ding took the title by just one shot from compatriot Ziqin Zhou (Chi). The home country had three finishers in the top six. The leading Middle East player was Khalid Attieh (KSA) who will now turn professional with starts on the Asian Tour as well as a conditional card on the Asian Development Tour (ADT). Seventeen-year-old Rayan shot rounds of 74, 72, 73, 73 for a four-round total of 292. Ahmed reflected on the week: “It has been a great experience competing in such a significant tournament. “The whole set-up, functions, player facilities, on-course scoreboards, caddies and everything else - the media attention, both TV, on course live as well as dealing with the local and UAE media. “I am excited with so many of the things I have learnt this week – perhaps my putting let me down at times – I must now work on this area of my game,” he added. “This week had a lot of WAGR points with such a quality field – so I hope my Ranking improves. “I am very proud to have represented the UAE this week. Thank you to the EGF, especially General Abdullah Alhashmi, Vice-Chairman of the EGF and the team.’ “I fly back tonight and then I am off to school on Tuesday. I have a lot of schoolwork to catch up on,” added Rayan. “This week has given me even more motivation to play next year when the UAE and Emirates Golf Club hosts the 16th edition of the AAC. My aim is now so much bigger – to win it for the UAE next year in Dubai – nothing less, I am all in. “My next event is the EGF’s UAE Cup at Al Ain Equestrian, Shooting & Golf Club, later this month,”| said Rayan. “This week has helped my confidence - I had my best ever career score there, a 63 in a JAGA event.” Representatives from the following Middle East countries competed this week: Bahrain, Iran, Iraq, Jordan, Lebanon, Qatar, Oman, Saudi Arabia and the UAE. The AAC is the leading amateur golf tournament in the Asia region and was first played in 2009, and is supported by The R&A, The Masters and the APGC. For further information Visit: www.aacgolf.com Results A. Alsakha (KSA) 71. 74. 81. 79. 305.",
+      "pubDate": "2024-10-06 10:48:10",
+      "pubDateTZ": "UTC",
+      "image_url": "https://image.khaleejtimes.com/?crop_h=0.76641&crop_w=0.99999&function=cropresize&height=675&q=75&source=false&type=preview&uuid=2bb3ccbf-5faa-5876-9cba-e64a3b4aa6bc&width=1200&x=0&y=0",
+      "source_id": "khaleejtimes",
+      "source_priority": 7688,
+      "source_name": "Khaleej Times",
+      "source_url": "https://www.khaleejtimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/khaleejtimes.png",
+      "language": "english",
+      "country": [
+        "united arab emirates"
+      ],
+      "category": [
+        "top",
+        "politics"
+      ],
+      "ai_tag": [
+        "golf"
+      ],
+      "ai_region": [
+        "dubai,dubai,united arab emirates,asia",
+        "dubai,united arab emirates,asia"
+      ],
+      "ai_org": [
+        "aac"
+      ],
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 99.49,
+        "neutral": 0.25,
+        "negative": 0.26
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "4cdbf31a71e92d5bad27190059ab0f04",
+      "title": "Uttar Pradesh Bypolls: INDIA Bloc faces litmus test in 10 Assembly seats after Lok Sabha gains",
+      "link": "https://www.livemint.com/elections/uttar-pradesh-bypolls-india-bloc-faces-litmus-test-in-10-assembly-seats-after-lok-sabha-gains-11728210585832.html",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Uttar Pradesh's bypolls for 10 assembly seats will test the INDIA bloc's unity. Congress and Samajwadi Party are negotiating seat-sharing, with both aiming to defeat the BJP. Preparations are underway, and both parties express optimism about their alliance despite challenges.",
+      "content": "The upcoming bypolls for 10 assembly seats in Uttar Pradesh are poised to be a critical litmus test for the INDIA bloc's unity. Following their impressive performance in the recent Lok Sabha elections—where they secured over 40 seats, significantly contributing to the BJP's failure to achieve a simple majority—the stakes are high for the coalition. Seat-Sharing Challenges Between Congress and Samajwadi Party Despite their shared objective of defeating the BJP, the two key allies within the INDIA bloc in Uttar Pradesh—the Samajwadi Party (SP) and Congress—are struggling to finalize a seat-sharing agreement for the bypolls. The Congress has claimed the right to contest five of the ten available seats, a proposition that may not sit well with the SP. Uttar Pradesh Congress chief Ajay Rai expressed optimism, stating, \"The party is holding 'Samvidhan Bachao Sammelan' (Save Constitution conferences) on all 10 assembly seats that are going to polls. Two such conferences have already been held. We have appointed incharges and observers on all the 10 seats, and groundwork is ongoing.\" Uttar Pradesh Bypoll Seats and Context The assembly seats set for bypolls include: Katehari (Ambedkar Nagar) Karhal (Mainpuri) Milkipur (Ayodhya) Meerapur (Muzaffarnagar) Ghaziabad Majhawan (Mirzapur) Sishamau (Kanpur City) Khair (Aligarh) Phulpur (Prayagraj) Kundarki (Moradabad) Nine of these seats became vacant after their MLAs were elected as MPs during the Lok Sabha elections, while the Sishamau seat is up for grabs due to the disqualification of SP MLA Irfan Solanki, who was convicted in a criminal case. Optimism for SP-Congress Alliance Continuation When asked about the likelihood of continuing the alliance for the bypolls, Rai confirmed, \"Yes, we will contest in alliance. The aim of both the Congress and the SP is to defeat the BJP.\" He elaborated on Congress's proposal to contest five specific assembly seats—Majhwa (Mirzapur), Phulpur (Allahabad), Ghaziabad, Khair (Aligarh), and Meerapur (Muzaffarnagar)—noting that these were previously won by BJP candidates. In the 2022 assembly elections , the SP won the Sisamau, Katehari, Karhal, Milkipur, and Kundarki seats, while the BJP secured Phulpur, Ghaziabad, Majhawan, and Khair. The Meerapur seat was held by the Rashtriya Lok Dal (RLD). Samajwadi Party's Preparedness SP chief spokesperson Rajendra Chowdhury emphasized their readiness, stating, \"We are fully prepared for the polls. The INDIA bloc will win all the 10 seats.\" Regarding the Congress's demand for five seats, he noted, \"Baith ke tay hoga\" (We will sit together and decide), leaving the specifics of the seat-sharing discussions open-ended. Chowdhury further asserted that the BJP would not be able to exert undue influence at polling booths this time, adding, \"We are doing our preparations up to the booth level and emphasizing making our party strong at the booth level.\" The upcoming bypolls will undoubtedly have significant implications for the political landscape in Uttar Pradesh, with both the Congress and the SP striving for a united front against the BJP.",
+      "pubDate": "2024-10-06 10:46:26",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.livemint.com/lm-img/img/2024/10/06/1600x900/GZMxECJWMAA6Kop_1728210618588_1728210623898.png",
+      "source_id": "livemint",
+      "source_priority": 7134,
+      "source_name": "Mint",
+      "source_url": "https://www.livemint.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/livemint.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "elections",
+        "government"
+      ],
+      "ai_region": [
+        "uttar pradesh,india,asia",
+        "india,asia"
+      ],
+      "ai_org": [
+        "india bloc",
+        "assembly",
+        "samajwadi",
+        "lok sabha"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 5.68,
+        "neutral": 93.88,
+        "negative": 0.44
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "ba5afe605e744c4d7ab10860ec098fd0",
+      "title": "James Cleverly overtakes Robert Jenrick in Tory leadership race, new post-conference survey suggests",
+      "link": "https://www.independent.co.uk/news/uk/politics/james-cleverly-robert-jenrick-tory-polling-b2624578.html",
+      "keywords": [
+        "uk",
+        "uk politics"
+      ],
+      "creator": [
+        "Millie Cooke"
+      ],
+      "video_url": null,
+      "description": "Mr Cleverly has stormed to second place in a survey of party members",
+      "content": "James Cleverly has overtaken Robert Jenrick in the race to become the next Tory leader , a survey of party members suggests. The former home secretary, who was lagging behind, has stormed ahead to second place in members’ first preferences just days before the next round of voting. In a hypothetical head-to-head simulation of the final round of voting, conducted by grassroots Tory website Conservative Home , Mr Cleverly is now forecast to defeat Mr Jenrick for the first time. He would beat the former immigration minister by 54 to 36 per cent, while he would beat Tom Tugendhat by 67 to 18 per cent. Last week, the same polling showed that Mr Jenrick led Mr Cleverly by 51 per cent to 37 per cent. The strong performance comes after the former home secretary appeared to woo party members with his speech on the final day of the conference, which received the loudest cheers in the hall. It suggests he was not significantly damaged by a row over the Chagos Islands , which saw Mr Cleverly blamed for opening up talks to hand over the archipelago before being halted by his successor as foreign secretary, David Cameron . In a pointed tweet, Mr Tugendhat described the fact that the talks were opened under a Conservative government as “disgraceful”, though he did not namecheck Mr Cleverly. In first place is Kemi Badenoch , who the survey suggested would beat all three of her rivals in a hypothetical head-to-head simulating the final round of voting. She would beat Mr Cleverly by 48 to 42 per cent, the polling suggests. Ms Badenoch would beat Robert Jenrick by 53 to 33 per cent, while she would beat Tom Tugendhat by 62 to 28 per cent. It comes despite Ms Badenoch having had a difficult week at the Conservative Party Conference in Birmingham, with missteps on maternity pay and her suggestion that some civil servants “should be in prison”. On Sunday, Ms Badenoch was endorsed by Florida governor Ron DeSantis, who described the shadow housing secretary as “strong and courageous” and commended her “commitment to conservative principles”. In a video released on Sunday, the one-time Republican candidate threw his weight behind Ms Badenoch, saying he is endorsing her as a result of their work together on a “great trade agreement between Florida and the United Kingdom”. “She has a commitment to conservative principles, she’s strong, she’s courageous and she will be an inspiration for conservatives not just in the United Kingdom, but all across the world”, Mr DeSantis said. “Our president Ronald Reagan once said that we need to stand for bold colours, not pale pastels. “Kemi flies the flag of bold colours, just like we do in Florida, just like you will do again in the United Kingdom.” The four candidates will be reduced to just two by 9 October after another round of voting from the parliamentary party. Party members will then vote for their favourite of the remaining two - but of course, their favourite candidate may not make the final cut. The survey for Conservative Home spoke to 793 Tory members between October 3 and 4.",
+      "pubDate": "2024-10-06 10:45:08",
+      "pubDateTZ": "UTC",
+      "image_url": "https://static.independent.co.uk/2024/10/02/13/e94f042af8148aa7518511e3cc80f1e2Y29udGVudHNlYXJjaGFwaSwxNzI3OTU4MTU2-2.77675322.jpg?auto=webp&quality=75&width=1200",
+      "source_id": "independentuk",
+      "source_priority": 505,
+      "source_name": "Independent",
+      "source_url": "https://www.independent.co.uk",
+      "source_icon": "https://i.bytvi.com/domain_icons/independentuk.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 1.41,
+        "neutral": 61.11,
+        "negative": 37.48
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "ef0c14cab80bd88023cd30f7819c9c7b",
+      "title": "US visa appointments in UAE: Why residents face delays; how to minimise application risk",
+      "link": "https://www.khaleejtimes.com/life-and-living/visa-and-immigration-in-uae/us-visa-appointments-in-uae-why-residents-face-delays-how-to-minimise-application-risk",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": null,
+      "content": "As the demand for US visas continues to grow, UAE residents increasingly feel the impact of lengthy appointment wait times. Current estimates suggest that applicants from some countries face delays of 9 to 12 months, with some nationalities facing even longer waits of up to two years. According to Anastasia Yanchenko, commercial director of Visa Services, there are several reasons for these lengthy wait times. \"The differences in wait times can be attributed to the applicant's passport. UAE passport holders enjoy a shorter queue than their counterparts from countries with higher demand and fewer available appointments. \"For instance, while UAE citizens can access a more streamlined process, the wait for those holding Indian or Russian passports is about a year. In contrast, it's approximately two years for Iranian passport holders,\" Anastasia said. Stay up to date with the latest news. Follow KT on WhatsApp Channels. One of the factors contributing to these delays is the global accessibility of US visa applications. Individuals from various countries, including those without US embassies or those who have faced visa rejections in their home nations, also apply from the UAE. This influx of applications has led to a bottleneck in processing times. Anastasia explained that many travellers opt to combine their trips to Dubai with visa applications. \"The 'American dream' continues to draw people from the region, further compounding the situation and delaying the process for UAE residents. Many view Dubai as a temporary hub, as they seek to travel further.\" Certain countries such as Oman and Kyrgyzstan have imposed local restrictions on US visa applications without a local residence permit, pushing more applicants to the UAE for their visa needs. Various services are available for those looking to expedite their visa appointment, including reaching out to specialists who can help navigate the appointment booking process, ensuring that applicants can secure available slots more efficiently. To minimise risk in the visa application process and the prospect of a visa refusal, it is essential to follow key guidelines. Ensuring your application is complete, providing accurate documentation, and presenting a compelling case can significantly improve the chances of a successful outcome. Here are some effective strategies to help strengthen your application: Do not lie to the consul (neither during the interview nor on the application) — if this is discovered, a refusal will follow. Demonstrate strong ties to your home country through property ownership, children in school, and transparent banking history. Having a good travel history also matters. If the consul sees that you've travelled to the UK or Europe and returned to your home country, it's a small plus for you. Have a clear purpose for your trip . A travel plan should include where you are going, why, where you will stay, etc. Pay close attention to preparing for the interview. If applying through service providers, applicants can be guided by them on what to expect during the interview, including how to behave and how to respond to questions. As residents face long wait times for US visas, understanding the factors behind the delays and finding solutions can help make the journey smoother for those seeking to travel to the United States.",
+      "pubDate": "2024-10-06 10:40:10",
+      "pubDateTZ": "UTC",
+      "image_url": "https://image.khaleejtimes.com/?function=fit&maxsize=1200&q=75&scaleup=0&source=false&type=preview&uuid=a2d4f2b1-8e95-4842-8de8-77e917a7e734",
+      "source_id": "khaleejtimes",
+      "source_priority": 7688,
+      "source_name": "Khaleej Times",
+      "source_url": "https://www.khaleejtimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/khaleejtimes.png",
+      "language": "english",
+      "country": [
+        "united arab emirates"
+      ],
+      "category": [
+        "top",
+        "politics"
+      ],
+      "ai_tag": [
+        "government",
+        "immigration and migrant issues"
+      ],
+      "ai_region": [
+        "united states of america,north america"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.38,
+        "neutral": 0.42,
+        "negative": 99.2
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "5cf5981f4614d5c91a4c8cc0e14c7167",
+      "title": "Ex-Jharkhand CM Champai Soren hospitalised",
+      "link": "https://economictimes.indiatimes.com/news/politics-and-nation/ex-jharkhand-cm-champai-soren-hospitalised/articleshow/113985128.cms",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Former Jharkhand Chief Minister Champai Soren was admitted to Tata Main Hospital in Jamshedpur due to blood sugar complications. He felt dizzy after his blood sugar levels dropped. His condition is stable and improving. Soren recently joined the BJP after leaving the JMM and briefly held the chief minister position earlier this year before stepping down.",
+      "content": "Former Jharkhand Chief Minister Champai Soren was hospitalised following blood sugar-related complications, an official said on Sunday. He was admitted to the Tata Main Hospital in Jamshedpur around 9 pm on Saturday. He was admitted to the hospital after his blood sugar dipped and he felt dizzy, a close aide of the former CM said. Tata Main Hospital GM Dr Sudhir Rai told PTI that Soren's condition was stable and improving. Soren, 67, joined the BJP in August, alleging \"disrespect\" and \"humiliation\" in the JMM. He was appointed the chief minister on February 2, following Hemant Soren 's resignation and subsequent arrest by the Enforcement Directorate in a money laundering case . Strategy ESG and Business Sustainability Strategy By - Vipul Arora, Partner, ESG & Climate Solutions at Sattva Consulting Author I Speaker I Thought Leader View Program Data Science SQL for Data Science along with Data Analytics and Data Visualization By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Legal Drafting Commercial Contracts and Dispute Resolution By - Shafaq Uraizee Sapre, Managing Partner: Mumbai, Chandhiok and Mahajan View Program Legal Data Privacy with General Data Protection Regulation (GDPR) By - Arun S. Prabhu, Partner (Head- Technology and Telecommunications): Cyril Amarchand Mangaldas View Program Artificial Intelligence(AI) AI and Analytics based Business Strategy By - Tanusree De, Managing Director- Accenture Technology Lead, Trustworthy AI Center of Excellence: ATCI View Program Artificial Intelligence(AI) Master in Python Language Quickly Using the ChatGPT Open AI By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Web Development Mastering Full Stack Development: From Frontend to Backend Excellence By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Finance AI and Generative AI for Finance By - Hariom Tatsat, Vice President- Quantitative Analytics at Barclays View Program Marketing Performance Marketing for eCommerce Brands By - Zafer Mukeri, Founder- Inara Marketers View Program Marketing Digital Marketing Masterclass by Neil Patel By - Neil Patel, Co-Founder and Author at Neil Patel Digital Digital Marketing Guru View Program Artificial Intelligence(AI) Mastering C++ Fundamentals with Generative AI: A Hands-On By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Web Development A Comprehensive ASP.NET Core MVC 6 Project Guide for 2024 By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Legal Commercial Contract and Dispute Resolution By - Mukul Sharma, Partner- Cyril Amarchand Mangaldas View Program Strategy Succession Planning Masterclass By - Nigel Penny, Global Strategy Advisor: NSP Strategy Facilitation Ltd. View Program Finance Financial Literacy i.e Lets Crack the Billionaire Code By - CA Rahul Gupta, CA with 10+ years of domain experience, trainer View Program Artificial Intelligence(AI) Java Programming with ChatGPT: Learn using Generative AI By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Leadership Business Storytelling Masterclass By - Ameen Haque, Founder of Storywallahs View Program Legal Mastering M&A Deal Making By - Ashwath Rau, Senior Partner- AZB & Partners View Program Office Productivity Advanced Excel Course - Financial Calculations & Excel Made Easy By - Anirudh Saraf, Founder- Saraf A & Associates, Chartered Accountant View Program Marketing Modern Marketing Masterclass by Seth Godin By - Seth Godin, Best-selling author View Program Finance Corporate Fraud and Forensic Modelling By - Ankush Lamba, Managing Director- Ankura View Program Finance Financial Reporting and Analytics By - Dr. C.P. Gupta, Professor: Department of Finance and Business Economics, University of Delhi View Program He left the post on July 3, clearing the way for Hemant Soren's return to the chair after being granted bail. (You can now subscribe to our Economic Times WhatsApp channel )",
+      "pubDate": "2024-10-06 10:37:03",
+      "pubDateTZ": "UTC",
+      "image_url": "https://img.etimg.com/thumb/msid-113985156,width-1200,height-630,imgsize-56814,overlay-economictimes/photo.jpg",
+      "source_id": "economictimes_indiatimes",
+      "source_priority": 231,
+      "source_name": "The Economic Times",
+      "source_url": "https://economictimes.indiatimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/economictimes_indiatimes.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "accidents"
+      ],
+      "ai_region": [
+        "jamshedpur,jharkhand,india,asia",
+        "jharkhand,india,asia"
+      ],
+      "ai_org": [
+        "tata main hospital"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.17,
+        "neutral": 0.49,
+        "negative": 99.35
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "6b8d7c9149ed8dff80bcab96f8133d7a",
+      "title": "Let’s Talk Sex | What Does it Mean to be Abrosexual?",
+      "link": "https://www.news18.com/opinion/lets-talk-sex-what-does-it-mean-to-be-abrosexual-9075697.html",
+      "keywords": [
+        "opinion"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "What sets abrosexuality apart from other orientations is its inherent changeability. Unlike bisexuality or pansexuality, which involve consistent attraction to multiple genders, abrosexuality involves fluctuations in attraction patterns",
+      "content": "In this article, we will explain about the key characteristics of abrosexuality, and how it differs from other orientations. Have you ever felt your sexual orientation shift over time? If so, you may identify with abrosexuality. This fluid and dynamic sexual orientation reflects the ever-changing nature of human sexuality. As an abrosexual individual, you experience fluctuations in your sexual or romantic attractions. These shifts can occur rapidly or gradually, involving changes in gender preference, intensity of attraction, or even periods of asexuality. Understanding abrosexuality can provide valuable insights into the complexity and diversity of human sexual experiences. Abrosexuality is a dynamic and fluid sexual orientation characterised by changes in one’s sexual or romantic attractions over time. This fluidity can manifest in various ways, with shifts occurring in the gender(s) an individual is attracted to, the intensity of those attractions, or even periods of asexuality. For abrosexual individuals, these changes may happen rapidly or gradually, spanning days, weeks, or even months. It’s important to note that this fluidity is not a choice, but rather an intrinsic aspect of their sexual identity. What sets abrosexuality apart from other orientations is its inherent changeability. Unlike bisexuality or pansexuality, which involve consistent attraction to multiple genders, abrosexuality involves fluctuations in attraction patterns. This can sometimes lead to confusion or misunderstanding, both for abrosexual individuals and others. Understanding and accepting the fluid nature of abrosexuality is crucial for fostering inclusivity and supporting those who identify with this orientation. Recognising abrosexuality can be a journey of self-discovery. Here are some indicators that you might identify with this fluid sexual orientation: Fluctuating Attractions: You may notice your sexual or romantic attractions shift over time. These changes could occur rapidly, even daily, or span longer periods. One week, you might feel strongly attracted to men, while the next, you’re drawn to women or non-binary individuals. Intensity Variations: The strength of your attractions may also fluctuate. Sometimes, you might experience intense desires, while at other times, you feel little to no attraction at all. This ebb and flow is a hallmark of abrosexuality. Label Uncertainty: You might find it challenging to settle on a single label for your sexuality. Terms like gay, straight, or bisexual may feel fitting at times but inadequate at others. This difficulty in pinpointing a consistent identity is common among abrosexual individuals. Embracing Fluidity: If you resonate with these experiences, you may be abrosexual. Remember, sexuality is a spectrum, and fluidity is natural and valid. As with any sexual orientation, individuals who identify as abrosexual may face unique challenges in navigating their fluid sexuality. Emotional Impacts: The fluctuating nature of abrosexual attraction can lead to periods of confusion or self-doubt. You may experience anxiety or stress during shifts in attraction, questioning the validity of your feelings. It’s crucial to remember that these changes are a natural part of your identity. Social Challenges: Explaining abrosexuality to partners, family, or friends can be difficult, potentially leading to feelings of isolation or misunderstanding. You might face scepticism or dismissal from those unfamiliar with fluid sexualities. Building a supportive network of understanding individuals is key to maintaining good mental health. Self-Acceptance and Growth: Embracing your abrosexual identity can lead to increased self-awareness and personal growth. By acknowledging the fluidity of your attractions, you may develop greater emotional resilience and adaptability in various aspects of life. Coming out as abrosexual can be a challenging yet liberating experience. It’s important to approach this conversation with patience and understanding, as your loved ones may need time to grasp the concept of fluid sexuality. Preparing for the Conversation: Before initiating the discussion, educate yourself thoroughly about abrosexuality. This knowledge will help you explain your identity clearly and answer potential questions. Choose a comfortable, private setting for the conversation, and consider starting with close friends or supportive family members. Explaining Abrosexuality: When discussing your identity, use simple language and relatable examples. Explain that abrosexuality involves fluctuating sexual attraction over time, emphasising that it’s a valid and recognised orientation. Be prepared to clarify common misconceptions and provide resources for further learning. Navigating Reactions: Remember that reactions may vary. Some people might be immediately supportive, while others may need time to process the information. Stay calm and composed, even if faced with confusion or scepticism. Offer reassurance that your core identity remains unchanged, and express your desire for continued love and support. When navigating the dating world as an abrosexual individual, open communication is key. Be upfront about your fluid sexuality with potential partners, explaining that your attractions may shift over time. This honesty helps establish trust and understanding from the start. Abrosexuality often requires a flexible approach to relationships. You may find yourself drawn to different types of partnerships at various times. Some abrosexuals prefer open or polyamorous arrangements that allow for exploration as their attractions change. Others maintain monogamous relationships but openly discuss their shifting desires with their partner. Seek out partners who are understanding and accepting of your abrosexual identity. Look for individuals who value open communication and are comfortable with the potential for change in your relationship dynamic. As you explore and reflect on your own sexual identity, remember that abrosexuality is just one of many ways people experience attraction. Whether you identify as abrosexual or not, embracing the complexity and potential fluidity of human sexuality can lead to greater understanding – both of yourself and others. Ultimately, labels are simply tools to help articulate your authentic self. Focus on what feels true for you, knowing that your identity is valid regardless of how you choose to define it.",
+      "pubDate": "2024-10-06 10:35:44",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.news18.com/ibnlive/uploads/2024/10/abrosexuality-2024-10-7b6b57ee3e8e99f7ee3e707b02b2d2e4-3x2.jpg",
+      "source_id": "news18",
+      "source_priority": 3864,
+      "source_name": "News 18",
+      "source_url": "https://www.news18.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/news18.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "lgbtq"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.14,
+        "neutral": 99.58,
+        "negative": 0.28
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "af73668d4d2374cd1a20a4032fa18488",
+      "title": "Jaishankar’s Sri Lanka visit: Dissanayake’s balancing act and India’s neighbourhood-first policy",
+      "link": "https://www.firstpost.com/opinion/jaishankars-sri-lanka-visit-dissanayakes-balancing-act-and-indias-neighbourhood-first-policy-13822584.html",
+      "keywords": [
+        "opinion"
+      ],
+      "creator": [
+        "Firstpost"
+      ],
+      "video_url": null,
+      "description": "Newly-elected President Anura Kumara Dissanayake is likely to avoid skewing Sri Lanka’s foreign policy in favour of China at the expense of India; he is aiming for a more nuanced approach that fosters cooperation between the two countries",
+      "content": "India’s External Affairs Minister S Jaishankar concluded his one-day visit to the neighbouring island nation of Sri Lanka on October 4. His visit to Colombo comes in the backdrop of recently held presidential elections in Sri Lanka in September 2024, which saw the victory of left-leaning Marxist leader Anura Kumara Dissanayake, alias AKD. Jaishankar became the first high-level foreign delegate to meet newly elected President Dissanayake. The minister congratulated him and conveyed New Delhi’s commitment to “moving forward with the strong bilateral partnership” with Colombo. This may be one of the key instances where India, under Modi 3.0, has taken a proactive stance to engage with a strategically located island nation in the Indian Ocean, 33 km off the Indian coast. Noteworthy, Indian Prime Minister Narendra Modi quickly congratulated the President-elect Anura Kumara Dissanayake and his party, adding, “Sri Lanka holds a special place in India’s Neighbourhood First Policy and Vision SAGAR.” It was promptly acknowledged by President-elect Dissanayake: “Thank you, Prime Minister Modi, for your kind words and support.” He added that he shared PM Modi’s ‘commitment to strengthening the ties between the nations’. And that together, they can work towards enhancing cooperation for the benefit of their people and the entire region. India’s Comeback in 2022 Since the 2022 economic crisis in Sri Lanka, India has made a comfortable landing in Sri Lanka through its financial assistance worth $ 4 billion towards humanitarian, medical, fuel, loan deferments, and currency swaps. India’s support during this turbulent time has enabled it to re-establish itself as a reliable partner and an influential player in Sri Lanka’s recovery and regional dynamics. Post-Rajapaksas, India managed to strike a delicate balance with former president Ranil Wickremesinghe, effectively voicing its concerns over the docking of Chinese spy ships along Sri Lanka’s coast and Beijing’s opaque investments in infrastructure projects, including the highly scrutinised Colombo Port City development. As a result of India’s financial assistance, a crucial change in the past two years favouring India in Sri Lanka has been a turnaround in public perception towards New Delhi. India’s recent past in the island nation was first marred by the 1987-1990 episode of the controversial Indian Peacekeeping Force (IPKF) intervention, followed by Delhi’s support to the Liberation Tigers of Tamil Eelam (LTTE)—a militant organisation that sought an independent Tamil state in northern and eastern Sri Lanka. A Pro-China President? Soon after the election results were announced on September 22, due to President Dissanayake’s Marxist and left-leaning political ideology, the media tagged him as a natural partner of China. This media narrative was reminiscent of the coverage when a Maoist government was formed in Nepal in 2008, which similarly saw an ideological alignment with Beijing. In both cases, the leaders’ political leanings, rooted in socialist and communist ideals, were seen as conducive to fostering closer ties with China. However, India is certainly not buying the media narrative. Interestingly, President Anura Kumara Dissanayake seems to be carefully treading the foreign policy by projecting a balanced approach towards India and China. He appears to be in no rush to court China, as India remains a critical financial partner in the ongoing economic reforms. Meanwhile, the close party-level ties between Dissanayake’s National People’s Power (NPP) and China’s Communist Party, which stem from shared ideological foundations, continue to develop. In April this year, a delegation of the Chinese Communist Party met Dissanayake and local party leaders of the NPP, signalling the potential for deeper engagement. Yet, despite these ties, the Sri Lankan leadership seems intent on maintaining a pragmatic and balanced foreign policy. Delhi’s Challenges Ahead The foremost challenge facing India would be to ensure the continuation of the progress made in bilateral relations in the past three years. Considering Sri Lanka needs India’s support in the IMF debt structuring, Delhi’s outreach with the current administration might be further boosted. In addition, India has offered to “modernise the Kankesanthurai port through a grant to the tune of $61.5 million”. And agreed that “payments for 7 completed Line of Credit projects to the tune of $20 million could be converted into grants. India has also decided to gift 22 diesel locomotives to the Sri Lankan Railways”. These initiatives reflect India’s commitment to strengthening ties and supporting Sri Lanka’s economic recovery. What might play a spoiler is President AKD’s political positioning against awarding a major wind energy project to India’s Adani Group by his predecessor Ranil Wickremesinghe. The project aims to develop a major 484 megawatts of wind power in Mannar and Pooneryn in the war-ravaged region, where the group is expected to invest $440 million in a 20-year-long agreement. The agreement became a hot topic during the presidential campaign. While Dissanayake may have his reservations about the deal given to the Adani Group, India is likely to continue pursuing this investment, emphasising the importance of economic cooperation in the region. Also, India has historically emphasised its “support for the aspirations of all communities, including Tamils, for equality, justice, dignity, and peace while maintaining the unity, territorial integrity, and sovereignty of Sri Lanka”. In this regard, India may want “the full and effective implementation of the 13th Amendment of the Sri Lankan Constitution and the early holding of Provincial Council elections”. India’s push for the 13th Amendment, which devolves certain powers to provincial councils, may create an irritant due to opposition from nationalist factions who view it as a threat to the centralised authority of the Sri Lankan government. However, even if the 13th Amendment holds sentimental value for India due to its ethnic ties with the Tamil community, it will not hinder its pursuit of overall relations with Sri Lanka. New Delhi recognises the importance of maintaining a balanced approach, ensuring that support for Tamil rights does not compromise broader diplomatic and economic ties with Colombo. Lastly, India would want the current political dispensation in Sri Lanka to be mindful of New Delhi’s sensitivities while engaging with a third country, especially China. Undoubtedly, China is focused on sustaining momentum in its strategic cooperation with Sri Lanka, especially in the maritime domain, and it will be interesting to see how Beijing leverages Colombo’s existing debt with China as a pressure point. Since Sri Lanka’s largest creditor is China, the dynamics of this relationship will be particularly significant. To conclude, given that President Dissanayake has hardly completed two weeks in office, it will be too early to predict his foreign policy outlook. Still, learning from his past engagements with India and China in his political capacity, his presidency could herald a similar balancing act. He is likely to avoid skewing Sri Lanka’s foreign policy in favour of China at the expense of India, aiming for a more nuanced approach that fosters cooperation with both countries. Meanwhile, President Dissanayake’s visit to India will be a catalyst in defining the future course of the bilateral ties. Rishi Gupta is the Assistant Director at the Asia Society Policy Institute, Delhi. Views expressed in the above piece are personal and solely those of the author. They do not necessarily reflect Firstpost’s views.",
+      "pubDate": "2024-10-06 10:32:30",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.firstpost.com/uploads/2024/10/Srilankaprez1200-2024-10-62f9993de4e6ad1bfe03c35bb1770546.jpg",
+      "source_id": "firstpost",
+      "source_priority": 5906,
+      "source_name": "Firstpost",
+      "source_url": "https://www.firstpost.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/firstpost.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "government"
+      ],
+      "ai_region": [
+        "india,asia",
+        "sri lanka,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 30.64,
+        "neutral": 43.79,
+        "negative": 25.57
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "52d902ef7d640004796b4b9d7dbf2cb6",
+      "title": "Portsmouth's league rivals eye January target as Hull City man admits 'conversations' over exit",
+      "link": "https://www.portsmouth.co.uk/sport/football/portsmouth-fc/portsmouths-league-rivals-eye-january-target-as-hull-city-man-admits-conversations-over-exit-4812101",
+      "keywords": [
+        "football",
+        "portsmouth fc",
+        "sport"
+      ],
+      "creator": [
+        "Harry Mail"
+      ],
+      "video_url": null,
+      "description": "Latest news and rumours from around the Championship following Pompey’s weekend draw",
+      "content": null,
+      "pubDate": "2024-10-06 10:30:51",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.portsmouth.co.uk/jpim-static/image/2024/08/30/12/25/GettyImages-2089122974.jpeg?auto=webp&width=1200",
+      "source_id": "portsmouth",
+      "source_priority": 223919,
+      "source_name": "The News",
+      "source_url": "https://www.portsmouth.co.uk",
+      "source_icon": "https://i.bytvi.com/domain_icons/portsmouth.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "top",
+        "health",
+        "politics"
+      ],
+      "ai_tag": [
+        "sports"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "hull city"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.12,
+        "neutral": 0.14,
+        "negative": 99.74
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "258d8e2e6d924a4bda3596bec5d79d1e",
+      "title": "Letters: Muhlenberg College failed to defend academic freedom",
+      "link": "https://www.mcall.com/2024/10/06/letters-muhlenberg-college-failed-to-defend-academic-freedom/",
+      "keywords": [
+        "letters to the editor",
+        "opinion"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "Letters: Many college and university administrators eloquently defend academic freedom until they sense that this devotion to principle might place major monetary donations in jeopardy.",
+      "content": "Many college and university administrators eloquently defend academic freedom until they sense that this devotion to principle might place major monetary donations in jeopardy. This appears to have been the case when Muhlenberg College caved to outside pressure and fired tenured anthropology professor Maura Finkelstein for criticizing Israel’s policy in Gaza. This shameful decision violates the college’s most fundamental principle of academic freedom and the American Association of University Professors (AAUP) has opened an inquiry into Finkelstein’s dismissal. Gary Olson Bethlehem The writer is professor emeritus of political science, Moravian University. Edward P. Morgan Tamworth, N.H. The writer is professor emeritus of government, Lehigh University. On Monday, Oct. 7, 2024, at 7 p.m., the Allentown Zoning Hearing Board is scheduled to hold a hearing regarding the development of a trucking terminal at Union Terrace off Fairview and St. Elmo streets. The owners of the property wish to open a 24/7 terminal for tractor-trailers in the lot adjacent to the Union Terrace ballfields, Union Terrace Elementary School and just 100 yards from Cedar Creek, in an area zoned as park land. The residents of Union Terrace as well as Hamilton Park and Lehigh Parkway will be exposed to increased semi traffic, thunderous noise, diesel fumes and bright lights all night if the board allows this. I urge everyone to attend the hearing or, at minimum, send an email to the board by 4 p.m. Monday stating your objections to this abomination. Richard D. Gorski, Esq. Allentown Scientists have long known what is causing the rise in global temperatures and thanks to the Lehigh Valley Planning Commission’s recent report, we know what our share of the problem is. But while the problem of greenhouse gas emissions is worldwide, the U.S. has still not taken significant steps to ameliorate our nation’s share of that pollution. The climate deniers in Congress, beholden to fossil fuel interests, refuse to acknowledge that action must be taken to stave off future climate disasters of more severe drought, hurricanes, flooding, wildfires and tornadoes that are happening all over the world. Congresswoman Susan Wild has long been a climate champion and an advocate for the environment by supporting meaningful, bipartisan legislation to reduce U.S. greenhouse gas pollution and increase use of alternative energy sources. As the world’s largest per-capita emitter of greenhouse gasses, the U.S. needs to take swift and strong steps to cut our greenhouse gas output. Congress needs to recognize the problem and find solutions that will reduce fossil fuel use and bolster our electrical grid, which will also improve health and create jobs. As the report’s authors said, “inaction is not an option.” John Gallagher Bethlehem Township Since 35% of Pennsylvania voters cited the economy and inflation as the most important issue in this election, let’s compare the two presidential candidates. Donald Trump recently announced he’d slap tariffs (a national sales tax) on everyday goods that families rely on, with or without the help of Congress, raising costs on typical middle-class families by nearly $4,000 a year, according to some estimates. Experts warn that Trump’s economic plans would cost America millions of jobs, explode the national debt, send inflation skyrocketing, and cost as much as $10.5 trillion over a decade, hurting everyone but the richest Americans. The Project 2025 agenda (which he disclaims, but was created by many of his former advisers) would privatize Fannie Mae and Freddie Mac, which could, based on a 2015 study, drive up the cost of mortgages by about $1,200 a year for the typical family. It’s a stark contrast with Vice President Harris, who is focused on building up the middle class and lowering costs for families. Her plan would lower the costs of everyday needs like health care, housing and groceries, cut taxes for more than 100 million Americans, and create an opportunity economy where, with hard work and ambition, everyone has a chance to compete and a chance to succeed, from buying a home to starting a business and building wealth. Lori McFarland Upper Milford Township The writer is the Lehigh County Democratic Committee Chair. I have to question the coverage of The Morning Call on the ongoing presidential race. In the Sept. 26 edition there was an article on the front page that covered new polls out in Pennsylvania. The article covered both candidates. The next article, which appeared a few pages later, was an article on Donald Trump’s deportation plan. Then a few pages later there was an article on how JD Vance embraces conspiracy theories. There was no mention of the economic address Kamala Harris gave Sept. 25 at Carnegie Mellon in Pittsburgh. I find it ironic how the article about the new polls on the front page has the economy listed as “top of mind for Pennsylvania voters this election cycle.” We hear so much about undecided voters needing more information on where the candidates stand. I would have thought it would be responsible journalism to have information about the address in the paper. Michael Mowad Weisenberg Township Congresswoman Susan Wild is running for reelection. She has proven herself to be an effective leader for the Lehigh Valley. She has helped obtain funding for many of the road and bridge projects that are being done around the area. As a child of a military family, she understands and fully supports military and veterans issues and projects. She fought to lower insulin costs. She and Sen. Bob Casey obtained more than $950,000 in grants for the Allentown Police Department for new cruisers and updated crime scene equipment. She voted for the bipartisan border bill and wants a secure border. I first met Susan before she became our congresswoman. My first impression of her was that she had integrity and was a good person. I met her several times since then. I believe in her just as much now as I did then. Character matters! Please vote to reelect Congresswoman Susan Wild. Karen Hayes Bushkill Township ELECTION LETTERS Letters to the editor about candidates and issues in the Nov. 5 general election must be received by 10 a.m. Oct. 28. Election-related letters will not be published after Oct. 31. The Morning Call encourages community dialogue on important issues. Submit a letter to the editor at letters@mcall.com .",
+      "pubDate": "2024-10-06 10:30:23",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.mcall.com/wp-content/uploads/migration/2021/04/27/LRQU4B75AFC55NTYQILCOTNOSA.jpg?strip=all&w=1400px",
+      "source_id": "mcall",
+      "source_priority": 8855,
+      "source_name": "Mcall",
+      "source_url": "https://www.mcall.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/mcall.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "muhlenberg college"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.11,
+        "neutral": 0.11,
+        "negative": 99.78
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "a758bfe9fb609dd892a300e7317ed4a7",
+      "title": "Montgomery County unveils mobile outreach van for voter services",
+      "link": "https://www.pottsmerc.com/2024/10/06/montgomery-county-unveils-mobile-outreach-van-designed-to-increase-access-ahead-of-election-day/",
+      "keywords": [
+        "politics",
+        "election",
+        "news"
+      ],
+      "creator": [
+        "Rachel Ravina"
+      ],
+      "video_url": null,
+      "description": "A mobile outreach van designed to increase voter engagement ahead of the 2024 general election was unveiled on Saturday at Abington Township’s Fall Festival, according to a Montgomery County spokesperson.",
+      "content": "WILLOW GROVE — A mobile outreach van designed to increase voter engagement ahead of the 2024 General Election was unveiled on Saturday at Abington Township’s Fall Festival. The Montgomery County Office of Voter Service’s mobile outreach van, also known as the “Voter Services Mobile Satellite Office” was situated inside Crestmont Park at 2595 Rubicam Ave. Montgomery County moves forward with voter outreach vehicle /*! This file is auto-generated */!function(d,l){\"use strict\";l.querySelector&&d.addEventListener&&\"undefined\"!=typeof URL&&(d.wp=d.wp||{},d.wp.receiveEmbedMessage||(d.wp.receiveEmbedMessage=function(e){var t=e.data;if((t||t.secret||t.message||t.value)&&!/[^a-zA-Z0-9]/.test(t.secret)){for(var s,r,n,a=l.querySelectorAll('iframe[data-secret=\"'+t.secret+'\"]'),o=l.querySelectorAll('blockquote[data-secret=\"'+t.secret+'\"]'),c=new RegExp(\"^https?:$\",\"i\"),i=0;i<o.length;i++)o[i].style.display=\"none\";for(i=0;i<a.length;i++)s=a[i],e.source===s.contentWindow&&(s.removeAttribute(\"style\"),\"height\"===t.message?(1e3<(r=parseInt(t.value,10))?r=1e3:~~r<200&&(r=200),s.height=r):\"link\"===t.message&&(r=new URL(s.getAttribute(\"src\")),n=new URL(t.value),c.test(n.protocol))&&n.host===r.host&&l.activeElement===s&&(d.top.location.href=t.value))}},d.addEventListener(\"message\",d.wp.receiveEmbedMessage,!1),l.addEventListener(\"DOMContentLoaded\",function(){for(var e,t,s=l.querySelectorAll(\"iframe.wp-embedded-content\"),r=0;r<s.length;r++)(t=(e=s[r]).getAttribute(\"data-secret\"))||(t=Math.random().toString(36).substring(2,12),e.src+=\"#?secret=\"+t,e.setAttribute(\"data-secret\",t)),e.contentWindow.postMessage({message:\"ready\",secret:t},\"*\")},!1)))}(window,document); Along with voter services staff, Montgomery County Commissioners’ Chairwoman Jamila Winder and Vice Chairman Neil Makhija attended the festival, where they engaged with constituents and answered questions ahead of the November election. “The Voter Services van is the first of its kind in Pennsylvania,” according to a Montgomery County spokesperson. “Montgomery County’s goal is to engage and educate citizens with information on voter registration, mail-in ballots, secure ballot drop box locations, election day polling locations, and other commonly asked questions.” Montgomery County’s voter services office eyes mobile outreach vehicle /*! This file is auto-generated */!function(d,l){\"use strict\";l.querySelector&&d.addEventListener&&\"undefined\"!=typeof URL&&(d.wp=d.wp||{},d.wp.receiveEmbedMessage||(d.wp.receiveEmbedMessage=function(e){var t=e.data;if((t||t.secret||t.message||t.value)&&!/[^a-zA-Z0-9]/.test(t.secret)){for(var s,r,n,a=l.querySelectorAll('iframe[data-secret=\"'+t.secret+'\"]'),o=l.querySelectorAll('blockquote[data-secret=\"'+t.secret+'\"]'),c=new RegExp(\"^https?:$\",\"i\"),i=0;i<o.length;i++)o[i].style.display=\"none\";for(i=0;i<a.length;i++)s=a[i],e.source===s.contentWindow&&(s.removeAttribute(\"style\"),\"height\"===t.message?(1e3<(r=parseInt(t.value,10))?r=1e3:~~r<200&&(r=200),s.height=r):\"link\"===t.message&&(r=new URL(s.getAttribute(\"src\")),n=new URL(t.value),c.test(n.protocol))&&n.host===r.host&&l.activeElement===s&&(d.top.location.href=t.value))}},d.addEventListener(\"message\",d.wp.receiveEmbedMessage,!1),l.addEventListener(\"DOMContentLoaded\",function(){for(var e,t,s=l.querySelectorAll(\"iframe.wp-embedded-content\"),r=0;r<s.length;r++)(t=(e=s[r]).getAttribute(\"data-secret\"))||(t=Math.random().toString(36).substring(2,12),e.src+=\"#?secret=\"+t,e.setAttribute(\"data-secret\",t)),e.contentWindow.postMessage({message:\"ready\",secret:t},\"*\")},!1)))}(window,document); A $145,600 agreement with Whitmoyer Auto Group of Mount Joy, Lancaster County, authorized in August procured an “outreach van with upfitting” to increase voter engagement. The initiative was split among party lines. While Makhija and Winder, both Democrats, were in favor of it, Republican Commissioner Tom DiBello voted against the purchase. “I don’t understand why we’re moving forward with this. It’s a large expenditure item for something quite honestly I feel we don’t need,” DiBello said during an August county commissioners meeting. Winder countered, asserting that the initiative increases accessibility in the weeks leading up to the 2024 general election. “The thought of being able to go to nursing homes, or the thought of being able to go to college campuses, and a wide range of community events, I think is the right thing for us to do,” she said. Engagement measures were being ramped up in Montgomery County nearly a month before Election Day. Voters are able to cast their ballots by mail, absentee ballot or in person at the polls. Montgomery County’s drop boxes and satellite offices opened on Friday, Oct. 4. “Election Day starts today, and it’s every day until Nov. 5,” Makhija said during a Sept. 17 press conference detailing preparation and security measures related to the 2024 general election. Montgomery County election security discussed /*! This file is auto-generated */!function(d,l){\"use strict\";l.querySelector&&d.addEventListener&&\"undefined\"!=typeof URL&&(d.wp=d.wp||{},d.wp.receiveEmbedMessage||(d.wp.receiveEmbedMessage=function(e){var t=e.data;if((t||t.secret||t.message||t.value)&&!/[^a-zA-Z0-9]/.test(t.secret)){for(var s,r,n,a=l.querySelectorAll('iframe[data-secret=\"'+t.secret+'\"]'),o=l.querySelectorAll('blockquote[data-secret=\"'+t.secret+'\"]'),c=new RegExp(\"^https?:$\",\"i\"),i=0;i<o.length;i++)o[i].style.display=\"none\";for(i=0;i<a.length;i++)s=a[i],e.source===s.contentWindow&&(s.removeAttribute(\"style\"),\"height\"===t.message?(1e3<(r=parseInt(t.value,10))?r=1e3:~~r<200&&(r=200),s.height=r):\"link\"===t.message&&(r=new URL(s.getAttribute(\"src\")),n=new URL(t.value),c.test(n.protocol))&&n.host===r.host&&l.activeElement===s&&(d.top.location.href=t.value))}},d.addEventListener(\"message\",d.wp.receiveEmbedMessage,!1),l.addEventListener(\"DOMContentLoaded\",function(){for(var e,t,s=l.querySelectorAll(\"iframe.wp-embedded-content\"),r=0;r<s.length;r++)(t=(e=s[r]).getAttribute(\"data-secret\"))||(t=Math.random().toString(36).substring(2,12),e.src+=\"#?secret=\"+t,e.setAttribute(\"data-secret\",t)),e.contentWindow.postMessage({message:\"ready\",secret:t},\"*\")},!1)))}(window,document); Officials anticipate high voter turnout. September figures from the Pennsylvania Department of State recorded more than 600,000 people registered to vote in Montgomery County. Citing figures from prior election summary reports, a 68.49 percent voter turnout rate was recorded in 2022 and an 84.27 percent in 2020 , the last presidential election between former President Donald Trump and President Joe Biden. Voters have until Oct. 21 to register to vote and those voting by mail need to request their mail-in ballot by Oct. 29. Montgomery County will have 426 polling places set up for Election Day. The polls will be open from 7 a.m. to 8 p.m. on Tuesday, Nov. 5. All ballots must be returned by the time the polls close, at 8 p.m. on Nov. 5. Visit the county’s voter services website at montcovotes.com for more information.",
+      "pubDate": "2024-10-06 10:28:46",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.pottsmerc.com/wp-content/uploads/2024/10/LAN-L-votervan-1006-01.jpg?strip=all&w=1400px",
+      "source_id": "pottsmerc",
+      "source_priority": 59414,
+      "source_name": "Pottstown",
+      "source_url": "https://www.pottsmerc.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/pottsmerc.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "elections"
+      ],
+      "ai_region": [
+        "montgomery county,virginia,united states of america,north america",
+        "abington,massachusetts,united states of america,north america",
+        "montgomery county,kansas,united states of america,north america",
+        "montgomery county,texas,united states of america,north america",
+        "montgomery county,illinois,united states of america,north america",
+        "montgomery county,arkansas,united states of america,north america",
+        "montgomery county,maryland,united states of america,north america",
+        "montgomery county,missouri,united states of america,north america",
+        "montgomery county,pennsylvania,united states of america,north america",
+        "montgomery county,mississippi,united states of america,north america",
+        "montgomery county,tennessee,united states of america,north america",
+        "montgomery county,iowa,united states of america,north america",
+        "montgomery county,new york,united states of america,north america",
+        "montgomery county,north carolina,united states of america,north america",
+        "montgomery county,georgia,united states of america,north america",
+        "montgomery county,kentucky,united states of america,north america",
+        "montgomery county,ohio,united states of america,north america",
+        "montgomery county,indiana,united states of america,north america",
+        "montgomery county,alabama,united states of america,north america"
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 1.92,
+        "neutral": 97.89,
+        "negative": 0.19
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "4ff370c7879f0074c7b45f3571343ada",
+      "title": "Sunday Bulletin Board: When it started to rain, and the Sky Glider stopped . . .",
+      "link": "https://www.twincities.com/2024/10/06/sunday-bulletin-board-when-it-started-to-rain-and-the-sky-glider-stopped/",
+      "keywords": [
+        "opinion",
+        "bulletin board"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "The best State Fair in our state! THE PRACTICING ECLECTIC: “Here’s a story from the State Fair just past: “The Minnesota State Fair is large and full of things to see, do, and eat. It helps to have some strategies: Do not bring your Swiss Army knife or other weapons. Wear sunblock (and/or bring rain [...]",
+      "content": "The best State Fair in our state! THE PRACTICING ECLECTIC: “Here’s a story from the State Fair just past: “The Minnesota State Fair is large and full of things to see, do, and eat. It helps to have some strategies: Do not bring your Swiss Army knife or other weapons. Wear sunblock (and/or bring rain gear), drink often to avoid dehydration, bring money, wear good shoes or sandals, and sit down to rest often. A key strategy is to be open to new experiences, such as the new foods. I personally don’t like most of them (too spicy or weird) or the rides (EEEEEEEE!), though I did try the Afro Poppers, Lady’s Slipper Marble Sundae, Swedish Ice Cream Sundae, Peanut Butter Bacon Cakes (quite good), and Wrangler Waffle Burger. I confess to indulging in Big Fat Bacon, chicken wings and drummies, Nitro Ice Cream, and Sweet Martha’s cookies with milk from the all-you-can-drink milk place. (Lest you think I pigged out royally on one day, this was eaten over three visits of many hours each day.) “Before I babble on about the Fair (ever notice how it becomes THE Fair?), I’m leading up to tell you about a unique experience. I was on the Sky Glider on the first day, when it began raining in late morning. The rain was light enough that I hoped it would stop after a short time. It did not. When the Sky Glider stopped briefly, I asked someone going the other way where they had gotten their poncho. They told me and even pointed helpfully. Then we went on our separate ways. “Now, I often ask people where they’ve gotten food/hats/etc., but we’re usually on the ground. It tickled me to get a helpful hint when we were high in the air.” Live and learn (Fun Facts to Know and Tell Division) GREGORY J. of Dayton’s Bluff: “Subject: Floyd’s older brother Chris. “I’ve been following the Minnesota Gophers football team for a long time. How long? Let’s just say I remember the two times they went to the Rose Bowl. “Every year since then, and for many preceding those years, the Gophers played the Iowa Hawkeyes. And every year, the winner of that game takes possession of Floyd of Rosedale. “And, of course, every year the media make a big deal of recounting the history of Floyd. The original Floyd was a real hog, but in 1935 it was decided that a scaled-down bronze statue of Floyd would be more practical. Minnesota Gov. Floyd Olson commissioned such a statue. “I was able to see and photograph Floyd this year at the U of M building at the State Fair, during one of his rare visits to our state. It was more lifelike than I had expected. “Don’t bother looking for Floyd at the 2025 State Fair. He’ll still be in Iowa, following the 2024 game. “Despite all the publicity Floyd gets every year, it wasn’t until this year that I found out who the sculptor was who created Floyd. He was an Italian-American artist named Carlo Brioschi who had a studio in Saint Paul in the 1930s. His name seemed very familiar. I finally realized that Brioschi also created the statue of Christopher Columbus that stood on the grounds of the State Capitol from 1931 to 2020. I guess that makes him Floyd’s older brother. “Fortunately I took photos of Chris before he vanished from the face of the earth.” Now & Then JOHN IN HIGHLAND: “Subject: What goes around comes around. “On October 5, the University of Southern California football team returned to Minnesota for the first time in over 40 years. The Gophers put up a good fight back then, but lost, so this was a long-delayed chance for payback. “Quiz: Who was the Gopher quarterback in 1980? “Clue No. 1: He ran what was called the ‘Run and Shoot’ offense. “Clue No. 2: His dad was the coach.” BULLETIN BOARD NOTES: You’ll find the answer at the end of today’s BB. Our trees, ourselves — Or: Till death us do part HINDSIGHT: “Yesterday I went outside and walked to the end of our long driveway — a little shaky, but without my walker. I walked to the highway and turned back toward the house. In July, the electric company cut down 23 pines whose branches were too close to the power lines. We had known for a long time what the destiny of those trees would be. They had already been heavily trimmed twice over the years. I took the slaughter of those beautiful pines with grace and understanding, because as the electric company pointed out, this was for the electrical needs of everyone. I know, but still . . . “We planted those trees 49 years ago. Our children had their own special trees and were photographed as they and their special trees grew taller. We had not planted the trees under the power lines, but not back far enough. The trees’ only error was that they grew so tall — 45 feet tall and still reaching for the sky. The company left a few remaining, not a problem yet. A neighbor had hauled the cut trees away. Did we ever think that 49 years later, the power company would still be hanging electric wires on wooden poles? No, it never crossed our minds. “Anyone can see I’m over it now. “Walking back toward the house, I looked toward the south and noticed an 18-inch-tall Norway pine to my right, set farther back, many feet from the power lines. I stopped on the road. Dare I walk off the road down onto the rough ground? I wanted to touch that young tree with its soft needles and lovely color. Then I scanned beyond that little tree, and I could see a whole line of them spread an equal distance apart and set back from the electric lines. I walked carefully and slowly toward them. I touched and stroked every one. There were 12 of them, roughly the same size and obviously planted. Sunlight landed on the; the trees that were gone would not block the sunlight so necessary for them to thrive. The loss of the original trees is there in me, but here were their babies, ready to take the place of their missing parents. “I went back to the house to find Grumpus. ‘I found the trees. Why didn’t you tell me what you were doing? How long has this been going on?’ “Grumpus smiled. ‘I’ve been doing this for three years. If I found a baby, I would let it grow maybe a year and then transplant it. During the last two drought years, I would go and water them all when you took your afternoon nap.’ “This is love. Trying to fix something that meant a great deal to his partner and to him. Knowing how much this hurt my heart. Not candlelight dinners for two old duffers plodding along, but an act of kindness so needed, especially during rough times. I am not a baby, but I cried yesterday for 12 proud little Norway pines all in a row, and for their tree farmer.” Then & Now THE HAPPY MEDIUM: “Subject: Do You Remember When . . . ? “. . . Monday was THE wash day for mothers across America? I do. “We five children were off to school before Mom began sorting the laundry, whites to darks, on the kitchen floor. She started by heating water on the wood-fired cook stove before she went to the barn to milk cows. “Mom used the trusty Maytag clothes washer with an attached wringer. She filled the washer with the hot water and soap and placed the sorted white clothes in the water first. With those washed, she rinsed them, put them through the wringer, and carried them in her basket to the clotheslines set between the trees. This she did with each load of clothes until the very last was washed. Between loads, she drained the dirty water in buckets and dumped it outside, then added fresh hot water to the machine for the next load of wash. Realize, she had to keep the stove going to heat the water. She carried in the wood and plunked another stick in the stove to heat the water. She followed this procedure spring, summer, fall, and winter, come rain or shine, with no air conditioning in the summer. “Of course, wash day wasn’t the only task needing tending to. There were meals to prepare, bread to bake and maybe even a cake to bake. You get the idea: She was a master multitasker long before the term became the well used phrase of today. “When we came home from school, the clothes were off the kitchen floor, and the last load of overalls was in the wash. “By supper time, the meal she had prepared was ready. We children had the TASK of setting the table. We ate heartily whatever was set before us, and it was always so good. “Just wondering, dear reader: Today, what do you do each Monday? “Makes you wonder, doesn’t it.” The Kid and the kid BIG EEK of Southeast Minneapolis: “Subject: Billy the Kid. “The first book I ever read outside of school was a Big Little Book called ‘Billy the Kid.’ BLBs cost 15 cents. The copyright date is 1935, so I would have been 8 years old. That led to a lifelong interest in Billy. “Jump ahead a few years, to 1943. A movie came out about Billy. It was called ‘The Outlaw.’ It starred a young actor, Jack Buetel, as Billy, and 19-year-old Jane Russell as his romantic partner. The movie was made by Howard Hughes. Jane was a discovery of Howard’s, and this was her first movie. Jane’s claim to fame was her abundant bosom. “There were some steamy scenes between Jack Buetel and Jane Russell in the movie. Of course Billy has to die in the end: ‘shot down by Pat Garrett who once was his friend,’ as the song goes. But before that, the film is kind to Billy and shows the extenuating circumstances that led to his death — namely, his attempt to avenge the brutal murder of his employer, rancher John Tunstall, by a sheriff’s posse. “Billy’s friend Pat Garrett was elected Sheriff of Lincoln County in New Mexico. Lincoln is now a ghost town. The Middle Daughter and I visited it. Thomas Mitchell played Pat Garrett in the movie. “Billy had become a renegade cow thief by this time. Every hand was against him — including that of the wealthiest rancher in New Mexico, John Chisum. Billy had once worked for Chisum. “The Catholic Church had a list called The Index. On this list were books that Catholics were forbidden to read. Some movies were on the list, too. One was ‘The Outlaw.’ What should EEK have done? Go to the movie or skip it? What do you think EEK did? “So how did the movie end? [Bulletin Board interjects: 81-year-old Spoiler directly ahead!] Billy didn’t really die, but escaped to Mexico with Jane. (You know who I mean.) Pat had arranged a fake burial so that Billy and Jane could live out their lives in peace. “Oops! I’ve given it away. I did go to the movie — regardless of how it will affect my final resting place, up above or down below. “You technocrats can call up the movie and enjoy it. “WARNING: I’ll wait for you down below. We’ll have a good visit.” Hmmmmmmmm — Including: The highfalutin pleasures GEEZ LOUISE of the West Side reports: “I had just wheeled my cart out into the parking lot, to load my purchases into my car, when a bee settled on the handle of the cart. It looked different from the bees I usually see around the gardens in my neighborhood. It had a shiny black abdomen. I found my phone and did a search on ‘bee with a shiny black abdomen.’ “The search result told me it was a carpenter bee. “Of course it was. I was in the parking lot at Menards.” BAND NAME OF THE DAY: The Afro Poppers The Gophers’ QB in 1980 was Tim Salem (son of Joe) Your stories are welcome. The address is BB.onward@gmail.com .",
+      "pubDate": "2024-10-06 10:28:39",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.twincities.com/wp-content/uploads/2024/10/STP-L-BB-1006-02.jpg?strip=all&w=1400px",
+      "source_id": "twincities",
+      "source_priority": 6831,
+      "source_name": "Twincities",
+      "source_url": "https://www.twincities.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/twincities.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "climate and weather",
+        "accidents"
+      ],
+      "ai_region": [
+        "the minneso"
+      ],
+      "ai_org": [
+        "bulletin board"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 1.18,
+        "neutral": 98.59,
+        "negative": 0.23
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "e01106b5e7fb5b54038d594b47e9254f",
+      "title": "Benue LG Polls: APC Sweeps All 23 Chairmanship, 276 Councillorship Seats",
+      "link": "https://leadership.ng/benue-lg-polls-apc-sweeps-all-23-chairmanship-276-councillorship-seats/",
+      "keywords": [
+        "politics",
+        "apc"
+      ],
+      "creator": [
+        "Hembadoon Orsar and Leadership News"
+      ],
+      "video_url": null,
+      "description": "The ruling All Progressives Congress (APC) has won all the 23 chairmanship and 276 councillorship positions in the Saturday October 5 local government elections held in Benue State. Declaring the results on Sunday at its headquarters in Makurdi, Chairman of Benue State Independent Electoral Commission, Richard Tombowua said the APC won all the chairmanship and [...]",
+      "content": "The ruling All Progressives Congress (APC) has won all the 23 chairmanship and 276 councillorship positions in the Saturday October 5 local government elections held in Benue State. Declaring the results on Sunday at its headquarters in Makurdi, Chairman of Benue State Independent Electoral Commission, Richard Tombowua said the APC won all the chairmanship and councillorship seats According to Tombowua, “The election which held yesterday Saturday 5th 2024 across the state was without hitches; credible, free and fair and the returning officers have submitted all the results from the field. “From the results, All Progressives Congress won all the 23 chairmanship and 276 councillorship positions.” The chairman informed that five out of the eight political parties which submitted a list of candidates participated in the Saturday election. He listed the parties that participated in the elections to include; All Progressive Congress (APC), Peoples Democratic Party (PDP), Labour Party (LP), Social Democratic Party (SDP) and All Progressive Grand Alliance (APGA). In his response to the exercise, the state chairman of Inter Party Advisory Council (IPAC), Ibrahim Idoko commended the commission for its commitment towards hitch-free election. Idoko who also commended the state governor, Fr. Hyacinth Alia for providing level-playing ground for all parties in the election, noted his party would review the outcomes of the elections and make the submission known at a latter date.",
+      "pubDate": "2024-10-06 10:23:54",
+      "pubDateTZ": "UTC",
+      "image_url": "https://leadership.ng/wp-content/uploads/2023/02/APC-Nigeria-750x536.png",
+      "source_id": "leadership",
+      "source_priority": 145108,
+      "source_name": "Leadership",
+      "source_url": "https://leadership.ng",
+      "source_icon": "https://i.bytvi.com/domain_icons/leadership.png",
+      "language": "english",
+      "country": [
+        "nigeria"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "all progressives congress",
+        "benue lg"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.43,
+        "neutral": 99.27,
+        "negative": 0.3
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "47433e96070162d1866664677b48b8d5",
+      "title": "Basil Zempilas graffiti: Police probe nazi graffiti on Liberal candidate’s advertisement",
+      "link": "https://thewest.com.au/news/crime/basil-zempilas-graffiti-police-probe-nazi-graffiti-on-liberal-candidates-advertisement-c-16298847",
+      "keywords": null,
+      "creator": [
+        "Dylan Caporn"
+      ],
+      "video_url": null,
+      "description": "Police are investigating nazi graffiti over an advertisement for Liberal candidate for Basil Zempilas, in one of the first public cases since the symbols were outlawed in WA.",
+      "content": null,
+      "pubDate": "2024-10-06 10:20:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.thewest.com.au/publication/C-16298847/004f7446c4ab7ccf0c05b3b8d6b7c05ae46ae022-16x9-x0y0w1920h1080.jpg",
+      "source_id": "thewest",
+      "source_priority": 106740,
+      "source_name": "The West",
+      "source_url": "https://thewest.com.au",
+      "source_icon": "https://i.bytvi.com/domain_icons/thewest.png",
+      "language": "english",
+      "country": [
+        "australia"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "crime",
+        "law and justice"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.1,
+        "neutral": 0.18,
+        "negative": 99.72
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "09920e2ed643dbdcad0655b379a152cc",
+      "title": "Antisemitism is exploding — because we’re teaching hate in public schools",
+      "link": "https://nypost.com/2024/10/06/opinion/antisemitism-exploding-because-were-teaching-hate-in-school/",
+      "keywords": null,
+      "creator": [
+        "Nicole Neily"
+      ],
+      "video_url": null,
+      "description": "The ideological seeds of extremism are planted long before college — and usually paid for with public tax dollars.",
+      "content": "Monday marks the first anniversary of the Hamas slaughter of 1,300 innocent civilians in Israel. Yet as shocking as that attack was to the human conscience, the subsequent reaction to the massacre may be a more widespread and terrifying legacy. The victim-blaming began almost immediately, as student groups at elite universities published florid diatribes downplaying the attack while the tortured bodies of women, children and the elderly were still being identified. Columbia University students trumpeted “a counter-offensive” against Israel, the Palestinians’ “settler-colonial oppressor.” At Harvard, a consortium of 31 student groups said they “hold the Israeli regime entirely responsible for all unfolding violence.” Campus protests metastasized rapidly nationwide, with pro-Hamas demonstrators regularly invoking blood libel, the Holocaust and the elimination of the Jewish state. But how did this prejudice go from zero to 60 seemingly overnight? Is there something about the American college experience that transforms students into antisemites when they move into their freshman dorms? Radical professors and social media have played a role in fomenting this hatred. But in truth, the ideological seeds of extremism were planted long before freshman orientation — and usually paid for with public tax dollars. Bigotry is not innate; it is learned. And what has unfolded in higher education is the culmination of lessons taught during our students’ K-12 years, by elementary and high-school educators who have allowed antisemitism to flourish under the banner of progressive ideals. Diversity, Equity and Inclusion initiatives and ethnic studies curricula bear much of the blame. These programs teach children to categorize people as either “oppressed” or “oppressor,” assigning moral value based on characteristics like race, religion, immigration status and sexual preference. They have conditioned our students to view society through the lens of constant conflict and subjugation, as they push harmful stereotypes of collective guilt and innocence. Under the warped nature of this framework, Jews are coded as “privileged” because they are considered “white” — ignoring thousands of years of violent persecution as well as basic facts (almost 30% of the global Jewish population is non-white). Race should not matter at all, of course, but it seems cruelty is appropriate when directed at deserving targets. Examples abound of antisemitic rhetoric being not only tolerated in K-12 classrooms, but encouraged. In New Jersey, the Passaic County Education Association held a “summer series” designed to arm teachers with pro-Palestinian propaganda for the classroom. One lesson glorified “heroic resistance to Zionism” — the very language terrorists use as they slaughter Israeli innocents. Ethnic studies consultants advising school districts in California and Arizona have promoted “Preparing to Teach Palestine” toolkits, which instruct that Jews stole Israel from Palestinians, while the Qatar Foundation has provided teachers with maps that omit Israel from the Middle East altogether. Last year teachers in Oakland, Calif. held an unsanctioned “teach-in” to create a publicly available teaching guide on “the liberation of Palestine” that my group, Parents Defending Education, has since uncovered in other districts nationwide. In Oregon this spring, the Portland teachers’ union was caught promoting pro-Palestinian material intended for students as young as kindergarteners that describes Israelis as “colonial settlers” and labels their government as an “apartheid regime.” Other pamphlets in the collection go even further, referring to Hamas — a designated terrorist group — as a “Palestinian Resistance Force.” In New York City, a teacher pushed anti-Israel propaganda on children as young as 4 with lessons on “ land theft, displacement, and ethnic cleansing ,” while in Maryland, a middle school teacher celebrated as a “Diversity, Equity, and Inclusion team leader” was suspended (though later reinstated) for posting online that the Oct. 7 attack was a hoax and accusing Israelis of harvesting Palestinians’ organs. The hateful response from American youth to the Oct. 7 massacre is gut-wrenching, but — considering what impressionable students are absorbing from trusted authority figures — perhaps unsurprising. It is clearer than ever that far too many school administrators and teachers have twisted their privilege as educators into a tool for indoctrinating kids into an ideological agenda that fuels hate, rather than combats it. After a year of once-unthinkable displays of Jew hatred and terror glorification, it is past time for elected officials at the local, state and federal levels to treat these incidents with the same gravity they do other forms of discrimination — and to attack the problem at its true source. Nicole Neily is president and founder of Parents Defending Education.",
+      "pubDate": "2024-10-06 10:19:09",
+      "pubDateTZ": "UTC",
+      "image_url": "https://nypost.com/wp-content%2Fuploads%2Fsites%2F2%2F2024%2F06%2F2021-2022-school-year-except-80399496_13485a.jpg",
+      "source_id": "nypost",
+      "source_priority": 109,
+      "source_name": "New York Post",
+      "source_url": "https://nypost.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/nypost.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.13,
+        "neutral": 0.09,
+        "negative": 99.78
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "284c83230fab9262bb4768b6325d48c7",
+      "title": "LG Polls: Withhold Allocations To States Failing To Conduct Credible Elections – SERAP Tells Tinubu",
+      "link": "https://thewillnews.com/lg-polls-withhold-allocations-to-states-failing-to-conduct-credible-elections-serap-tells-tinubu/",
+      "keywords": [
+        "news",
+        "serap",
+        "politics"
+      ],
+      "creator": [
+        "Felix Ifijeh, THEWILL"
+      ],
+      "video_url": null,
+      "description": "October 06, (THEWILL) – The Socio-Economic Rights and Accountability Project (SERAP) has urged President Bola Tinubu “to direct Mr Olawale Edun, Minister of Finance and Coordinating Minister of the Economy, to immediately withhold federal allocations to states that have failed and refused to conduct credible local government elections and to ensure that any allocations from [...]The post LG Polls: Withhold Allocations To States Failing To Conduct Credible Elections – SERAP Tells Tinubu appeared first on THEWILL NEWS MEDIA.",
+      "content": "October 06, (THEWILL) – The Socio-Economic Rights and Accountability Project (SERAP) has urged President Bola Tinubu “to direct Mr Olawale Edun, Minister of Finance and Coordinating Minister of the Economy, to immediately withhold federal allocations to states that have failed and refused to conduct credible local government elections and to ensure that any allocations from the Federation Account is paid only to democratically elected local government councils and no other body or institution.” SERAP in a letter dated October 5, 2024, and signed by its deputy director, Kolawole Oluwadare, also urged the President “To provide details of the number of local government councils that have directly received federal allocations and whether the councils are democratically elected, as provided for by the Nigerian Constitution 1999 [as amended] and ordered by the Supreme Court in its judgment of July 11, 2024. “To promptly invite the Independent Corrupt Practices and Other Related Offences Commission (ICPC) and Economic and Financial Crimes Commission (EFCC), to jointly track and monitor the spending of FAAC allocations by democratically elected local government councils across the country.” It told President Tinubu that his “Government has the obligation to enforce the Nigerian Constitution and to prevent public wrong, including by state governors. A democratically elected local government council does not and should not exist at the pleasure, whims and caprice of governors or their political godfathers. “Your government also has the constitutional obligation to ensure accountability for the spending of federal allocations and immediate compliance with the judgment by the Supreme Court and the rule of law.” The letter, reads in part: “Local government councils are entitled to a direct payment from the Federation Account to promote good governance, people’s welfare and development of local government areas across the country. “Where the rule of law reigns, political expediency ought to be sacrificed on the altar of the rule of law so as to guarantee the continued existence of institutions created to promote social values of liberty, orderly conduct and development. “We would be grateful if the recommended measures are taken within 7 days of the receipt and/or publication of this letter. If we have not heard from you by then, SERAP shall consider appropriate legal actions to compel your government to comply with our request in the public interest. “It will be entirely consistent with the rule of law to immediately withhold federal allocations to states that have failed and/refused to conduct local government elections and to ensure that any allocations from the Federation Account are paid only to democratically elected councils and no other body or institution. “According to our information, the Supreme Court of Nigeria recently ordered the Federal Government to forthwith directly pay funds in the Federation Account only to democratically elected local government councils and no other body or institution. “The court also ordered the 36 state governors to ‘ensure democratic governance at the local government level. “The court ruled that state governors have no power to dissolve democratically elected local government councils within their states and replace the councils with caretaker committees. The court also made ‘an order of immediate compliance by states with the terms of this judgment. “According to our information, the Chairman of the Independent National Electoral Commission (INEC), Prof. Mahmood Yakubu recently stated that ‘the conduct of Local Government elections in virtually all the States of the Federation has become mere coronation of candidates of the ruling parties. It is time to stop the coronation and conduct proper elections. “SERAP is concerned that local government elections in several states are susceptible to manipulation by governors and other actors. “SERAP is concerned that several state governors are failing to organise local government council elections, contrary to section 7(1) of the Nigerian Constitution. “SERAP is also concerned about the allegations of corruption and mismanagement in the spending by governors of federal allocations meant for the local government councils in their states. Trillions of FAAC allocations received by Nigeria’s 36 states have allegedly gone down the drain. “The resulting human costs directly threaten the human rights of socially and economically vulnerable Nigerians. “Despite the increased allocation from FAAC, millions of residents in several states continue to face extreme poverty and lack access to basic public goods and services. “The reported removal of petrol subsidy and the flotation of the naira by the Federal Government has translated into increased FAAC allocations to states and the FCT. However, there is no corresponding improvement in the security and welfare of millions of Nigerians. “SERAP notes that Section 162(3)(5) of the Nigerian Constitution provides that the amount standing to the credit of local government councils in the Federation Account shall be distributed to them and be paid directly to them. “State governors have no power to keep, control, manage or disburse in any manner allocations from the Federation Account to local government councils. “By the terms of the Supreme Court judgment, the 36 state governors are restrained from further collecting, receiving, spending or tampering with local government council funds from the Federation Account for the benefit of local government councils. “SERAP notes that section 165 of the Nigerian Constitution and the Allocation of Revenue Act No.1 1982, stipulate that the revenues generated by the government should be credited into the federation account and disbursed monthly among the federal government, states and local governments. “SERAP notes that former president Muhammadu Buhari had in December 2022 stated that, ‘If the money from the Federation Account to the State is about N100m, N50m will be sent to the chairman but he will sign that he received N100 million. The chairman will pocket the balance and share it with whoever he wants to share it with. “According to Buhari, ‘If the money from the Federation Account to the State is about N100 million, N50 million will be sent to the chairman but he will sign that he received N100 million. The chairman will pocket the balance and share it with whoever he wants to share it with. “The 36 states in Nigeria and the federal capital territory, Abuja, have reportedly collected over N40 trillion federal allocations meant for the 774 local governments areas in the country and FCT. “The Federation Account Allocation Committee (FAAC), disbursed to states N225.21 billion federal allocations meant for local governments in November 2023 alone. States also collected N258,810,449,711.47 federal allocations meant for local government areas in December 2023.”",
+      "pubDate": "2024-10-06 10:16:07",
+      "pubDateTZ": "UTC",
+      "image_url": "https://thewillnews.com/wp-content/uploads/2023/08/Serap-tinubu.jpg",
+      "source_id": "thewillnigeria",
+      "source_priority": 597232,
+      "source_name": "Thewill News Media",
+      "source_url": "https://thewillnigeria.com/news-of-boko-haram-resurgence-is-false-minister",
+      "source_icon": "https://i.bytvi.com/domain_icons/thewillnigeria.png",
+      "language": "english",
+      "country": [
+        "nigeria"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "lg",
+        "serap",
+        "pres",
+        "socio economic rights and accountability project"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.1,
+        "neutral": 0.12,
+        "negative": 99.78
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "5415c94fb59c57b34b585dd65323a21a",
+      "title": "Jesse Kline: How woke progressivism drove a surge in antisemitism in the West",
+      "link": "https://nationalpost.com/opinion/how-an-irrational-hatred-of-israel-drove-the-left-to-betray-its-most-deeply-held-values",
+      "keywords": [
+        "np comment"
+      ],
+      "creator": [
+        "Jesse Kline"
+      ],
+      "video_url": null,
+      "description": "A new book explores how an irrational hatred of Israel led the left to betray its most deeply held values following the October 7 massacre",
+      "content": "Hamas’s October 7 massacre was shocking, not just due to its barbarity, but the reaction it elicited on the streets of liberal democracies, with masses of westerners actively cheering on the slaughter of innocent civilians and siding with a genocidal terrorist organization. As the first anniversary of that horrific day approaches, a new book sheds light on the morally bankrupt ideology that has caused many of our elites to turn their backs on liberal values and forge an unholy alliance with religious extremists. “The Jewish nation found itself subjected to the very butchery it was built to withstand. The state to which Jews fled to escape the pogroms was now besieged by a pogrom. It felt like the most grave of violations, both of the sanctuary of the Jews and of the pact humankind made in the aftermath of the last great war: Never Again,” writes British author and commentator Brendan O’Neill in his new book, “ After the Pogrom : 7 October, Israel and the Crisis of Civilisation.” “And yet that shining moral clarity never came.... Too many had taken up the cause not of the Jews, but of their persecutors.” O’Neill believes that October 7 provided a “moral test” for western civilization, and we failed it miserably. He rightly places much of the blame for this on modern progressive ideology, which is a complete bastardization of the values that liberals once held dear. “The barbarous dearth of sympathy for the dead and raped of Israel is the logical inhumane conclusion to a pseudo-progressive politics that judges people’s moral worth by their skin colour, their presumed privilege and their placement on a racial hierarchy fashioned by the unaccountable overlords of western opinion,” writes O’Neill. The book deftly exposes the hypocrisy of the anti-Israel left, showing how progressives have betrayed the cultural mores they spent the better part of two decades trying to impose on the rest of society. In a chapter about the response of many feminist organizations to the mass sexual violence that took place on October 7, for example, O’Neill laments how quickly the #MeToo mantra of “believe all women” was thrown out the window when images of female hostages with bloodstained sweatpants and corpses with underwear around their ankles started appearing on our screens. Not only did many feminists ignore or downplay the atrocities, some pretended the whole thing was fabricated to make Hamas look bad. And this is from a crowd that spent years telling us that something as innocuous as a flirtatious glance or a hug in the workplace was evidence of “rape culture” run amok. “Far be it from me to mansplain,” writes O’Neill, “but if the thought of a hand brushing a knee unsettles you more than the sight of Shani Louk’s battered body being spat on and hit with sticks by a mob of violent racists, it’s possible you are doing feminism wrong.” Elsewhere in the book, he wonders, “Whatever happened to the sin of cultural appropriation?” It wasn’t long ago when progressives were actively policing Halloween costumes, authors were being chastised for writing about the experiences of other races and left-wing media outlets were publishing “Dear white people” stories warning them not to wear dreadlocks or use Black slang. Yet visit any campus nowadays and you’re likely to see hordes of white kids dressed as Arabs. “It is striking that the liberal establishment’s patrician ‘Dear White People’ missives dried up completely in the face of the latest keffiyeh craze,” writes O’Neill. Today, “Keffiyeh chic is all the rage.” In another chapter on the irrational hatred that many have toward the Jewish state, O’Neill argues that the worst mass-murder of Jews since the Holocaust “seems like something the anti-racists of the West should condemn. And yet their first instinct in the wake of the pogrom was to protest against the victim of that violent orgy of bigotry, not its perpetrators.” How did we get to a point where a supposed anti-war movement is preaching violence; where self-styled “anti-racists” are espousing antisemitism; where so-called anti-fascists are actively supporting Islamofascists; where feminists are turning a blind eye toward mass rape and defending some of the most misogynistic regimes on the planet; and where LGBTQ activists are advocating for governments that criminalize homosexuality? O’Neill devotes an entire chapter to the “perverse political marriage between secular leftists and the religious extremists of radical Islam,” arguing that, “It was the left’s turn against the principles of Enlightenment that made it so lethally susceptible to the ‘charms’ of radical Islam. “Having replaced class politics with identity politics, and its old anti-capitalism with a myopic anti-westernism, and its one-time commitment to civilizational ideals with a heavy-hearted angst over the ‘sins’ of our civilization, the left found itself drawn ever closer to those other haters of everything the West stands for: Islamists.” He traces this unholy alliance to a 1994 pamphlet written by socialist thinker Chris Harman, who admitted, as O’Neill puts it, that “Islamism at times has the whiff of fascism to it,” but nevertheless argued that it could be “tapped for progressive purposes.” Over time, Harman’s warnings about Islamism’s fascistic tendencies were forgotten, and replaced with a prohibition against criticizing other cultures, especially non-white ones, which protects Islam from progressive critique. “It’s a lesson as old as time,” writes O’Neill, “make a deal with the devil and the devil will always win. A left that thought it could make just the occasional alliance with fascism now finds itself at the service of fascism, dutifully doing Hamas’s and Hezbollah’s bidding on the streets of our cities.” One aspect of the book I particularly admire is that, while it is primarily focused on the scourge of antisemitism, O’Neill rarely uses the term in his writing. Instead, he systematically debunks the lies and misinformation being spread by the Israel-haters, and clearly illustrates why the only conclusion to draw from their singular focus on the Jewish state is that they are motivated by hate. Take, for example, the left’s criticism of Zionism. O’Neill correctly notes that criticizing Israel is not inherently racist and that Zionism has been the subject of much historical debate, mainly among Jewish people themselves. But while past critiques of Zionism were wrapped up in broader critiques of nationalism, modern anti-Zionists are solely focused on Jewish nationalism. “Why have they never gone out in public to demand death for Lithuanian nationalists, for instance? Or to damn Italian nationalists as ugly and cancerous?” asks O’Neill. “The very potency of the rage against Zionism, the singular, furious nature of it, is an indictment of its bigotry and irrationalism.... “This is not criticism — it is hysteria. It is not opposition — it is hatred. It is not even denunciation — it is a death sentence for Jewish nationalism and Jewish nationalism alone.” This has led to the “re-emergence of old hatreds in new language,” with Islamists, progressives and neo-Nazis having replaced the word “Jews” with “Zionists,” but espousing the same bigoted tropes of centuries past. “What has happened, it seems to me, is that the old dread and prejudice for Jews is now projected on to the Jewish state,” argues O’Neill. Anti-Zionism “is the form that Jew scapegoating takes in the 21st century. Where once people pinned their community’s every trouble on the Jews in their midst, now people hold Israel responsible for the ills not only of the Middle East, but of the West, of the world, too.” The irony, O’Neill correctly states, is that anti-Zionism is “proof of why Zionism is necessary.... No more justification for Israel’s existence is necessary than the fact that so many wish to bring Israel crashing down.” I would recommend “After the Pogrom” to anyone looking to get a fuller understanding of how woke progressivism has enabled the re-emergence and normalization of antisemitism and provided cover for western elites to side with theocratic mass murders. It is also a great resource for anyone on the left who’s willing to challenge their worldview. It should be included among the mandatory reading material on university syllabuses, if only to force students, and their professors, to examine their belief systems and confront whether their hatred toward Israel has created a blind spot that has allowed them to violate all the values they claim to hold dear. National Post jkline@postmedia.com Twitter.com/accessd Sign up for the National Post’s Channel Israel newsletter to keep up to date with what’s happening in Israel and the effects of antisemitism on life here in Canada.",
+      "pubDate": "2024-10-06 10:15:58",
+      "pubDateTZ": "UTC",
+      "image_url": "https://smartcdn.gprod.postmedia.digital/nationalpost/wp-content/uploads/2024/09/2172572998.jpg?h=216&quality=90&sig=3cezYbo8h9OXyxFPJSAmPQ&strip=all&w=288",
+      "source_id": "nationalpost",
+      "source_priority": 12209,
+      "source_name": "National Post",
+      "source_url": "https://nationalpost.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/nationalpost.png",
+      "language": "english",
+      "country": [
+        "canada"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": [
+        "israel,asia",
+        "west,texas,united states of america,north america",
+        "west,cameroon,africa"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.19,
+        "neutral": 0.56,
+        "negative": 99.25
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "b749131948a7a3d77b09a7c7ea510565",
+      "title": "Don Wooten: On JD Vance, war in Middle East and hurricane Helene",
+      "link": "https://qctimes.com/opinion/column/don-wooten-on-jd-vance-war-in-middle-east-and-hurricane-helene/article_0061cd54-8277-11ef-b930-530c859983c7.html",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "This has been a news-heavy week. A journalist hardly knows what to cover and at what length: the horrific devastation of Hurricane Helene; the gradual shift of a war between mid-eastern proxies to direct attacks between Israel and Iran; or...",
+      "content": "This has been a news-heavy week. A journalist hardly knows what to cover and at what length: the horrific devastation of Hurricane Helene; the gradual shift of a war between mid-eastern proxies to direct attacks between Israel and Iran; or the vice-presidential debate between J.D. Vance and Tim Walz. The latter was an unusually courteous encounter with exchanges that actually dealt with specific topics. But what counts in the political show biz of television is appearance and, on that level, Vance clearly was the winner. True, he repeated some of Trump’s more outrageous lies, but in a calm and sincere manner. It was rather like watching a TV drug commercial in which viewers are so distracted by the sight of happy, enthusiastic users that they miss the disclaimer about possibly lethal side effects. It was the best thing that has happened to the Trump campaign since the GOP’s nominating convention. The former president gave Vance a glowing internet review, but the general consensus that he lost to Harris, while Vance overshadowed Walz, has to sting. Trump cannot stand being upstaged by an underling. While Harris has pragmatically changed her views on several topics, Vance’s reversal on Trump has been head-spinning. After blasting Trump as another Hitler, he now promotes his lies about winning in 2020 and echoes his irrational rants against immigrants, albeit in more measured speech. “Establishment” Republicans detest Trump, but they need his followers‘ votes. When Trump is finally off the stage, Vance is well positioned to replace him. He’s well connected with the money wing of the party and might be able to hold on to MAGA zealots. He is clearly looking ahead to a presidential run of his own. --- The spreading war in the Middle East can be traced to the fatal mistake of rejecting the two-state solution of the Oslo Accords in 1993. Benyamin Netanyahu’s early decision to undercut the Accords and pursue power at all costs lie at the base of the escalating violence. Now we see how his relentless drive to stay in power is playing out. The periodic bursts of violence of both sides has escalated to tit-for-tat exchanges between Iran and Israel that seem to be triggering a full-scale war. Netanyahu knows that he has a free hand to exploit American military aid until Nov. 5th. Democrats and Republicans have their eye on the Jewish vote and don’t want to do anything which might tilt that fractured bloc one way or the other in the election. A lengthy, mid-week Washington Post story by reporters Karen DeYoung and Missy Ryan details Biden’s long, frustrating attempt to moderate Netanyahu’s aggressive tactics; “(Biden) made clear our support (for Israel) was unqualified, the morally right thing to do,\" recalled David Satterfield, a senior U.S. diplomat with long Middle East experience, whom Biden called out of retirement to manage the looming humanitarian catastrophe in Gaza. “But the president also ‘made it clear’ to Netanyahu that ‘you’ve got to treat the humanitarian side of this with as much seriousness as the kinetic side,’ \" Satterfield said. 'Were maximum efforts made by Israel? No. They were not then and they certainly are not now.’ ” Netanyahu continues to insist on U.S. arms supplies to carry out his war of Hamas and Hezbollah extermination, dismissive of the cost to innocent civilians. Demands for temperance from Biden and the U.N. are simply ignored. After the election, President Biden will have two months in which to take more drastic action to stop the carnage, if he wishes. By then, it may be too late to halt a wider conflagration. --- It may also be too late to mitigate the increasing damage induced by our changing climate. The devastating destruction wrought by hurricane Helene is emblematic of what we can expect from this point on. Changes are in motion across the world that won’t be stopped, even we could shut down fossil fuel emissions overnight. Glaciers are melting in Greenland, The huge Thwaites glacier in Antarctica is sliding into the sea and frozen tundra is melting across vast areas of Siberia and North America: all releasing vast quantities of carbon dioxide into the atmosphere. Nothing we do now can halt any of this. Helene was unprecedented. It formed off the coast of central America, moved across the Gulf of Mexico in a week, slamming into the Florida coast as a category 4 storm over 400 miles wide. It maintained hurricane strength well inland, pouring over 20 inches of rain and 100-mph winds into areas that had never expected to suffer such damage. National and state resources were overwhelmed. There are still remote areas in North Carolina and Tennessee that can only be reached by helicopter. The six-state death toll continues to rise and many are still unaccounted for. Few homes in the region had national flood insurance. The effects of this catastrophe will linger far into the future. Among the many economic impacts of the storm is the shutdown of factories in Spruce Pine, North Carolina, noted for the production of rare, high-purity quartz used to make solar panels and computer chips. While the factories may be up and running again soon, unnumbered homes - even wholesale villages - have been lost. Meanwhile record temperatures are being registered on the west coast, the mountain states, and in Texas and Florida. Triple digit readings are becoming common. As the Earth continues to heat up, weather patterns are changing in deadly, unanticipated ways. Here in the Midwest, we are in a drought, with its attendant warning of fire hazard. While the frequency of tornadoes has increased, we have largely avoided the fires and floods that have plagued other parts of the nation. Being temporarily in the sweet spot can be seductive, making us complacent; but our turn will come. Don Wooten Don Wooten is a former Illinois state senator and a regular columnist. Email him at: donwooten4115@gmail.com . Get opinion pieces, letters and editorials sent directly to your inbox weekly!",
+      "pubDate": "2024-10-06 10:15:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://bloximages.chicago2.vip.townnews.com/qctimes.com/content/tncms/assets/v3/editorial/3/1d/31def20e-6d90-11ef-9bc3-2ba6cba00933/657ce1663ae95.image.jpg?resize=300%2C272",
+      "source_id": "qctimes",
+      "source_priority": 18612,
+      "source_name": "The Quad City Times",
+      "source_url": "https://qctimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/qctimes.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "natural disasters"
+      ],
+      "ai_region": [
+        "helene",
+        "middle east"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.15,
+        "neutral": 0.16,
+        "negative": 99.69
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "7017213f8738421b47a40135b36f7b74",
+      "title": "Russia revises its nuclear doctrine: Why West must take Putin’s warning seriously",
+      "link": "https://www.firstpost.com/opinion/russia-revises-its-nuclear-doctrine-why-west-must-take-putins-warning-seriously-13822576.html",
+      "keywords": [
+        "opinion"
+      ],
+      "creator": [
+        "Firstpost"
+      ],
+      "video_url": null,
+      "description": "The revision lowers the threshold of use of nuclear weapons by Russia. It is a warning to the West not to escalate the Ukraine war",
+      "content": "The Ukraine conflict is acquiring increasingly dangerous dimensions. The US is today engaged in an open proxy war against Russia by providing arms, training, intelligence, instructors and funds to Ukraine to sustain its conflict with Russia. The US has declared openly that its goal in the Ukraine conflict is to inflict a strategic defeat on Russia, weaken it militarily to the point that it can no longer pose a threat to its neighbours, in the hope that this could lead eventually to a regime change in Russia. The US has applied the most draconian sanctions on Russia to cause its economic collapse. It has sought to isolate Russia diplomatically. It has manoeuvred to declare President Vladimir Putin a war criminal. This US/NATO strategy has not worked. The Russian economy has weathered the sanctions. After initial setbacks, the Russian army has recovered ground. Russia has ramped up its production of war material. It has adapted its military response to new weapon technologies and advanced NATO arms and tactics employed against it. It has limited its war aims and used its military resources commensurately. Russia is not isolated diplomatically. Its strategic partnership with China has reached unprecedented levels. India is determined to preserve its traditional ties of trust and friendship with Russia and has resisted Western pressures to dilute ties with Moscow. Russia is today the biggest oil supplier to India. India has refused to condemn Russia for its military action in Ukraine and has abstained on UN Security Council and General Assembly resolutions against this intervention. India, and many countries of the global south as well, do not accept the Western narrative that Russia launched an “unprovoked war” in Ukraine. They understand the genesis of the conflict, of which NATO expansion has been a prime reason. They understand that if the Minsk agreement that were ratified by the UN Security Council had been implemented, or if the broad agreement reached by Russian and Ukrainian negotiators at Istanbul had not been opposed by the West, the conflict could have ended. Which is why, many in the global south do not accept the Western narrative on the Ukraine conflict and do not willingly adhere to Western sanctions. They participate in many events organised in Russia, and entertain many Russian delegations in their own countries. In the G20 New Delhi summit declaration, in the paragraph on the Ukraine conflict, Russia is not mentioned by name, which shows that the G20 members of the global south do not support the West’s one-sided position on Russia having sole responsibility for the Ukraine conflict. The expansion of BRICS with five additional members — Egypt, Saudi Arabia, Iran, UAE and Ethiopia — indicates that the Western strategy to isolate Russia has dramatically failed, especially as some of these countries have close political, economic and defence ties with the US. Many global south countries — reportedly up to 30 — have applied for BRICS membership, including a NATO member like Turkey, with the next BRICS summit at Kazan in the offing. Many in the global south see Russia, the world’s largest country, possessing huge natural resources, a permanent member of the UN Security Council and a formidable nuclear power, as pivotal to creating a multipolar order. Such an order alone will give a voice to the global south in international governance. The West has steadily escalated the military conflict in Ukraine by providing the Ukrainian armed forces with more and more lethal weapons to attack Russian targets. This has been done step by step to test the Russian red lines. It began with the supply of air defence systems, long range artillery, tanks, powerful cruise missiles, F16s, and so on. Russia has been warning against such stepped up supplies but has acted with restraint, without being distracted from its limited war aims. President Putin has, however, been warning the West that they must understand that Russia is a nuclear power and will defend itself if necessary with nuclear weapons if its very existence is threatened. He had in 2018 announced that Russia was developing a new ICBM missile and long range underwater drones against which the West had no defences. He has repeated this subsequently. Russia’s nuclear warnings have gone unheeded in the West. The belief there is that Russia is bluffing and that the West should not be deterred. In turn, western voices have warned that the West too possesses nuclear weapons, with commentators threatening to destroy Russia’s Black Sea if Russia used tactical nuclear weapons in Ukraine. France has offered access to its nuclear arsenal for Europe’s defence. Ukraine has been permitted to use NATO supplied weapons to attack the former Ukrainian territory now incorporated into Russia, as also the Russia fleet in the Black Sea which has suffered much damage. Ukraine has also used long range drones to attack targets deep into Russia. In August 2024, Ukraine intruded into Russia’s Kursk region, the first land invasion of Russia after that of Hitler. The symbolism of this invasion cannot be ignored by Russia. Ukraine is now lobbying the US and the EU for permission to attack Russia proper with the long range missiles supplied by the UK and the US. The UK is actively supporting this escalation while the US seems reticent for fear of triggering a direct conflict between Russia and NATO. Zelensky has just visited the US with his Victory Plan which is intended to draw NATO into the conflict. While this debate is going on in the West, President Putin has unveiled the revision of Russia’s nuclear doctrine which would allow a Russian nuclear response to a massive attack on its territory with missiles, drones, etc, with the support of a nuclear state. This lowers the nuclear threshold of use of nuclear weapons by Russia. It is a warning to the West not to escalate. There are voices in Russia, of well-established geo-politicians and conservative philosophers, that are advocating the use of nuclear weapons by Russia as the only way to deter the West. The fact is that so far Russia’s formidable nuclear arsenal has not deterred its adversaries from fighting a steadily intensifying open proxy war against it. Russia’s redlines have been repeatedly crossed by the West Russia has suffered in terms of considerable field losses and loss of prestige as well as it has not been able to achieve its war aims as quickly as it might have anticipated. The West, which has demonised Putin, sees his self-restraint as a sign of Russia’s weakness. This would explain why some prestigious figures in Russia advocate a real show of power by Russia by using nuclear weapons to deter the West from continuing to bleed it. The example of Prime Minister Netanyahu, who has shown the way to use unbridled force to achieve security goals without losing broad support in the global south, is apparently being cited by those in Russia who want a demonstration of nuclear power by Moscow. Whatever the West’s effort to demonise him, Putin is respected for his statesman-like qualities of maturity, restraint, moderation and self-control in the global south, in contrast to Western leaders with their warmongering discourse and refusal to explore dialogue and diplomacy as a path to peace in Ukraine. Putin’s position that he is ready for a dialogue on a realistic basis defuses the Western propaganda against him. However, it would be wrong to believe that Russia will not lose support in the global south if it used nuclear weapons. The abhorrence towards the use of nuclear weapons is deeply embedded in global public sentiment at large. Since Hiroshima and Nagasaki, nuclear weapons have not been used. Chernobyl and Fukushima nuclear disasters show how much the public is terrified of the consequences of a nuclear fallout. These were accidents confined to the peaceful uses of nuclear energy. A wilful use of nuclear weapons for war purposes is altogether different from a nuclear accident. Leave aside whether such use by Russia or any other country could lead eventually to the annihilation of the human race if a nuclear spiral follows, the country resorting first to a nuclear strike will be in the international dog house. Whichever that country, it will be condemned in the UN Security Council and the UN General Assembly. even by its friends as they would not see the justification of using nuclear weapons to thwart a conventional attack. In Russia’s case, it would be seen as that much indefensible as it has not so far used the full panoply of its conventional arsenal against Ukraine. It needs recalling in this context that the International Court of Justice in its advisory opinion in 1996 ruled that the threat or use of nuclear weapons “would generally be contrary” to humanitarian and other international law regulating the conduct of warfare. In addition, the UN Treaty on the Prohibition of Nuclear Weapons which came into force in 2021 includes a comprehensive set of prohibitions on participating in any nuclear weapon activities. These include undertakings not to develop, test, produce, acquire, possess, stockpile, use or threaten to use nuclear weapons. If Russia, which has been a staunch supporter of the NPT, were to use nuclear weapons the non-proliferation regime will undoubtedly collapse. Most importantly, the G20 New Delhi Declaration, to which Russia is also a party, states that the “use or threat of use of nuclear weapons is inadmissible”. Brazil and South Africa, as well as China, not to mention Saudi Arabia, Indonesia, Mexico and Turkey, also endorsed this view. This will be the general view of the countries of the global south too, beyond the G 20. Russia cannot ignore the real possibility that the price it could pay in terms of the disruption of its ties to the global south across the board, including on the economic front, would be very considerable. Russia, already under pressure from the West, will come under pressure from the global south too. All said and done, it is not conceivable that Russia would use nuclear weapons unless its very existence is threatened. This proposition would be true of all countries that possess nuclear weapons, as the logic of possessing them is precisely to thwart any existential threat. If the debate over the use of nuclear weapons has started in Russia because of the declared objective of the West to impose a strategic defeat on it, with some in Europe openly talking of the break-up of the Russian federation, then the responsibility lies on the West to desist from fuelling the conflict in Ukraine to a point of no-return and instead exploring the route of dialogue and diplomacy to find a realistic solution. Kanwal Sibal is a former Indian Foreign Secretary. He was India’s Ambassador to Turkey, Egypt, France and Russia. Views expressed in the above piece are personal and solely that of the author. They do not necessarily reflect Firstpost’s views.",
+      "pubDate": "2024-10-06 10:12:07",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.firstpost.com/uploads/2024/08/Frankfurt-airport-halts-flights-as-climate-activists-block-runway-84-2024-08-95f793627253bcc2dc3a3d177249749a.jpg",
+      "source_id": "firstpost",
+      "source_priority": 5906,
+      "source_name": "Firstpost",
+      "source_url": "https://www.firstpost.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/firstpost.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "national security"
+      ],
+      "ai_region": [
+        "russia,europe/asia",
+        "west,texas,united states of america,north america",
+        "west,cameroon,africa"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.61,
+        "neutral": 2.75,
+        "negative": 96.64
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "d3db652f67fa6dd715e0eb93eb60b0f9",
+      "title": "Heroes were shunted into Holyrood's hidden vestibules as politicians took selfies",
+      "link": "https://www.heraldscotland.com/politics/24632987.scots-heroes-shunted-holyroods-hidden-vestibules/?ref=rss",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Of all the people I’ve had the privilege of interviewing over the past year or so, Dr Lynne Tammi-Connolly was one of the most impressive.",
+      "content": "Of all the people I’ve had the privilege of interviewing over the past year or so, Dr Lynne Tammi-Connolly was one of the most impressive. Dr Connolly is the Scottish academic who, for many years, has sought redress for the thousands of Scottish children – mainly from the gypsy and gypsy traveller communities – who were trafficked from Scotland throughout the 20th century. It was one of the most shameful episodes in Scotland’s history and one which the Scottish Government and civic Scotland has repeatedly failed to acknowledge. In January of this year, Dr Connolly competed a two-week journey by foot from her home in Montrose to Holyrood to highlight her campaign. She had hoped to be met by Emma Roddick, Scotland’s Minister for Equalities, Migration and Refugees. Ms Roddick insisted she was unavailable, however. Only after some light arm-twisting by The Herald and Dr Connolly did Ms Roddick finally agree to meet with this stalwart academic. Even then, Dr Connolly was reminded quite firmly of the rules of engagement that govern how politics is conducted in modern Scotland. Put simply, she had to know her place in the grand scheme of things. In Scotland, unless you have a platinum card admitting access to Holyrood’s inner sanctum, then your place is on the bottom rung of society and you must wait in a long queue before the government’s courtiers and fluffers summon you. For Dr Connolly this meant being told only to speak when spoken to and only on pre-approved topics. “I’ve been told I won’t be permitted to discuss anything to do with the tinker gypsy experiments, the child trafficking or the prospect of an official apology,” she said. I mention this now only because Dr Connolly, along with other Scots “local heroes”, was treated once more with contempt and disdain at Holyrood last week at an event to mark 25 years of the Scottish Parliament. As the tribunes and trumpets of civic Scotland who have all fed richly on Holyrood’s largesse gathered to congratulate each other for their great good fortune, the real people who make this country work were shunted into Holyrood’s hidden vestibules lest they embarrass some of the political roasters taking selfies with each other. Many of these talentless and indolent chancers – mainly in the SNP and the Scottish Greens – have been embarrassing Scotland for the last 10 years. It’s they who should have been shunted into cupboards. (Image: Gordon Terris) Pub talk In a louche tavern on Glasgow’s eastern fastnesses last week, I was being urged to write an alternative guide to accessing political and civic power in modern Scotland. However, I’m not sure I’m the chap for the job. I’ve developed a deep loathing for the system and its serpentine rules that determine who gets heard in what we laughably call a liberal democracy. There are some decent and honest people at Holyrood who genuinely care about improving the lives of ordinary Scots, especially those who were born without the advantages many of the rest of us have. Sadly, they are currently swamped by a sprawling and shape-shifting class of political scavengers who know a good thing when they see it and quickly set about the task of grabbing a piece of the action. This mainly involves ditching any principles you might once have possessed and divining which organisations and individuals have the ear of the SNP leadership. Thereafter, you solicit informed opinion about the personal preferences and predispositions of the anointed and set about endorsing these on social media. Your conscience must only be formed by sticking your finger in the air to see which way the wind is blowing on the major issues of the day. Lobby woe ACCESS to Scotland’s power brokers is gained through a suite of shadowy and serpentine channels. It’s reserved to a chosen few. Many of these are employed by the lobbying firms who represent Scotland’s only real growth sector in the devolved era. These outfits occupy a treacherous terrain where the secret to success is to agree wholeheartedly with everything the First Minister and his Cabinet say. After all, of what use are you to your per diem corporate client base if you were ever to criticise those who hand out the big contracts, or who shape laws that may affect your customers’ business interests? In recent years, this hidden system of patronage has grown further tentacles with the emergence of Glasgow University’s John Smith Foundation. There’s also a John Smith Trust and a John Smith Centre. At any given time their boards comprise of a dizzying array of baronesses, and legal and academic panjandrums who have played the game successfully and the odd former politician who is deemed capable of walking and talking at the same time (admittedly, a narrow cohort). Their collective purpose is to source “exceptional” people who know how to behave themselves and look the other way when required. It’s summed up in this prospectus: “In cultivating an active network of Fellows, we motivate and stimulate action to progress shared values of tolerance, respect and openness, as well as governance that is rules-based and people-focused.” Loosely translated, this means: “Don’t rock the boat; speak nicely; ditch your beliefs; and you’ll be well looked after. A nod’s as good as a wink to a blind horse.” SPAD madness EVIDENCE of what rewards await those who do the political Hokey Cokey was provided last month by the publication of a lengthy and soporific document co-authored by Stephen Noon and Kezia Dugdale, the former I’m A Celebrity... contestant. It’s dozens of pages long and concludes that the Scottish Secretary should be handed new powers to call for a second referendum. The dogs on the streets know a referendum will never happen any time before Mr Noon and Ms Dugdale access their pensions. The report was published by Glasgow University’s Centre for Public Policy. Mr Noon was chief strategist for Yes in 2014 before lately occupying the never-never land of devo max and then alighting on whatever position his academic paper is supposed to represent. Until this month, he was a Glasgow University academic in that Centre for Public Policy. Ms Dugdale, until recently, was director of the John Smith Centre. He supported Kate Forbes in the SNP leadership before switching to John Swinney. This was a judicious choice. Last week, he was appointed one of Mr Swinney’s team of special advisers. “You put your left leg in, your left leg out In, out, in, out, shake it all about You do the hokey cokey and you turn around That’s what it’s all about.”",
+      "pubDate": "2024-10-06 10:11:02",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.heraldscotland.com/resources/images/18616932/?htype=0&type=app",
+      "source_id": "heraldscotland",
+      "source_priority": 51102,
+      "source_name": "The Herald",
+      "source_url": "https://www.heraldscotland.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/heraldscotland.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "awards and recognitions"
+      ],
+      "ai_region": [
+        "holyrood,kansas,united states of america,north america"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.58,
+        "neutral": 5.22,
+        "negative": 94.2
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "4c8aebb0559024ad4f9d71eee5235e38",
+      "title": "Nigeria’s Challenges Is Diverse, Immense, You Cannot Know Extent Until You Get There – Tinubu",
+      "link": "https://newtelegraphng.com/nigerias-challenges-is-diverse-immense-you-cannot-know-extent-until-you-get-there-tinubu/",
+      "keywords": [
+        "breaking news",
+        "politics"
+      ],
+      "creator": [
+        "Adeyinka Adeniji"
+      ],
+      "video_url": null,
+      "description": "President Bola Tinubu on Saturday said Nigeria’s problems are so enormous that no one can phantom it unless he or she gets to the position of governing the country. He also added that he is currently not concerned about a reelection, but posterity and welfare of Nigerians. The President made this remarks during the All...The post Nigeria’s Challenges Is Diverse, Immense, You Cannot Know Extent Until You Get There – Tinubu first appeared on New Telegraph.The post Nigeria’s Challenges Is Diverse, Immense, You Cannot Know Extent Until You Get There – Tinubu appeared first on New Telegraph.",
+      "content": "President Bola Tinubu on Saturday said Nigeria’s problems are so enormous that no one can phantom it unless he or she gets to the position of governing the country. He also added that he is currently not concerned about a reelection, but posterity and welfare of Nigerians. The President made this remarks during the All Progressives Congress (APC) South-West Zone Assembly on Saturday at Eko Hotels, Lagos, hosted by the Chairman of South West Governors’ Forum and Lagos Governor, Mr Babajide Sanwo-Olu. The President was represented by his Chief of Staff, Hon. Femi Gbajabiamila, who assured that all deliberations by the South West caucus would be given adequate consideration, saying, “Even though he is President of Nigeria the South West remains his base”. Gbajabiamila added: “For those of us who know him very well, he has a love for the masses. As the people are complaining, he is also pained but when a man has a strong conviction of what he is doing, he pursues it relentlessly.” The Chief of Staff said the President is a listening leader who would continue to do the biddings of the people, while assuring the gathering of continuous engagement and advice for the President. Speaking, Host, the Lagos State Governor, Mr. Babajide Sanwo-Olu said, said: “We have come as one big family to explore and have more ways to work together. It is to share ideas and agree on strategies to take South West to greater heights. “We are blessed with assets and more positioned to move the country forward.” He urged participants to always be guided by the strong Omoluabi ethos for which the southwest region is noted, and leverage same to engender the progress of the region and the country. Sanwo-Olu also said that the gathering is to reinvigorate hope in people, saying the strong omoluabi ethos in the zone should He appealed to leaders and other members to keep supporting Tinubu, just as he added that the region should strive to forge ahead of 2027 election. Also speaking at the event, Dr. John Kayode Fayemi, former governor of Ekiti state, who delivered the keynote address said: “We in the South West zone should set an example by ensuring that the caucus is replicated at the national Assembly to the State and local government levels “We cannot continue to rest on our oars as a party, we should be ready to forge a united front. I am convinced that APC will remain strong to accomplish the unfinished business of the renewed hope agenda of Mr President.” Other State governors who attended the event included, Ekiti, Biodun Oyebanji, Ondo, Lucky Aiyedatiwa and Ogun, Dapo Abiodun. Leaders at the meeting included ex-interim National chairman, Bisi Akande, ex-Ogun Governors, Olusegun Osoba and Ibikunle Amosun, Lagos GAC leader, Tajudeen Olusi among others. The event also attracted other stakeholders in the South-West including Senators, Representatives, State House of Assembly members and other top party officials.a",
+      "pubDate": "2024-10-06 10:09:55",
+      "pubDateTZ": "UTC",
+      "image_url": "https://i0.wp.com/newtelegraphng.com/wp-content/uploads/2024/10/IMG-20241006-WA0001.jpg?fit=1259%2C659&ssl=1",
+      "source_id": "newtelegraphng",
+      "source_priority": 447614,
+      "source_name": "New Telegraph",
+      "source_url": "https://newtelegraphng.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/newtelegraphng.png",
+      "language": "english",
+      "country": [
+        "nigeria"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics",
+        "government"
+      ],
+      "ai_region": [
+        "nigeria,africa"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 1.51,
+        "neutral": 0.41,
+        "negative": 98.08
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "e5dc2952dc156de817fb8722ea8dcfe4",
+      "title": "Young whale dies after becoming stranded on beach despite efforts to save it",
+      "link": "https://www.portsmouth.co.uk/news/people/young-whale-dies-after-becoming-stranded-on-beach-despite-efforts-to-save-it-4812123",
+      "keywords": [
+        "people",
+        "news"
+      ],
+      "creator": [
+        "Steve Deeks"
+      ],
+      "video_url": null,
+      "description": "A young whale died after becoming stranded on a beach despite efforts to save it.",
+      "content": null,
+      "pubDate": "2024-10-06 10:07:06",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.portsmouth.co.uk/webimg/b25lY21zOjE2YTAwY2UwLTkxZjItNDNkOC1hOTU3LWU1ZGM0NWE3NTA2YToxNDk0ODIxNS01ZjIxLTQ4NGYtOWY0Mi01NTRjYzAzY2EyNjQ=.jpg?auto=webp&width=1200",
+      "source_id": "portsmouth",
+      "source_priority": 223919,
+      "source_name": "The News",
+      "source_url": "https://www.portsmouth.co.uk",
+      "source_icon": "https://i.bytvi.com/domain_icons/portsmouth.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "top",
+        "health",
+        "politics"
+      ],
+      "ai_tag": [
+        "wildlife",
+        "accidents"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.12,
+        "neutral": 0.18,
+        "negative": 99.7
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "f6004b8abdd94dbf7ac9af8c595cf9a6",
+      "title": "Georgia's Muslim voters opposing Harris, Trump in election over both candidates' support for Israel",
+      "link": "https://www.foxnews.com/politics/georgias-muslim-voters-opposing-harris-trump-election-over-both-candidates-support-israel",
+      "keywords": [
+        "fox-news/person/donald-trump",
+        "fox-news/us",
+        "96b75a4a-16a9-589e-bfe6-d20172cb2f1e",
+        "fox news",
+        "article",
+        "fox-news/us/us-regions/southeast/georgia",
+        "fox-news/politics/elections",
+        "fox-news/person/kamala-harris",
+        "fox-news/politics",
+        "fnc"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "A growing group of Muslim voters in Georgia say they will not back either Vice President Kamala Harris or former President Donald Trump because of their support of Israel.",
+      "content": "Fox News Flash top headlines are here. Check out what's clicking on Foxnews.com. A growing group of Muslim voters in Georgia say they will not back either Vice President Kamala Harris or former President Donald Trump in next month's election because of both candidates' support of Israel amid the ongoing conflict in the Middle East. Harris has said she supports Israel's right to defend itself and would not withhold weapons from the country, but has also called for a ceasefire in Gaza, while Trump said recently he is Israel's \"protector\" and reaffirmed his support for the Jewish state. In battleground Georgia, where Trump narrowly lost in 2020 to President Joe Biden, the Peach State could help determine whether Harris or Trump wins the presidency. The Muslim population in Georgia could also impact which candidate wins the state's 16 electoral votes. Muslim voters across the country are virtually tied between Harris and Trump, with Harris only securing a single-point advantage, according to a recent poll by the Arab American Institute . KAMALA HARRIS' SUPPORT WITH ARAB AND MUSLIM COMMUNITIES IN MICHIGAN IS 'TENUOUS': DEMOCRATIC STRATEGIST A growing group of Muslim voters in Georgia say they will not back Vice President Harris or former President Trump over their support of Israel. (Getty Images) Kristen Truitt, a Muslim American voter in Atlanta, has voted for Democrats in prior elections but now says the party will not have his support over its position on Israel. \"Just to give unlimited funds and access to Israel, I think that is totally ridiculous,\" Truitt told Fox 5 Atlanta . This comes just ahead of the one-year mark of the ongoing war in Gaza between Israeli forces and Hamas terrorists. The conflict began on Oct. 7, 2023, when Hamas attacked Israel and took more than 250 hostages, which prompted retaliatory action from Israel's military. The Hamas-run government's Gaza Health Ministry estimates that more than 41,000 people have been killed in the conflict, although it does not distinguish between civilian and terrorist deaths. More than 1,500 people have reportedly been killed in Israel since the start of the conflict, with most of them being killed on Oct. 7 and its immediate aftermath. TRUMP SAYS ISRAEL SHOULD HIT IRAN'S NUCLEAR FACILITIES, SLAMMING BIDEN'S RESPONSE Vice President Kamala Harris during a campaign event at the Philip Chosky Theatre in Pittsburgh, Pennsylvania, on Wednesday, Sept. 25, 2024. (Rebecca Droke/Bloomberg via Getty Images) The growing group of Muslim voters in Georgia and across the country have said they will not vote for Harris or Trump due to both sides' vocal support of Israel in its war in Gaza , and the conflict is now expanding to include Israel attacking Hezbollah terror targets in Lebanon. \"What we're trying to say is we should really do away with the logic of voting for the 'lesser of two evils,'\" Kareem Rosshandler, Georgia co-chair of the \"Abandon Harris\" campaign, told Fox 5. The \"Abandon Harris\" campaign group is urging Muslims to vote third-party to send a message to Republicans and Democrats that they need to earn the votes of the Muslim community. \"I think the main one is to say that the Muslim community in the United States won't be taken for granted,\" Rosshandler said. Rosshandler said the group has already secured commitments from more than 10,000 Muslim voters to support third-party candidates. Some third-party candidates, including Libertarian Chase Oliver and the Green Party's Jill Stein, have been critical of Israel's war in Gaza. Republican presidential nominee former President Donald Trump speaks at a town hall event in Fayetteville, N.C., Friday, Oct. 4, 2024. (AP Photo/Karl B DeBlaker) The loss of Muslim voters is expected to hurt Harris more than Trump , as the Republican candidate has previously struggled to secure Muslim votes. \"That would essentially have a greater adverse impact on the Harris-Waltz ticket than it would on Trump-Vance,\" Emory University assistant professor of law Alicia Hughes, who is also a voting expert, told Fox 5 Atlanta. \"Trump, historically, has not been able to count on those votes.\" CLICK HERE TO GET THE FOX NEWS APP Hughes also says that if Harris or Trump were more vocally critical of Israel, it may not help their election chances either. \"There's a great possibility that you would lose more from the change than you would actually gain,\" she said.",
+      "pubDate": "2024-10-06 10:06:21",
+      "pubDateTZ": "UTC",
+      "image_url": "https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2024/09/931/523/trump-harris-recent-split.jpg?tl=1&ve=1",
+      "source_id": "foxnews",
+      "source_priority": 404,
+      "source_name": "Fox News",
+      "source_url": "https://www.foxnews.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/foxnews.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": [
+        "israel,asia",
+        "georgia,united states of america,north america"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.23,
+        "neutral": 0.66,
+        "negative": 99.11
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "b7001a16247d79071e8f0b06f3698d15",
+      "title": "Dubai: Tenants face increased broker commissions in affordable properties",
+      "link": "https://www.khaleejtimes.com/business/realty/dubai-tenants-face-increased-broker-commissions-in-affordable-properties",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": null,
+      "content": "Dubai brokers are charging an increased minimum commission from tenants for affordable properties under Dh100,000 annual rent as demand for rentals continues to grow at an exponential pace. Generally, commission accounts for 2 per cent of the sale value and 5 per cent of the annual rental, excluding 5 per cent value-added tax (VAT). “While the traditional 5 per cent commission applies across the board, its impact is felt differently depending on the property segment. In the luxury market, where annual rents often soar above Dh200,000, tenants typically pay only the standard commission,\" said Maria Selama, leasing consultant of Huspy. \"However, for those in the mid-market and affordable segments, things are shifting. Here, brokers are implementing a minimum commission fee of Dh5,000 for properties priced under Dh100,000. This can lead to higher effective rates for tenants in these categories,” she added. Stay up to date with the latest news. Follow KT on WhatsApp Channels. Explaining the scenario, Selama said, \"A tenant leasing an apartment for Dh70,000 would usually pay Dh3,500 in commission, but with the new minimum in place, they’ll pay the full Dh5,000, resulting in an effective commission of about 7.14 per cent. This change illustrates how tenants in more affordable segments are facing increased commissions, while those in the luxury segment continue to benefit from the traditional commission structure. As a result, it’s essential for renters to stay informed about these differences, as they can significantly affect overall rental costs.\" Rents have been on the rise in the post-pandemic period on the back of high demand from property buyers and new tenants coming to the country as strong GDP growth generates more employment opportunities in the country. According to real estate consultancy CBRE, the rate at which rents continue to grow remained unwavering, where average residential rents grew by 21.1 per cent in the year to June 2024. This increase has been driven by a 22.2 per cent growth in average apartment rents and a 12.7 per cent increase in average villa rents. Deepak Kripalani, founder and CEO of House2Home Real Estate, said the law says both the parties involved are to be charged equally. “As an agent, we need to balance the deal equally, however, there is no defined law of setting a particular percentage to charge.” Increased commissions Commissions paid by the tenants to brokerages have increased over the years due to a rise in rentals. Maria Selama of Huspy said landlords do not charge commissions from tenants, but brokers continue to apply the standard commission rate of 5 per cent. “Although this percentage remains unchanged, there is a perception among tenants that overall costs have risen due to increased rental prices in the market. As a result, while the commission percentage has not increased, tenants may feel the impact of higher rental rates on their overall housing expenses,” she stated. “A tenant renting a villa for Dh500,000 annually would pay Dh25,000 in brokerage fees, which is straightforward. However, tenants in the mid-market or affordable segments may end up paying a higher effective percentage due to the introduction of a minimum commission fee. This means that while luxury tenants face a clear 5 per cent commission, those renting more affordable units might feel the pinch more significantly,” she continued. Rupert Simmonds, leasing director at Betterhomes, said commission rates have remained the same, although, due to higher prices, the actual amount paid often increases. “As the commission is charged as a percentage of the contract value, luxury properties will often result in a higher overall fee. Some agencies will charge a minimum fixed commission amount for lower-value transactions, basically, where the cost of the work does not meet the value of the percentage charge,” he said. With the commission being charged as a percentage of the rent, he said the commission will be at a higher charge, based on the higher rental value of the property.",
+      "pubDate": "2024-10-06 10:04:10",
+      "pubDateTZ": "UTC",
+      "image_url": "https://image.khaleejtimes.com/?function=fit&maxsize=1200&q=75&scaleup=0&source=false&type=preview&uuid=3d1c7191-c0ec-5f97-a62d-87425b87b508",
+      "source_id": "khaleejtimes",
+      "source_priority": 7688,
+      "source_name": "Khaleej Times",
+      "source_url": "https://www.khaleejtimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/khaleejtimes.png",
+      "language": "english",
+      "country": [
+        "united arab emirates"
+      ],
+      "category": [
+        "top",
+        "politics"
+      ],
+      "ai_tag": [
+        "financial markets"
+      ],
+      "ai_region": [
+        "dubai,dubai,united arab emirates,asia",
+        "dubai,united arab emirates,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 2.24,
+        "neutral": 97.45,
+        "negative": 0.31
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "095b9404f96656ea433e7f4045a6a800",
+      "title": "Opinion | Greenwashing Threatens the Paris Agreement: Can We Trust Corporate Climate Pledges?",
+      "link": "https://www.news18.com/opinion/opinion-greenwashing-threatens-the-paris-agreement-can-we-trust-corporate-climate-pledges-9075664.html",
+      "keywords": [
+        "opinion"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "The Paris Agreement's ambitious goals depend on the active participation of the corporate world. But a pervasive culture of greenwashing – where eco-friendly promises often mask inaction or even deception – is eroding the trust essential for meaningful climate action",
+      "content": "With COP29 scheduled for November this year, it is imperative to revisit the critical role of 196 parties in meeting the Paris Agreement’s goal of limiting global warming to 1.5°C by the end of this century. While major emitting countries play a crucial role in the implementation of the Paris Agreement, it is equally important to seek the contributions of big businesses and large corporations to achieve this target. The increasing pressure to mitigate climate change and transition towards net-zero solutions is driving businesses to meet carbon neutrality targets. Zero-carbon solutions are becoming competitive across various economic sectors. The role of businesses and other organisations in averting the worst impacts of climate change requires greater attention. However, the growing prevalence of greenwashing could pose a significant challenge to these efforts. For consumers, going green is becoming increasingly important. Many young consumers, particularly Millennials and Gen Z-ers, are keen to buy from “ethical” companies and look for “sustainable” labels. Unilever estimates that almost 70 per cent of the company’s greenhouse gas footprint depends on the products consumers choose and whether they dispose of them in a sustainable manner. As consumers become more environmentally conscious, companies are also striving to reduce the carbon footprint of their products, systems, processes, and services across different stages—from research and development to disposal—as part of their environmental management efforts. Pressure from stakeholders, investors, and consumers is driving businesses to implement carbon offsetting programmes to mitigate their environmental impact, thereby demonstrating a commitment to sustainability. At least on the surface. For example, McDonald’s had pledged to reduce greenhouse gas emissions by 30 per cent by 2030, even though the company’s emissions in 2021 were higher than its 2015 baseline. Starbucks eliminated plastic straws from all its stores worldwide with the aim of reducing waste sent to landfills from its stores and manufacturing by 2023; however, the company is now under fire as the new CEO plans to commute to the office by private jet . These targets aimed at mitigating climate change not only demonstrate corporate commitment to sustainability but also offer financial benefits by meeting both consumer and investor demands. Studies have shown that consumers are more likely to purchase green products when they believe that the companies selling those products take green marketing seriously, are knowledgeable about green products, and share their values. Moreover, such moves can attract ESG-conscious investors, who are increasingly looking to invest in companies that prioritise environmental, social, and governance factors in their everyday practices. Today’s investing models are constantly evolving. Investors are not only considering financial returns but also the overall impact of a company’s operations. ” rel=”noopener” target=”_blank”>Environmental, social, and governance (ESG) factors are increasingly getting recognised as essential tools in combating climate change. Investors increasingly demand investment-grade information on climate change and ESG performance to understand the relationship between climate change and investment risk. This compels companies to disclose the potential impact of climate change on their operations and detail the risk management strategies they have implemented to address these challenges. With significant financial resources and innovation, the pressure on leading corporations is greatly intensified to portray themselves as sustainable in the market. To secure ESG credentials, businesses are provoked to resort to means that could be misleading to consumers and investors. The reality behind corporate environmentalism can be disappointing. TerraChoice reported that over 95 per cent of products examined in a study commit one or more of the “sins of greenwashing”, indicating that deceptive marketing practices and false information have long existed in commercial activity. Lately, false and misleading environmental claims have become more common; this practice is known as “greenwashing.” There are various definitions of greenwashing from different perspectives, but the term primarily refers to the marketing practice of making unsubstantiated claims about a product or service as ethical, sustainable, eco-friendly, carbon neutral, or organic. For example, a mining business might emphasise the decarbonising advantages of its solar power plant while downplaying the hazardous chemicals it emits. Greenwashing can be a practice of misleading consumers regarding the environmental practices of an organisation, known as firm-level greenwashing. For example, in response to concerns about growing plastic pollution, McDonald’s decided to switch to paper straws. The company labelled its paper straws as “eco-friendly”, even though they could not be recycled. In this case, the company is using ambiguous terms like “eco-friendly” or “green” without clear definitions or criteria. The Think Pink scandal in Sweden is another significant example of environmental harm due to corporate negligence. Think Pink, once a revered Swedish Waste Management company, was exposed for its illegal practice of dumping 200,000 tonnes of hazardous waste at 21 different locations across Sweden. This toxic dumping released high levels of arsenic, lead, dioxins, copper, zinc, petrol products, and carcinogenic chemicals known as PCBs into the air, water and soil. In this instance, the company collected waste with no intention or ability to recycle it in accordance with legislation. The second type of greenwashing occurs when a company misleads consumers regarding the environmental benefits of a product or service, known as product/service level greenwashing. In 2019, Volkswagen was called out for its “clean diesel” claim. Portraying itself as a leader in sustainability and environmental responsibility, the company claimed that its Diesel TDI engines significantly reduced emissions and met emissions standards. However, in 2014, a study by the International Council on Clean Transportation (ICCT) on modern diesel cars analysed the emissions produced by Volkswagen during normal driving conditions. The study highlighted that Volkswagen diesel cars emitted nitrogen oxide (NOx) at levels seven times higher than their emissions testing. This was because Volkswagen used software known as a “defeat device” to switch to low-emission mode when it detected an emission test situation. Following this, the company experienced a notable decline in sales. As consumer awareness about climate change increases, concerns around greenwashing are also rising. The impact of greenwashing is detrimental to our collective progress toward achieving global climate goals. As no government or organisation can meet the Paris Agreement goals alone, there is a need for collaboration between businesses, governments, and stakeholders. A report published by Baker McKenzie, titled The Race To Net-Zero , indicates that while there is a significant commitment among companies to achieve net zero by 2050, the actual progress may not be as substantial as their pledges suggest. Even though companies like Starbucks are making public commitments to sustainability, whether these commitments translate into meaningful actions is a bigger question. Bhavya Tandon is an Assistant Professor at Jindal Institute of Behavioural Sciences. Views expressed in the above piece are personal and solely that of the author. They do not necessarily reflect News18’s views.",
+      "pubDate": "2024-10-06 10:03:19",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.news18.com/ibnlive/uploads/2024/10/greenwashing-2024-10-5aa90706a06061f5df49a5a315b8e4c8-3x2.jpg",
+      "source_id": "news18",
+      "source_priority": 3864,
+      "source_name": "News 18",
+      "source_url": "https://www.news18.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/news18.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "climate and weather"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "paris agreement"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.23,
+        "neutral": 0.15,
+        "negative": 99.62
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "b0ce832c00b773c4e6cd3be0c8ee0835",
+      "title": "Editorial: Two weeks and too many bodies on the streets. Please reinstate ShotSpotter, Mayor Brandon Johnson.",
+      "link": "https://www.chicagotribune.com/2024/10/06/editorial-brandon-johnson-shotspotter-gunshots-sierra-evans/",
+      "keywords": [
+        "editorials",
+        "opinion"
+      ],
+      "creator": [
+        "The Editorial Board"
+      ],
+      "video_url": null,
+      "description": "Several gunshot victims have lain dead or wounded and unattended for long stretches following ShotSpotter's contract expiration.",
+      "content": "The anger is building as the tragedies are unfolding. It’s been just two weeks since Mayor Brandon Johnson decided in the face of overwhelming opposition within the City Council to end the city’s contract with the company that owns and operates the ShotSpotter gunshot-detection technology. In that brief period, we’ve seen cases of gunshot victims in areas previously served by ShotSpotter discovered by first responders only when they were dead. In those situations, no one called 911 to say they had heard shots fired. Two weeks. And there already have been six instances of what the invaluable crime reporting service, CWBChicago, is now calling “Brandon’s Bodies.” That’s a harsh but justifiable tagline. Johnson took this action, fulfilling a campaign promise he’d made, even as far more data than was available during the election surfaced showing how ShotSpotter saves lives. It does so by alerting first responders to gunshots immediately and — crucially — giving them accurate information on where those shots were fired. In so many documented cases that this effect now is impossible to refute, the technology saves precious time that can make the difference between life and death for victims who’ve initially survived gunshots but otherwise won’t survive without immediate care. On the East Side, mourners last week held a vigil for 19-year-old Sierra Evans, who was shot to death in a dark alley, apparently shortly after midnight on Saturday, Sept. 28, and whose body wasn’t discovered until someone called authorities nine hours later . ShotSpotter sensors detected the shots at 12:06 a.m., but the information wasn’t transmitted to police because Johnson had cut off the service, according to 17th Ward Ald. David Moore, who has led the City Council’s effort to overrule the mayor and preserve the technology. Making these incidents all the more terrible is that the ShotSpotter sensors still are up in the wards in which they’ve been operating for seven years. They’re still detecting gunshots. But now the information isn’t being relayed to Chicago police because there’s no contract. Chicago Tribune reporter Karina Atkins attended the vigil, and the agony of Evans’ family and friends was palpable in her reporting. There was anger as well. Tenth Ward Ald. Peter Chico, another ShotSpotter supporter, said of his slain constituent, “Her lying here in the alley for eight, nine hours is unacceptable. It’s inhumane. If ShotSpotter wasn’t released, it would have alerted the police to get here much more quickly.” Amen to that. Writing on Facebook of Sierra Evans’ death, the Rev. Michael Pfleger, pastor of St. Sabina Church on the South Side who’s long toiled on the front lines of Chicago’s gun-violence epidemic, remarked, “How many more will there be?” How many more indeed? Two aldermen, Moore and Monique Scott, who represents the 24th Ward, including violence-ravaged North Lawndale, called on Johnson to reverse his stand and reinstate ShotSpotter “immediately.” A 14-year-old boy was gunned down last Tuesday night and died on a street in her ward, Scott wrote on Instagram; his body wasn’t discovered until an hour after he was shot. “An ambulance could have been dispatched within minutes, but instead a young man bled out on the street,” she wrote. How did she know the response took an hour? Because the ShotSpotter sensors in her ward still are there and detecting the shots. She reached out to SoundThinking, the company that owns the technology, and they confirmed for her when the shots rang out. As a side note, it’s interesting that SoundThinking hasn’t yet begun dismantling the sensors or stopped collecting data from them despite the expiration of its contract. It’s clear to us the company is keeping the system intact for now and is responding to its aldermanic supporters when they ask for information after a tragedy in hopes of putting pressure on the mayor to change his mind. Some may wonder at SoundThinking’s motivations, but in this case what’s in the interest of the company’s bottom line is aligned with the needs of Chicago and its residents, particularly those in neighborhoods most susceptible to gun violence. Even as Johnson went through on Sept. 22 with his promise to cut ties with ShotSpotter, his administration said it would begin a formal process to “gather recommendations on reliable and efficient forms of first responder technology to ensure immediate attention from first responders in emergency situations.” A mayor who was serious about the issue long ago would have started the process of finding a ShotSpotter replacement instead of waiting until the day he pulled the plug. Finding an equally effective replacement, if one even exists, likely will take months, if not longer. In the meantime, there already is a technology that “ensures immediate attention from first responders in emergency situations.” It’s called ShotSpotter. These two weeks alone have proved Johnson’s move to pull the ShotSpotter plug was both mulish and foolish. The mayor’s explanations for the unpopular decision have bordered on incoherent. But the real motivation appears to be that he promised during the 2023 mayoral campaign to get rid of ShotSpotter, and he felt bound to honor his promise. As Ald. Scott rightly said during the last City Council debate before ShotSpotter went away, “You can’t put a life over a campaign promise.” There was ample room for Johnson to pivot, given the compelling information we have now on ShotSpotter’s benefits that wasn’t available during the campaign. We don’t know for sure if Sierra Evans’ life could have been saved had help arrived in a timely fashion. Nor if any other of “Brandon’s bodies” would have still been living Chicagoans if ShotSpotter were still transmitting. But Evans’ body lay unattended for nine hours in an alley in the neighborhood she called home. That is enraging and the responsibility of Chicago’s mayor. Submit a letter, of no more than 400 words, to the editor here or email letters@chicagotribune.com .",
+      "pubDate": "2024-10-06 10:00:47",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.chicagotribune.com/wp-content/uploads/2024/10/CTC-L-vigil-sierra-evans-05-z-01.jpg?strip=all&w=1400px",
+      "source_id": "chicagotribune",
+      "source_priority": 2123,
+      "source_name": "Chicago Tribune",
+      "source_url": "https://www.chicagotribune.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/chicagotribune.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "accidents"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.1,
+        "neutral": 0.12,
+        "negative": 99.78
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "e07cfc3fb4c581711505b27a050507bb",
+      "title": "Trump and Vance are angry about fact-checking at the debates. Here's what voters think",
+      "link": "https://www.latimes.com/opinion/story/2024-10-06/fact-checking-debate-vice-presidential-republican-jd-vance-robin-abcarian",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Republicans say journalists shouldn't be pointing out their lies. But in the era of post-factual MAGA politics, most voters are grateful for the service.",
+      "content": "Question : When did fact - checking become an outrageous abuse of debate moderator s ’ power? Answer: When MAGA Republicans decided they didn’t like anyone pointing out that they’re lying . In a perfect world, it might be enough for political opponents to correct each other’s prevarications and exaggerations. But Donald Trump’s entry into presidential politics, with his incessant flights of fancy and nonstop lying, have completely changed the dynamics. While other presidential candidates have stretched the truth, only one has kidnapped it, bound and gagged it, put it in a barrel and tossed it into the East River. In the age of Trump, fact-checking has become a necessary service for moderators and other journalists to provide to voters. Take the first and probably only presidential debate between Trump and Vice President Kamala Harris, on Sept. 10. Some Trumpers went bonkers after ABC News’ David Muir corrected one of the former president’s most egregious and dangerous falsehoods — that Haitian immigrants in Springfield, Ohio, were abducting pets and eating them. Muir noted that Springfield’s city manager said there were no credible claims of pets being “harmed, injured or abused by individuals within the immigrant community.” “But the people on television say their dog was eaten by the people that went there,” Trump insisted in the course of a rant that launched a kajillion memes . There is not a single television interview of any Springfield pet owner claiming their cat or dog was stolen and eaten by immigrants. There was a news story about a woman killing and appearing to eat a cat, but she was born in and lived in Canton, about 175 miles away from Springfield. (She was reportedly charged with “disorderly conduct by reason of intoxication,” among other offenses.) In any case, Muir didn’t just have a journalistic obligation to call Trump on his race-baiting lie. He had a moral obligation to do so because that kind of incendiary claim can get people killed. Springfield has yet to recover from Trump’s collective character assassination. In the first and only vice presidential debate last week, Ohio Sen. JD Vance picked up where Trump left off, blaming “illegal” immigrants in places such as Springfield for overwhelming schools and hospitals and driving up the price of real estate. Moderator Margaret Brennan of CBS News correctly noted that the Haitian immigrants Vance was alluding to are, in fact, here legally. Most have what is called temporary protected status , a designation that the Biden administration has expanded. “Margaret,” Vance complained, “the rules were that you guys weren’t going to fact-check, and since you’re fact-checking me, I think it’s important to say what’s actually going on.” He went on for a moment, but what’s actually going on is far too complicated for a debate sound bite, and the moderators soon cut both candidates’ microphones, which was allowed by the rules. Trump supporters blew their lids. “F you CBS — how DARE YOU,” posted the conservative firebrand Megyn Kelly , who was axed by NBC News in 2018 for suggesting that there was nothing wrong with white people wearing blackface for Halloween. Kelly, who herself famously tangled with Trump as a debate moderator for Fox News, also once insisted that Santa Claus cannot possibly be Black because he “just is white.” The F-word, by the way, is apparently Kelly’s go-to response in defense of Trump. After the world’s most popular singer endorsed Harris, Kelly responded, “F you, Taylor Swift.” Elegant! I can’t wait to hear what she says about Bruce Springsteen’s recent Harris endorsement. “‘Fact check’ has become just another word for censorship,” was the headline on a recent New York Post column by Douglas Murray, a senior fellow at the National Review Institute. This makes no sense. Censorship implies suppression of speech before it is aired. In a broadcast debate, a candidate actually has to spout the lie before moderators can correct it. Murray condemned Muir and fellow moderator Linsey Davis for failing to contradict Harris when she claimed that Project 2025 is “a detailed and dangerous plan ... that the former president intends on implementing if he were elected again.” “They must have known that the big Democratic boogey man ‘Project 2025’ has nothing to do with Donald Trump or his campaign,” Murray wrote, presumably with a straight face. This is such bald-faced lie that I would be remiss if I did not fact-check Murray myself. Project 2025 is a 900-page blueprint for a second Trump administration by the right-wing Heritage Foundation. At least 140 former members of Trump’s first administration are involved, CNN has reported, including six former Cabinet secretaries. It calls for, among other things, abolishing the Department of Education and Head Start, ending efforts to combat climate change, undermining the independence of the Justice Department, effectively enacting a nationwide abortion ban, and dismantling what MAGA Republicans call “the deep state,” known to those in the reality-based community as “government.” A recent analysis by the nonpartisan Brookings Institution said that parts of Project 2025 “are more closely aligned with a white Christian nationalist worldview than a traditional, conservative education policy agenda.” Once Project 2025’s radical plan to overhaul the executive branch became widely known and the public reacted negatively , Trump pretended as if he’d never heard of it. And the conservative, Trump-promoting New York Post would very much like you to believe that untruth. As it happens, most Americans think debate moderators should fact-check. According to a June survey by Boston University’s College of Communication (my graduate school alma mater), more than two of every three Americans surveyed said “moderators should point out factual inaccuracies” in candidates’ statements during debates. The survey did find a partisan discrepancy: While 81% of Democrats supported fact-checking in real time, 67% of Republicans did. Gee, why do you suppose that is? @robinkabcarian",
+      "pubDate": "2024-10-06 10:00:40",
+      "pubDateTZ": "UTC",
+      "image_url": "https://ca-times.brightspotcdn.com/dims4/default/273b4e2/2147483647/strip/true/crop/8377x4398+0+594/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fa2%2F2a%2F4bebaee543ed8388db22854fcf9f%2Fhaitian-immigrants-springfield-mood-34507.jpg",
+      "source_id": "latimes",
+      "source_priority": 706,
+      "source_name": "L.a. Times",
+      "source_url": "http://www.latimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/latimes.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.12,
+        "neutral": 0.11,
+        "negative": 99.77
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "fb5dc5d72ed33061792d9e33ca60e9e4",
+      "title": "Harris’s own ballot will include crime measure dividing Democrats in Calif.",
+      "link": "https://www.washingtonpost.com/politics/2024/10/06/kamala-harris-vote-proposition-36-45-california/",
+      "keywords": null,
+      "creator": [
+        "Justine McDaniel, Anumita Kaur"
+      ],
+      "video_url": null,
+      "description": "Kamala Harris’s campaign won’t say how she’ll vote on Proposition 36, which would increase penalties for some crimes, or other California ballot measures.",
+      "content": "As a California voter, Vice President Kamala Harris has decisions to make about state policy measures that will appear on her November ballot — some of which reflect national challenges she could face if elected president. California voters’ ballots will include questions about crime, climate change, health-care funding and other issues, thanks to a state system that gives them a direct role in making policy. This year’s 10 ballot initiatives include a hot-button Republican-supported proposal to allow harsher prison sentences for certain drug and theft offenses, which has split Democrats and exposed party divisions over how to combat public concerns about crime.",
+      "pubDate": "2024-10-06 10:00:37",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https%3A%2F%2Farc-anglerfish-washpost-prod-washpost.s3.amazonaws.com%2Fpublic%2FZ5DVEJ5RIQFCYZOF6I354NQFAI_size-normalized.jpg&w=440",
+      "source_id": "washingtonpost",
+      "source_priority": 163,
+      "source_name": "The Washington Post",
+      "source_url": "https://www.washingtonpost.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/washingtonpost.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "crime",
+        "law and justice"
+      ],
+      "ai_region": [
+        "calif."
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.46,
+        "neutral": 99.14,
+        "negative": 0.4
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "e24b340c0dee4c2b06959f5674130d87",
+      "title": "Letters: The climate crisis is a pressing threat to the economy in Illinois and elsewhere",
+      "link": "https://www.chicagotribune.com/2024/10/06/letters-100624/",
+      "keywords": [
+        "letters to the editor",
+        "opinion"
+      ],
+      "creator": [
+        "Chicago Tribune"
+      ],
+      "video_url": null,
+      "description": "If climate change continues to spiral out of control, we risk leaving people a world of irreparable environmental and economic destruction.",
+      "content": "Chicagoland is more than just a place to live — it’s a vibrant region that blends the energy of city life with the charm of suburban living. From the serene paths of the Morton Arboretum to iconic landmarks such as Millennium Park, it offers a perfect mix of urban excitement and suburban tranquility. Sadly, we are facing significant threats. Rising temperatures, heavier rainfall and fluctuating Lake Michigan water levels disrupt outdoor activities, erode shorelines and damage infrastructure, making the effects of climate change impossible to ignore. Political campaigns often center the economy as a major issue swaying voters, but in today’s political arena, the climate crisis deserves equal attention. With the presidential election approaching, voters must recognize that climate change isn’t just an environmental issue; it’s also a pressing economic threat. Financial impacts rapidly escalate as extreme weather events grow more frequent and costly. Flooding and heat waves in Illinois devastate local businesses, agriculture and tourism. Last year, the U.S. endured a record number of billion-dollar weather events, with disasters occurring every two weeks on average, according to the National Oceanic and Atmospheric Administration . Consequently, insurance companies are raising premiums and withdrawing coverage in some areas, jeopardizing housing affordability. Despite these clear signs, climate change remains a sidelined issue in political discourse. As Nov. 5 nears, Illinois voters must urge elected officials to acknowledge the direct connection between climate solutions and economic stability. Failing to address this causes only greater ecological and financial crises for future generations. A recent study conducted by the global consulting firm ICF predicts that today’s children will face a financial burden of up to $1 million each, stemming from rising living costs and reduced earnings linked to climate inaction. These costs will compound the longer we delay action, straining household budgets as food prices rise and extreme weather devastates farmland. People across the political spectrum care deeply about the future of their loved ones. If climate change continues to spiral out of control, we risk leaving them a world of irreparable environmental and economic destruction. We must advocate for a Chicagoland where our children and grandchildren can flourish, free from the dangers of climate change. This election serves as a crucial reminder to demand action and hold leaders accountable for prioritizing climate solutions — not only for the planet’s survival but also for a prosperous economic future. — Ava Cohen, Elmhurst Coastal North Carolinians may have long been aware of the danger from storms fueled by climate change, but those living in the mountain city of Asheville may not have been expecting what they got from a hurricane that made landfall more than 500 miles away. Helene’s unprecedented destruction came from what scientists call “rapid intensification,” resulting from Gulf of Mexico waters hotter than they’ve ever been. Hot water is the fuel that pumps energy into hurricanes, turning them into monsters like Helene. We’ve known for more than 40 years that excess heat buildup in the atmosphere is caused by increased carbon dioxide from the burning of fossil fuels. Much of that excess heat ends up in the oceans, and the result is depressingly predictable: tropical cyclones that can exceed anything our infrastructure was built to withstand. Our hearts are breaking to see the suffering of the victims. But what about the cost? Some may complain that it is hard-hearted to discuss money when people’s lives have been destroyed. Others may object to raising a “political issue” like global warming while entire communities have been wiped out. Meanwhile, political reporters tell us that voters’ top priority in election season is the economy, with climate change residing far down the list. That should tell us something about how the public fails to make the connection between climate and the economy. Climate change is draining our collective pocketbooks with soaring insurance losses in states hit by storms, floods and wildfires. It’s destroying our infrastructure, which must be rebuilt from tax dollars or government borrowing. It’s raising our health care costs due to pollution and the trauma suffered by victims of these unnatural disasters. The global impact of climate change even affects migration, with desperate people leaving their homelands because they can no longer grow the crops they need to survive. Climate change cannot be dismissed as a “political issue,” no matter how persistently some politicians try to make it one. It’s a harsh reality that we need to face without equivocation and shrugs. We can stop it in its tracks if we can persuade our political leaders that we truly care about it. But it’s also incumbent on our news media to help the public understand the truth, not contribute to their uncertainty and confusion. — Rick Knight, Brookfield We need to review our rivers and flood plan. Climate change is real. There has to be a master plan of river dredging and levee system where flood waters could be diverted from cities, crucial bridges and infrastructure. — Ray and Alena Gust, Deer Park DuPage County is blessed with a rich tapestry of forest preserves that encompass more than 25,000 acres. These public lands enrich our quality of life and provide outdoor recreation areas for citizens to relax, unplug, and enjoy the mental and physical health benefits of nature. On Nov. 5, voters will be asked to support forest preserves in DuPage County. The Forest Preserve District is asking for a small levy increase to preserve more land, maintain and restore existing forest preserves, add recreational amenities such as trails and improve public access. Since the pandemic, attendance at many forest preserves has nearly doubled as people continue to discover the many benefits forest preserves provide to our lives and our communities. With approval from the voters, the Forest Preserve District would be better able to improve air and water quality, purchase land, restore and create more wildlife habitat, improve flood control, expand public safety, and create more places where children can enjoy the wonders of nature. With land prices skyrocketing and the amount of natural land dwindling, we must act now to preserve our last remaining open spaces for our children and our grandchildren before they are lost to development. The cost for the average homeowner in DuPage County would be approximately $3 to $4 per month. The Forest Preserve District is less than 2% of our taxes. If this referendum passes, the amount would still be less than 2%. That’s a small price to pay to keep our forest preserves green and healthy and our air and water clean for present and future generations. The Conservation Foundation asks that voters support our DuPage Forest preserves on Nov. 5 with a “yes” vote. — Brook McDonald, president and CEO, The Conservation Foundation, Naperville Submit a letter, of no more than 400 words, to the editor here or email letters@chicagotribune.com .",
+      "pubDate": "2024-10-06 10:00:36",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.chicagotribune.com/wp-content/uploads/2024/10/ctc-l-Asheville-helene.jpg?strip=all&w=1400px",
+      "source_id": "chicagotribune",
+      "source_priority": 2123,
+      "source_name": "Chicago Tribune",
+      "source_url": "https://www.chicagotribune.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/chicagotribune.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "climate and weather"
+      ],
+      "ai_region": [
+        "illinois,united states of america,north america"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.17,
+        "neutral": 0.1,
+        "negative": 99.74
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "26aa86382dd452f95db91ba5135829df",
+      "title": "Clarence Page: Donald Trump ‘saved’ Obamcare? Now that’s a whopper.",
+      "link": "https://www.chicagotribune.com/2024/10/06/column-donald-trump-jd-vance-obamacare/",
+      "keywords": [
+        "commentary",
+        "opinion",
+        "columnists"
+      ],
+      "creator": [
+        "Clarence Page"
+      ],
+      "video_url": null,
+      "description": "You don't have to be a fact checker to know that Donald Trump and JD Vance are telling whoppers about the Republican record on health care reform.",
+      "content": "Imitation is the sincerest form of flattery, it is said. And in Washington, so is stealing credit. Is there a better example than Republican lawmakers praising themselves for “saving” the federal health care law that they fought long and hard to defeat, repeal and otherwise sabotage? Now we can count both former President Donald Trump and his GOP running mate and ideological “Mini-Me,” Sen. JD Vance of Ohio, in that number. You don’t have to be a TV network fact-checker to know that Trump and Vance are telling whoppers about the Republican record on health care reform. You need only to have been mildly sentient during Trump’s presidency. For example, during the vice presidential debate with Minnesota Gov. Tim Walz, Vance proudly claimed that Trump “salvaged” the Affordable Care Act, informally known as “Obamacare,” and tried to improve it during his time in office. “When Obamacare was crushing under the weight of its own regulatory burden and health care costs, Donald Trump could have destroyed the program,” Vance said . ”Instead, he worked in a bipartisan way to ensure that Americans had access to affordable care.” Oh, please. Whatever the Trump administration may have done to “save” the ACA came after repeated attempts to kill it. On his very first day as president, Trump eagerly signed an executive order to repeal the government-funded Obamacare. That made for a suitable photo-op but had little impact in real life on the complicated behemoth of government health care. More legislative proposals to “repeal and replace” the law followed. They included measures to restructure Medicaid, weaken protections for Americans with pre-existing conditions and shift funding of private insurance away from the poorest and sickest toward those who were healthier and wealthier. Many of us who care about this important issue recall how vigorously Trump worked his signature pen to weaken Obamacare marketplaces, cut spending for advertising and enrollment assistance, and channel funds to different priorities — such as funding videos and social media messaging criticizing the ACA — to please conservatives. “We’ll let Obamacare fail,” Trump said in July 2017, when the repeal bills were struggling. “And then the Democrats are going to come to us.” As it happened, despite widespread public skepticism about the ACA, inspired in no small part by the vigorous efforts of Republicans to trash it, once the law was enacted, millions of uninsured Americans gained access to real health care, and the program’s popularity grew. Republicans now recognize it for the third rail that it is on Capitol Hill: Touch it, and you die. So we have Trump to thank for the success of Obamacare? I can only imagine the mental gymnastics that it took for Vance, a highly intelligent and educated person, to convince himself of that proposition, or at least to pretend he believed it. Mark it down to chutzpah, if you like, but there was a different lie, a much more serious lie, that Vance could not bring himself to enunciate. For most of the night, the more polished and media-savvy Vance seemed to be winning the debate, in my view. But when Walz challenged him to say who won the 2020 election, Vance’s discomfort with his running mate’s growing web of half-truths, fabrications and outright lies seemed to show itself. As simple as the question “Who won the 2020 election?” might be to answer in most galaxies, in MAGA world, it is the defining issue, the shibboleth that separates the true Trump believers from the perfidious RINOs — Republicans in name only. Vance, a rising star in that world, refused to give a direct answer. He ducked, dodged, obfuscated and tried to change the subject. He tried to do a little sidestep, saying he preferred to stay “focused on the future,” an old dodge by politicians who find themselves to be thoroughly uncomfortable with the present. Reeled back toward the question at hand, he tried another dodge. He wanted to answer a question he asked himself about whether Kamala Harris censored Americans from speaking their minds in the wake of the COVID-19 pandemic. No dice. Walz then cut in with one of his most aggressive attack lines of the evening: “That is a damning nonanswer.” Indeed, having dug himself into a hole, Vance figuratively pulled dirt in on top of himself: He declined to rule out challenging the outcome of the 2024 race, a mission Trump tried unsuccessfully to persuade Vice President Mike Pence to complete. Related Articles Commentary | Chris Lamb: Former Vice President Dan Quayle deserves our thanks, not our laughter Now Pence is widely praised for having done the right thing on Jan. 6, 2021. With our constitutional system at stake, he would not lie for Trump. That’s integrity young JD should learn from and emulate, if he can. Submit a letter, of no more than 400 words, to the editor here or email letters@chicagotribune.com .",
+      "pubDate": "2024-10-06 10:00:33",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.chicagotribune.com/wp-content/uploads/2024/10/ctc-l-vance-walz_2d26a4.jpg?strip=all&w=1400px",
+      "source_id": "chicagotribune",
+      "source_priority": 2123,
+      "source_name": "Chicago Tribune",
+      "source_url": "https://www.chicagotribune.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/chicagotribune.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.36,
+        "neutral": 91.37,
+        "negative": 8.27
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "f795da17f89ae4ef59de282dfc855ec3",
+      "title": "Collin May: The lessons we should have learned from October 7",
+      "link": "https://nationalpost.com/opinion/the-lessons-we-should-have-learned-from-october-7",
+      "keywords": [
+        "np comment"
+      ],
+      "creator": [
+        "Special to National Post"
+      ],
+      "video_url": null,
+      "description": "Canada has not taken the threat of Islamic terrorism seriously enough",
+      "content": "On the first anniversary of the October 7 terrorist attack on Israel, it’s worth looking back at the lessons we learned, or should have learned, over the past year. First, it’s always appropriate to remember what happened a year ago. In a surprise attack, Hamas terrorists stormed across the Gaza-Israel border, torturing, raping and killing over 1,200 Israeli citizens and foreign nationals. Hamas also took 251 hostages — some have returned, some have been killed and many remain captive. Taking a broader regional perspective is also helpful. From Israel’s establishment in 1948 to the Yom Kippur War in 1973, each decade saw Israel face down hostile Arab states. Eventually, many of the Arab countries accepted Israel’s existence. With the signing of the Abraham Accords in 2020, many of those same countries agreed to work with Israel, both militarily and economically. At the same time, Israel made numerous attempts to achieve peace with the Palestinians, who repeatedly rejected such overtures. With the imposition of the radical Islamic regime in Iran in 1979, tensions between Israel and the Palestinians were turned into an opportunity for Iran to work through its proxies — Hamas, Hezbollah and others — to destabilize the Middle East generally, and prevent peace between Israel and the Palestinians specifically. In short, this is a regional conflict that’s been inflamed by Iran’s exploitative radicalization of local populations, including the Palestinians. This context is helpful when we consider some of the responses to October 7 in Canada. Among the more disturbing reactions that followed the attack were pro-Palestinian protests in major cities coupled with the establishment of encampments on several Canadian university campuses. Many of the protests took place outside Jewish community centres or near neighbourhoods with large Jewish populations. This was the case with the January protests on an overpass in Toronto , as well as anti-Israel protests in front of a synagogue in Thornhill , Ont., in March. Pro-Palestinian university encampments engaged in even more aggressive tactics, staking out and commandeering sites on campuses from Halifax to Victoria. Students and non-students alike, often supported by a coterie of academic staff, demanded that their respective institutions divest from all companies with ties to Israel and its defence efforts. Eventually, university administrators acted to remove the encampments, either by police intervention or legal injunctions using trespass laws, despite the misleading objections of a gaggle of law professors . Encampment protesters, along with those on the streets, habitually chanted the slogan, “From the river to the sea, Palestine will be free.” This antisemitic invective clearly implies the elimination of Israel. Its justification derives from the notion that Jewish Israelis are somehow “settlers” on the land, and the Palestinians Arabs, by contrast, are the indigenous population. This claim is made even though the Jews have an ancestral claim to the region stretching back centuries before the arrival of the Arab population, with archeological evidence dating to at least to the time of the First Temple and the Assyrian (722 BC) and Babylonian (597 BC) invasions. When confronted with the charge that their chants are antisemitic, protesters adamantly argue that opposing Zionism — and even the very existence of the Israeli state, the only democracy in the region — does not constitute antisemitism. Again, they turn to the justification that Israel and Israeli Jews form an illegitimate “settler society.” By making these claims, the protesters narrow and diminish the concept of antisemitism, to the point that virtually any hostile action against Jews is now seen as legitimate. Even the ultimate antisemitic act of the Holocaust is thrown back at Israel, with claims that its defensive actions against Hamas constitute a “genocide.” The old lesson we need to remember here is that this is exactly what antisemitism is. Since the time of the medieval blood libel, Jews have been repeatedly dehumanized by those who diminish their humanity while expanding the scope of their imaginary treachery. Today in Canada, as elsewhere in the West, the return of antisemitism is justified by the ideology popularly called “wokeism,” though it is better labelled as “progressive illiberalism.” This doctrine was born in our universities from a mixture of postmodernism, post-colonialism, critical theory and neofeminism. Over the last decade, it has made immense gains throughout our society. It now expresses itself explicitly through theories of anti-racism, gender ideology and in the settler-colonial narrative that’s used to attack Israel. Ultimately, it should not surprise us that this same ideology was at the intellectual heart of the Islamic Revolution that took Iran from a relatively free secular society to an oppressive Islamist dictatorship in 1979. And now, in Canada, in addition to promoting antisemitism, it has contributed to the weakening of our immigration system, which has allowed terrorist operatives to use Canada as a staging ground . As for Islamist ideology, Canada permits groups like Samidoun, which is banned in Germany, to actively support pro-Hamas rallies across the country. The alliance between progressive illiberalism, settler-colonial ideology and the Islamism promoted by the Iranian regime is undermining Canadian politics and society, while threatening our Jewish and Muslim communities. While Israel and many of the Arab states understand the true nature of the threat to their countries, Canadians have a few lessons yet to learn on this solemn anniversary. National Post Collin May is a senior fellow with the Aristotle Foundation for Public Policy , a lawyer, a former chief of the Alberta Human Rights Commission and the author of numerous articles on the psychology, philosophy and social theory of cancel culture.",
+      "pubDate": "2024-10-06 10:00:32",
+      "pubDateTZ": "UTC",
+      "image_url": "https://smartcdn.gprod.postmedia.digital/nationalpost/wp-content/uploads/2024/10/CP168621043.jpg?h=216&quality=90&sig=2GYJHZ9jonNDmU4_qb704g&strip=all&w=288",
+      "source_id": "nationalpost",
+      "source_priority": 12209,
+      "source_name": "National Post",
+      "source_url": "https://nationalpost.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/nationalpost.png",
+      "language": "english",
+      "country": [
+        "canada"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "national security"
+      ],
+      "ai_region": [
+        "canada,kentucky,united states of america,north america"
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.33,
+        "neutral": 99.3,
+        "negative": 0.37
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "2868243637a98da8da86754bc49d5ea8",
+      "title": "Michael S. Johnson: Political centrism has been getting a second look. Why?",
+      "link": "https://www.chicagotribune.com/2024/10/06/opinion-centrism/",
+      "keywords": [
+        "commentary",
+        "opinion"
+      ],
+      "creator": [
+        "Michael S. Johnson"
+      ],
+      "video_url": null,
+      "description": "In the final days of this tumultuous 2024 campaign season, centrism doesn’t look so squishy after all.",
+      "content": "Political centrism has a bad name. In fact, it has a lot of bad names. Centrists have been denigrated as squishy, weak in the knees, guilty of being sellouts — and worse, unpatriotic. However, the idea of centrism has been getting a second look recently. Americans are feeling like they are imprisoned for life in the politics of extremism and rage, and they’ve become more desperate to break out. Voters are just exhausted, according to many surveys. Americans have tried Democratic control of the government. They’ve tried Republican control. They’ve also tried divided government. Very soon, they will toy with either “democratic socialism” under Kamala Harris or anarchical libertarianism and untethered randomness under Donald Trump. Especially in the final days of this tumultuous 2024 campaign season, centrism doesn’t look so squishy after all, does it? Politically, it has gone from being considered a sedative to a stimulant. Centrist themes are popping up in conversation; institutional organizations are adopting it as a cause. Political leaders are holding seminars and conferences on the subject. Commentators and pundits are giving it ink and airtime. Cases in point: A recent article in The Atlantic by Yuval Levin, “ What’s Wrong with Congress (And How to Fix It) ,” advocates for “cross-partisan coalition building,” among other centrist-leaning congressional reforms. South Dakota Rep. Dusty Johnson wrote recently, “We need thoughtful discourse among engaged citizens, not emotional attacks from enraged partisans,” in introducing his “six paths to civility.” Current and former senators and members of Congress have created the movement Our Republican Legacy to restore the party to its founding principles, which were more traditionally conservative and centrist in their direction. But what is centrism? Is it an ideology, a composite of ideas and beliefs that comprise a political philosophy? Or is it a methodology, simply a form of decision-making in a polarized environment? Centrism gets its energy and appeal from civil discourse, a knowledgeable citizenry and a distinct set of political values. It is also a pattern of decision-making that puts greater emphasis on pragmatism, bipartisanship, incrementalism, reason and tolerance for divergent beliefs. It is a lot more than splitting the difference between two contrasting pieces of legislation. Centrism is often an entirely fresh approach to a problem. It is founded on reasoned judgment rather than emotional belligerence. It is an antidote for extremism and a path toward making politics and government work again. It is not a third party, but it could provide the framework for one. You don’t have to sacrifice your principles to engage in centrist governance. All of that doesn’t mean centrism is a panacea. Far from it. In politics as in much of life, panaceas don’t exist. There are no cure-alls in an imperfect system created and run by imperfect human beings. But centrism may be a way out of the political and social mess we’ve gotten ourselves into. Consider illegal immigration. The issue was, due to neglect, a problem that turned into a partisan, political, humanitarian, economic, constitutional and international crisis. There was no need for that. Now it has become a catastrophe to resolve. Workable solutions have been on the table over the decades, but because of polarized politics, only a rare few have been enacted. There are dozens of other issues that suffer the same fate as immigration, among them Social Security and Medicare, the need to upgrade the energy grid and the rising tide of public debt. They, too, have become so complex that no resolution seems possible. Those at the extremes have argued that a centrist approach is just settling for half a loaf, but in the 1980s, President Ronald Reagan and House Leader Bob Michel, for whom I served as chief of staff, were fond of reminding us that the alternative was no loaf at all, which is what we are left with more often today. They and other reasoned and reasonable leaders, most notably one-time Senate Majority Leader Howard Baker Jr., understood the machinations of a divided Congress and engaged in the kind of coalition building that gave America a working government. It seems House Speaker Mike Johnson and Democratic House Leader Hakeem Jeffries have shopped at the same bakery. On several occasions, they have been able to create an atmosphere in which bipartisan cooperation, pragmatic negotiations and sensible solutions are possible. So have others at the committee and subcommittee levels. Good leaders know that serving the public interest first also means recognizing that the fears, anxieties and the sense of abandonment that have exhausted millions of Americans are legitimate sensibilities that need assuaging. They just want the work of government to get done and their lives made better, which is the focus of “Fixing Congress: Restoring Power to the People,” a book I co-authored with Jerome F. Climer. Centrism is a solution. An ample number of current and future political leaders could assume the mantle of centrist leadership. It is up to Americans, the media and political institutions to draw them out, encourage that concept and give them platforms for advancing a new way to conduct the nation’s business. And when? Hopefully, within my lifetime. I and so many others are getting too old for this. Michael S. Johnson spent 47 years serving in the White House, Congress, private sector media relations and advocacy, as well as a number of nonprofit organizations dedicated to improving the work of the legislative and executive branches. Submit a letter, of no more than 400 words, to the editor here or email letters@chicagotribune.com .",
+      "pubDate": "2024-10-06 10:00:31",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.chicagotribune.com/wp-content/uploads/2024/09/ctc-2170346666_204716278.jpg?strip=all&w=1400px",
+      "source_id": "chicagotribune",
+      "source_priority": 2123,
+      "source_name": "Chicago Tribune",
+      "source_url": "https://www.chicagotribune.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/chicagotribune.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "elections",
+        "government"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 1.96,
+        "neutral": 12.17,
+        "negative": 85.87
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "cf5550b62e1f1cbbcd80732bab47f39e",
+      "title": "Election denial returns as focus with Vance’s ‘non-answer,’ new Trump indictment details",
+      "link": "https://www.latimes.com/politics/story/2024-10-06/vp-debate-indictment-revive-election-denial-as-core-question-for-voters",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Former President Trump's denial of the 2020 election results swung back into focus in the 2024 presidential race after it was raised as an issue by Gov. Tim Walz at the vice presidential debate and by Special Counsel Jack Smith in a new federal court filing.",
+      "content": "In the waning minutes of Tuesday night’s vice presidential debate , Gov. Tim Walz hit on a question that has become central to the 2024 presidential race — and to America’s political future more broadly. Walz, who is Vice President Kamala Harris’ running mate, was sparring with Sen. JD Vance, former President Trump’s running mate, over the Jan. 6, 2021, attack on the U.S. Capitol by Trump supporters intent on overturning the 2020 election of President Biden. Walz called the attack “a threat to our democracy,” and one driven by Trump’s refusal to admit defeat. “He is still saying he didn’t lose the election,” Walz said to Vance. “I would just ask that: Did he lose the 2020 election?” Vance, unwilling to buck Trump’s false claim that the last election was stolen, said he was “focused on the future.” “That,” Walz said, “is a damning non-answer.” The next day, the issue was again magnified for voters when a federal judge in Washington released a new court filing from Special Counsel Jack Smith, in which Smith provided the most comprehensive accounting to date of what prosecutors allege was a sweeping criminal conspiracy by Trump and his allies to not just deny the election, but also subvert it. “When [Trump] lost the 2020 presidential election, he resorted to crimes to try to stay in office,” Smith wrote. Taken together, the two episodes served as a stark reminder of something Democrats have been eager for voters to focus on in the current race: the former president’s alleged willingness to undermine the will of voters in the last one. State elections officials, independent elections experts and most Americans agree today that Biden’s victory over Trump was legitimate. Despite substantial efforts to do so by Trump’s backers, no one has produced evidence of substantial voter fraud or election irregularities, and experts have concluded there were none. Democrats have condemned Trump for his dishonesty and impeached him in the House for inciting the Jan. 6 attack, and Smith and prosecutors in Georgia have indicted Trump for his alleged scheme to remain in power illegitimately. Trump, meanwhile, has maintained his position that the election was stolen from him, and many Republicans still believe the same. A Washington Post-University of Maryland poll in December, for example, found that 62% of U.S. adults said they believe Biden was legitimately elected. While 91% of Democrats believe it, just 31% of Republicans do, the survey found. Trump has downplayed the Jan. 6 attack and promised to pardon those convicted in the fray. He also has begun already to cast doubt on the legitimacy of the upcoming election. As voters begin casting their ballots in the current race, political experts say they will be weighing a host of issues, including the economy, immigration and reproductive rights. But particularly after the last week, they also may be thinking about Trump’s election denial and the fallout from it, the experts said — and for good reason. “It’s not just about denying 2020,” said Bob Shrum, director of the Center for the Political Future at USC. “It’s about whether or not you are going to uphold the fundamental precepts of democracy.” “It should be a major issue for voters,” said Richard L. Hasen, director of the Safeguarding Democracy Project at UCLA Law, “because, really, it was an unprecedented attempt to steal an election.” More than just denial After Smith’s lastest filing was released, Trump went into a rage on his social media platform Truth Social, accusing the Justice Department of “COMPLETE AND TOTAL ELECTION INTERFERENCE” and saying he did “NOTHING WRONG.” Trump called Smith’s case against him a “SCAM,” and suggested that the timing of the filing so close to the election broke with Justice Department rules for avoiding unnecessary political influence. The timing is in part due to Trump’s own efforts to fight the case. It was on an earlier trajectory before Trump appealed to the Supreme Court — which found in an unprecedented ruling in July that presidents enjoy broad immunity for actions taken as part of their official duties. Smith’s latest filing is a response to that ruling and a detailed articulation of why Trump’s actions to subvert the 2020 election were taken not in his official capacity as president, but in his private capacity as a losing political candidate — and therefore not something for which he enjoys immunity. The filing details how Trump allegedly “laid the groundwork for his crimes” well before the election even occurred, including by telling advisors that he would claim victory before ballots were even counted, and how he continued to push his election fraud narrative long after he was told, repeatedly, that no such fraud existed. Smith wrote that Trump conducted a “pressure campaign” targeting Republican leaders, election officials and election workers in states he had lost in an effort to change the outcomes there — such as when he told Georgia Secretary of State Brad Raffensperger that he wanted to “find 11,780 votes,” a margin that would have won him that state. When those efforts failed, Smith wrote, Trump personally set into motion and monitored a brazen plan to send fake slates of electors to Washington to cast state electoral votes for him instead of Biden, who had won them. He continued his “stream of disinformation” on Jan. 6, Smith wrote, falsely suggesting Pence could unilaterally halt the certification of Biden’s victory and motivating his supporters to storm the Capitol. Hasen said all Americans should read the filing to get a “good picture of the depths to which Trump was willing to go to try to turn himself from an election loser to an election winner.” Most important, Hasen said, is the number of times it shows Trump ignored evidence that he lost. “Just in terms of the morality of it, to know that the election was not stolen and to keep claiming it and undermining American democracy is incredibly dangerous and deserving of condemnation,” Hasen said. Why it matters Trump claims that a vast majority of Americans feel the 2020 election was rigged. It was not, and they do not, according to polling. However, a sizable minority do feel that way, and many leading Republicans have done little to dispel the notion. During the debate, for example, Vance downplayed the historic threat of the Jan. 6 attack and suggested that Trump had adhered to democratic standards by ceding power to Biden at his Jan. 20, 2021, inauguration. “It’s really rich for Democratic leaders to say that Donald Trump is a unique threat to democracy when he peacefully gave over power on January the 20th, as we have done for 250 years in this country,” Vance said. In fact, Trump refused to attend Biden’s inauguration, making him the first president in 150 years to skip one. Walz accused Vance of advancing “revisionist history,” and the next day told reporters that it should be “disqualifying” for Vance to not acknowledge Biden’s victory. Experts said such election denial is indeed a serious issue, and a dangerous thing for Trump and Vance to advance. Sophia Lin Lakin, director of the Voting Rights Project at the American Civil Liberties Union, said her organization is involved in dozens of legal actions across the country in advance of next month’s election, from groups that she said are “setting the stage for this narrative that there is something nefarious at play, that there is something questionable, that the results of the election aren’t valid.” The litigation is clearly part of a broader strategy, largely on the political right and clearly borne out of what happened in 2020, to “launder” legitimacy for later election denial claims through the legal system, Lakin said. Sean Morales-Doyle, director of the Voting Rights Program at the Brennan Center for Justice at New York University, agreed. “The effort to overturn the outcome of the 2020 election and everything that followed did kind of spawn a whole election denier movement that has proliferated and has been funded and has been pushed forward by not just Trump but a number of other prominent figures, and it has led to a situation in 2024 where there is a much broader, more coordinated effort to undermine faith in our elections, to sow distrust, and to set the stage to subvert the outcome of elections in 2024,” Morales-Doyle said. That said, both he and Lakin said there is room for hope. Among other things, prominent election deniers who ran for election offices in swing states in 2022 were resoundingly defeated , they noted. And some states have passed new laws since 2020 to shore up election systems and make frivolous challenges to election results more difficult. Morales-Doyle said he wants people to be aware of election denial and the threats it poses, but also to not get discouraged by it — because the evidence shows American election systems are strong, and thinking otherwise based on misinformation only serves to weaken them. “The best way to respond to these unprecedented attacks is to buy into democracy, to participate, to go and vote,” he said. Shrum said Vance was clearly “talking to an audience of one, Donald Trump,” when he wouldn’t answer Walz‘s question about the 2020 election, but that his doing so didn’t do Trump any favors. “Trump has convinced a substantial part of his base, of the people who are voting for him, that there was something wrong with the election, but I don’t think Americans generally think that,” Shrum said. “In fact, it drives voters away.” Polling shows that many Americans take a dim view of election denial. One recent Monmouth University poll , for example, found that 58% of Americans believed that an unwillingness to accept election outcomes was a “major problem” for the country. Republican elections officials are among those expressing concerns. Late last year, the Johns Hopkins SNF Agora Institute and Gallup released polling that showed that only 40% of Republicans were very or somewhat confident in the accuracy of U.S. elections. Along with the polling, a group from Johns Hopkins and the conservative-leaning think tank R Street Institute released a set of “core principles” for restoring that trust — including having conservative leaders publicly affirm election system security and champion policy changes that build trust. “As Republican state election officials, we believe in the power of citizens to choose their leaders freely and fairly, and we have faith in the integrity of election systems in place to carry out the voters’ will,” said the group’s members — including Raffensperger of Georgia, Idaho Secretary of State Phil McGrane, Kansas Secretary of State Scott Schwab and Utah Lt. Gov. Deidre Henderson. “We are also worried. Our democracy cannot hold if its citizens do not trust that elections accurately reflect the will of the people.” Charles H. Stewart, a political science professor and director of the MIT Election Data + Science Lab, said many Americans already understand — at least in broad strokes — that Trump denied the election and worked to reverse the results. Stewart doesn’t expect Smith’s latest filing or Walz’s debate efforts to swing voters in any major way, but said they “may keep the issue more visible” and increase the “enthusiasm” for voting among those most appalled by Trump’s actions. Hasen said he hopes more Americans work to understand the full implications of Trump’s election denial, and vote accordingly. “The question of whether we will have peaceful transitions of power,” Hasen said, “should be one of the top things on every voter’s list of considerations.”",
+      "pubDate": "2024-10-06 10:00:27",
+      "pubDateTZ": "UTC",
+      "image_url": "https://ca-times.brightspotcdn.com/dims4/default/8e490f9/2147483647/strip/true/crop/4446x2334+0+315/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2Fc7%2Fc5%2Ff98288bd400d935d78fc473df9c9%2Felection-2024-debate-61631.jpg",
+      "source_id": "latimes",
+      "source_priority": 706,
+      "source_name": "L.a. Times",
+      "source_url": "http://www.latimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/latimes.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "elections"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.22,
+        "neutral": 5.01,
+        "negative": 94.77
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "f8976445d34343a7792b6eb5d2422bab",
+      "title": "Cool weather, hot races forecast for November",
+      "link": "https://www.latimes.com/politics/story/2024-10-06/2024-election-trump-harris-presidential-race-senate-house",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "The Trump-Harris race will come down to the seven states that decided the last presidential race. The fight for control of the House and Senate also looks to be close.",
+      "content": "Today we discuss cliff-hangers, the Founding Fathers and legerdemain. Let’s get to it. Who’s going to win the presidential race? I haven’t a clue. So what good are you? That’s a question readers ask all the time. What can you say about the race? The contest will come down to seven or so highly competitive states and, maybe, the one electoral vote in Nebraska’s 2nd Congressional District, which is anchored in the Omaha-Council Bluffs metropolitan area. The key states are Arizona , Georgia , Michigan, Nevada , North Carolina , Pennsylvania and Wisconsin. In short, the battlegrounds that determined the outcome of the 2020 election . Why the same states over and over? Why not, say, California? Pull up your chair for a quick civics refresher . The presidential race is determined not by the winner of the popular vote but which candidate takes a majority — 270 votes — in the electoral college . Some might recollect that two of our last four presidents — George W. Bush and Donald Trump — claimed the White House despite losing the popular vote. That’s outrageous! Can’t help you there. Blame the country’s founders. They wrote the rule book. Go on. Most states, including the biggies like California, Texas, Florida and New York, are locked into their partisan preferences. (California and New York are solidly Democratic while Texas and Florida — once the nation’s premier swing state — lean Republican.) Given those inclinations, Kamala Harris can pretty much bank on 226 electoral votes. Trump can count on 219. That leaves 93 up for grabs in those seven states. What was that about Omaha? Just about every state awards their electoral votes on a winner-take-all basis. Nebraska is one of two — Maine being the other — that has a hybrid system awarding some electoral votes to the winner of the statewide vote and others based on the winner of each congressional district. There’s a not-inconceivable scenario in which Harris finishes with 269 electoral votes and needs the one vote from Nebraska to avoid a tie in the electoral college, which would send the election to the House to decide. In that case, Trump would almost certainly prevail, as each state’s delegation would have one vote and Republicans are expected to control more delegations than Democrats. Wasn’t there a recent effort to boost Trump by changing the law in Nebraska? Yes there was and it failed, thanks to a single upstanding Republican state senator from Omaha, Mike McDonnell, who refused to go along. Which was a good thing. Why is that? If you thought 2020 was fraught — with all the wrangling over pandemic-induced changes to the balloting process — or consider the 2000 contest to have been divisive — with a partisan Supreme Court vote delivering the White House to George W. Bush after Florida effectively ended in a tie vote — imagine if this election was decided by some last-minute Republican sleight of hand. What about control of Congress? That also appears up for grabs, though Republicans have a distinct advantage in the fight for the Senate. Because of that French word you used? Legerdemain? No. Because of mathematics. There are 34 Senate races across the country. Democrats are defending 23 seats, Republicans 11. Worse for Democrats, several of the seats they’re trying to hang onto are in states Trump carried in 2020 — several of them rather handily. Right now, Democrats hold a bare Senate 51-49 majority, which includes four independents who caucus with them. The party has ceded West Virginia, where one of those independents, Joe Manchin III, is retiring and where Trump won by nearly 40 percentage points in 2020. That puts the Senate at 50-50. Democrats could keep control if they win the White House, since the vice president casts the tie-breaking vote. But that would require the party to win every one of the seats now being fiercely contested. And how’s that going for Democrats? Not bad — but maybe not good enough. At the moment, Democrats appear to be holding their own in Arizona, Nevada and Pennsylvania. But Michigan, Ohio and Wisconsin look to be much closer. And Democrat Jon Tester appears to be in grave danger in Montana, a state Trump carried four years ago by 16 percentage points. Tester has a history of winning tough races , but this one is his toughest yet. So it’s all gravy for Republicans? Pretty much. Democrats would love to flip GOP-held seats in Texas and Florida and help take out Sen. Deb Fischer in Nebraska, where independent Dan Osborn is making a strong run. But all three states are virtually certain to back Trump in November and it’s getting increasingly difficult for Senate candidates to swim against the partisan tide. In 2016, for the first time since the direct election of U.S. senators began a century earlier, every Senate race went the same way as the presidential contest; if Trump won a state, the seat went Republican. If Hillary Clinton prevailed, the seat went Democratic. That pattern held in 2020 with the exception of Maine, where Joe Biden prevailed and Republican Susan Collins was reelected to her fifth term. What about control of the House? That’s also too close to call. Republicans currently hold a razor-wafer-tissue-thin (your choice!) majority of just four seats. All 435 seats are on November’s ballot, but the fight for the majority will come down to roughly two dozen contests. Several of those are in California, which has become one of the country’s prime congressional battlegrounds after voters in 2008 took the power to draw district lines away from self-interested lawmakers. Democrats hope to flip Republican-held seats in Orange County , the Central Valley , the L.A. suburbs and Palm Springs . They’re also on the offense in New York, where the GOP made significant gains in the 2022 midterm election. But Republicans aren’t just hunkered down trying to preserve their bare majority. GOP targets include a handful of Democratic-held seats in California as well as incumbents in Colorado, New Mexico, Ohio, Pennsylvania and elsewhere. What do the poll s say? Ignore ‘em. Even the best are nothing more than an educated guess. No one knows what’s going to happen. Honest. Instead of obsessing over the latest higgledy-piggledy, do something useful. If you’re undecided, do some research. If you’re committed to a candidate, and have the time and inclination, volunteer to knock on doors or make phone calls. Above all, be sure to vote and do so in time to make certain your ballot is counted.",
+      "pubDate": "2024-10-06 10:00:25",
+      "pubDateTZ": "UTC",
+      "image_url": "https://ca-times.brightspotcdn.com/dims4/default/39b73cc/2147483647/strip/true/crop/1600x840+0+185/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F27%2Ffe%2Fafdabafb4cb6948368a9521248be%2Fla-po-trump-harris-diptych.jpg",
+      "source_id": "latimes",
+      "source_priority": 706,
+      "source_name": "L.a. Times",
+      "source_url": "http://www.latimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/latimes.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "elections"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "senate"
+      ],
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 96.1,
+        "neutral": 3.33,
+        "negative": 0.57
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "67a66add9f0e1ec2948beb40cfad1d3f",
+      "title": "Raymond J. de Souza: Israel is building a new Middle East — one that counters Iranian threat",
+      "link": "https://nationalpost.com/opinion/raymond-j-de-souza-2",
+      "keywords": [
+        "np comment"
+      ],
+      "creator": [
+        "Father Raymond J. de Souza"
+      ],
+      "video_url": null,
+      "description": "A history of short wars and long consequences",
+      "content": "The history of the modern state of Israel is one of short wars with long consequences. For the first fifty years or so, until the millennium, that worked out largely to Israel’s benefit. In the year since the brutal attacks — replete with cold-blooded murder, rape and hostage-taking — by Hamas, Prime Minister Benjamin Netanyahu has tried to wring long consequences from the wars against Hamas, Hezbollah and possibly Iran. This column argued last month that the strategic priority for Israel should be the expansion of the Abraham Accords; the creation of a new Middle East in which Israel and its Arab neighbours, including Saudi Arabia, would be able to contain Iran and its proxies, Hamas and Hezbollah, and find some sort of workable governance solution for Gaza and the West Bank. It was the vision that Netanyahu presented at the United Nations just weeks before the Hamas attacks. The Israeli government, in the recent attacks on Hezbollah, has taken a different approach. Netanyahu’s government is seeking to contain Iran and its proxies on its own by force. If that is successful, it is reasonable to expect that Iran’s Arab neighbours would be grateful for Israel degrading the Iranian threat. That thinking appeals to Israel’s history of short wars with long consequences. Israel was attacked at its birth by its Arab neighbours. Israel prevailed in that initial war, 1947-48, and enlarged its frontiers. The initial UN plan for Israel put the new state in precarious borders. The war resulted in a larger Israel, more defensible. The Arab powers would have been better off if they had agreed to the original UN plan, as Israel had done. Then came the Suez crisis of 1956. Israel took the Sinai Peninsula, but was forced to withdraw by the Americans. Nevertheless, the war resulted in the opening of the Straits of Tiran between Sinai and Saudi Arabia, a critical strategic gain for Israel. The Six-Day War in 1967 was a triumph of biblical proportions for Israel, vanquishing Egypt, Syria and Jordan, and taking Sinai, Gaza, West Bank, Golan Heights and East Jerusalem, including the Old City. Israel had never controlled more territory, or been more secure. Too powerful perhaps, as the triumph of 1967 led a significant number of Israelis to dream of a greater Israel. Perpetual rule over Palestinians would be the price of that. In 1973, Egypt and Syria attacked on Yom Kippur and came close to victory in the initial days of surprise and shock. (The Hamas attacks last year were timed to mark the fiftieth anniversary of the Yom Kippur War.) Israel rallied and repelled the Egyptians. The aftermath of the war marked an earthquake in Israel. Prime Minister Golda Meir was gone in 1974, and the long-ruling Labour Party was defeated in 1977. In 1979, then Egyptian President Anwar Sadat, the same who launched the attack on Yom Kippur, made peace with Israel, a peace that has endured forty-five years. Israel invaded Lebanon in 1982 to eject the Palestine Liberation Organization of Yasser Arafat. Israel got the PLO out, but ended up staying itself, a long and costly fight that did not end until 2000. The northern border was secure. The Gulf War of 1991 to eject Saddam Hussein from Kuwait did not engage Israeli forces, but it changed the regional dynamics. The PLO had backed Saddam, angering the Saudis and the Gulf states, and when he was defeated, the Palestinians were in a weak position. The 1993 Oslo Accords followed. The PLO would recognize Israel and accept partial sovereignty in the West Bank and Gaza. An Israeli-Jordan peace treaty would follow in 1994. The short-war-long-consequence pattern delivered an Israel at peace with its neighbours, secure in expanded borders and with an apparently feasible solution to the Palestinian question. What followed after 2000 was a never-ending series of wars without lasting consequences: the second intifada (2000-2005), the second Lebanon war (2006), four wars in Gaza after the Hamas takeover (2008, 2012, 2014 and 2021). Iran created an ongoing threat to Israel on its borders. Conflict in Gaza and Lebanon was persistent, and the Israeli Defense Forces were operating constantly in the West Bank to prevent a Hamas takeover there. The Abraham Accords of 2020 created by diplomacy, not war, new dynamics for peace and security. Might an Arab-Israeli alliance against a common threat, Iran, leading to lasting consequences without recourse to war, short or otherwise? That the Iran/Hamas attacks and hostage-taking of October 2023 would bring forth a massive Israeli response was known. Iran/Hamas calculated that such losses would be acceptable in order to forestall the new Middle East that would emerge if Saudi Arabia joined the Abraham Accords. Netanyahu’s gamble is that Israel can achieve through war against non-state proxy actors what it achieved in previous wars against neighbouring states. It is not obvious that it will be so. State armies can be defeated in battle. Proxy terror networks are never totally eliminated. A year out from October 7, the same question from 1947 remains. Will Israel’s neighbours accept that it should exist in peace and security? The consequence of repeated wars led an increasing number of Arab states to agree. Iran has opted instead for a long proxy war against Israel. This first anniversary should not create confusion that this war is only a year old. The proxy war has been going on for 18 years, since the second Lebanon war in 2006. It’s been a long war with few consequences — yet. National Post",
+      "pubDate": "2024-10-06 10:00:22",
+      "pubDateTZ": "UTC",
+      "image_url": "https://smartcdn.gprod.postmedia.digital/nationalpost/wp-content/uploads/2024/10/2176635714.jpg?h=216&quality=90&sig=x6HhV0PIXuiPSLfH7eHkOw&strip=all&w=288",
+      "source_id": "nationalpost",
+      "source_priority": 12209,
+      "source_name": "National Post",
+      "source_url": "https://nationalpost.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/nationalpost.png",
+      "language": "english",
+      "country": [
+        "canada"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "conflicts & war",
+        "government"
+      ],
+      "ai_region": [
+        "middle east",
+        "israel,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 17.19,
+        "neutral": 81.73,
+        "negative": 1.08
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "8b056f4b0352b66346b8f73da5218c37",
+      "title": "Barbara Kay: October 7 erupted an antisemitism volcano that's still spewing hate",
+      "link": "https://nationalpost.com/opinion/barbara-kay-october-7-erupted-an-antisemitism-volcano-thats-still-spewing-hate",
+      "keywords": [
+        "np comment"
+      ],
+      "creator": [
+        "Barbara Kay"
+      ],
+      "video_url": null,
+      "description": "The year since the terror attacks has seen a swell of anti-Israel media subversion, extermination propaganda and outright violence",
+      "content": "One year on, Jews in the West have had time to process the primary shock of Hamas’s pogrom in southern Israel and the secondary shock of hateful blowback against Israel and Jews worldwide. We learned in a span of hours that where lethal antisemitism is concerned, “never again” was for us a mere objective, not a guarantee against those consumed by a mission of “again and again and again.” But should we have been so surprised? Gaza was riddled with tunnels, their sole purpose to prepare for a war of extermination against Jews. The West’s intellectual “tunnels” have been operating in plain sight for many years. Under the aegis of “Israel Apartheid Week” and the Boycott, Divestment, Sanctions (BDS) movement, vicious anti-Zionism has been a campus fixture since 2001, when the World Conference against Racism in Durban, South Africa erupted into a “ festival of hate ” against Jews. After decades of aggressive Israel-bashing, Palestinians have been elevated throughout western educational systems to the summit of intersectional victimhood. Those indoctrinated in this hierarchy over the last 25 years consider it a duty and a virtue to demonize Zionism as an original historical sin. October 7 popped the cork on that long-seething volcano. Throughout the past year, we’ve seen hostage posters vandalized, Jewish schoolchildren bullied, Jewish-owned businesses attacked, Jewish neighbourhoods tormented, Jewish institutions burned and shot at. Downtowns are routinely plagued by foul-mouthed protesters shrieking mantras that call for Israel’s elimination. University campuses have tolerated long-term encampments, Judenrein except for Jews who earn their laissez-passer with a denunciation of Israel. It’s getting worse . On Saturday in Toronto, a demonstration featured Hezbollah flags, banners extolling violence against Israel and portraits of the (recently eliminated) Hezbollah leader and arch-terrorist Hassan Nasrallah. Last Sunday in Montreal, a band of black-garbed protesters attacked Concordia University and smashed several downtown store windows. During a foot chase, one even threw Molotov cocktails in the direction of police, an ominous escalation. More ominous in my opinion: Post-October 7, we saw the emergence at rallies and on western social media of the image of a Jewish star being dumped into a trash can accompanied by the words “Keep the world clean” — for years a meme favoured by Hamas, inspired by the Nazis. The Nazis used the image and words in their propaganda to normalize the idea that Jews, like vermin, were a hygiene threat requiring drastic action to preserve the nation’s health. That such messages are tolerated in the public forum points to a growing acceptance of outright eradicationist antisemitism as a “respectable” opinion to hold, even among supposedly enlightened people in fields such as mental health, as evidenced by anti-Zionist blacklists targeting Jewish members of the profession. No institution has played a more pernicious role in enabling Jewish scapegoatism than western media. In long 2014 articles for The Atlantic and Tablet , Canadian-Israeli journalist Matti Friedman famously chronicled the mutations in reportage and commentary that reflected “a change not in the news but in the newsroom,” when political activism usurped the principle of objectivity in Israel coverage. In a Free Press piece last month, Friedman reprises his ever more relevant theme of near industry-wide subversion of professional journalism by anti-Zionist activism. Through the cherry-picking of facts, deliberate exclusion of necessary context and “reversing cause and effect,” left-leaning media determined that Israel was to be portrayed as a country “whose motivations could only be malevolent, and one responsible not only for its own actions but also for provoking the actions of its enemies.” Media like the BBC and the CBC don’t make “errors,” Friedman says, and sending them “corrections” on their anti-Israel coverage won’t help. “Those aren’t errors,” Friedman writes. “They’re the result of the press doing a different job correctly.” The “different job” he refers to is the perpetuation of the myth that Jews are inextricably bound up with the human rights evils of our era — racism, apartheid and colonialism. There is no question in Friedman’s mind that over the last decade, “the growing derangement about Israel and the plummeting credibility of the press ... are related phenomena.” To conclude this October 7 first-year anniversary column on a personal note, I cannot overstate my gratitude, in these turbulent and dismaying circumstances, for my affiliation with the National Post, one of the few national newspapers in the West that has never succumbed to the far-left mind virus that battens on scapegoatism. Freedom to vigorously defend Zionism and Israel in my columns has been an enormous comfort to me over the past year. I owe this freedom to our editor-in-chief, Rob Roberts. Rob has demonstrated intellectual independence and moral courage in standing up to many of the irrational mass delusions of our era, including anti-Zionism. And so it is fitting that on Oct. 15, Rob — also representing Postmedia, which has backed his editorial policy to the hilt — will receive an award for his professional integrity from the Canadian Antisemitism Education Foundation. It will be my privilege to present him with this much-deserved laurel. Kol ha kovod, Rob. All honour to you. National Post kaybarb@gmail.com X.com: @BarbaraRKay",
+      "pubDate": "2024-10-06 10:00:20",
+      "pubDateTZ": "UTC",
+      "image_url": "https://smartcdn.gprod.postmedia.digital/nationalpost/wp-content/uploads/2024/10/0503-city-mcgill.jpg?h=216&quality=90&sig=GDvrn6yDMw_4jDAr7RMV6w&strip=all&w=288",
+      "source_id": "nationalpost",
+      "source_priority": 12209,
+      "source_name": "National Post",
+      "source_url": "https://nationalpost.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/nationalpost.png",
+      "language": "english",
+      "country": [
+        "canada"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "terrorism"
+      ],
+      "ai_region": [
+        "israel,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.11,
+        "neutral": 0.08,
+        "negative": 99.81
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "6a550911d2a0a4c87b77471ca9226217",
+      "title": "Democrats try ‘Trump-proofing’ their states ahead of Election Day",
+      "link": "https://www.washingtonpost.com/politics/2024/10/06/democratic-states-trump-election-day-2024/",
+      "keywords": null,
+      "creator": [
+        "Reis Thebault"
+      ],
+      "video_url": null,
+      "description": "From Washington to Massachusetts, blue states are rushing to protect their policy priorities from the reach of a potential Trump administration",
+      "content": "Washington and Massachusetts are stockpiling abortion pills. California is cutting climate deals directly with automakers. Colorado is rushing to protect the right to same-sex marriage. And attorneys general across the country are marshaling legal resources and privately plotting courtroom strategies. From the West Coast to the East, blue states are preparing for the possibility that former president Donald Trump wins reelection in November by attempting to shield their policy priorities from the reach of a future Trump administration.",
+      "pubDate": "2024-10-06 10:00:14",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https%3A%2F%2Farc-anglerfish-washpost-prod-washpost.s3.amazonaws.com%2Fpublic%2FA6LSVX23VXXQFI4H4L3LMNXFHY_size-normalized.JPG&w=440",
+      "source_id": "washingtonpost",
+      "source_priority": 163,
+      "source_name": "The Washington Post",
+      "source_url": "https://www.washingtonpost.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/washingtonpost.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "elections",
+        "government"
+      ],
+      "ai_region": [
+        "washington,connecticut,united states of america,north america",
+        "washington,indiana,united states of america,north america",
+        "washington,utah,united states of america,north america",
+        "washington,new jersey,united states of america,north america",
+        "washington,virginia,united states of america,north america",
+        "washington,missouri,united states of america,north america",
+        "massachusetts,united states of america,north america",
+        "washington,iowa,united states of america,north america",
+        "washington,illinois,united states of america,north america",
+        "washington,georgia,united states of america,north america",
+        "washington,west virginia,united states of america,north america",
+        "washington,maine,united states of america,north america",
+        "washington,kansas,united states of america,north america",
+        "washington,pennsylvania,united states of america,north america",
+        "washington,united states of america,north america",
+        "washington,north carolina,united states of america,north america",
+        "washington,vermont,united states of america,north america"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 16.57,
+        "neutral": 2.03,
+        "negative": 81.4
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "e5ddbe25c1006b2166b3b728f73f339c",
+      "title": "Jack Smith's filing shows that Trump is already starring in a Jan. 6 sequel",
+      "link": "https://www.latimes.com/opinion/story/2024-10-06/jack-smith-donald-trump-tanya-chutkan-jan-6-insurrection",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Special counsel Jack Smith's filing is a disaster foretold: Trump in 2024 is chillingly replicating the lies that led to the 2021 insurrection.",
+      "content": "The unsealing last week of the government’s case against Donald Trump for trying to overturn his 2020 election loss was a gift to 2024 voters, reviving attention to perhaps the single biggest reason he shouldn’t be restored to office. New and sordid details, in particular from former Vice President Mike Pence, freshen what is mostly a familiar account of Trump’s post-election plotting to stay in power. It’s damning, if not so completely as a trial would have been (and, I’d wager, a conviction), had Trump not succeeded in his delaying tactics all the way to the oh-so-friendly Supreme Court. But the filing made public Tuesday in Washington’s federal court is valuable, too, as a reminder of what Trump was doing in the months before the 2020 election. Chillingly, his activities back then — falsely alleging myriad ways Democrats would cheat, suggesting he’d challenge the result if he lost to Joe Biden — parallel to what he is doing now as he campaigns against Kamala Harris. Here’s how special counsel Jack Smith opens the narrative against Trump: “Although his multiple conspiracies began after election day in 2020, the defendant laid the groundwork for his crimes well before then.” Smith goes on: “He refused to say whether he would accept the election results, insisted that he could lose the election only because of fraud, falsely claimed that mail-in ballots were inherently fraudulent, and asserted that only votes counted by election day were valid.” Voters, be forewarned. We’re watching a sequel. And they’re usually worse than the original. The government provides examples of Trump’s 2020 campaign antics that are all too familiar now. There was his response in a July 2020 interview, when Fox News’ Chris Wallace (now at CNN) repeatedly asked if he would accept the results of the election. He’d “have to see,” the then-president said. “It depends.” Just last Tuesday, a reporter in battleground Wisconsin asked the election-denying candidate, “Do you trust the process this time around?” Trump: “I’ll let you know in about 33 days.” In his debate against Biden, Trump said, after the moderator’s third attempt at asking the question, that he’d accept the outcome if it were a “fair and legal and good election.” Just as in 2020 and 2016, Trump always has an “if.” Translation: “ If I win.” Let’s pause to remember American Politics B.T. (Before Trump): We campaign reporters never thought to ask a presidential candidate, or a contender for any office, if they’d accept the election result. And if we had, I daresay no serious politician would have suggested they wouldn’t. Back to the parallels between pre-election 2020 and 2024. Smith’s filing against Trump recalled that throughout his 2020 campaign, he told the MAGA faithful just what he told a national TV audience at the Republican National Convention that year: “The only way they can take this election away from us is if this is a rigged election.” Four years later, at a rally in Erie, Pa. , last Sunday, Trump ranted that Democrats were like criminals in “the way they cheat at elections.” In a recent, and typical, fundraising email, he told backers, “Kamala ordered her Silicon Valley henchmen to censor free speech & rig the election.” And his response to the release of the government filing? “They rigged the election.” Then there’s Trump’s lies about mail-in ballots. In July 2020, the Smith filing notes, “despite having voted by mail himself earlier that year,” he tweeted that because of mail-in votes, “2020 will be the most INACCURATE & FRAUDULENT Election in history.” Trump now echoes that lie at nearly every rally and in frequent social media posts, even as his party desperately tries to get its members to vote early by mail — including at rallies where Trump assails the practice. He recently told reporters that mail-in ballots are “a whole big scam,” and the same day posted that Democrats were (legally) getting Americans living overseas to vote by mail, adding, “Actually, they are getting ready to CHEAT!” Trump repeatedly condemns Democrats for “election interference.” He lies that they’re getting noncitizen migrants to vote, a vanishingly rare occurrence that is against federal law. NBC News on Thursday reported more than a dozen examples of Trump’s evidence-free allegations of fraud before a single vote was cast. Déjà vu all over again. Thanks should go to Smith and to U.S. District Judge Tanya Chutkan, who unsealed most of his filing. The revival of the story of Trump’s 2020 election subversion and incitement of a bloody insurrection underscores America’s predicament: Unless Trump is defeated in the 2024 election, not only will he likely never be held criminally accountable for his alleged crimes, but , restored to the presidency, he’d be more emboldened to ignore all guardrails of democracy and the rule of law. On Thursday, Never Trump stalwart and exiled Republican royalty Rep. Liz Cheney appeared onstage with Harris in Ripon, Wis., the pre-Civil War birthplace of the antislavery Republican Party in 1854. “In this election, putting patriotism ahead of partisanship is not an aspiration. It is our duty,” Cheney said. “I ask all of you here and everyone listening across this great country to join us. I ask you to meet this moment. I ask you to stand in truth, to reject the depraved cruelty of Donald Trump.” I’m not so naive as to think any words will move Trump’s devoted followers. And yet we can hope that such sentiments as Cheney’s can influence others. Because Trump must not only be defeated, but beaten so decisively that he cannot plausibly contest the election’s outcome. @jackiekcalmes",
+      "pubDate": "2024-10-06 10:00:13",
+      "pubDateTZ": "UTC",
+      "image_url": "https://ca-times.brightspotcdn.com/dims4/default/85a7eb9/2147483647/strip/true/crop/3625x1903+0+306/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F4f%2F7f%2F98ac698644d988a951bc3ff02cc6%2Fhttps-delivery-gettyimages.com%2Fdownloads%2F1981171387",
+      "source_id": "latimes",
+      "source_priority": 706,
+      "source_name": "L.a. Times",
+      "source_url": "http://www.latimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/latimes.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "accidents"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.11,
+        "neutral": 0.1,
+        "negative": 99.8
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "f7c320231a288592beb35f2c575d622f",
+      "title": "How much will the Supreme Court matter in the 2024 election?",
+      "link": "https://www.latimes.com/opinion/story/2024-10-06/election-donald-trump-kamala-harris-supreme-court",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Controversial culture war issues are on the docket, but here's the big question: Will the justices play a decisive role in electing Kamala Harris or Donald Trump?",
+      "content": "What role, if any, will the Supreme Court play in the November presidential election? That is the crucial, unknowable question, as the court returns from its summer recess on Oct. 7. Will this be an election like 2000, when the Supreme Court in effect decided the outcome with its decision in Bush vs. Gore? Or will this be like 2020, when the court had no decisive role in the outcome of a very close presidential election? So much turns on whether the election comes down to one state, as it did in Florida in 2000, and whether there are constitutional issues for the court to resolve that could make it the final arbiter. Also, how much will the future composition of the Supreme Court matter to the voters in November? The most long-lasting legacy of any president is his or her picks for the Supreme Court and the federal bench. If Hillary Clinton rather than Donald Trump had won the 2016 presidential election, and if she had chosen three justices rather than Trump, the law would be dramatically different: Roe vs. Wade would not have been overruled, the court would not have ended affirmative action in higher education, there would not have been the dramatic expansion of gun rights, and the court would not have imposed dramatic new limits on the power of administrative agencies. This election, too, could matter for the composition of the court for decades to come. If Trump wins, and there is a Republican Senate, Justices Clarence Thomas and Samuel A. Alito Jr., both in their 70s, are likely to retire. This would let Trump pick two justices who could be in their late 40s and early 50s, cementing an ultraconservative majority for a long time. Conversely, if Kamala Harris wins, and there is a Democratic majority in the Senate, Justice Sonia Sotomayor might step down to allow a younger liberal-leaning jurist to take her place. As the justices begin the new term, there are 28 cases already on the docket. This is about half of the number that will be decided between now and July; the remainder will be granted review from early October and mid-January. Of the cases so far, it’s striking how many touch on issues related to American culture wars — emotional issues that deeply divide conservatives and liberals. For example, United States vs. Skrmetti involves the constitutionality of a Tennessee law that prohibits gender-affirming care for transgender individuals under age 18. The case will matter enormously for transgender youth in the United States. A recent study concluded: “As of May 2024, 39% or 117,600 trans youth aged 13-17 are living in the 25 states that have passed bans on gender-affirming care.” In more general terms, it will reveal how this court thinks discrimination against transgender individuals should be treated under the Constitution. Free Speech Coalition vs. Paxton involves a Texas law that requires websites where “more than one-third” of the content is “sexual material harmful to minors” to “verify that an individual attempting to access the [covered] material is 18 years of age or older.” These websites also must warn viewers about the harms of exposure to pornography. The U.S. Court of Appeals for the 5th Circuit upheld the age verification requirement but struck down the warning labels. The Supreme Court in the past has allowed restrictions on access by minors to sexually explicit materials but never limited adults. In 2011, the justices stressed the 1st Amendment rights of minors and declared unconstitutional a California law prohibiting them from having, renting or purchasing violent video games without parental consent. Guns, too, are an issue where the country is deeply split. Garland vs. Vanderstock involves the legality of a federal prohibition against ghost guns — privately produced guns without serial numbers. The case concerns a 2022 Bureau of Alcohol, Tobacco, Firearms and Explosives regulation. The appeals court, the conservative 5th Circuit again, struck down the regulation as exceeding the bureau’s authority. The case does not involve the 2nd Amendment, but rather a government agency’s authorization to make rules. Although there certainly is a compelling law enforcement need to set boundaries on ghost guns, the Supreme Court is both sympathetic to gun rights and hostile to administrative regulations. And for the first time in several years, the court has a major case about the death penalty on its docket. What makes Glossip vs. Oklahoma unusual is that Oklahoma has conceded error and acknowledged the state’s violation of the Constitution in not disclosing key evidence to the defense in the trial of Richard Glossip, who is now on death row for commissioning a murder. Oklahoma agreed that Glossip should get a new trial, but the state Court of Criminal Appeals refused to allow it, despite requests from the prosecution and the defendant. The Supreme Court is being asked to agree or disagree that Glossip’s execution should go forward. The division among the justices on the Supreme Court, with six conservative justices appointed by Republican presidents and three liberal justices appointed by Democratic presidents, will matter in many of these cases. It may also be the deciding factor in the November presidential election. Erwin Chemerinsky is a contributing writer to Opinion and the dean of the UC Berkeley School of Law.",
+      "pubDate": "2024-10-06 10:00:13",
+      "pubDateTZ": "UTC",
+      "image_url": "https://ca-times.brightspotcdn.com/dims4/default/b93cb9b/2147483647/strip/true/crop/5537x2907+0+392/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F50%2F93%2F1b080b0f428aab1f7be278037845%2Fsupreme-court-02859.jpg",
+      "source_id": "latimes",
+      "source_priority": 706,
+      "source_name": "L.a. Times",
+      "source_url": "http://www.latimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/latimes.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "elections",
+        "government"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "supreme court"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 4.97,
+        "neutral": 16.61,
+        "negative": 78.42
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "9f3dda9c374417b8c7df980cff5d90a0",
+      "title": "New York company unveils 100-foot 'Vote for Trump' sign, gets sued by Democratic mayor",
+      "link": "https://www.foxnews.com/politics/new-york-company-unveils-100-foot-vote-trump-sign-sued-democratic-mayor",
+      "keywords": [
+        "fox-news/person/donald-trump",
+        "article",
+        "fox news",
+        "8ec61f04-3e7d-530e-b7f4-6dc5047b4c84",
+        "fox-news/politics/elections",
+        "fox-news/us/us-regions/northeast/new-york",
+        "fox-news/politics",
+        "fnc",
+        "fox-news/politics/state-and-local"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "Sticker Mule CEO Anthony Constantino is fighting with the city of Amsterdam, New York, to display a 100-foot \"Vote for Trump\" sign visible from the New York State Thruway.",
+      "content": "Sticker Mule CEO Anthony Constantino spoke to Fox News Digital about his efforts to post a large ‘Vote for Trump’ sign on top of a building in Amsterdam, New York, and the mayor's efforts to stop it. A 100-foot wide \"Vote for Trump\" sign in upstate New York is stirring controversy after the City of Amsterdam claimed it's a big, glowing code violation. Sticker Mule CEO Anthony Constantino told Fox News Digital he installed the sign on top of the old Fownes glove factory to symbolize the return of American manufacturing and what he calls \"the triumph of the underdog against insurmountable adversity.\" \"I think that's what President Trump did. He triumphed against massive adversity. He's still doing that with bullets flying by his head,\" Constantino said. \"And we triumph too. Nobody thought we could build a massive sticker company or a massive tech company in upstate New York.\" But his company now faces adversity in the form of legal action by the City of Amsterdam to prevent the \"displaying\" and \"illumination\" of the pro-Trump sign, which is visible from the New York State Thruway. TRUMP'S RETURN TO BUTLER, PENNSYLVANIA, SITE OF FIRST ASSASSINATION ATTEMPT, IS ‘GUTSY,’ SUPPORTERS SAY Sticker Mule installed a 100-foot \"Vote for Trump\" sign on the tallest building in Amsterdam, N.Y. (Sticker Mule) According to court documents, the sign violates city code because it \"presents a dangerous distraction and impacts traffic flow,\" especially at night when it is illuminated. Local officials allege Sticker Mule was informed it would need a permit and several variances to install the sign in August, but the company never responded before the sign went up Oct. 1. Constantino and his legal team contest the city's claims. The CEO believes Amsterdam's Democratic Party-endorsed independent mayor is anti-Trump and has vowed to fight a temporary injunction that requires the sign to be covered up. Amsterdam Mayor Michael Cinquanti did not respond to requests for comment. Dressed in a black T-shirt that said \"Trump For Peace,\" Constantino describes Sticker Mule as \"the internet's fastest growing printing company\" with 1,200 employees in 39 countries. His online business began by making stickers but has since expanded to print T-shirts, buttons and magnets and even operates its own online store platform, Sticker Mule Stores. He is proud to report that Sticker Mule has created nearly 1,000 manufacturing jobs in the U.S. over the past few years. \"I like to move fast and do interesting things,\" Constantino told Fox News Digital. Success in business gave him the means to reinvest in his hometown of Amsterdam, and the Fownes factory was one of several buildings he bought and restored, filling them with machines and workers. FORMER NFL STAR AND TRUMP SUPPORTER ANTONIO BROWN JOINS VOTER REGISTRATION EFFORT IN KEY SWING STATE Sticker Mule CEO Anthony Constantino speaks at an event in New York. (Paul Antonelli) \"Fownes was a glove manufacturer that left my hometown when I was 2 years old in 1984,\" he said, explaining that Amsterdam was \"decimated\" by job loss when the factory, with its iconic \"Fownes\" sign, closed its doors. \"This Fownes sign for years symbolized American manufacturing going to China,\" Constantino said. Now, the $150,000 \"Vote for Trump\" sign sits in its place, heralding a new era of American manufacturing jobs . The impossible-to-miss sign attracted \"major interest,\" according to Constantino. To celebrate its installation, his political action committee, StickerPAC, plans to host a \"Trump Sign Lighting Party\" Oct. 7 at 6 p.m. A news release about the event says UFC superstars Henry Cejudo, Kelvin Gastelum and Tracy Cortez will join Constantino to speak and support the \"historic event.\" According to a representative for Constantino, House Republican Conference Chair Rep. Elise Stefanik, R-N.Y., is also expected to speak at the event. Stefanik's office did not respond to a request for comment. \"The enthusiasm just went through the roof. We've got three UFC superstars that wanted to come see it. We've got people that want to come from all over the state of New York, people that want to fly in or drive in from all over the country, really, to see the sign get lit up,\" Constantino said. ‘TIGHTEST RACE SINCE 2000’: HARRIS-TRUMP SHOWDOWN HITS FINAL STRETCH UNTIL ELECTION DAY The \"Vote for Trump\" sign in Amsterdam, N.Y., has been covered after a court-issued injunction. (Paul Antonelli) But the festivities may be cut short by legal action from Amsterdam. On Oct. 3, the city code enforcer sent a notice of violation to Sticker Mule that gave the company two days to remove the \"Vote for Trump\" sign. The city also requested an injunction from the Supreme Court of the State of New York to prevent the sign from being displayed. \"The affidavit claims, without evidence, that the city will suffer irreparable harm because the sign is a dangerous distraction for drivers due to its novelty and the fear that people will stop to take pictures of it,\" said Sal Ferlazzo, general counsel for Sticker Mule. \"The court, based solely on the city's presentation and without any opportunity for me to respond, did initially grant a preliminary injunction and restraining order.\" A hearing is scheduled for Oct. 8 at 10 a.m. Until that time, the court ordered Sticker Mule to refrain from \"displaying any sign and/or illumination of any sign on the roof of 26 Elk Street.\" On the advice of legal counsel, Sticker Mule has temporarily covered up the pro-Trump sign to comply with the court order. TRUMP-VANCE TICKET HAS DONE COMBINED 63 INTERVIEWS SINCE AUGUST COMPARED TO 24 FOR HARRIS-WALZ The illuminated \"Vote for Trump\" sign at 26 Elk St., Amsterdam, N.Y. (@stickermule | Instagram) \"I think it's deeply disturbing,\" Constantino said of the city's action. \"I brought nearly a thousand jobs to my hometown, which was decimated when the Fownes company and other companies left. And I'm trying to do something positive, exciting for the community.\" He suggested Mayor Cinquanti has \"TDS\" — Trump derangement syndrome — and is fighting the sign for political reasons. \"They do know that they are in violation,\" Cinquanti told The Daily Gazette. \"They've been cited, and we'll just let that play out as we would with any code violation.\" The mayor, who according to the newspaper has previously called Trump his least favorite president in American history, insisted the city's objections to the sign are about safety, not politics. \"I don't care what the sign says, but distracting the attention of drivers on the freeway is something that needs to be looked at, and that's what we're doing,\" he told the outlet. CLICK HERE TO GET THE FOX NEWS APP \"Any sign that represents a hazard to the safety of drivers concerns me,\" he added. \"Anyone who violates city codes is an issue that we deal with, and we are in the process of dealing with it and trying to alleviate what I consider a hazard.\" Regardless of the city's objections, Constantino said Monday's event will continue as planned, \"featuring UFC Superstars, Free Fish Filets, Cybertrucks and a beautiful Trump sign.\" \"The sign is a beautiful sign whether you're a Democrat or Republican. The sign is a big win for upstate New York, a big win for Amsterdam, New York. It's a beautiful and uplifting sign. And I think it's going to become a major tourist attraction, especially if Trump wins,\" Constantino said. \"It's going to be a unifying event. I'm inviting Democrats and Republicans alike to come watch me unveil the sign. We don't want all the division going on in this country anymore.\" Chris Pandolfo is a writer for Fox News Digital. Send tips to chris.pandolfo@fox.com and follow him on Twitter @ChrisCPandolfo.",
+      "pubDate": "2024-10-06 10:00:12",
+      "pubDateTZ": "UTC",
+      "image_url": "https://a57.foxnews.com/static.foxnews.com/foxnews.com/content/uploads/2024/10/931/523/sticker-mule-instagram-trump-sign.jpg?tl=1&ve=1",
+      "source_id": "foxnews",
+      "source_priority": 404,
+      "source_name": "Fox News",
+      "source_url": "https://www.foxnews.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/foxnews.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": [
+        "new york,united states of america,north america",
+        "new york,new york,united states of america,north america",
+        "amsterdam,new york,united states of america,north america"
+      ],
+      "ai_org": [
+        "vote for trump",
+        "sticker mule"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.11,
+        "neutral": 0.12,
+        "negative": 99.77
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "2395bbb38837359a775dcb788932b50c",
+      "title": "Neither candidate's disaster response was great, but Trump's was truly awful",
+      "link": "https://www.latimes.com/opinion/letters-to-the-editor/story/2024-10-06/neither-candidates-disaster-response-was-great-but-trumps-was-truly-awful",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Trump, who is criticizing Biden's and Harris' disaster response, \"is the undisputed chief agent for fake science,\" says a reader.",
+      "content": "To the editor: No praise is due to Vice President Kamala Harris or former President Trump for dropping by a disaster zone before an election. Empathy will only carry us so much before we realize that infrastructure as well as structure are in bad shape. (“ Missiles, a hurricane and a strike: How 3 crises are shaping the presidential race ,” Oct. 2) Thank you, Vice President Harris, but exactly how will you deliver real aid? On the other side, attacking the elected government for failure when the hurricane is barely gone is a cheap, blatant and very boring trick performed on cue by Trump to fire up people who are hurting. In a tragic way, it is comical for a climate-change denier like Trump to call out his opponent for causing death and destruction due to alteration of the global environment. He is the undisputed chief agent for fake science and a failed COVID-19 response that killed thousands of Americans. The winner of the worst response to a hurricane: Donald Trump. Michael Gross, Woodland Hills .. To the editor: The Times printed a photo of Trump visiting hurricane-ravaged areas on its front page. Of course, he visited the area not to help the people, but for political reasons. He used his visit to make false claims about the federal response to the crisis. During his term as president, he diverted funding from federal disaster response. Project 2025, the controversial blueprint for the next Republican administration, calls for restructuring the Federal Emergency Management Agency to reduce aid to states in need. Separately, he stated that he would revoke legal status for Haitian immigrants in the U.S. and said we should have a day of violence to rid our country of crime. But by all means, print a photo of him above the fold showing him supposedly delivering aid to the area. April Wilson, Riverside",
+      "pubDate": "2024-10-06 10:00:06",
+      "pubDateTZ": "UTC",
+      "image_url": "https://ca-times.brightspotcdn.com/dims4/default/b23f027/2147483647/strip/true/crop/4543x2385+0+324/resize/1200x630!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F97%2Fe3%2F215015e1495eb81e15730b760a4b%2Felection-2024-harris-00230.jpg",
+      "source_id": "latimes",
+      "source_priority": 706,
+      "source_name": "L.a. Times",
+      "source_url": "http://www.latimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/latimes.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "natural disasters"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.11,
+        "neutral": 0.08,
+        "negative": 99.81
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "aa923d7dd844e54956e272cf8961d610",
+      "title": "Kamala Harris, Donald Trump and America's long history of racist disinformation",
+      "link": "https://www.salon.com/2024/10/06/kamala-harris-donald-and-americas-long-history-of-disinformation/",
+      "keywords": [
+        "history",
+        "commentary",
+        "racism",
+        "donald trump",
+        "media",
+        "ida b. wells",
+        "journalism",
+        "news &amp; politics",
+        "race",
+        "kamala harris",
+        "all salon"
+      ],
+      "creator": [
+        "Joe Hayden"
+      ],
+      "video_url": null,
+      "description": "Donald Trump's racial insults belong to a lengthy history of false, fantastical and contradictory claims",
+      "content": "-- Shares Facebook Twitter Reddit Email In the spring of 1892, Ida B. Wells had had enough. The 29-year-old Memphis editor was sick of reading about the lynchings of Black Americans and angry about the bogus excuse often used to justify them: fraudulent claims of sexual assault — “the same old racket,” as she called it. “Nobody in this section of the country believes the old thread-bare lie that Negro men rape white women.” And so she set out to convince other Americans. Wells collected data for hundreds of cases, investigated dozens herself and even hired private investigators, and carefully tracked and catalogued how those cases were reported. What she found was a concerted newspaper campaign of false propaganda that encouraged lynching and then excused or covered it up. Wells muckraked the failings of the press, in other words. And her exposés of racist lies form a crucial part of the history of disinformation in America. That’s not the way I originally conceived such a history, though. In trying to chronicle media malpractice in America for a book, I expected to cover infamous hoaxes, such as the New York Sun’s batmen-on-the-moon series in 1835 or the New York Herald’s fictitious zoo escape of 1874, which featured rampaging grizzlies and bloodthirsty panthers. I also anticipated writing about conspiracy theories, like the various “Satanic panics” and QAnon, along with notorious examples of partisan deception, whether in the 1790s or today. But in doing the research, I kept seeing cases like Wells’ critique, and that changed my entire frame of reference. Related Donald Trump and JD Vance: Decoding a double dose of right-wing racism The most consequential part of the history of disinformation in America, it soon became obvious, isn’t the episodic lying driven by pranking or profit. Instead, it’s the longstanding “bipartisan” myths that have targeted marginalized groups: women, people of color, immigrants, LGBTQ communities, labor unions, the poor and others. These lies have proved far more enduring and much more lethal. Disinformation about Black people is one of the oldest traditions in America. It turns out that, for centuries, what white people have said and written about communities of color was false, fantastical, unfair and often self-contradictory. This is evident in the many oxymoronic myths spread about African Americans. One of the first of those was that slavery was benign and enslaved persons were generally well-treated. Why, then, did so many try to escape, protest or revolt? Other lies asserted that Black people weren’t as smart or chaste or hardworking as white people, even though many examples to the contrary abounded, and even though the entire Southern plantation economy was sustained by forced labor under the most brutal conditions. For generations after slavery, white writers routinely disparaged the Black family, claiming it wasn’t as strong or as wholesome as their own. They called African-American men “beasts,” portraying them as dangerous predators barely able to contain their impulses to rape, pillage and kill. This was the infuriating hypocrisy that drove Wells to set the record straight. She was perhaps America’s first great investigative journalist. But the lies didn’t end in the Jim Crow era. They persisted through the 20th century, rearing their heads anytime racists needed to push back against the progress of civil rights. And they had many skillful practitioners. For centuries, what white people have said and written about communities of color was false, fantastical, unfair and often self-contradictory. Mississippi Gov. Ross Barnett was one of the most convincing liars of his day. In the wake of the Supreme Court's 1954 Brown v. Board of Education decision, he gave a televised speech announcing his intention to fight the ruling. Barnett insisted that no school in the state would integrate — and couldn’t be forced to, he claimed, because Mississippi’s sovereign power superseded the federal government’s. That’s not what he told the public, however. “Of course I know interposition is invalid,” he admitted. “I’m bluffing. But you wait and see. I’ll bluff the Justice Department into backing down.” Arkansas Gov. Orval Faubus also practiced doublespeak. After reversing his public position on segregation several times, he snapped to reporters: “Just because I said it doesn’t make it so.” That same lack of truthfulness becomes clear in the media's sensationalistic coverage of drug use. Long before the manufactured myth of the “crack baby” epidemic of the 1980s, which was altogether unsupported by evidence, many newspapers in the early 20th century peddled the narrative that cocaine was the African-American drug of choice. “Negro cocaine fiends” was a fearsome trope the press loved to brandish, even though the vast majority of cocaine users then were white. For too many editors, the combination of Black criminality and exotic substances was a potent elixir, something that Bureau of Narcotics Commissioner Harry Anslinger exploited in his openly racist public relations strategy and selective enforcement. Anslinger was one of the greatest con men of that century, and racist canards were his stock in trade. We need your help to stay independent Subscribe today to support Salon's progressive journalism Disinformation about people of color never disappeared. It has flourished on talk radio, on Fox News and on websites like Newsmax and Breitbart, which for a time featured a “Black Crime” menu option and regularly traffics in stories about “illegals,” the “border crisis” and “migrant crime.” Outlets with no journalistic ethics don’t just happen to dabble in these fictions; they bank on them. Disinformation is part of their business model. Into this fraught media ecosphere strolled Donald Trump. From his “birther” conspiracy theory, alleging that Barack Obama wasn’t born in the United States, to his insults targeting Muslims, Mexicans, Black Lives Matter activists and others, Trump milks racial animosity regularly, hawking lies about people of color at nearly every rally. He, too, is a kind of racketeer. His attacks on Vice President Kamala Harris often descend to insults about her identity — that she’s not Black or too Black or in some way not sufficiently American — but mostly they lump her in with the myths so often told about African Americans, essentially that they’re deficient in some way and thus not equal to white citizens. Want a daily wrap-up of all the news and commentary Salon has to offer? Subscribe to our morning newsletter , Crash Course. Only in America can a white man convicted of multiple felonies try to paint a Black former prosecutor as a criminal. Only in America can a trust-fund heir with numerous bankruptcies and and an endless list of lawsuits accuse a former McDonald’s employee of privilege. Only in America can a “businessman” with financial ties to the Russian mob suggest others are corrupt. When Alexander Hamilton contemplated recruiting African-American soldiers to fight in the Revolutionary War, he recognized the resistance that would ensue from many white people. As he lamented, “The contempt we have been taught to entertain for the blacks makes us fancy many things that are founded neither in reason nor in experience.” Those delusions die hard. Too many white Americans today still fail to see clearly, and continue to chase phantoms instead of reality. If Ida B. Wells were alive today, she’d be fighting for facts and challenging the dishonest schemers. So should we all. Read more about Harris, Trump and the 2024 race Kamala Harris challenges Donald Trump's masculinity \"Nasty\": Trump badmouths immigrants, Harris and dead supporter in foul fundraiser tirade \"The same old, tired playbook\": Harris baits Trump into being his grumpiest, weirdest self By Joe Hayden Joe Hayden, a professor of journalism at the University of Memphis, is the author of \" A History of Disinformation in the U.S. \" MORE FROM Joe Hayden Related Topics ------------------------------------------ Commentary Donald Trump History Ida B. Wells Journalism Kamala Harris Media Race Racism Related Articles Advertisement:",
+      "pubDate": "2024-10-06 10:00:05",
+      "pubDateTZ": "UTC",
+      "image_url": "https://media2.salon.com/2024/09/donald_trump_kamala_harris_2170583672_2170583834.jpg",
+      "source_id": "salon",
+      "source_priority": 3715,
+      "source_name": "Salon",
+      "source_url": "https://www.salon.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/salon.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "world",
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": [
+        "america,limburg,netherlands,europe"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.1,
+        "neutral": 0.09,
+        "negative": 99.81
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "46c4628f331019f13ac1f593fb8c79e1",
+      "title": "Notre Dame law school’s growing influence on the Supreme Court",
+      "link": "https://www.nbcnews.com/politics/supreme-court/notre-dame-law-schools-growing-influence-supreme-court-rcna161271",
+      "keywords": null,
+      "creator": [
+        "Lawrence Hurley"
+      ],
+      "video_url": null,
+      "description": "The University of Notre Dame’s law school is an institution increasingly exerting conservative influence on the Supreme Court.",
+      "content": "SOUTH BEND, Ind. — Tucked within a Gothic-style building on campus in this small town is a Catholic institution increasingly exerting conservative influence on the Supreme Court: the University of Notre Dame Law School. The school counts among its former faculty Justice Amy Coney Barrett, who swapped the faux-medieval halls of one institution for the neoclassical marble columns of another in helping form the 6-3 conservative majority on the court. In a trend that started before Barrett’s appointment but has accelerated since, the school is now having success placing both students and professors in prestigious Supreme Court clerkships. The clerks serve one-year terms and play a low-profile but crucial role in advising their bosses on which cases to take up and how to rule on them. They do research, help craft decisions and serve as sounding boards for the justices. The nation’s elite law schools — particularly Harvard and Yale — have dominated filling clerkships at the Supreme Court and educating the lawyers who went on to be nominated to the court for decades. In the competition for students and prestige, law schools have worked to propel their students into clerk jobs. Conservative criticism of academia, particularly targeting the nation’s elite universities, has grown, presenting an opening for more conservative-minded schools to gain prominence with a more conservative court. Hiring clerks from law schools steeped in the prevailing conservative thinking known as originalism — a philosophy often frowned upon in more liberal-leaning law schools — ensures that the justices who hire them have like-minded aides who have been armed by their professors with novel legal approaches on the most pressing issues. Originalist theories have underpinned some of the court’s biggest rulings in recent years, including the decision that overturned abortion rights landmark Roe v. Wade and others that have controversially expanded the right to own firearms. The relationship produced by Notre Dame faculty helps seed conservative legal theories. Professors are also involved in crafting litigation that can make its way before the court dealing with causes that are popular on the right, such as those encompassed by the term “religious liberty.” Several Notre Dame professors, for example, filed briefs in the Dobbs v. Jackson Women’s Health Organization case urging the justices to overturn Roe. One of those briefs, filed by a retired Notre Dame professor, John Finnis, was cited by conservative Justice Samuel Alito in the 2022 ruling. Separately, the school’s religious liberty clinic has cases before the high court, including one pending appeal urging the justices to endorse a taxpayer-funded Catholic charter school in Oklahoma in a direct challenge to the separation of church and state. The exchange goes both ways. Justices, mostly conservatives but at times liberals too, have become frequent visitors and guest lecturers at the school, which prides itself on being a safe space for conservatives. Within the last two years, Barrett and fellow conservative Brett Kavanaugh have both been on campus, as has liberal Justice Elena Kagan. It is not unusual for law schools to have personal connections with justices. Kagan, for example, previously served as dean of Harvard Law School. Several justices regularly teach classes at different law schools. The school has become “a bastion for conservative Catholic principles,” said Marci Hamilton, a former Supreme Court law clerk for the late Justice Sandra Day O’Connor and a professor who studies religion at the University of Pennsylvania. ‘Doesn’t openly discriminate’ On a recent late-summer day, all eyes in South Bend were focused on the upcoming home game of the storied Notre Dame football team, with groundskeepers on the campus north of the city steadily at work before thousands of Fighting Irish fans descended from around the country. Members of the football team could be seen jogging to the practice facility while other students headed to class. The law school building is just yards from the golden-domed administrative building and the Basilica of the Sacred Heart Church, two centerpieces of the campus along with the iconic football stadium. Seated in his book-lined study on the second floor, the law school’s dean, G. Marcus Cole, alternated between pride at recent achievements and indignation at the idea that the faculty skews disproportionately to the right. The problem, he said, is that most law schools lean heavily to the left and do not reflect America as a whole. “Half the American people could be characterized as conservative. Half the legal profession can be characterized as conservative. In fact, there’s nothing wrong with being conservative. It’s normal. It’s normal everywhere except for in the legal academy,” he said. At some other law schools “it is a badge of dishonor” to have any conservatives on the faculty, which does not serve students well, he added. Among the Notre Dame faculty are well-connected conservative husband and wife duo Richard and Nicole Garnett; O. Carter Snead, known for his scholarship opposing abortion rights; and William Kelley, who clerked for the late conservative Justice Antonin Scalia and served in the administration of President George W. Bush. Several other professors clerked for conservative justices. “I’m happy that we’re one of the few law schools in America that doesn’t openly discriminate against conservatives,” Cole said. He also expressed pride in Barrett’s achievements. He was among a Notre Dame delegation that was present at a celebratory Rose Garden event at the White House when then-President Donald Trump announced her nomination amid the Covid-19 pandemic just before the 2020 election. Opinions vary on just how conservative-leaning the law school is, with current faculty and some students saying it is ideologically diverse and some former professors and students saying there is a clear tilt to the right. Mark McKenna, a former Notre Dame Law School professor now at the UCLA School of Law in California, said he saw a clear shift to the right during his time there from 2008 to 2021. He says he left in part because he found his own liberal views to be out of step with the views of his colleagues. The school’s success in securing clerkships with conservative justices and prominent lower court judges will only serve to deepen that reputation, with conservative students eager to benefit and get a head-start in their legal careers, he said. “This is definitely going to make Notre Dame a sustaining feature of the Federalist Society infrastructure,” McKenna added, in reference to the conservative legal group that has become a key incubator for future judges and Supreme Court justices. Annie Ortega, a third-year student who recently took a weeklong class taught by Barrett, praised the “ideologically diverse” school. She is president of the school’s chapter of the Federalist Society but said she has lively conversations with her many liberal friends at the school. “Going to a law school where I was going to hear both sides of the conversation was really important, and is something that I found to be true in my class,” she added. Joshua Mannery, a recent graduate who leans liberal and served as president of the student bar association, said that while he did not feel excluded, “I do think anybody who says it’s more conservative is not wrong in saying that.” ‘Cream of the crop’ Each of the nine Supreme Court justices hires four clerks a year. It is considered the most prestigious post a recent law school graduate can obtain. “These are considered the cream of the crop, the best in the legal profession,” said Aliza Shatzman, president of the Legal Accountability Project, a group she formed to help improve transparency in the clerkship process amid concerns about workplace bullying and harassment. During the year, the clerks work on all the biggest cases before the court on issues like abortion, guns, voting rights and LGBTQ rights. Once the clerkship is completed, the clerks are in high demand in the legal profession, with big law firms offering eye-popping signing bonuses . Many clerks go on to high-profile careers, whether in corporate law, academia or in some cases politics. Later in their careers, they are often earmarked as potential judicial appointees. Of the current nine justices, six clerked at the court, as have several prominent senators, including Republicans Ted Cruz, R-Texas, and Josh Hawley, R-Mo. In the coming nine-month term that officially starts on Monday, two recent Notre Dame Law School graduates, Kari Lorentson and Elizabeth Totzke, are both clerking for Barrett. And two law professors from the school, Christian Burset and Patrick Reidy, the latter of whom is a Catholic priest, are clerking for justices Neil Gorsuch and Kavanaugh, respectively. They are following in the footsteps of four other Notre Dame graduates who clerked at the high court in the last five years, all for conservative justices. Two other Notre Dame professors also clerked at the Supreme Court in recent years, both with Gorsuch, who appears to sometimes favor hiring academics to work for him. In an appearance at Notre Dame last year, Kavanaugh spoke about what he looks for in his clerks. “It’s got to be people who are comfortable with my general approach,” Kavanaugh said. “I have had two spectacular Notre Dame law clerks. They just worked so hard.” Nicole Garnett, a longtime Notre Dame professor who clerked for conservative Justice Clarence Thomas and is a longtime friend of Barrett’s , chairs the school’s clerkship committee. In an interview, she downplayed connections with the conservative justices. “I think that drawing any conclusions about Supreme Court clerkships is probably a category error because it’s such a needle-in-a-haystack, lightning-strike kind of thing,” she said. In 2023, Notre Dame was ranked fourth in the country at placing students in clerkships at all levels of the court system. Overall, Notre Dame ranked 20th in the most recent U.S. News & World Report law school rankings. The traditional elite law schools dominate Supreme Court clerkships, with many justices hiring clerks from the same law schools they themselves attended and maintaining close links with faculty members. About two-thirds of clerks come from five schools: Harvard, Yale, Stanford, Columbia and the University of Chicago. Barrett, who graduated from Notre Dame Law School, is the only member of the current court not to have a law degree from Harvard or Yale. Within that context, Notre Dame is scrapping with other law schools for the remaining clerkships and has performed well. In the last five years, more graduates of Notre Dame Law School have been clerking at the high court than from many other high-ranking law schools, including Duke University, the University of Pennsylvania and Columbia University. Another conservative-aligned law school that is making inroads is George Mason University’s Antonin Scalia Law School in Virginia, which has also placed some graduates in Supreme Court clerkships. While Supreme Court clerkships are the most sought-after, similar roles with federal appeals court judges are also important, in part because many people who later obtain clerkships at the high court have previously worked for a lower court judge. Notre Dame is making inroads on that front too. Of the most recent graduating class of 187 students, about 20% moved on to clerkships of some type. ‘I’m Catholic’ During an appearance at a Federalist Society event in Washington last year, Barrett was asked what attracted her to Notre Dame. “I’m a little bit hesitant to bring this up,” Barrett said. “I’m not sure if you know, but I’m Catholic.” The audience of conservative lawyers laughed knowingly. Barrett’s Catholic faith was much-discussed when Trump appointed her to the high court in 2020 especially as it relates to abortion, which the Catholic Church opposes. Two years later, she was part of the majority that voted to overturn Roe. Barrett, who at the same event praised Notre Dame for its “support for faith and family” and “fantastic faculty colleagues,” is not the only Catholic justice. Of the current nine justices, Kagan, who is Jewish, and Justice Ketanji Brown Jackson, who is Protestant, are the only ones who were not raised Catholic. In his recent Notre Dame appearance, Kavanaugh praised the “Catholic tradition of service to others” that the university as a whole embodies. “A lot of what I learned in the Catholic school still informs — not my jurisprudence, so I don’t want to confuse the issue, not my jurisprudence — but just how I try to treat other people and how I think of my role in public service,” he said. Both Kavanaugh and Barrett declined via a court spokeswoman to comment further on the law school’s growing influence. Justices are not required to step aside from cases based purely on their religious beliefs, just as there is no religious test for anyone who serves as a justice. Greg Lipper, a lawyer who previously worked for Americans United for the Separation of Church and State, a group that advocates against religion in public life, said the professional and personal ties that some justices have with Notre Dame are similar to those that all judges have based on their experiences before taking the bench. Hamilton, the University of Pennsylvania professor, said the Notre Dame Law School reflects a “growing cadre” of conservative Catholics in public life. That movement has had its greatest success in the legal arena, thanks in part to the efforts of Leonard Leo, the legal activist and conservative Catholic who advised Trump and other Republican presidents on Supreme Court appointments. When Thomas visited Notre Dame in 2021, he spoke at the university’s Center for Citizenship and Constitutional Government, which receives funding from the Napa Institute, a Catholic group that Leo is associated with . “The money-powered Catholic right should be troubling to a lot of Americans,” Hamilton said. The church’s teachings inform the school’s religious liberty clinic, founded during Cole’s tenure, which is actively involved in cases around the country that could reach the Supreme Court. The current court is solicitous of religious claims as shown in recent rulings, including a series of decisions that have eroded the separation of church and state. The clinic came under scrutiny two years ago when it paid for Alito to travel to Rome for a religious liberty summit it organizes every year. Alito made headlines by delivering a speech in which he mocked foreign leaders who had criticized the Supreme Court’s decision to curb abortion rights. Alito contended at the time that the trip was separate from the clinic. The justices are due to consider in the coming months whether to take up the clinic’s case on Oklahoma’s attempt to use state funds to open a Catholic school, the nation’s first religious public charter school. The Oklahoma Supreme Court ruled that the plan was unconstitutional. The clinic has also backed religious liberty in cases not driven by Catholics, including another case now pending at the Supreme Court over a claim that Native American religious rights would be violated if land in Arizona is used to build a copper mine. Other law schools with clinics also regularly have cases before the justices. Under ethics rules, justices are not required to step aside from cases involving law school clinics at schools they have ties with. Cole doesn’t see the school’s involvement as being a conservative push. While professors filed briefs arguing in favor of the Supreme Court overturning Roe, the school also has professors who oppose the death penalty, assist immigrants and help people convicted of felonies with exoneration claims, he added. “These are not conservative issues. They’re Catholic issues,” Cole said.",
+      "pubDate": "2024-10-06 10:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2024-10/241004-notre-dame-mb-1253-c34ccd.jpg",
+      "source_id": "nbcnews",
+      "source_priority": 175,
+      "source_name": "Nbc News",
+      "source_url": "https://www.nbcnews.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/nbcnews.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": [
+        "notre dame,indiana,united states of america,north america"
+      ],
+      "ai_org": [
+        "supreme court.",
+        "university of notre dame"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.83,
+        "neutral": 87.83,
+        "negative": 11.35
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "af07ed1458697df2eb84944fd82b9a42",
+      "title": "The rudest thing I’ve ever overshared",
+      "link": "https://inews.co.uk/opinion/the-rudest-thing-ive-ever-overshared-3308291",
+      "keywords": [
+        "friendship",
+        "opinion",
+        "comment"
+      ],
+      "creator": [
+        "Heather Saul"
+      ],
+      "video_url": null,
+      "description": "Oversharing is only a good thing when done by amusing people",
+      "content": "As an only child, one of the lazy cliches I’ve had to withstand about my kind over the years is that we don’t share. This is outrageous; I’ve always encouraged my husbands to commit adultery – especially if I can watch – and I’m a notorious picker-up of tabs , spending a fortune down the decades on people I’ve invited to share my largesse. I love to “overshare” too – that is, “reveal an inappropriate amount of detail about one’s personal life” – but with the proviso that this occurrence has to be at least amusing, at best shocking. Often, especially if it concerns health, oversharing can be wearing; as a child I grew fearful of coming home from school to find my mother assembled with her cronies, as I knew that they would be spending several hours discussing their own and their friends’ various health travails in lip-licking detail – the best/worst one being: “And then her womb fell out as she got on the bus!” That’s what Facebook’s like these days – a bunch of moaning women one-upping each other on minor ailments. “I’ve got a cyst on my ovary!” remarked one the other day. “I’ve got two – one on each!” another instantly crowed. A sexed-up kissing-cousin of such revelations happens when a bunch of broads – often after a gallon of white wine each – get together to carp about men, preferably their sexual shortcomings. Although I’ve been an absolute ocean-going bitch all my life, I don’t recall ever indulging in this. There’s something so sad about it, despite all the attempts on screens small and large to make it some sort of feminist bonding project . We would despise men who sat around comparing sexual notes about women; it’s no different when we do it to them. Besides, if you spent any amount of time with a man who didn’t please you, it’s you who looks like the prize booby – not him who looks like the booby prize. Read Next I’ve had it with children in posh restaurants – ban them now No, the oversharing I like is the more grandstanding, flamboyant, skilful kind. I’ve earned it. Growing up as a shy, working-class, provincial girl in the 70s, I didn’t dream of true love; I dreamt of being a divorcee and a wit. My heroines weren’t Olivia Newton-John and Pan’s People but Tallulah Bankhead (“I’ve been to bed with men, women and odd pieces of furniture”) and Dorothy Parker (“Ducking for apples – change one letter and that’s the story of my life”). I remember as a youngster reading a flapper in an F Scott Fitzgerald story saying, “You’ve either got to feed people or shock them,” and it really stuck in my mind. A variation of this is “the clever one talks and the rich one pays” which a rich, clever man who took an interest in my writing when I was a dumb and impoverished teenager used to say, and I’ve done my best to become both. In my experience, it doesn’t take much oversharing to shock people. There was that time when, as the hostess of a very dull dinner in a very expensive restaurant, I felt moved to posit the question: “If you had to chose, which kind of dogs are best at sex, do you think? I’d wager Alsatians.” Things certainly livened up after that. But it’s often emotional rather than sexual oversharing which can set the cat among the pigeons. I’m fond of quoting the late Peter Ustinov, who famously said of friendship: “Contrary to general belief, I do not believe that friends are necessarily the people you like best, they are merely the people who get there first.” I’ve always believed that this is even truer of those with whom we become romantically involved; forget all that moony-eyed swill about “The One”, it’s more like “The Queue”, as we work our way through the people we fancy until we find one we don’t have the inclination to leave. You would be amazed at the appalled reaction which my sharing this honestly-held belief gets from seemingly sensible adults, whereas it seems perfectly obvious to me; maybe it’s an only child thing. So to conclude, I’d state that oversharing is only a good thing when done by amusing people; otherwise, the emotion which we struggle to conceal is not shock – but boredom.",
+      "pubDate": "2024-10-06 10:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://wp.inews.co.uk/wp-content/uploads/2024/10/SEI_224394572.jpg",
+      "source_id": "inews",
+      "source_priority": 10018,
+      "source_name": "Inews",
+      "source_url": "https://inews.co.uk",
+      "source_icon": "https://i.bytvi.com/domain_icons/inews.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "human rights"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.16,
+        "neutral": 0.17,
+        "negative": 99.67
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "84f976df91afed19d955f1499e152775",
+      "title": "My teenage diaries are frankly pathetic – but at 32 I’m writing one again",
+      "link": "https://inews.co.uk/opinion/teenage-diary-pathetic-starting-write-again-3303822",
+      "keywords": [
+        "opinion"
+      ],
+      "creator": [
+        "Tom Nicholson"
+      ],
+      "video_url": null,
+      "description": "It's mostly crowing about couples breaking up and recording bird poo in my hair - but it's a treasured possession",
+      "content": "On the evening of 5 February 1952, King George VI ate with his family at Sandringham, and turned in for bed at about 10.30pm. He did not wake up. “It is with the greatest sorrow that we make the following announcement,” began the BBC’s John Snagge during an 11.15am bulletin. In Parliament, condolences from the governments of France, Belgium, Italy, Luxembourg, Japan and Iceland were read. Great Tom, a bell at St Paul’s cathedral, tolled every minute for two hours. Rugby and hockey fixtures were postponed. Football crowds sang “Abide With Me”. The Labour MP Richard Crossman, however, was spectacularly unbothered. “No one I have met genuinely feels anything about this,” he wrote in his diary, “except Clem Attlee.” Craig Brown’s new, absolutely massive biography A Voyage Around the Queen is built on these kinds of refractions. Seeing as the late Queen wasn’t one for press conferences, her life is told through the memories of the tens of thousands of people who glanced off her, and much of the peppery stuff comes from diaries. Diaries, as Brown says in his afterword, provide “a welcome buzz” to history that court circulars generally struggle to. People write things they would never say in public: soppy things, waspish things, unintentionally funny things. I kept a diary for the calendar year of 2008, and it’s pretty much entirely in that third category. 14 January: “Bird shat in my hair. Not happy.” 3 June: “Had fun putting leaves on a stick with Lorna and Jack.” 11 December: “Ruddy hell, Lottie is fit.” Once again, worth noting: I was 16. I’d thought it’d be a good idea to record the year I left school for posterity, but 16-year-old me was not doing his bit for posterity. When historians come to survey the noughties, 2008 will boil down to the global financial crisis and Barack Obama . That is not what I was writing about. On Sunday 17 February, the day that Alastair Darling announced Northern Rock was being nationalised, I had my own problems. “Threw Nick’s shoe over a fence,” I recorded. “He then hit me.” On 5 November, president-elect Obama told 240,000 people in Chicago: “While we breathe, we hope, and where we are met with cynicism... we will respond with that timeless creed that sums up the spirit of a people: Yes, we can.” I told my diary: “I think I need to go to more parties.” Read Next Noughties culture is everywhere - because we're still traumatised So no, I don’t think historians will be too troubled by my 2008 diary, which mostly focuses on who fancied who and who I played Mario Kart with. Then again, big things come and go even when the person writing the diary is in the middle of them. George Harrison’s diary entry for 10 January 1969 reads: “Got up went to Twickenham. Rehearsed until lunchtime. Left Beatles . Went home.” He doesn’t record how or why or what he felt, but he does note that he had chips for tea. The real power of a diary, though, is something I’ve only discovered a long time after writing one. It’s a way of taking notice of time passing. You pick up each day at its close, turn it over in your hands, try to make a kind of sense of it. Maybe there’s no sense to be made of it, just a load of stuff that happened; bird poo in your hair, a shoe over a fence. But by taking the time to recall it all, put it in an order, and solidify it all by writing it down, it seems to last longer. It’s impossible for days to run into each other in a blur. Despite every single entry making me want to put the thing in a blender, my 2008 diary is one of my most treasured possessions. It’s often mean and petulant, and the amount of time I spent crowing about couples breaking up is, frankly, pathetic. But it is at least true. I fret that because we keep most little notes and thoughts on our phones and online, historians of our times won’t have that much to sift through. Vast tracts of stuff can just disappear, like when MySpace lost 50 million hours of music by 14 million artists in 2019 . The nonprofit Internet Archive and the Wayback Machine try to preserve websites, but so much goes down the digital plughole. Lately I’ve noticed weeks and months sliding together, and memories getting wobbly and vague. The me of 2008 is not someone I’d want to hang out with. But that year, and the idiot I was then, is alive and colourful in a way that the rest of my teens isn’t. The offhand, unimportant things I bothered to note down bring back that time more powerfully than anything else. That’s why I’m going to start writing a diary again. Maybe when I’m 48, I’ll look back at my diary as a 32-year-old and be mortified all over again. But I’d rather know who I actually was, however embarrassing it is.",
+      "pubDate": "2024-10-06 10:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://wp.inews.co.uk/wp-content/uploads/2024/10/SEI_224028998_e51b75.jpg",
+      "source_id": "inews",
+      "source_priority": 10018,
+      "source_name": "Inews",
+      "source_url": "https://inews.co.uk",
+      "source_icon": "https://i.bytvi.com/domain_icons/inews.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "entertainment"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.64,
+        "neutral": 0.3,
+        "negative": 99.06
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "b54e3b580108f62d1eba0ce9bca1145d",
+      "title": "Left MLA Jaleel links gold smuggling through Karipur airport to Muslim community, sparks row",
+      "link": "https://economictimes.indiatimes.com/news/politics-and-nation/left-mla-jaleel-links-gold-smuggling-through-karipur-airport-to-muslim-community-sparks-row/articleshow/113984408.cms",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "K T Jaleel, a Left MLA, caused controversy by stating that most gold smugglers through Malappuram airport are Muslims. He urged community leaders to address this issue. IUML and MLA P V Anvar criticized him, calling the statement derogatory. This controversy arose amid debates over Chief Minister Pinarayi Vijayan's alleged comments on Malappuram.",
+      "content": "Left MLA K T Jaleel on Sunday sparked controversy by stating that most of the individuals involved in gold smuggling through the international airport in Malappuram district are from the Muslim community , drawing sharp reactions from the IUML and dissident legislator P V Anvar. In a detailed Facebook post, the ruling MLA said a significant percentage of Muslims involved in crimes like gold smuggling and hawala believe that none of these activities are \"irreligious.\" He also called for the intervention of community leaders to create awareness among members being involved in such crimes. His statement comes amidst a raging political row in the state over Chief Minister Pinarayi Vijayan 's recent allegedly controversial remarks about the Muslim-dominated district of Malappuram. In the Facebook post, Jaleel noted that regardless of the community the wrongdoers belong to, strong opposition should be expressed by members of the community. \"Christians should be the ones to come forward to oppose wrongdoings in the Christian community, and Muslims should point out crimes committed by Muslims,\" he said. Hindus should address wrong practices within their community, the Thavanur MLA noted, adding that otherwise such interventions might be misinterpreted as attempts by other religions to degrade them. \"The majority of those caught in gold smuggling cases centered around Karipur International Airport (in Malappuram) are from the Muslim community,\" he said. \"Without addressing this, what reform and progress are those preaching love for Malappuram intending to bring to the Muslim community?\" Jaleel asked. Marketing Digital Marketing Masterclass by Neil Patel By - Neil Patel, Co-Founder and Author at Neil Patel Digital Digital Marketing Guru View Program Office Productivity Zero to Hero in Microsoft Excel: Complete Excel guide 2024 By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Artificial Intelligence(AI) Java Programming with ChatGPT: Learn using Generative AI By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Marketing Performance Marketing for eCommerce Brands By - Zafer Mukeri, Founder- Inara Marketers View Program Office Productivity Mastering Microsoft Office: Word, Excel, PowerPoint, and 365 By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Marketing Modern Marketing Masterclass by Seth Godin By - Seth Godin, Best-selling author View Program Data Science SQL for Data Science along with Data Analytics and Data Visualization By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Finance Corporate Fraud and Forensic Modelling By - Ankush Lamba, Managing Director- Ankura View Program Marketing Digital marketing - Wordpress Website Development By - Shraddha Somani, Digital Marketing Trainer, Consultant, Strategiest and Subject Matter expert View Program Artificial Intelligence(AI) Master in Python Language Quickly Using the ChatGPT Open AI By - Metla Sudha Sekhar, Developer and Lead Instructor View Program Technology Cybersecurity Masterclass By - Gaurav Khera, Partner, Risk Advisory: Deloitte View Program Finance A2Z Of Money By - elearnmarkets, Financial Education by StockEdge View Program Astrology Vastu Shastra Course By - Sachenkumar Rai, Vastu Shashtri View Program Finance Financial Reporting and Analytics By - Dr. C.P. Gupta, Professor: Department of Finance and Business Economics, University of Delhi View Program HR Human Potential and the Future of Employment By - Lynda Gratton, Prof. at London Business School, Speaker, Author, Global Thought Leader View Program Legal Labour Laws By - Ankita Ray, Partner: Cyril Amarchand Mangaldas View Program Artificial Intelligence(AI) Generative AI for Dynamic Java Web Applications with ChatGPT By - Metla Sudha Sekhar, Developer and Lead Instructor View Program He also wondered why some people are upset when it is said that \"Khalees\" (the religious authority responsible for decisions on matters of faith for Muslims in local areas) should be ready to declare that gold smuggling is anti-religious. Soon after Jaleel put up the post, the IUML strongly criticised him, calling it \"extremely derogatory.\" \"What he said was that members of the Muslim community are carrying out smuggling. Where did he get this information? On what basis is he saying this?\" senior IUML leader P M A Salam asked. He wondered how a person could take such a stance, accusing an entire community of involvement in such a crime. Salam said that Jaleel might have many frustrations in life, but he should not have tarnished an entire community because of them. Jaleel courted fresh controversy at a time when Chief Minister Vijayan himself denied allegations of making any adverse remarks about Malappuram, the IUML leader added. Dissident MLA Anvar also came down on Jaleel over his comments, saying if the Thavanur MLA had indeed made such remarks, it was the \"worst thing\" in his public life. Earlier, the opposition Congress accused Vijayan of attempting to \"appease majority communalism\" through his recent interview, in which he was quoted as saying that gold smuggling and hawala cases were more prevalent in Malappuram district. The Chief Minister and his office subsequently denied making any such remarks in the interview. (You can now subscribe to our Economic Times WhatsApp channel )",
+      "pubDate": "2024-10-06 09:56:02",
+      "pubDateTZ": "UTC",
+      "image_url": "https://img.etimg.com/thumb/msid-113984482,width-1200,height-630,imgsize-30835,overlay-economictimes/photo.jpg",
+      "source_id": "economictimes_indiatimes",
+      "source_priority": 231,
+      "source_name": "The Economic Times",
+      "source_url": "https://economictimes.indiatimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/economictimes_indiatimes.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "politics"
+      ],
+      "ai_region": [
+        "malappuram,kerala,india,asia",
+        "karipur,kerala,india,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.1,
+        "neutral": 0.15,
+        "negative": 99.75
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "67196d7e01c6919cfd7dd3b04ba78bb7",
+      "title": "UAE: How to use paid mParking service; service charge, renewal explained",
+      "link": "https://www.khaleejtimes.com/life-and-living/uae-how-to-use-paid-mparking-service-service-charge-renewal-explained",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": null,
+      "content": "Forgetting to pay the parking fee while rushing out of your car is a universal experience for motorists. In some cases, the parking meter may be far away from the destination, becoming a hassle for drivers. In Dubai, the Roads and Transport Authority offers multiple ways for motorists to pay their parking fees without having to do it physically. One of the ways is through the 'mParking' service. This service is provided through SMS for those with UAE telecommunication service providers. Stay up to date with the latest news. Follow KT on WhatsApp Channels. Here is a guide to using the mParking service in the UAE. Applying for ticket Two types of users can apply for this service — registered and non-registered users. After sending the text, motorists will receive a confirmation message with all the parking details including the validity period. The SMS has to be sent to the number 7275 (PARK). The message must be sent in the following format: Registered users: < Plate No> Example: B12345 33C 1 Non-registered users: < Nickname> Example: Nicky 33C 1 Tickets for half an hour are only valid in Zone A. These can be sent in the following formats: 1/2, .5, .50, 0.5, 0.50, 30, 30min, 30mins, 30minute and 30minutes Cars registered outside of Dubai Example: AUH16 12345 335C 2",
+      "pubDate": "2024-10-06 09:47:10",
+      "pubDateTZ": "UTC",
+      "image_url": "https://image.khaleejtimes.com/?function=fit&maxsize=1200&q=75&scaleup=0&source=false&type=preview&uuid=e9fb812f-9ca6-5b49-a618-7a0161017b81",
+      "source_id": "khaleejtimes",
+      "source_priority": 7688,
+      "source_name": "Khaleej Times",
+      "source_url": "https://www.khaleejtimes.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/khaleejtimes.png",
+      "language": "english",
+      "country": [
+        "united arab emirates"
+      ],
+      "category": [
+        "top",
+        "politics"
+      ],
+      "ai_tag": [
+        "telecom"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 2.14,
+        "neutral": 7.91,
+        "negative": 89.95
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "7306462d246623d5a7d480b818c5a3fb",
+      "title": "13 triumphant images of Royal Navy warships returning from Falklands War success over Argentina in 1982",
+      "link": "https://www.portsmouth.co.uk/heritage-and-retro/retro/13-triumphant-images-of-royal-navy-warships-returning-from-falklands-war-success-over-argentina-in-1982-3663779",
+      "keywords": null,
+      "creator": [
+        "Steve Deeks"
+      ],
+      "video_url": null,
+      "description": "What a welcome as our ships return home.",
+      "content": "Included in this selection are aircraft carriers HMS Hermes and HMS Invincible returning. The majority of images are available to purchase should you wish to do so at: Portsmouth.co.uk scroll right to the bottom of the homepage and chose ‘Buy Photo’, or call Photosales on: 0330 403 0033 or Email: [email protected] 1 . Ships return from the Falklands HMS Herald a survey ship returns from the Falklands in 1982. The News PP4865 Photo: The News archive Photo Sales 2 . Ships return from the Falklands Homecoming celebrations as HMS Glasgow returns from the Falklands Photo: The News archive Photo Sales 3 . Ships return from the Falklands The HMS Invincible returns to Portsmouth, carrying British troops home from the Falklands War, 17th September 1982. (Photo by Hulton Archive/Getty Images) Photo: The News archive Photo Sales 4 . Ships return from the Falklands HMS Glasgow enters Portsmouth Harbour for repairs after taking a hit in the Falklands War, 1982. The News PP4766 Photo: The News archive Photo Sales Previous 1 / 3 Next Page Related topics: Royal Navy Email",
+      "pubDate": "2024-10-06 09:45:38",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.portsmouth.co.uk/webimg/b25lY21zOmRjNzhhYTc0LTg0MzktNDJjNy04MjViLWI0NzljMGVjZGVjNTowYzgxZGEyYy0yNGU3LTQ0ODktODgzMC02OWRhNzc1MDVlM2U=.jpg?auto=webp&width=1200",
+      "source_id": "portsmouth",
+      "source_priority": 223919,
+      "source_name": "The News",
+      "source_url": "https://www.portsmouth.co.uk",
+      "source_icon": "https://i.bytvi.com/domain_icons/portsmouth.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "top",
+        "health",
+        "politics"
+      ],
+      "ai_tag": [
+        "awards and recognitions",
+        "accidents"
+      ],
+      "ai_region": [
+        "argentina,south america"
+      ],
+      "ai_org": [
+        "royal navy"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 48.97,
+        "neutral": 50.29,
+        "negative": 0.74
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "96c7f79c628aab84afbad1f5530208b1",
+      "title": "Rescuers arrive in Bosnia after devastating floods and landslides that killed at least 18 people",
+      "link": "https://www.thejournal.ie/rescuers-arrive-in-bosnia-as-floods-and-landslides-kill-at-least-18-6507028-Oct2024/",
+      "keywords": [
+        "floods"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "Bosnia sought EU help after a heavy rainstorm overnight on Friday left entire areas under water and debris destroyed roads and bridges.",
+      "content": "RESCUE TEAMS FROM Bosnia’s neighbours and European Union countries are joining efforts to clear the rubble and find people still missing after floods and landslides devastated parts of the Balkan country. Bosnia sought EU help after a heavy rainstorm overnight on Friday left entire areas under water and debris destroyed roads and bridges, killing at least 18 people and injuring dozens of others. Officials said at least 10 people are still unaccounted for, many of them in the village of Donja Jablanica in southern Bosnia, which was almost completely buried in rocks and rubble from a quarry on a hill above. Residents there have said they heard a thundering rumble and saw houses disappear before their eyes. Luigi Soreca, who heads the EU mission in Bosnia, said on social media site X that the EU stands with Bosnia and teams are arriving to help. Bosnia is a candidate country for membership of the 27-nation bloc. Authorities said Croatian rescuers have already arrived, while a team from Serbia is expected to be deployed on Sunday afternoon, followed by a Slovenian team with dogs. Montenegro, North Macedonia, Poland, Czechia and Turkey have also offered help, a government statement said. Sunday is the date of a local election in Bosnia. Election authorities have postponed voting in flood-hit regions, but the flooding has overshadowed the vote across the country. Ismeta Bucalovic, a resident of Sarajevo, Bosnia’s capital, said: “We are all overwhelmed by these flooding events. We all think only about that.” Impoverished and ethnically divided, Bosnia has struggled to recover after the brutal war in 1992-95. The country is plagued by political bickering and corruption, stalling its EU bid.",
+      "pubDate": "2024-10-06 09:41:30",
+      "pubDateTZ": "UTC",
+      "image_url": "https://c3.thejournal.ie/media/2024/10/bosnia-43a52d11-96ee-4d54-a306-676d47b75952-230x150.jpg",
+      "source_id": "thejournal",
+      "source_priority": 92427,
+      "source_name": "Thejournal",
+      "source_url": "https://www.thejournal.ie",
+      "source_icon": "https://i.bytvi.com/domain_icons/thejournal.png",
+      "language": "english",
+      "country": [
+        "ireland"
+      ],
+      "category": [
+        "politics"
+      ],
+      "ai_tag": [
+        "natural disasters"
+      ],
+      "ai_region": [
+        "bosnia"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.26,
+        "neutral": 0.2,
+        "negative": 99.54
       },
       "duplicate": false
     }
@@ -17935,6 +20133,2229 @@ let data = {
       "duplicate": false
     }
   ],
+  "sports": [
+    {
+      "article_id": "1566c0662ba4207825c59678882a150c",
+      "title": "Kickoff | Rhoo, Shoes, Doc, Bhele & Legs of Thunder make up star-studded Dream Team",
+      "link": "https://www.snl24.com/kickoff/sanews/premiership/naughty-mokoena-comparing-my-generation-with-current-players-is-a-joke-20241002",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "In this edition of My Dream Team, KickOff catches up with former Orlando Pirates and Bafana Bafana international Naughty Mokoena.",
+      "content": null,
+      "pubDate": "2024-10-06 14:05:13",
+      "pubDateTZ": "UTC",
+      "image_url": "https://cdn.24.co.za/files/Cms/General/d/6955/2829aa4b8a6b47d8a63772ee6f73d561.jpg",
+      "source_id": "snl24",
+      "source_priority": 103202,
+      "source_name": "Kickoff",
+      "source_url": "https://www.snl24.com/kickoff",
+      "source_icon": "https://i.bytvi.com/domain_icons/snl24.png",
+      "language": "english",
+      "country": [
+        "south africa"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "american football"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "orlando pirates",
+        "bafana bafana",
+        "doc, bhele & legs of thunder",
+        "dream team"
+      ],
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 54.26,
+        "neutral": 45.01,
+        "negative": 0.73
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "876c69774f5d68659b5a311f43ec10ee",
+      "title": "Women’s T20 World Cup: Scotland win toss, elect to bat against West Indies",
+      "link": "https://a-sports.tv/womens-t20-world-cup-scotland-win-toss-against-west-indies/",
+      "keywords": [
+        "women's t20 world cup",
+        "scotland",
+        "top picks",
+        "top news",
+        "cricket",
+        "west indies",
+        "sports"
+      ],
+      "creator": [
+        "A Sports"
+      ],
+      "video_url": null,
+      "description": "DUBAI: Scotland have won the toss and decided to bat first against West Indies in the eighth match of the ICC Women’s T20 World Cup 2024 at Dubai International Cricket Stadium here on Sunday. PLAYING XIs Scotland: S Horley, SJ Bryce†, KE Bryce*, A Lister, PA Chatterji, DEM Carter, L Jack, K Fraser, RE Slater, [...]The post Women’s T20 World Cup: Scotland win toss, elect to bat against West Indies appeared first on ASports.tv.",
+      "content": "DUBAI: Scotland have won the toss and decided to bat first against West Indies in the eighth match of the ICC Women’s T20 World Cup 2024 at Dubai International Cricket Stadium here on Sunday. PLAYING XIs Scotland: S Horley, SJ Bryce†, KE Bryce*, A Lister, PA Chatterji, DEM Carter, L Jack, K Fraser, RE Slater, AM Maqsood, O Bell West Indies: HK Matthews*, SR Taylor, SA Campbelle†, DJS Dottin, CA Henry, AA Alleyne, CN Nation, Q Joseph, ASS Fletcher, A Munisar, K Ramharack READ: India edge past Pakistan to register first win in Women’s T20 World Cup",
+      "pubDate": "2024-10-06 14:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://a-sports.tv/wp-content/uploads/2024/10/Womens-T20-World-Cup-2024-moved-from-Bangladesh-to-UAE.jpg",
+      "source_id": "arynews",
+      "source_priority": 41852,
+      "source_name": "Ary News",
+      "source_url": "https://arynews.tv",
+      "source_icon": "https://i.bytvi.com/domain_icons/arynews.jpg",
+      "language": "english",
+      "country": [
+        "pakistan"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "dubai,united arab emirates,asia",
+        "dubai,dubai,united arab emirates,asia",
+        "west indies"
+      ],
+      "ai_org": [
+        "icc"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 1.07,
+        "neutral": 98.65,
+        "negative": 0.28
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "e94f36f7a11eda9560f2d7d765ba5d50",
+      "title": "Nebraska volleyball's 'culture' gets plenty of praise. Here's what it looks like on the court",
+      "link": "https://starherald.com/sports/huskers/volleyball/nebraska-volleyball-culture-defense-bergen-reilly/article_2252d0b4-aa72-5ecd-93d8-0bf396633fc0.html",
+      "keywords": null,
+      "creator": [
+        "BRENT C. WAGNER Lincoln Journal Star"
+      ],
+      "video_url": null,
+      "description": "You've probably heard Nebraska volleyball players and coaches talk about the team's \"culture.\" But what does that actually look like?",
+      "content": "The oft-discussed culture of the Nebraska volleyball program is sometimes difficult to see clearly. But you'll definitely see it when you watch the second-ranked Huskers play against Iowa on Sunday. The culture taking hold is right there when you watch Bergen Reilly play defense. Reilly sets out to block better than expected for a player of her height and digs hard shots from the opponents’ hitters. When you scan Nebraska’s stats through 51⁄2 weeks of the season, one thing that jumps off the page is Reilly’s 141 digs, No. 2 on the team behind Lexi Rodriguez with 179. Sure, Reilly gets more chances for digs as one of the only players who rarely leaves the court. But she’s proving she’s out there to do more than run Nebraska’s offense. She also has 25 blocks. The Sioux Falls, South Dakota, native says her mentality to play defense was something she picked up in Lincoln. “I think it’s come in college, honestly,” the sophomore said. “I was never really focused on defense. In high school, it was never really a huge priority, especially as setter. Setters just don’t really play a lot of defense.” When she got to college, Reilly saw how players such as Rodriguez, Laney Choboy and Maisie Boesiger played back-row defense and wanted to try and match that. Now you can add freshman Olivia Mauch to that list also. “Nebraska is known for its defense, so they all push me every single day,” Reilly said. Last week in a win against UCLA, Reilly even got a solo block. On the court with her teammates Kennedi Orr and Harper Murray each gasped in astonishment at what Reilly had done. “Blocks always feel great, especially when they’re one-on-one,” Reilly said. Her skill and confidence on defense comes from practices. At Nebraska, if you’re not improving on defense that’s on you. “We do defense every single day in our gym,” Reilly said. “And it’s not just a quick short burst. We’re going for a while at defense. It’s just getting it in your head that this ball is not going to get past me, and this ball is not going to hit the floor.” Before coming to college, sometimes practicing defense for Reilly was mostly through six-on-six play. At Nebraska, the back-row defenders face hundreds of shots during a week of practice, sometimes hit or tossed by the head coach himself. “So we’re prepared when we get to a game for whatever comes at us,” Reilly said. Defense is how Reilly has improved the most in college. “It’s been a change in mentality, and defense is honestly 90% mentality that I’m not letting this ball hit the floor,” she said. In recent years Nebraska has routinely been one of the best defenses in the country. Each of the past two seasons Nebraska ranked No. 1. Nebraska having a top defense wasn't the case to start this year, but now Nebraska is making the slow climb back up the rankings. The Huskers are ranked 38th, with an opponent hitting percentage of .164. During the early part of the season Nebraska did have a few matches on defense when its blockers weren’t in the right spots enough. But some of the higher hitting percentages for Nebraska’s opponent was also a reflection of the better teams it was playing. “We played a significantly tougher schedule then we did last year,” coach John Cook said. “Last year we scheduled lighter because we had five freshmen and a transfer. But this year our schedule was pretty tough.” During the Big Ten season the Huskers will have more time to scout and practice for each opponent, and when Nebraska has a few days to prepare for an opponent under Cook and defensive coordinator Jaylen Reyes Nebraska’s defense is often very good. During a three-set win against USC last week, the Trojans had a hitting percentage of .000 in the final set, when Nebraska had three blocks and 19 digs. “I just thought our block and defense really took over that match,” Cook said. * Nebraska junior middle blocker Rebekah Allick ranks No. 4 in the country in blocks (1.52 per set). * Iowa was shut out in the win column in Big Ten play last season, going 0-20. This year the Hawkeyes already have two wins, with five-set victories against Rutgers and Maryland last week. The Hawkeyes (8-7, 2-1 Big Ten) lost 3-0 against No. 25 Washington on Friday. Sunday’s 2 p.m. match against Nebraska is on Nebraska Public Media. Reach the writer at 402-473-7435 or bwagner@journalstar.com . On Twitter @LJSSportsWagner. Get local news delivered to your inbox!",
+      "pubDate": "2024-10-06 14:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://bloximages.chicago2.vip.townnews.com/starherald.com/content/tncms/assets/v3/editorial/2/25/2252d0b4-aa72-5ecd-93d8-0bf396633fc0/6701ad2b13eb8.preview.jpg?crop=1763%2C926%2C0%2C125&order=crop%2Cresize&resize=1200%2C630",
+      "source_id": "starherald",
+      "source_priority": 61945,
+      "source_name": "Star Herald",
+      "source_url": "https://starherald.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/starherald.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "volleyball"
+      ],
+      "ai_region": [
+        "nebraska,united states of america,north america"
+      ],
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 97.79,
+        "neutral": 1.8,
+        "negative": 0.41
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "131a39d20cd4c8a488d14dad0f4aa11d",
+      "title": "Nebraska volleyball's 'culture' get plenty of praise. Here's what it looks like on the court",
+      "link": "https://kearneyhub.com/sports/college/nebraska-volleyball-culture-defense-bergen-reilly/article_353d4243-3ea4-5c7c-99eb-c9e2a2002a1e.html",
+      "keywords": null,
+      "creator": [
+        "BRENT C. WAGNER Lincoln Journal Star"
+      ],
+      "video_url": null,
+      "description": "You've probably heard Nebraska volleyball players and coaches talk about the team's \"culture.\" But what does that actually look like?",
+      "content": "The oft-discussed culture of the Nebraska volleyball program is sometimes difficult to see clearly. But you'll definitely see it when you watch the second-ranked Huskers play against Iowa on Sunday. The culture taking hold is right there when you watch Bergen Reilly play defense. Reilly sets out to block better than expected for a player of her height and digs hard shots from the opponents’ hitters. When you scan Nebraska’s stats through 51⁄2 weeks of the season, one thing that jumps off the page is Reilly’s 141 digs, No. 2 on the team behind Lexi Rodriguez with 179. Sure, Reilly gets more chances for digs as one of the only players who rarely leaves the court. But she’s proving she’s out there to do more than run Nebraska’s offense. She also has 25 blocks. The Sioux Falls, South Dakota, native says her mentality to play defense was something she picked up in Lincoln. “I think it’s come in college, honestly,” the sophomore said. “I was never really focused on defense. In high school, it was never really a huge priority, especially as setter. Setters just don’t really play a lot of defense.” When she got to college, Reilly saw how players such as Rodriguez, Laney Choboy and Maisie Boesiger played back-row defense and wanted to try and match that. Now you can add freshman Olivia Mauch to that list also. “Nebraska is known for its defense, so they all push me every single day,” Reilly said. Last week in a win against UCLA, Reilly even got a solo block. On the court with her teammates Kennedi Orr and Harper Murray each gasped in astonishment at what Reilly had done. “Blocks always feel great, especially when they’re one-on-one,” Reilly said. Her skill and confidence on defense comes from practices. At Nebraska, if you’re not improving on defense that’s on you. “We do defense every single day in our gym,” Reilly said. “And it’s not just a quick short burst. We’re going for a while at defense. It’s just getting it in your head that this ball is not going to get past me, and this ball is not going to hit the floor.” Before coming to college, sometimes practicing defense for Reilly was mostly through six-on-six play. At Nebraska, the back-row defenders face hundreds of shots during a week of practice, sometimes hit or tossed by the head coach himself. “So we’re prepared when we get to a game for whatever comes at us,” Reilly said. Defense is how Reilly has improved the most in college. “It’s been a change in mentality, and defense is honestly 90% mentality that I’m not letting this ball hit the floor,” she said. In recent years Nebraska has routinely been one of the best defenses in the country. Each of the past two seasons Nebraska ranked No. 1. Nebraska having a top defense wasn't the case to start this year, but now Nebraska is making the slow climb back up the rankings. The Huskers are ranked 38th, with an opponent hitting percentage of .164. During the early part of the season Nebraska did have a few matches on defense when its blockers weren’t in the right spots enough. But some of the higher hitting percentages for Nebraska’s opponent was also a reflection of the better teams it was playing. “We played a significantly tougher schedule then we did last year,” coach John Cook said. “Last year we scheduled lighter because we had five freshmen and a transfer. But this year our schedule was pretty tough.” During the Big Ten season the Huskers will have more time to scout and practice for each opponent, and when Nebraska has a few days to prepare for an opponent under Cook and defensive coordinator Jaylen Reyes Nebraska’s defense is often very good. During a three-set win against USC last week, the Trojans had a hitting percentage of .000 in the final set, when Nebraska had three blocks and 19 digs. “I just thought our block and defense really took over that match,” Cook said. * Nebraska junior middle blocker Rebekah Allick ranks No. 4 in the country in blocks (1.52 per set). * Iowa was shut out in the win column in Big Ten play last season, going 0-20. This year the Hawkeyes already have two wins, with five-set victories against Rutgers and Maryland last week. The Hawkeyes (8-7, 2-1 Big Ten) lost 3-0 against No. 25 Washington on Friday. Sunday’s 2 p.m. match against Nebraska is on Nebraska Public Media. Reach the writer at 402-473-7435 or bwagner@journalstar.com . On Twitter @LJSSportsWagner. Get local news delivered to your inbox!",
+      "pubDate": "2024-10-06 14:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://bloximages.chicago2.vip.townnews.com/kearneyhub.com/content/tncms/assets/v3/editorial/3/53/353d4243-3ea4-5c7c-99eb-c9e2a2002a1e/6701a940f0c76.preview.jpg?crop=1732%2C909%2C4%2C115&order=crop%2Cresize&resize=1200%2C630",
+      "source_id": "kearneyhub",
+      "source_priority": 50931,
+      "source_name": "Kearney Hub",
+      "source_url": "https://kearneyhub.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/kearneyhub.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "volleyball"
+      ],
+      "ai_region": [
+        "nebraska,united states of america,north america"
+      ],
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 96.7,
+        "neutral": 2.83,
+        "negative": 0.47
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "28497a7a0a5cc741516202d4a0d9fa2d",
+      "title": "Meet your 2024-25 Fairbanks Ice Dogs",
+      "link": "https://www.newsminer.com/sports/ice_dogs/meet-your-2024-25-fairbanks-ice-dogs/article_c978e8ae-82c1-11ef-a70a-333768d80215.html",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": null,
+      "content": null,
+      "pubDate": "2024-10-06 14:00:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://bloximages.newyork1.vip.townnews.com/newsminer.com/content/tncms/assets/v3/editorial/2/96/29646d38-82c2-11ef-a090-afc757cf962a/6700a56624b52.image.jpg?resize=300%2C425",
+      "source_id": "newsminer",
+      "source_priority": 41447,
+      "source_name": "Daily News-miner",
+      "source_url": "https://www.newsminer.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/newsminer.jpg",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "sports"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "fairbanks ice dogs"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.3,
+        "neutral": 99.56,
+        "negative": 0.14
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "d7a7e961621c1b3f0df69a8cc1fa72c9",
+      "title": "who is Mayank Yadav and nitish kumar reddy two debutant of india",
+      "link": "https://www.cricketcountry.com/hi/news/who-is-mayank-yadav-and-nitish-kumar-reddy-two-debutant-of-india-1196011/",
+      "keywords": null,
+      "creator": [
+        "Saurav Kumar"
+      ],
+      "video_url": null,
+      "description": "बांग्लादेश के खिलाफ पहले टी20 मुकाबले में भारत के लिए मयंक यादव और नितीश कुमार रेड्डी दो युवा खिलाड़ियों ने डेब्यू किया है. The post who is Mayank Yadav and nitish kumar reddy two debutant of india appeared first on Cricket Country.",
+      "content": "भारत और बांग्लादेश के बीच तीन मैचों की टी20 सीरीज की शुरुआत आज ग्वालियर से हो चुकी है. दोनों टीमें पहले मुकाबले के लिए अपनी कमर कस चुकी हैं. मुकाबले में भारत ने टॉस जीतकर पहले गेंदबाजी करने का फैसला किया है. भारत की ओर से दो युवा खिलाड़ियों को सपना सच हुआ और दोनों को टीम इंडिया की प्लेइंग 11 में शामिल कर डेब्यू करने का मौका मिला है. यह दो खिलाड़ी मयंक यादव और नितीश रेड्डी हैं. दोनों ने पिछले कुछ समय से अपने प्रदर्शन से सबको काफी प्रभावित किया है. कौन हैं मयंक यादव? मयंक यादव के करियर पर नजर डाले तो इस युवा गेंदबाज का करियर अभी छोटा है. हालांकि अपने छोटे करियर में ही मयंक ने अपनी एक अलग छाप छोड़ी है. दिल्ली के लिए घरेलू क्रिकेट खेलने वाले मयंक ने 14 टी20 मुकाबले अब तक खेले हैं. इसमें उन्होंने कुल 19 विकेट अपने नाम किए हैं. मयंक आईपीएल 2024 के दौरान काफी सुर्खियाों में आए थे. वह आईपीएल के दौरान लगातार 150+ किलोमीटर प्रति घंटे की रफ्तार से गेंदबाजी कर रहे थे. कौन हैं नितीश कुमार रेड्डी? मयंक यादव की तरह नितीश कुमार रेड्डी ने भी आईपीएल 2024 के दौरान काफी चर्चा में आए थे. इस प्रतिभावान ऑलराउंडर ने आईपीएल में सनराइजर्स हैदराबाद के लिए गेंद और बल्ले दोनों से कमाल का प्रदर्शन किया था. नितीश अपनी विस्फोटक बल्लेबाजी के लिए मशहूर हैं. उन्होंने आईपीएल 2024 में 15 मैच में 142.9 की औसत से 303 रन बनाए थे. हाल ही में नितीश ने घरेलू सीरीज में भी कमाल का प्रदर्शन किया था. उनकी इस प्रतिभा को देखते हुए ही उन्हें भारतीय टीम में शामिल किया गया है. भारत की प्लेइंग 11 अभिषेक शर्मा, संजू सैमसन (विकेटकीपर), सूर्यकुमार यादव (कप्तान), नितीश रेड्डी, हार्दिक पंड्या, रियान पराग, रिंकू सिंह, वाशिंगटन सुंदर, वरुण चक्रवर्ती, अर्शदीप सिंह, मयंक यादव.",
+      "pubDate": "2024-10-06 13:56:22",
+      "pubDateTZ": "UTC",
+      "image_url": "https://st3.cricketcountry.com/wp-content/uploads/2024/07/cc-default-image-300x169.jpg?impolicy=Medium_Widthonly&w=800",
+      "source_id": "cricketcountry",
+      "source_priority": 104348,
+      "source_name": "Cricket Country",
+      "source_url": "https://www.cricketcountry.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/cricketcountry.jpg",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "awards and recognitions"
+      ],
+      "ai_region": [
+        "india,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.07,
+        "neutral": 99.84,
+        "negative": 0.09
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "136bfd78826c90a21ad41039b62defad",
+      "title": "Arundhati Reddy Wins Player of the Match Award in India Women vs Pakistan Women ICC Women's T20 World Cup 2024 Match",
+      "link": "https://www.latestly.com/socially/sports/cricket/arundhati-reddy-adjudged-player-of-the-match-during-ind-w-vs-pak-w-icc-womens-t20-world-cup-2024-match-6322375.html",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "India women's national cricket team pacer Arundhati Reddy won the Player of the Match award in the IND-W vs PAK-W ICC Women's T20 World Cup 2024 match and scalped three wickets by giving away just 19 runs.",
+      "content": "India women's national cricket team pacer Arundhati Reddy was adjudged as the Player of the Match in the IND-W vs PAK-W ICC Women's T20 World Cup 2024 match. Reddy bowled a brilliant spell with the ball and picked up three wickets by giving away just 19 runs. This helped the Indian women's team restrict Pakistan to a score of 105/8 in their first innings. In the end, the Indian team won the match by six wickets and registered their first win of the tournament. India Women Defeat PAK-W by Six Wickets in ICC Women’s T20 World Cup 2024; Bowlers, Shafali Verma and Harmanpreet Kaur Ensure Women in Blue Register Maiden Win of the Tournament. Arundhati Reddy delivered a splendid spell of 3/19 against Pakistan, leading India to their first win of the Women's #T20WorldCup 2024 👏 She wins the @aramco POTM 🏅 pic.twitter.com/vjfeLyvKwE — ICC (@ICC) October 6, 2024 (SocialLY brings you all the latest breaking news, viral trends and information from social media world, including Twitter, Instagram and Youtube. The above post is embeded directly from the user's social media account and LatestLY Staff may not have modified or edited the content body. The views and facts appearing in the social media post do not reflect the opinions of LatestLY, also LatestLY does not assume any responsibility or liability for the same.)",
+      "pubDate": "2024-10-06 13:54:50",
+      "pubDateTZ": "UTC",
+      "image_url": "https://st1.latestly.com/wp-content/uploads/2024/06/Image-2024-06-19T191607.692-380x214.jpg",
+      "source_id": "latestly",
+      "source_priority": 31923,
+      "source_name": "Latestly",
+      "source_url": "https://www.latestly.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/latestly.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "india,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 90.85,
+        "neutral": 8.52,
+        "negative": 0.63
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "9ff96ff61042b086089353a81fc5e872",
+      "title": "Arne Slot ‘insists’ on shock move for ex-Man Utd star Greenwood as Liverpool ‘lead’ Barcelona",
+      "link": "https://www.football365.com/news/arne-slot-insists-on-shock-move-for-ex-man-utd-star-greenwood-as-liverpool-lead-barcelona",
+      "keywords": [
+        "feature story"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "Liverpool boss Arne Slot 'insists' on a shock move for the 23-year-old and believes he can 'become a Premier league great' under his command.",
+      "content": "Liverpool boss Arne Slot believes former Manchester United forward Mason Greenwood can ‘become one of the great players in the Premier League’ under his watch and ‘insists’ on a shock move for the 23-year-old. A case against Greenwood of alleged rape and assault was discontinued by the Crown Prosecution Service at the start of 2023 after the withdrawal of key witnesses significantly reduced the chance of conviction. Man Utd pulled the plug on his return ahead of the 2023/24 campaign and he joined La Liga side Getafe on loan, contributing eight goals and six assists, before moving to Marseille in a permanent £26m deal ahead of the current campaign. Greenwood is already being linked with another move after five goals and an assist in his first seven games for the Ligue 1 side, with Barcelona thought to be chief among his suitors. But according to a report in Spain, Liverpool may also enter the running for his signature with Arne Slot apparently viewing Greenwood as a possible replacement for Mohamed Salah, who’s out of contract at the end of the season. It’s claimed Barcelona are attracted by the forward’s versatility, given he’s able to play anywhere across the frontline, but Slot and Liverpool are ‘willing to take advantage of’ Barcelona’s financial limitations. Greenwood ‘fits perfectly in the future plans of the Reds’ and Slot believes he can ‘become one of the great players in the Premier League’ and be ‘key to keeping the team competing at the highest level’. MORE LIVERPOOL COVERAGE ON F365 👉 Van Dijk assault and Saka harrassment feature in ten terrible unpunished fouls 👉 So-called crisis club Man United among four still flawless in Premier League point-spaffing table 👉 Liverpool: Arne Slot reveals worrying injury prediction as it ‘doesn’t look good’ for key Reds star It’s thought Liverpool are ‘leading the race’ over Barcelona to land Greenwood with ‘Slot’s insistence on this signing’ potentially ‘decisive’ as they prepare to ‘make a strong investment to secure his signing’. Liverpool’s interest is unlikely to improve the mood of a number of key Manchester United figures who regret selling Greenwood for such a modest fee , according to GiveMeSport . ‘Key figures within Manchester United expected Greenwood to go on and become a £100million talent after seeing him break into the first-team picture following his progress through the youth ranks, according to GMS sources, and they remain extremely disappointed to have lost out on securing a potential nine-figure sum in the future. ‘GMS sources have been informed that La Liga giants Barcelona are interested in offering Greenwood a quickfire route out of his current surroundings, with head coach Hansi Flick and president Joan Laporta eyeing an opportunity to land a high-level performer with genuine elite potential on the cheap. ‘The Ligue 1 outfit are in a strong negotiating position as the one-cap England international penned a five-year contract worth close to £75,000-per-week when he joined in the summer, but his form and the attraction of suitors have left Manchester United frustrated by how his Old Trafford career came to an end. ‘GMS sources have been told that Barcelona are not the only side looking to tempt Greenwood away from Marseille as numerous clubs currently competing in the Champions League are also believed to be keeping a close eye on how he progresses this season, with divisional rivals Paris Saint-Germain one of the admirers considering upping the ante.’",
+      "pubDate": "2024-10-06 13:54:33",
+      "pubDateTZ": "UTC",
+      "image_url": "https://d2x51gyc4ptf2q.cloudfront.net/content/uploads/2024/10/06145153/F365-One-Badge-Mason-Greenwood-Liverpool-128x67.jpg",
+      "source_id": "football365",
+      "source_priority": 53896,
+      "source_name": "Football365",
+      "source_url": "https://www.football365.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/football365.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.39,
+        "neutral": 98.5,
+        "negative": 1.11
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "0b75deb999c80cf60bc70ef9af898282",
+      "title": "Letran Knights back on track",
+      "link": "https://www.manilatimes.net/2024/10/06/sports/letran-knights-back-on-track/1979886",
+      "keywords": [
+        "sports"
+      ],
+      "creator": [
+        "Nicole Anne D.G. Bugauisan"
+      ],
+      "video_url": null,
+      "description": "MANILA, Philippines — It is safe to say that the dark days are over for the Colegio de San Juan de Letran Knights after wrapping up with a 6-3 win-loss card in the Round 1 of the NCAA Season 100 men's basketball tournament. After a 1-8 slate in the first round of the previous season, winning only against the San Sebastian College-Recoletos, the Knights buried the nightmare finish and returned to their high-caliber form. But for head coach Allen Ricardo, the job is not yet finished as he and his squad brace for the second round. The Knights were the back-to-back champions during Season 98 and 97, before falling to the slump in Season 99 where they only tallied two wins and absorbed 16 losses. \"We still have nine games, I hope we can [win] six or seven games, but the way things around, the competition, all of the teams and their standings are close to each other, so we don't know. The number eight or seven teams can rise. That's why we need a sense of urgency when we play, that's what I always tell them,\" Ricardo said. Letran capped the first round with a dominant win against the formidable Lyceum of the Philippines University, 78-66, last Oct. 5. With the head tactician remembering the 2-16 finish of the Knights, he stressed that there is no room for complacency despite a comfortable lead in the first round. \"The 5-2, 5-3 records, and now we're 6-3, that's nothing. But in the meantime, we will celebrate this small win, this gave us the confidence to come to the next round. Six wins is six wins.\"\"But we're still far.\"During post-game, players always stressed out Ricardo's encouraging words, which fueled them to perform at their best against their opponents. It was more than the \"pep talk\" that the head coach gave to his team, it was the trust and faith that changed the attitude and the body language of the Knights. \"For me, I started with their attitude. The techniques, all the basketball coaches here are good at what they do. In terms of X and Os they know it. For me, as a coach what I learned is that the attitude of the players should be right, they have the discipline, respect, and commitment is there.\" This led his players to reach their potential. Rookie Jimboy Estrada served as a starter, and he braved and stormed his defenders, continuously showing his mastery of doing flawless jumpers. Big man Kevin Santos slowly found his footing as he guarded the rim, and displayed more confidence after taking the NCAA Player of the Week plum. Ricardo showed faith in Deo Cuajao's clutch capabilities after scoring 15 points on four triples in the fourth quarter, winning against the College of Saint Benilde. Lastly, Pao Javillonar redeemed himself after returning to Letran and made a much introduction with a career-high of 28 points against Arellano. Only a few were mentioned above, but the Knights showed that they are one as a team whenever they go in a battle. Team captain Javillonar stressed that this season is all about bringing back the glory of Letran basketball. \"What motivates me is our last year's performance, we want to be back on track, we want to bring back the legacy of Letran.\"",
+      "content": "MANILA, Philippines — It is safe to say that the dark days are over for the Colegio de San Juan de Letran Knights after wrapping up with a 6-3 win-loss card in the Round 1 of the NCAA Season 100 men's basketball tournament. After a 1-8 slate in the first round of the previous season, winning only against the San Sebastian College-Recoletos, the Knights buried the nightmare finish and returned to their high-caliber form. Register to read this story and more for free . Signing up for an account helps us improve your browsing experience. OR See our subscription options.",
+      "pubDate": "2024-10-06 13:51:46",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.manilatimes.net/manilatimes/uploads/images/2024/10/06/429407.jpg",
+      "source_id": "manilatimes",
+      "source_priority": 33634,
+      "source_name": "The Manila Times",
+      "source_url": "https://www.manilatimes.net",
+      "source_icon": "https://i.bytvi.com/domain_icons/manilatimes.png",
+      "language": "english",
+      "country": [
+        "philippines"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "volleyball"
+      ],
+      "ai_region": [
+        "colegio de san juan de letran knights",
+        "philippines,asia",
+        "manila,metro manila,philippines,asia"
+      ],
+      "ai_org": [
+        "letran knights"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 9.93,
+        "neutral": 87.5,
+        "negative": 2.57
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "8bcd7eaa249df228c22a6905c5f777b9",
+      "title": "The bizarre reason why Robin van Persie was snubbed by Tottenham before joining Arsenal",
+      "link": "https://www.dailymail.co.uk/sport/football/article-13929829/robin-van-persie-arsenal-tottenham-man-united.html?ito=1490&ns_campaign=1490&ns_mchannel=rss",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "The reason behind Tottenham's decision to snub Robin van Persie (left) before he joined Arsenal has been revealed by former Spurs boss and sporting director David Pleat (inset).",
+      "content": "The bizarre reason why Robin van Persie was snubbed by Tottenham before joining Arsenal The Arsenal legend was originally overlooked by Tottenham as a young talent Robin van Persie went on to score 132 goals for the Gunners before leaving LISTEN NOW: It's All Kicking Off!, available wherever you get your podcasts. New episodes every Monday and Thursday By Ryan Walker Published: 09:50 EDT, 6 October 2024 | Updated: 09:51 EDT, 6 October 2024 e-mail View comments Robin van Persie was denied a move to Tottenham before joining Arsenal after making a substitute appearance in a match that saw Spurs recruiters walk away. The Dutchman is a Premier League legend after scoring 132 goals for the Gunners during a clinical career in London before later going on to lead Manchester United to Premier League title glory. Van Persie was a constant thorn against Spurs throughout his prolific Arsenal stint scoring five times against the club's arch rivals who rued missing the chance to sign him during the icon's breakthrough years. The 41-year-old was snapped up by Arsene Wenger as a youngster at Eredivisie giants Feyenoord - who he later went on to manage - and former Tottenham boss and sporting director David Pleat has outlined how and why Spurs decided against trying to sign Van Persie. Pleat ended his over 20-year association with Spurs in July as the club shook up their scouting department and revealed how he was once responsible for assessing a young Van Persie. Robin van Persie went on to become an Arsenal icon after being snubbed as a youngster by Tottenham Former Spurs boss and sporting director David Pleat (left) revealed he watched Van Persie in Feyenoord before he joined Arsenal Van Persie 132 goals for the Gunners during a clinical Premier League career in London Podcast All episodes PODCAST: Have England been playing with fear as Southgate suggests? LISTEN: Southgate only England manager to be criticised whilst winning PODCAST: The REAL reason England through despite playing badly PODCAST: 'Just ONE good performance' could change England's fortunes PODCAST: Are the England team buying into Southgate's style of play? Play on Apple Spotify 'Then as a director of football, at Tottenham , I went to Feyenoord to see Robin van Persie,' Pleat told FourFourTwo. 'He came on as a sub, shirt out of his shorts, socks rolled down, looking a right mess. 'Steve Rowley at Arsenal had decided not to sign him, but they went for a second look and decided to take a chance,' he added. Tottenham's loss was Arsenal's gain - albeit limited when he decided to leave the club and join Sir Alex Ferguson's Man United as he sought to become a Premier League champion. Van Persie later turned his back on Arsenal to join Man United where he won the Premier League title Van Persie proceeded to score 26 top-flight goals during his debut season at Old Trafford to deliver a 13th Premier League title and the last of Ferguson's glorious reign. Coincidentally the club haven't reached English champion status again since 2013 with current boss Erik ten Hag's position under scrutiny as United chiefs weigh up whether to keep him in charge amid a poor run of form. Arsenal London Share or comment on this article: The bizarre reason why Robin van Persie was snubbed by Tottenham before joining Arsenal e-mail Add comment",
+      "pubDate": "2024-10-06 13:51:08",
+      "pubDateTZ": "UTC",
+      "image_url": "https://i.dailymail.co.uk/1s/2024/10/06/14/90520567-0-image-a-29_1728222453594.jpg",
+      "source_id": "dailymailuk",
+      "source_priority": 135,
+      "source_name": "Mail Online",
+      "source_url": "https://www.dailymail.co.uk/home/index.html",
+      "source_icon": "https://i.bytvi.com/domain_icons/dailymailuk.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.1,
+        "neutral": 0.14,
+        "negative": 99.76
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "bbfe997e94d26c00b826cc5d75250cfc",
+      "title": "Brendan Rodgers rips away Celtic comfort blanket to spark Dortmund hangover recovery in Dingwall",
+      "link": "https://www.dailyrecord.co.uk/sport/football/football-news/brendan-rodgers-rips-away-celtic-33831227",
+      "keywords": [
+        "sport"
+      ],
+      "creator": [
+        "reporters@dailyrecord.co.uk (Ross Pilcher)"
+      ],
+      "video_url": null,
+      "description": "The Hoops battled back to see off Ross County during a dramatic clash in Dingwall",
+      "content": "The Hoops battled back to see off Ross County during a dramatic clash in Dingwall Get the latest Celtic news sent straight to your inbox with our daily newsletter We have more newsletters Get the latest Celtic news sent straight to your inbox with our daily newsletter We have more newsletters Brendan Rodgers admits Celtic were far too comfortable in the first half of their dramatic come-from-behind win over Ross County . Dortmund may have ripped the out of it in midweek, but Rodgers felt the champions were firmly back in their comfort zone during the opening 45 minutes in Dingwall. Ronan Hale's retaken penalty two minutes before the break served as a wake up call, and a fire more fired up Celtic re-emerged from the tunnel after the break, and turned things around through Alistair Johnston and Nicolas Kuhn The Rodgers told Sky Sports: \"Listen, nothing surprises you. We just need it to be faster, we were just too slow. There's no easy game but you can't look for an easy game either. So you've got to get out of your comfort zone and I thought it was too comfortable first half. Just in everything; speed, , movement, not enough runs to break the line and it gave us very little. We had lots of the ball but not penetrating enough, but sometimes that can happen. You can't always be perfect. \"The second half, I thought the guys coming into the game - Paulo (Bernardo) and Luke (McCowan) were outstanding. Movement, flexible, got on the ball, made runs and Kyogo coming in stretched the line and Jamesy (Forrest) with his quality. So we had the means to affect the game and thankfully, things turned out well for us.\" Asked if the first half was down to a hangover from their Dortmund, Rodgers replied: \"Yeah, these things can happen. When you're playing against a well organised team, it can happen. \"But of course it's a big energy to put into the game like we had and then you;re coming here again and you have to produce the same energy to get the win. We just didn't quite have that in the first half. \"But thankfully the players showed a magnificent response. I've always said resilience, grit and determination - this team have that in bucket loads so we were able to get the result. Seven wins out of seven is a great start for us.\" Tune in to Hotline Live every Sunday to Thursday and have your say on the biggest issues in Scottish football.",
+      "pubDate": "2024-10-06 13:50:52",
+      "pubDateTZ": "UTC",
+      "image_url": "https://i2-prod.dailyrecord.co.uk/incoming/article33831405.ece/ALTERNATES/s615/0_IMG_0919.jpg",
+      "source_id": "dailyrecord",
+      "source_priority": 13708,
+      "source_name": "Daily Record",
+      "source_url": "https://www.dailyrecord.co.uk/news",
+      "source_icon": "https://i.bytvi.com/domain_icons/dailyrecord.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "basketball"
+      ],
+      "ai_region": [
+        "ross county,ohio,united states of america,north america",
+        "dingwall,scotland,united kingdom,europe"
+      ],
+      "ai_org": [
+        "celtic"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 7.73,
+        "neutral": 73.59,
+        "negative": 18.68
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "880fffc995efab73bc760ed2b9cf1eab",
+      "title": "Boston Bruins goalie Jeremy Swayman signs for 8 years, $66 million",
+      "link": "https://kfor.com/sports/ap-sports/ap-boston-bruins-goalie-jeremy-swayman-signs-for-8-years-66-million/",
+      "keywords": [
+        "ap sports"
+      ],
+      "creator": [
+        "JIMMY GOLEN, Associated Press"
+      ],
+      "video_url": null,
+      "description": "BOSTON (AP) — The Boston Bruins signed Jeremy Swayman to an eight-year contract on Sunday that will pay him $66 million, getting their No. 1 goalie back on the ice just two days before the season opener. A restricted free agent, Swayman had missed all of training camp. The sides faced a Dec. 1 deadline [...]",
+      "content": null,
+      "pubDate": "2024-10-06 13:50:06",
+      "pubDateTZ": "UTC",
+      "image_url": "https://kfor.com/wp-content/uploads/sites/3/2024/10/670295f6643e03.35420103.jpeg?w=900",
+      "source_id": "kfor",
+      "source_priority": 5710,
+      "source_name": "Kfor",
+      "source_url": "https://kfor.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/kfor.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "automotive",
+        "corporate news"
+      ],
+      "ai_region": [
+        "boston,massachusetts,united states of america,north america",
+        "boston,new york,united states of america,north america",
+        "boston,georgia,united states of america,north america"
+      ],
+      "ai_org": [
+        "boston bruins"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 2.06,
+        "neutral": 97.73,
+        "negative": 0.21
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "b578cd0100c83d932d0ca2546ed9db3b",
+      "title": "🔴 LIVE: Man Utd-Aston Villa and Chelsea-Forest level",
+      "link": "https://onefootball.com/en/news/live-man-utd-aston-villa-and-chelsea-forest-level-40134939",
+      "keywords": null,
+      "creator": [
+        "Peter Fitzpatrick"
+      ],
+      "video_url": null,
+      "description": "There are three Premier League games taking place today, all of which have great intrigue.if(typeof(jQuery)==\"function\"){(function($){$.fn.fitVids=function(){}})(jQuery)};jwplayer('jwplayer_apIxBfst_5oNpOZgB_div').setup({\"playlist\":\"https:\\/\\/content.jwplatform.com\\/feeds\\/apIxBfst.json\",\"ph\":2});Follow all the action here.Aston Villa vs Manchester UnitedUnited had the first opening of the game through Marcus Rashford. Like he did against Porto, the forward cut in from the left and forced Emi Martínez into a strong save.Morgan Rogers had Villa’s first chance, smashing wide after some neat interplay with Ollie Watkins and poor defending.Unai Emery’s side suffered an early blow when Ezri Konsa went down with a hamstring injury, and was replaced by Diego Carlos.United had the better of the first half, with Jonny Evans, in particular,More to follow...Chelsea vs Nottingham ForestChelsea had more of the ball in the opening 20 minutes, but failed to truly test the Forest defence, who had conceded just five goals in their first six games.Forest’s defensive line was a complete opposite to Brighton’s at Stamford Bridge last week, and it meant there were very few spaces for Cole Palmer, Jadon Sancho and others to operate in.More to follow...Later to comeBrighton vs Tottenham",
+      "content": "There are three games taking place today, all of which have great intrigue. Follow all the action here. United had the first opening of the game through Marcus Rashford. Like he did against Porto, the forward cut in from the left and forced Emi Martínez into a strong save. Morgan Rogers had Villa’s first chance, smashing wide after some neat interplay with Ollie Watkins and poor defending. Unai Emery’s side suffered an early blow when Ezri Konsa went down with a hamstring injury, and was replaced by Diego Carlos. The first half ended with neither side coming close to getting a goal. More to follow... Chelsea had more of the ball in the opening 20 minutes, but failed to truly test the Forest defence, who had conceded just five goals in their first six games. Forest’s defensive line was a complete opposite to Brighton’s at Stamford Bridge last week, and it meant there were very few spaces for Cole Palmer, Jadon Sancho and others to operate in. More to follow...",
+      "pubDate": "2024-10-06 13:49:41",
+      "pubDateTZ": "UTC",
+      "image_url": "https://image-service.onefootball.com/transform?dpr=2%E2%84%91%3Dhttps%3A%2F%2Fwp-images.onefootball.com%2Fwp-content%2Fuploads%2Fsites%2F10%2F2024%2F10%2FAston-Villa-FC-v-Manchester-United-FC-Premier-League-1728222569-1000x680.jpg&h=210&w=280",
+      "source_id": "onefootball",
+      "source_priority": 4161,
+      "source_name": "Onefootball",
+      "source_url": "https://onefootball.com/en",
+      "source_icon": null,
+      "language": "english",
+      "country": [
+        "germany"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "chelsea forest",
+        "man utd aston villa"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.11,
+        "neutral": 99.51,
+        "negative": 0.38
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "33bd35ad198109188b2ff43f46d1967b",
+      "title": "India keep T20 World Cup hopes alive with crucial win over Pakistan",
+      "link": "http://www.skysports.com/cricket/news/12040/13228977/womens-t20-world-cup-2024-india-keep-hopes-alive-with-crucial-win-over-pakistan-in-dubai",
+      "keywords": [
+        "news story"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "India kept their Women's T20 World Cup hopes alive with a six-wicket win over rivals Pakistan on Sunday in Dubai.",
+      "content": "India kept their Women's T20 World Cup hopes alive with a six-wicket win over rivals Pakistan on Sunday in Dubai. After being thumped by New Zealand just two days ago , India were in a near must-win situation against Pakistan. Pakistan won the toss and batted first but were limited to just 105 runs after some stunning bowling from India, including Arundhati Reddy and Shreyanka Patil who took five wickets between them. It was thought India would want to boost their net run rate, which was down at -2.9 after their defeat to New Zealand, but they were cautious with the run chase. Shafali Verma survived an initial dismissal after the fifth ball of the chase, only for a review to go her way as the ball was not hitting the wickets. Trending That proved to be a crucial moment as Verma got India on their way as she scored 32 runs before Aliya Riaz made a good catch. From there, India made steady progress and got over the line but they will be concerned as captain Harmanpreet Kaur limped off injured near the end after slipping. Also See: Scorecard: India vs Pakistan Stream Sky Sports with NOW Latest cricket videos and highlights Get Sky Sports on WhatsApp More to follow... What's next for each side at Women's T20 World Cup? India next face Sri Lanka on Wednesday at 3pm in another big match for both sides in the Women's T20 World Cup. As for Pakistan , they are in action on Friday against defending champions Australia at 3pm on Friday, with every match from the tournament live on Sky Sports Cricket . Watch every match of the 2024 Women's T20 World Cup live on Sky Sports , concluding with the final in Dubai on Sunday October 20. You can also stream the tournament and more with NOW",
+      "pubDate": "2024-10-06 13:49:21",
+      "pubDateTZ": "UTC",
+      "image_url": "https://e1.365dm.com/24/10/1920x1080/skysports-shafali-verma-cricket_6708169.jpg",
+      "source_id": "skysports",
+      "source_priority": 831,
+      "source_name": "Sky Sports",
+      "source_url": "https://www.skysports.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/skysports.png",
+      "language": "english",
+      "country": [
+        "united kingdom",
+        "ireland",
+        "australia",
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "dubai.",
+        "pakistan,asia",
+        "india,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 97.67,
+        "neutral": 1.9,
+        "negative": 0.43
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "c1881ca2f8e74dee1d6b2efc340e69af",
+      "title": "Gauff rolls past Muchova for China Open title",
+      "link": "https://www.espn.com/tennis/story/_/id/41640188/coco-gauff-rolls-karolina-muchova-china-open-title",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Coco Gauff won her second title this season with a lopsided 6-1, 6-3 victory over Karolina Muchova in the final of the China Open.",
+      "content": "BEIJING -- Coco Gauff won her second title this season with a lopsided 6-1, 6-3 victory over Karolina Muchova in the final of the China Open on Sunday. The sixth-ranked Gauff, 20, became the youngest China Open champion in 14 years. She is also the second American champion in Beijing, following Serena Williams' title runs in 2004 and 2013. It was Gauff's eighth career title. She improved her record in tour finals to 8-1 and has a 7-0 record in hard-court finals. Gauff wasted no time and took the opening set in just 31 minutes. She dropped just five points on her first serve and broke Muchova five times.",
+      "pubDate": "2024-10-06 13:49:04",
+      "pubDateTZ": "UTC",
+      "image_url": "https://a3.espncdn.com/combiner/i?img=%2Fphoto%2F2024%2F1006%2Fr1396842_1296x729_16-9.jpg",
+      "source_id": "espn",
+      "source_priority": 341,
+      "source_name": "Espn",
+      "source_url": "https://www.espn.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/espn.png",
+      "language": "english",
+      "country": [
+        "india",
+        "united states of america",
+        "united kingdom",
+        "australia",
+        "singapore",
+        "canada"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "tennis"
+      ],
+      "ai_region": [
+        "beijing,china,asia",
+        "beijing,beijing,china,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 90.43,
+        "neutral": 8.64,
+        "negative": 0.93
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "b27df89a35a4da9c893e8bff8d0cdbd2",
+      "title": "Bruins, Swayman end standoff with $66M deal",
+      "link": "https://www.espn.com/nhl/story/_/id/41640179/bruins-sign-goalie-jeremy-swayman-8-year-66m-contract",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "The Bruins have signed goaltender Jeremy Swayman to an eight-year, $66 million deal, ending a contract standoff that approached the start of the regular season.",
+      "content": "The Boston Bruins have signed goaltender Jeremy Swayman to an eight-year, $66 million deal, ending a contract standoff that approached the start of the regular season. Swayman, whose deal was announced Sunday morning, is entering his fifth NHL season. He has a record of 79-33-15, with a .919 save percentage and a 2.34 goals-against average. The 25-year-old was anointed as the Bruins' primary goaltender after they traded Linus Ullmark to the Ottawa Senators in June. But the lack of a contract agreement meant Swayman had declined to report to training camp. Editor's Picks Lapsed fan's guide to the 2024-25 NHL season: Everything you need to know 2d Greg Wyshynski The sides had also disagreed over the existence of a $64 million offer that team president Cam Neely referenced earlier this week. But Sunday's announcement puts to an end to the standoff and locks up the Bruins' goaltender as they seek their first Stanley Cup Final appearance since 2019. Swayman made $3.475 million on a one-year contract last season, which was awarded through arbitration. Information from ESPN's Greg Wyshynski was used in this report.",
+      "pubDate": "2024-10-06 13:49:03",
+      "pubDateTZ": "UTC",
+      "image_url": "https://a.espncdn.com/combiner/i?img=%2Fphoto%2F2024%2F0905%2Fr1382531_1296x729_16-9.jpg",
+      "source_id": "espn",
+      "source_priority": 341,
+      "source_name": "Espn",
+      "source_url": "https://www.espn.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/espn.png",
+      "language": "english",
+      "country": [
+        "india",
+        "united states of america",
+        "united kingdom",
+        "australia",
+        "singapore",
+        "canada"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "automotive"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "swayman",
+        "bruins"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.5,
+        "neutral": 99.3,
+        "negative": 0.21
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "ef6784768ad64cebe6338fb2f5ffe344",
+      "title": "Makarova beats Bradsell as Brits dominate dramatic Abbaye on Arc day",
+      "link": "http://www.skysports.com/racing/news/12040/13229061/prix-de-labbaye-makarova-beats-bradsell-and-believing-as-brits-dominate-sprint-finish-on-prix-de-larc-de-triomphe-day",
+      "keywords": [
+        "news story"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "Makarova led a British domination of the Prix de l'Abbaye Longines on Arc day at ParisLongchamp.",
+      "content": "Makarova led a British domination of the Prix de l'Abbaye Longines on Arc day at ParisLongchamp. Ridden by Tom Marquand and trained by Ed Walker, Makarova was settled in the chasing pack as favourite Bradsell and Desperate Hero traded blows at the front end of the five-furlong sprint. It looked as though Bradsell might seal another Group One triumph entering the final furlong, but Makarova was making ground down the outside and swept through to win going away. Bradsell just held on for second from the fast-finishing Believing, with Desperate Hero fourth and No Half Measures fifth, with all those runners hailing from British yards. Camille Pissarro swooped late to grab glory in the Qatar Prix Jean-Luc Lagardere . Trending Trained by Aidan O'Brien, the colt benefitted from a vintage Christophe Soumillon ride as he recorded a first Group One success in the seven-furlong contest. Soumillon exercised plenty of patience in the early stages before allowing his mount to coast into contention in the straight. Also See: Full racing results Watch racing live on Sky Sports Rashabar put up a tremendous bid for Brian Meehan, but Camille Pissarro - who was well down the field when Rashabar won the Coventry Stakes at Royal Ascot - just edged the verdict in the shadow of the post, with the front-running Misunderstood clinging on for third. Francis-Henri Graffard trained the first two home as Vertical Blue caused an 100/1 upset in flooring hot favourite Zarigana in the Qatar Prix Marcel Boussac . All the talk pre-race surrounded the Aga Khan-owned market leader - who is a granddaughter of the great Zarkava - and after travelling in mid-division it looked as though she would only have to peg back Aidan O'Brien's enterprisingly-ridden Exactly to prevail. Her stablemate Vertical Blue went with her, however, and the judge had to be called to announce the outsider as the winner with Zarigana narrowly behind and Exactly in third.",
+      "pubDate": "2024-10-06 13:49:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://e1.365dm.com/24/10/1920x1080/skysports-makarova-abbaye-racing_6708195.jpg",
+      "source_id": "skysports",
+      "source_priority": 831,
+      "source_name": "Sky Sports",
+      "source_url": "https://www.skysports.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/skysports.png",
+      "language": "english",
+      "country": [
+        "united kingdom",
+        "ireland",
+        "australia",
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "sports"
+      ],
+      "ai_region": [
+        "parislongchamp."
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 1.58,
+        "neutral": 98.13,
+        "negative": 0.29
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "2de168ad194a3789482756b36ea01668",
+      "title": "Follow live: Sam Darnold leads Vikings against Aaron Rodgers, Jets in London",
+      "link": "https://www.espn.com/nfl/game/_/gameId/401671804",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "null",
+      "content": null,
+      "pubDate": "2024-10-06 13:48:59",
+      "pubDateTZ": "UTC",
+      "image_url": "http://s.espncdn.com/stitcher/sports/football/nfl/events/401671804.png?templateId=espn.com.share.1",
+      "source_id": "espn",
+      "source_priority": 341,
+      "source_name": "Espn",
+      "source_url": "https://www.espn.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/espn.png",
+      "language": "english",
+      "country": [
+        "india",
+        "united states of america",
+        "united kingdom",
+        "australia",
+        "singapore",
+        "canada"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "american football",
+        "sports"
+      ],
+      "ai_region": [
+        "london."
+      ],
+      "ai_org": [
+        "vikings",
+        "jets"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.06,
+        "neutral": 99.84,
+        "negative": 0.1
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "a6c065851e5f723f4895f4f5752da3ca",
+      "title": "UN like 'old company', not entirely keeping up with market: Jaishankar",
+      "link": "https://www.deccanchronicle.com/nation/current-affairs/un-like-old-company-not-entirely-keeping-up-with-market-jaishankar-1828482",
+      "keywords": [
+        "nation,current affairs,top stories"
+      ],
+      "creator": [
+        "PTI"
+      ],
+      "video_url": null,
+      "description": null,
+      "content": "External Affairs Minister S Jaishankar on Sunday took a critical view of the United Nations, saying it was \"like an old company\", not entirely keeping up with the market but occupying the space.During an interaction at the Kautilya Economic Conclave here, he also said that two very serious conflicts are going on in the world. \"And where is the UN on them, essentially a bystander,\" the minister said. In response to a query on the possible outcome of the US elections, he said the US actually has \"made a shift\", geopolitically and in its economic outlook, and irrespective of the outcomes in November, many of these trends will \"intensify\" in the days to come. Jaishankar took part in the interactive session on 'India and the Globe' and spoke of India's role and challenges amid changing global dynamics. \"So, we are both a lifting tide and a bit of paradoxical one, a ballast as well,\" Jaishankar said as he enumerated some of the steps India has taken to help other countries, including its neighbours such as Sri Lanka. Asked about his upcoming visit to Pakistan to attend a summit of the Shanghai Cooperation Organisation (SCO), he again sought to rule out any bilateral talks with his Pakistani counterpart. \"I am going there for a certain job, a certain responsibility. And, I take my responsibilities seriously. So, I am going there to represent India at the SCO meeting, and that is what I am going to do,\" Jaishankar said. At an event on Saturday, the external affairs minister said that he was going to Islamabad for a \"multilateral event\" and not to discuss India-Pakistan relations. In his response to a query on the United Nations' role amid the changing global scenario, he took a rather critical view of the world body that was born in 1945 after the Second World War. Initially, it had 50 countries, which has grown over these years to nearly four times. \"The UN is in a way like an old company, not entirely keeping up with the market, but occupying the space. And, when it's behind times, in this world you have start-ups and innovations, so different people start doing their own things,\" Jaishankar said. \"So, what you have today is that yes you have a UN at the end, however suboptimal in functioning, it is still the only multilateral game in town,\" he added. \"But, when it doesn't step up on key issues, countries figure out their own ways of doing it. For example, let's take the last five-10 years, probably the biggest thing that happened in our life was Covid. Now, what did the UN do on Covid? I think the answer is -- not very much,\" the minister said. Jaishankar said, \"Now, you have two conflicts going on in the world today, two very serious conflicts, where is the UN on them, essentially a bystander,\" he said. So, what is happening, as it did during Covid also, countries did their own thing such as the initiative like Covax that was done by a group of countries, the minister said. \"When it comes to big issues of the day, you have an increasing combination of countries coming together to agree to do something.\" He cited the examples of connectivity initiatives like the India-MiddleEast-Europe Economic Corridor (IMEC), QUAD in Indo-Pacific to look after the global commons, the International Solar Alliance (ISA) and the Coalition for Disaster Resilient Infrastructure (CDRI), saying all these bodies came outside the UN framework. \"Today, the UN will continue, but increasingly there is a non-UN space which is the active space and I think it's telling on the UN,\" Jaishankar added. More than 75 years after its inception, the United Nations is still working to maintain international peace and security, give humanitarian assistance to those in need, protect human rights, and uphold international law, according to the UN website. India has been demanding reforms in the world body and its UN Security Council in sync with the changed times. Earlier this year, Jaishankar suggested that the \"short-sighted\" approach of the five permanent members of the UNSC is holding back forward movement in the long-pending reform of the global body. The five permanent members are Russia, the UK, China, France and the US and these countries can veto any substantive resolution. Jaishankar was asked about a possible outcome of the US elections and how will India engage with the new administration. \"You spoke of one possibility of the two in the American elections. I stress to you, look back over the last five years, how many of the policies which in 2020 people thought were the Trump administration's policies actually not just carried over by Biden but they doubled down on those policies,\" he said. So, this is not just a politician, it's not just a fashion, just one administration. \"I think there are very deep shifts happening,\" the minister added. \"This is... America which actually has made a shift, geopolitically and in its economic outlook and has come to the conclusion that the order which itself devised many years ago no longer works to its benefit to that degree,\" he said. \"So, I would argue, irrespective of the outcomes in November, many of these trends will intensify in the days to come. And, you are going to get, I would call it a more fractured world, but I would say, in some ways, reliability and transparency are going to be two very key factors which will become a metric for countries to have enterprises and domains to have dealings with each other,\" he said. On a question on the Global South, Jaishankar said that it itself has a \"great value\". \"It is a collective. We don't expect to be the leader. We are seen as a trusted member, an articulate member... So, I am not really comfortable with the idea that you walk away from the Global South. On the contrary, I see value,\" the minister said. He also spoke on the role and impact of artificial intelligence in shaping the world going forward.",
+      "pubDate": "2024-10-06 13:48:07",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.deccanchronicle.com/h-upload/2024/10/06/1848923-untitleddesign7.webp",
+      "source_id": "deccanchronicle",
+      "source_priority": 14130,
+      "source_name": "Deccan Chronicle",
+      "source_url": "https://www.deccanchronicle.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/deccanchronicle.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "government"
+      ],
+      "ai_region": [
+        "new delhi,delhi,india,asia"
+      ],
+      "ai_org": [
+        "united nations",
+        "jaishankar"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.46,
+        "neutral": 9.45,
+        "negative": 90.09
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "bb4590a0a3ddbe29fd7fcb6e71a3c70d",
+      "title": "Right place, right time: Lingolingo's patience rewarded with game-winner",
+      "link": "https://www.manilatimes.net/2024/10/06/sports/right-place-right-time-lingolingos-patience-rewarded-with-game-winner/1979884",
+      "keywords": [
+        "sports"
+      ],
+      "creator": [
+        "Niel Victor C. Masoy"
+      ],
+      "video_url": null,
+      "description": "MANILA, Philippines — Heeding to coach Jack Santiago's call, UE's Wello Lingolingo stayed patient when it came to his offensive game against Adamson in the UAAP Season 87 men's basketball tournament at the Mall of Asia Arena Sunday.The third year guard picked his spots, not forcing anything during the contest and that patience has ultimately rewarded him with the game-winning shot.Lingolingo tracked the offensive board with a few ticks left off a Nico Mulingtapang missed shot, dribbled to his right, and pulled off a fadeaway off the glass jumper to beat the buzzer and give UE a 63-62 win.\"Coach Jack told me to not force the game to come to me and just let it come to me instead. That's what I did and I didn't take a forced shot,\" said Lingolingo, who finished with 10 points on 4-of-7 shooting with five rebounds and three steals to boot.\"When I couldn't find my spot in the three-point area, I just found a way to contribute, especially on the defensive end. I didn't expect the game-winning shot. I just happened to be there and I hit the shot thanks to God.\"The 6-foot-1 Lingolingo said that his game-winner was simply a case of right place, right time moment.\"That shot of mine as coach LA [Revilla] said was just a case of right place, right time. I just happened to be there, I saw the time and didn't hesitate.\"Lingolingo's patience didn't just reward him with easily the greatest shot of his life, it also gave UE its fifth straight win, a run only a few expected of the Red Warriors especially after the departure of star guard Noy Remogat.",
+      "content": "MANILA, Philippines — Heeding to coach Jack Santiago's call, UE's Wello Lingolingo stayed patient when it came to his offensive game against Adamson in the UAAP Season 87 men's basketball tournament at the Mall of Asia Arena Sunday. The third year guard picked his spots, not forcing anything during the contest and that patience has ultimately rewarded him with the game-winning shot. Register to read this story and more for free . Signing up for an account helps us improve your browsing experience. OR See our subscription options.",
+      "pubDate": "2024-10-06 13:47:47",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.manilatimes.net/manilatimes/uploads/images/2024/10/06/429404.png",
+      "source_id": "manilatimes",
+      "source_priority": 33634,
+      "source_name": "The Manila Times",
+      "source_url": "https://www.manilatimes.net",
+      "source_icon": "https://i.bytvi.com/domain_icons/manilatimes.png",
+      "language": "english",
+      "country": [
+        "philippines"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "basketball"
+      ],
+      "ai_region": [
+        "philippines,asia",
+        "manila,metro manila,philippines,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 99.4,
+        "neutral": 0.34,
+        "negative": 0.26
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "2e495b3e16d3d7ab63f6ca5ff0d851c7",
+      "title": "Mayank Yadav, Nitish Kumar Reddy Handed Team India Debut Ahead of IND vs BAN 1st T20I 2024, Receive Cap From Murali Kartik",
+      "link": "https://www.latestly.com/socially/sports/cricket/mayank-yadav-nitish-kumar-reddy-handed-team-india-debut-ahead-of-ind-vs-ban-1st-t20i-2024-receive-cap-from-murali-kartik-6322336.html",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "India has been in search of a tearaway quick and a seam bowling all-rounder for long and these two can fill in the roles. They received their debut caps from veteran cricketers Murali Kartik and Parthiv Patel.",
+      "content": "Fast bowler Mayank Yadav, who created sensations during the recent IPL 2024 and young seam-bowling all-rounder Nitish Kumar Reddy were handed debut ahead of the India vs Bangladesh 1st T20I 2024 at Gwalior. Veteran Indian spinner and commentator Murali Kartik was the one who handed out the debut cap to Mayank Yadav while former wicketkeeper batter Parthiv Patel handed Nitish Kumar Reddy the cap. India has been in search of a tearaway quick and a seam bowling all-rounder for long and these two can fill in the roles. Jasprit Bumrah Attends IND-W vs PAK-W ICC Women’s T20 World Cup 2024 Match at Dubai International Stadium, Pic Goes Viral . Say Hello to #TeamIndia 's Debutants here in Gwalior 😃👋 Congratulations to Mayank Yadav and Nitish Kumar Reddy! 🧢 Live - https://t.co/Q8cyP5jpVG #INDvBAN | @IDFCFIRSTBank pic.twitter.com/yQo3DtXZUL — BCCI (@BCCI) October 6, 2024 Murali Kartik hands the cap to Mayank Yadav, Parthiv Patel to Nitish Reddy. #INDvPAK #myankyadav #nitishreddy pic.twitter.com/jFtAhh7BtK — Sanatani_Ashish 🇮🇳 (@ashi790mishra) October 6, 2024 (SocialLY brings you all the latest breaking news, viral trends and information from social media world, including Twitter, Instagram and Youtube. The above post is embeded directly from the user's social media account and LatestLY Staff may not have modified or edited the content body. The views and facts appearing in the social media post do not reflect the opinions of LatestLY, also LatestLY does not assume any responsibility or liability for the same.)",
+      "pubDate": "2024-10-06 13:47:47",
+      "pubDateTZ": "UTC",
+      "image_url": "https://st1.latestly.com/wp-content/uploads/2024/10/Mayank-Yadav-and-Nitish-Kumar-Reddy-380x214.jpg",
+      "source_id": "latestly",
+      "source_priority": 31923,
+      "source_name": "Latestly",
+      "source_url": "https://www.latestly.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/latestly.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "india,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 98.78,
+        "neutral": 0.95,
+        "negative": 0.27
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "7e426148f31098579c77a058ab4b4d60",
+      "title": "Arsenal injury scare as in-form player to be “assessed” and sit out upcoming games",
+      "link": "https://www.caughtoffside.com/2024/10/06/kai-havertz-injury-worry-for-arsenal/",
+      "keywords": [
+        "football and soccer",
+        "extra time",
+        "arsenal fc",
+        "mobile app stories",
+        "injury news",
+        "premier league",
+        "kai havertz",
+        "features - newsnow"
+      ],
+      "creator": [
+        "Mark Brus"
+      ],
+      "video_url": null,
+      "description": "Arsenal have been dealt some worrying injury news as Kai Havertz is set to miss upcoming international matches for the German national team due to a knee problem. According to Fabrizio Romano, posting on his official account on X, formerly Twitter, Havertz will be assessed by the Gunners and sit out the upcoming international break. [...]The post Arsenal injury scare as in-form player to be “assessed” and sit out upcoming games appeared first on CaughtOffside.",
+      "content": "According to Fabrizio Romano, posting on his official account on X, formerly Twitter, Havertz will be assessed by the Gunners and sit out the upcoming international break. This could just be Arsenal being cautious after they lost Martin Odegaard to a bad injury during the last international break, but one imagines fans will be a bit concerned by this update as Havertz has been such an important player for Mikel Arteta’s side so far this season. See below for the Havertz injury news from Romano’s X post... Arsenal signed Havertz before the start of last season and although it took the former Chelsea man a bit of time to get going, he’s now surely one of the first names on Arteta’s team sheets. 3-1 at the Emirates Stadium, while he’d also in the midweek Champions League game. Kai Havertz injury would leave Arsenal with limited options While it still isn’t clear how serious this is for AFC, it perhaps serves as a reminder of their lack of depth in attack, with Gabriel Jesus not looking like much of a backup at the moment. Leandro Trossard can also play up front but tends to better out wide, and the same is probably true of Gabriel Martinelli, while Eddie Nketiah was sold in the summer after previously being kept in reserve precisely for situations like this. There’ll be some Arsenal fans who’ll have been keen for the north Londoners to sign a striker in the summer, and if Havertz’s injury ends up being serious perhaps this will push the club to get something done in that position in January.",
+      "pubDate": "2024-10-06 13:47:25",
+      "pubDateTZ": "UTC",
+      "image_url": "https://icdn.caughtoffside.com/wp-content/uploads/2024/10/arsenal-3-1-southampton-kai-havertz.jpg",
+      "source_id": "caughtoffside",
+      "source_priority": 16638,
+      "source_name": "Caughtoffside",
+      "source_url": "https://www.caughtoffside.com",
+      "source_icon": null,
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 2.9,
+        "neutral": 2.69,
+        "negative": 94.41
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "f6f8652ffa57372dd626ac483cfb6174",
+      "title": "Gary Neville's exact same damning Man Utd verdict 12 months on speaks volumes",
+      "link": "https://www.mirror.co.uk/sport/football/news/manchester-united-results-neville-graveyard-33831011",
+      "keywords": [
+        "football"
+      ],
+      "creator": [
+        "mirrornews@mirror.co.uk (Tom Sunderland)"
+      ],
+      "video_url": null,
+      "description": "Twelve months on from his alarming assessment of Manchester United, Gary Neville has once again taken aim at his old club for the same issue to suggest nothing has changed",
+      "content": "Manchester United icon Gary Neville has once again likened the club to \"a graveyard\" as the struggles at Old Trafford continue. It was exactly 12 months ago that the former England full-back said his old stomping ground had become a place for careers to die. Neville spoke about \"big problems\" at the Theatre of Dreams in October 2023, raising alarm after a poor start in Erik ten Hag 's second despite another influx of players. Fast-forward to today and United have won only three of their nine games in all competitions, including back-to-back draws in the Europa League . They've also lost successive Premier League home games to Liverpool and Tottenham , succumbing 3-0 on both occasions. Speaking to Rebecca Lowe on The Overlap US following the recent defeat to Spurs, Neville reiterated the point when he said: \"The idea that another manager can come in with great promise, great talent [and who] lots of clubs in Europe were looking at that Manchester United get . . .and it's been a graveyard for him. \"This club cannot continue being a graveyard for players and managers. There's got to be a stop put to it. And that's where I think Jim Ratcliffe [and other executive members], they've got to stand strong now and come up with solutions.\" Neville's comments bear a striking similarity to the ones he made 12 months ago, suggesting not much has changed at Old Trafford in that time – in his opinion at least. “I feel very sorry for the manager, I know a lot of people will say he’s got to do a lot better, and that’s fine, he’s the Manchester United manager, but there are a lot of big problems at the club that managers have found over the last ten years,\" Neville said previously. \"I think until those problems are solved we’ll still continue to see underperforming teams, underperforming players, it’s become a graveyard for coaches and players – it’s not too strong a term.\" Ten Hag once again finds himself under immense pressure to steer the ship back on course, with United back in familiar, gloomy territory. Neville and Lowe discussed some of those names who could replace the Dutchman if he were to be fired, which begs the question of what happens to his squad. Despite the struggles he's faced for much of his time in England, Ten Hag has been allowed to assemble a line-up replete with talent he's picked personally. And Neville pointed to decisions like these as being an example of why the club has hampered itself in the post-Sir Alex Ferguson era. \"That's where Manchester United have been, flip-flopping around for the last 12 years,\" he said. \"Every manager having a big influence over the transfers that have come into the club. Every next manager has been a different style of play and then basically wanted to change. And you've ended up with three or four managers' players in their squad, and trying to get a cohesive way of playing.\" Neville proceeded to call on directors Dan Ashworth, Jason Wilcox, Omar Berrada and Sir Dave Brailsford to \"earn their corn\" amid tough times. However, it will take monumental change at numerous level of the club to have Old Trafford feeling less like a morgue anytime soon. _Join our new WhatsApp community _ _and receive your daily dose of Mirror Football content. We also treat our community members to special offers, promotions, and adverts from us and our partners. If you don't like our community, you can check out any time you like. If you're curious, you can read our _ Privacy Notice. United have unveiled their new adidas home kit with new front-of-shirt sponsors for the 2024/25 season - and you can get your hands on it right now .",
+      "pubDate": "2024-10-06 13:47:09",
+      "pubDateTZ": "UTC",
+      "image_url": "https://i2-prod.mirror.co.uk/incoming/article33831316.ece/ALTERNATES/n615/1_Screenshot-4.jpg",
+      "source_id": "mirroruk",
+      "source_priority": 910,
+      "source_name": "Mirror",
+      "source_url": "https://www.mirror.co.uk",
+      "source_icon": "https://i.bytvi.com/domain_icons/mirroruk.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "manchester united"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.14,
+        "neutral": 0.22,
+        "negative": 99.64
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "405b08b913057036a2cb9c6cf02dba44",
+      "title": "India’s Pankaj Advani wins Singapore Open title",
+      "link": "https://sportstar.thehindu.com/pool/pankaj-advani-wins-singapore-open-title-india-billiards-report-result-score-news/article68725196.ece",
+      "keywords": [
+        "cue sport"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "Ace Indian cueist Pankaj Advani won the coveted Songhe Singapore Open title with a 5-1 win over local favourite Jaden Ong in Singapore on Sunday.",
+      "content": "Ace Indian cueist Pankaj Advani won the coveted Songhe Singapore Open title with a 5-1 win over local favourite Jaden Ong in Singapore on Sunday. On his way to the final, Advani beat former IBSF world snooker champion Dechawat Poomjaeng of Thailand 4-3 in a thrilling quarterfinal at the Lagoon Billiards Room. While the 5-1 score of the final seems lopsided, the first two frames were won by the Indian clearing the colours from a deficit to pip the Singaporean on both occasions to take a 2-0 advantage. READ | IBSF World U-21 snooker championship: Poland’s Szubarczyk becomes youngest champion With some heavy scoring in the third by Advani, Ong needed to turn up the attack to offer himself a chance to survive in the final stage of the prestigious event. A resurgent Ong pulled a frame back to be in contention. However, in the fourth, a brilliant snooker put by Advani on the final brown allowed him back in the frame and with a clean clearance from brown to black, Advani was one frame away from the championship. In the final frame, Advani scored a 74-6 win to lift the title. Advani will defend his world billiards title in Doha in November. Comments Related Topics Pankaj Advani / Singapore Open / billiards Latest on Sportstar",
+      "pubDate": "2024-10-06 13:47:09",
+      "pubDateTZ": "UTC",
+      "image_url": "https://ss-i.thgim.com/public/incoming/b2gl1j/article68725168.ece/alternates/LANDSCAPE_1200/IMG_PANKAJ_6_2_1_NHCJQOQB.jpg",
+      "source_id": "sportstar",
+      "source_priority": 2972,
+      "source_name": "Sport Star The Hindu",
+      "source_url": "https://sportstar.thehindu.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/sportstar.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "sports",
+        "awards and recognitions"
+      ],
+      "ai_region": [
+        "singapore,central singapore,singapore,asia",
+        "india,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 88.71,
+        "neutral": 10.56,
+        "negative": 0.73
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "151aaf5f6167c2c25359389528f82997",
+      "title": "Week 5 NFL betting guide: Top expert, model, AI, parlay, DFS, season-long fantasy picks revealed",
+      "link": "https://www.cbssports.com/nfl/news/week-5-nfl-betting-guide-top-expert-model-ai-parlay-dfs-season-long-fantasy-picks-revealed/",
+      "keywords": null,
+      "creator": [
+        "CBS Sports Staff"
+      ],
+      "video_url": null,
+      "description": "SportsLine's team of Vegas experts and its proven model and AI PickBot get you ready for Week 5 NFL betting",
+      "content": "The Week 5 NFL schedule rolls on Sunday, with the only two unbeaten teams trying to keep their perfect starts alive. The Vikings face Aaron Rodgers and the Jets (+2.5, 41.5) in London on Sunday at 9:30 a.m. ET, while Kansas City hosts New Orleans (+5.5, 43) on Monday Night Football at 8:15 p.m. ET. The other primetime game remaining on the schedule features Steelers vs. Cowboys (+2.5, 44) on Sunday Night Football at 8:20 p.m. ET. Four teams are on bye: Lions, Chargers, Titans, and Eagles. If you are looking for NFL picks, NFL parlays, Fantasy football rankings or NFL DFS picks for Week 5, SportsLine has you covered with its proven model, AI PickBot and team of experts. They even have one pick that returns a whopping +21000, so be sure to see what they have to say . SportsLine AI hit nearly 1,700 highly-ranked props picks during the 2023 NFL season, and it has already nailed 128 4-star picks or better this season. Now it is back with its picks on the spread, money line and total for each Week 5 NFL game. It is backing the Cardinals (+7, 48.5) against the 49ers on Sunday, projecting a final score of 27-24 in favor of San Francisco. See AI picks for each Week 5 NFL game right here . SportsLine's model has returned well over $7,000 on top-rated picks since its inception, so those picks can confidently be used to build NFL parlays. The model has built a five-team parlay for Week 5 that pays 25-1, and one of the legs is Buffalo (+1, 47.5) to cover at Houston. The Bills are covering in well over 50% of simulations, and the rest of the five-team parlay can be found here. SportsLine expert Larry Hartstein finished tied for 52nd out of 1,598 entries in the 2022 Westgate Las Vegas SuperContest after going 53-34-3 against-the-spread, and he has also revealed a Week 5 NFL parlay. His three-team parlay, which pays 6-1, includes the Broncos (-2.5, 35.5) covering against the Raiders. He is also backing an underdog to have a strong showing against a shaky defense, and you can see which team that is here. The model simulates every game 10,000 times, which has helped it produce better Fantasy rankings than human experts over the last few seasons. It has revealed its Week 5 Fantasy football position rankings that can be used to make start-sit decisions. Ravens running back Derrick Henry is its top-ranked running back of the week, but it also has full rankings for every position. Hall of Fame analyst Dave Richard knows that strength of schedule is an important part of Fantasy football, and he updates his projections every week. His rankings show how the schedule affects every Fantasy relevant player for the upcoming four weeks, the playoff stretch and the entire season. They are shared by position so you can see exactly how easy or challenging a potential waiver wire or trade target has it in the short- and long-term compared to the rest of the league, and his Week 5 updated strength of schedule rankings are available here. Senior Fantasy writer Heath Cummings is a DFS expert who posts his top DFS targets and sleepers each week. He provides statistical projections as well as Fantasy point totals for every player in different scoring formats, making it easy to find the best value picks. Cummings loves 49ers running back Jordan Mason this week, ranking him second in his DFS running back picks. You can get his top picks for every position in Week 5 here. SportsLine also has a DFS optimizer that simulates every game 10,000 times and uses info from the SportsLine Advanced-Data Projection Model and DFS Professional Millionaire Mike McClure to identify top DFS picks/plays for any slate. It has Ravens quarterback Lamar Jackson ranked as its top quarterback, while 49ers wideout Deebo Samuel is its top wide receiver. Here are its complete NFL DFS rankings. SportsLine's model is on an incredible 188-131 run on top-rated NFL picks that dates back to the 2017 season. It is also on a 42-23 roll on A-rated NFL picks since Week 7 of the 2022 NFL season. The model has revealed picks for every game in Week 5, and one of its favorite picks is San Francisco (-7.5, 48.5) to cover against Arizona, which cashes well over 60% of the time. You can find the model's picks for every game here. SportsLine has an expansive team of NFL experts who provide quality betting advice for every game on the schedule. Insider Jason La Canfora has revealed four best bets for Week 5, including the Jaguars and Colts to go Under 45.5 points in a game where the Colts will likely be without quarterback Anthony Richardson (doubeful, oblique) and running back Jonathan Taylor (out, ankle). His other three best bets for this weekend can be found here . Eric Cohen, who finished 12-4 straight up in Week 4 and is now 17-12 (59%) on his posted NFL plays on SportsLine thus far this season, has exact score predictions for all 14 games. He is high on the Bills (+1, 47.5) to beat the Texans and is also expecting one game to go over 60 points. His predictions for all 13 remaining games, are available here . The Pittsburgh Steelers will try to bounce back from their first loss of the season when they host the Dallas Cowboys on Sunday Night Football. SportsLine's model likes the Over (44) in that game, even though it's up one point from the opener, and it has also revealed its picks on the spread and money line. Expert R.J. White, who is on a 65-34 ATS roll on Steelers games, has also posted his best bet for SNF. SportsLine's AI PickBot has nine NFL player props rated five stars for SNF. One of its top picks is Cowboys quarterback Dak Prescott to go Over 241.5 passing yards. You can see the other eight top-rated NFL prop picks from the AI PickBot here . The Kansas City Chiefs are one of two unbeaten teams remaining in the NFL heading into the weekend, and the Chiefs will try to remain perfect when they host the New Orleans Saints on Monday Night Football. SportsLine's model likes the Over (43) in that game, and it has also revealed its picks on the spread and money line. Expert Danny Vithlani, who is on a 22-7 ATS roll on NFL games, has also posted his best bets for MNF. SportsLine's AI PickBot has six NFL player props rated four stars or better for MNF. One of its top picks is Chiefs quarterback Patrick Mahomes to go Over 18.5 rushing yards, a 4-star play. The AI PickBot notes, \"Patrick Mahomes has gone over his total rushing yards market in seven of his last 10 games when he is at home and favored, with an average of 26.6 total rushing yards per game.\" You can see the other five top-rated NFL prop picks from the AI PickBot here .",
+      "pubDate": "2024-10-06 13:47:03",
+      "pubDateTZ": "UTC",
+      "image_url": "https://sportshub.cbsistatic.com/i/2019/08/14/4974457c-e5f8-4493-bba2-b951396f3ac0/dak-prescott-jerry-jones-cowboys.jpg",
+      "source_id": "cbssports",
+      "source_priority": 3259,
+      "source_name": "Cbssports",
+      "source_url": "https://www.cbssports.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/cbssports.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "top",
+        "sports"
+      ],
+      "ai_tag": null,
+      "ai_region": [
+        "vegas"
+      ],
+      "ai_org": [
+        "dfs",
+        "sportsline",
+        "nfl"
+      ],
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 93.22,
+        "neutral": 6.36,
+        "negative": 0.42
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "1c4af8d20b4ae1249a0e95d059145fa6",
+      "title": "‘Nobody has survived’, says Tyson Fury as he reveals fact about his career ahead of Oleksandr Usyk rematch",
+      "link": "https://www.thesun.co.uk/sport/30893019/tyson-fury-career-oleksandr-usyk-rematch/",
+      "keywords": [
+        "boxing",
+        "sport"
+      ],
+      "creator": [
+        "Jack Figg"
+      ],
+      "video_url": null,
+      "description": null,
+      "content": "TYSON FURY warned he is an expert in rematches - in a warning to Oleksandr Usyk. Usyk became the first four-belt undisputed champion in heavyweight history after taking Fury's WBC title and unbeaten record in May. And now the two prepare to do it all over again back in Riyadh on December 21. It will be Fury's fourth career rematch, having faced John McDermott twice as well as Deontay Wilder and Derek Chisora three times. And Fury was quick to remind Usyk that he won all three of the rematch bouts heading into their return in Saudi Arabia. He said ahead of the console release of boxing video game Undisputed : \"It's given me a little bit of a lift. READ MORE IN BOXING \"Now I've got something really to return for. And here's the interesting fact, in two decades, no one has ever survived the rematch with me. \"Of all the rematches I've had, with John McDermott, the trilogies with Chisora, trilogy with Wilder and I'm going into a rematch for this. \"I've stopped every one of them or knocked them. So yeah, I'm looking forward to the challenge.\" Usyk, 37, was forced to vacate the IBF belt to proceed with his December 21 rematch with Fury, 36, back in Riyadh. Most read in Boxing John McDermott 2009, points win 2010, 9th-round stoppage win Deontay Wilder 2018, draw 2020, 7th-round stoppage win 2021, 11th-round stoppage win Derek Chisora 2011, points win 2014, 10th-round stoppage win 2022, 10th-round stoppage win CASINO SPECIAL - BEST CASINO WELCOME OFFERS Daniel Dubois, 27, meanwhile inherited the belt after being elevated from interim champ and knocked out Anthony Joshua, 34, in his first defence. And Fury reckons he will need a similar performance to guarantee victory over undefeated Usyk. He said: \"There's no secret - I'm going in there to knock him out because I don't think I'm gonna get a decision no matter what I do. \"So I have to take it out of the judges' hands. I believe I have to get him out of there.”",
+      "pubDate": "2024-10-06 13:46:53",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.thesun.co.uk/wp-content/uploads/2024/10/newspress-collage-s90549ew1-1728221853851.jpg?crop=1&h=1080&quality=100&strip=all&w=1920",
+      "source_id": "thesun",
+      "source_priority": 1813,
+      "source_name": "The Sun",
+      "source_url": "https://www.thesun.co.uk",
+      "source_icon": "https://i.bytvi.com/domain_icons/thesun.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "boxing"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.22,
+        "neutral": 1.66,
+        "negative": 98.12
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "287e1e45f81ea559eb9422ab1f36154d",
+      "title": "New York Jets kicker forced to practice field goals in middle of opposing cheerleaders",
+      "link": "https://www.themirror.com/sport/american-football/jets-kicker-field-goal-cheerleaders-733547",
+      "keywords": [
+        "sport"
+      ],
+      "creator": [
+        "Joshua Mbu"
+      ],
+      "video_url": null,
+      "description": "The New York Jets and the Minnesota Vikings' NFL London clash saw kicker Greg Zuerlein be swamped by opposition cheerleaders as he warmed up ahead of kick off",
+      "content": "New York Jets kicker Greg Zuerlein was forced to warm up in the middle of Minnesota Vikings cheerleaders ahead of Sunday's game at Tottenham Hotspur Stadium in London. Zuerlein was practising kicking a field goal when he was swamped by Vikings cheerleaders, and he eventually took a kick and managed to avoid hitting any of them. There will be more to follow on this breaking news story and Mirror US Sports will bring you the very latest updates, pictures and video as soon as possible. Please check back regularly for updates on this developing story HERE. Get email updates on the day's biggest stories straight to your inbox by signing up for our newsletters. Follow @‌MirrorUSSports on Twitter : The official Mirror Sports X/Twitter account for all the latest sports news as it happens in real time. Follow us on Google News , Flipboard , Apple News , , Facebook or visit The Mirror US homepage.",
+      "pubDate": "2024-10-06 13:45:35",
+      "pubDateTZ": "UTC",
+      "image_url": "https://i2-prod.themirror.com/incoming/article733548.ece/ALTERNATES/n615/0_vikings.jpg",
+      "source_id": "themirror",
+      "source_priority": 1903,
+      "source_name": "The Mirror Us",
+      "source_url": "https://www.themirror.com",
+      "source_icon": null,
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "american football"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "minnesota vikings nfl london",
+        "new york jets"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.12,
+        "neutral": 0.1,
+        "negative": 99.78
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "696a2ec66f16b50442780e1c286ec1af",
+      "title": "IND U-19 vs AUS U-19: India takes on Australia in final Youth Test with series sweep in sight",
+      "link": "https://sportstar.thehindu.com/cricket/india-vs-australia-under-19-youth-test-ind-u19-v-aus-19-preview-chennai-chepauk/article68724976.ece",
+      "keywords": [
+        "cricket"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "India U-19 cricket team will take on Australia U-19 in the second and final Youth Test at the M.A. Chidambaram Stadium in Chennai on Monday.",
+      "content": "After registering a thrilling two-wicket win in the first game, the India U-19 cricket team will look to close out on a high as it faces Australia U-19 in the second and final Youth Test at the M.A. Chidambaram Stadium in Chennai on Monday. Ahead of the first Test, India bulldozed Australia 3-0 in the ODI series, including two dominant wins by seven and nine wickets in the first and second matches, respectively. However, with just four out of the 11 players carried over from the ODI series, the Indian youngsters’ foray into the longest format was not without cause for concern. On a flat Chepauk pitch, Australia raced to 293 runs in just over two sessions on the first day to put India under pressure. In reply, India started positively with its openers — Vihaan Malhotra and Vaibhav Suryavanshi — putting together a solid 100-run opening stand. Thirteen-year-old Suryavanshi showcased his stroke-making calibre on the second day as well and went on to become the youngest-ever centurion in Youth Tests. He was dismissed for a 62-ball 104. However, his exploits were overshadowed by a subpar showing from the rest of the batters. ALSO READ | Duleep Trophy 2024: ‘Penalise teams with runs for slow over-rates’, says Rahane India was troubled the most by Aussie leg spinner Vishwa Ramkumar, who picked seven wickets across two innings. Despite having five left-handers in its arsenal, the home side conceded regular wickets to the 18-year-old, Indian-origin bowler. However, India does not have to look far for answers. Last game’s player of the match, Nikhil Kumar, who used his feet to counter everything that Ramkumar threw his way, will be in the spotlight again. He proved his mettle in this year’s Cooch Behar Trophy, where he amassed 275 runs in five matches at an average of 46.37. On the bowling front, India is on stabler grounds. Led by leg-spinner Mohamed Enaan, who ended up with nine wickets, Indian bowlers will look to continue to fire. Despite being thrust into unacclimatised conditions, Australia largely held its ground and even managed to stretch India to an extent. The only aspect where it missed the mark in the first match was its immature batting approach. Apart from its opener, Riley Kingsell, who scored 53 and 48 in two innings, respectively, none of the other batters could trouble the bowlers. They failed to convert their 20s and 30s into anything concrete and will reassess their strategies against Indian bowlers and will eye a different result on Monday. But, both India and Australia missed an opportunity to make final changes to their game plans. Their final day practice sessions were cancelled after almost half of the city faced traffic congestion due to the Indian Air Force air show that happened at the Marina Beach, just minutes away from the stadium. Comments Related Topics Chepauk / India U-19 / Australia U-19 Latest on Sportstar",
+      "pubDate": "2024-10-06 13:45:34",
+      "pubDateTZ": "UTC",
+      "image_url": "https://ss-i.thgim.com/public/incoming/5cyk2n/article68724898.ece/alternates/LANDSCAPE_1200/10_India%20vs%20Australia.jpg",
+      "source_id": "sportstar",
+      "source_priority": 2972,
+      "source_name": "Sport Star The Hindu",
+      "source_url": "https://sportstar.thehindu.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/sportstar.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "india,asia",
+        "australia,australia/oceania"
+      ],
+      "ai_org": [
+        "australia u-19",
+        "m.a. chidam"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.17,
+        "neutral": 99.74,
+        "negative": 0.09
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "be31e4e6798cf5966621490991d1e9ce",
+      "title": "Denny Hamlin Jumps to Tyler Reddick’s Defense As Playoff Disaster Looms",
+      "link": "https://thesportsrush.com/nascar-news-denny-hamlin-jumps-to-tyler-reddicks-defense-as-playoff-disaster-looms/",
+      "keywords": [
+        "denny hamlin",
+        "tyler reddick",
+        "nascar",
+        "nascar cup series"
+      ],
+      "creator": [
+        "Nilavro Ghosh"
+      ],
+      "video_url": null,
+      "description": "The tables have been well and truly turned around for Tyler Reddick. The man who won the regular season championship just four races ago now finds himself on the verge of being eliminated in the playoffs. As he goes into the Talladega race, a track where he won earlier this year, things are starting to...The post Denny Hamlin Jumps to Tyler Reddick’s Defense As Playoff Disaster Looms appeared first on The SportsRush.",
+      "content": "The tables have been well and truly turned around for Tyler Reddick. The man who won the regular season championship just four races ago now finds himself on the verge of being eliminated in the playoffs. As he goes into the Talladega race, a track where he won earlier this year, things are starting to get desperate for the #45 crew. There has been criticism over how things have been of late for Reddick and his team but 23XI Racing boss Denny Hamlin recently swooped into the defense of his best-performing driver so far this year. When Reddick became the regular season champion, confidence was at an all-time high. Many believed that there was not going to be any stopping the 28-year-old at least for the next few races. But he has had a dismal performance in the playoffs so far. It started with a decent P6 finish in Atlanta. However, since that race, he has finished P27 at the Glen, P20 at Bristol, and P25 at Kansas. His cushion of playoff points has kept him alive as he suffers a slump at the worst possible time. “Now, again this sport, you have these ebbs and flows and you’re not always going to be the fastest, but it just seems like the averages are now working themselves out. And, certainly, some of it too is the schedule and certainly these tracks that we’ve run. Four races in the Playoffs, it’s just hard to get results,” Hamlin said in a recent media interaction. Reddick’s recent record at Talladega will give him some confidence heading into Sunday’s race but he has his work cut out for him. The #45 will start from P14 surrounded by cars and in danger of wrecking out early if he isn’t alert enough. It will be interesting to see how he navigates through the pack during the race. Hamlin focused on winning the championship despite NASCAR lawsuit Reddick ’s issues aren’t the only thing that is worrying Hamlin at the moment. 23XI Racing is currently fighting a lawsuit against NASCAR over antitrust issues and the matter could drag on for months. He will hope that it does not affect his or any of his drivers’ races in the remainder of the season. Thankfully, it doesn’t seem like that will be the case for now. The 43-year-old also wants to win his first Cup Series championship and that’s what he’s focussing on alongside the same. “This has been on the plate for a while and certainly, from my standpoint it allows me actually more relief to focus on the 11 car and you know everything I’ve got to do there because it’s out it’s done and now there’s other people able to speak on it from the legality standpoint,” he explained. Reddick has also said that nothing has been uncomfortable since the lawsuit was filed racing-wise. Both drivers are laser-focused on becoming champions and keeping the off-track issues away from it. For race fans, that surely must be good to hear. No one wants to see a driver losing their form due to a legal battle that has nothing to do with on-track racing per se.",
+      "pubDate": "2024-10-06 13:45:07",
+      "pubDateTZ": "UTC",
+      "image_url": "https://cdn-wp.thesportsrush.com/2023/06/b85e43e0-untitled-design-27.jpg?format=auto&q=75&w=3840",
+      "source_id": "thesportsrush",
+      "source_priority": 4166,
+      "source_name": "The Sportsrush",
+      "source_url": "https://thesportsrush.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/thesportsrush.jpg",
+      "language": "english",
+      "country": [
+        "india",
+        "australia",
+        "united states of america",
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "sports"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 99.01,
+        "neutral": 0.49,
+        "negative": 0.5
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "a5f8be3ecb2c2bde1c4b2bda7108b277",
+      "title": "What Happened to the 4 Players David Moyes Wanted to Sign at Man United",
+      "link": "https://www.givemesport.com/what-happened-to-the-players-david-moyes-wanted-to-sign-at-man-united/",
+      "keywords": [
+        "gareth bale",
+        "cesc fabregas",
+        "everton",
+        "manchester united",
+        "toni kroos",
+        "premier league",
+        "alex ferguson",
+        "real madrid",
+        "arsenal",
+        "football",
+        "david moyes",
+        "chelsea",
+        "leighton baines"
+      ],
+      "creator": [
+        "Daniel Hepburn"
+      ],
+      "video_url": null,
+      "description": "A deeper look into Moyes' four-man Manchester United shortlist during his torrid time in charge - including Real Madrid icon Gareth Bale.",
+      "content": "David Moyes ’ stewardship of Manchester United is not remembered fondly by fans of the Red Devils. Recommended by the departing Sir Alex Ferguson , those associated with the club were confident about his appointment given he had the backing of the stubborn Scotsman. Employed for the solitary season, Glasgow-born Moyes was in the Old Trafford dugout between July 2013 and April 2014, overseeing 51 outings across all competitions, but ultimately failed to live up to the expectations which were exemplified by his predecessor. David Moyes - Man Utd Managerial Statistics Appointed 01/07/13 In charge until 22/04/14 Matches 51 Wins 26 Draws 10 Losses 15 Points per match 1.73 Now 61 years old, the ex- West Ham United boss is out of managerial work – so why not take a trip down memory lane to remember his four-man shortlist while in charge of the 13-time Premier League champions? According to reports at the time and interviews that have happened since his sacking in April 2014, Moyes had a quartet of stars on his radar pre-departure and looking back now, there was every chance that his managerial stay at the Theatre of Dreams could have been extended if his respective pursuits were fruitful. Leighton Baines Interestingly, Everton’s Leighton Baines was one of the names on the shortlist – and although he’s not the sexiest of names, the now-retired Englishman was a reliable figure on the left-hand side of defence for the Toffees and, for the right price, could have been a shrewd acquisition for the Red Devils. At the time that Moyes was interested in bringing his former left-back - alongside the Marmite-like Marouane Fellaini - to Old Trafford, Patrice Evra was forced to play in what was the Frenchman’s final season in the famed red of the club. GIVEMESPORT Key Statistic: Out of the defenders, Baines has the third-most assists in Premier League history (53). Commonly regarded as one of the best penalty takers in English top-flight history , by virtue of his 90/9% success rate from the spot, Baines remained at Goodison Park post-Moyes interest. His availability, combined with his ageing body, meant that he gradually became the club’s second choice at left-back but he is certainly an all-time great for the club in the Premier League era. Two current Liverpool players are in a battle for top spot, with only one assist between them. Gareth Bale An electric winger who made a name for himself at Tottenham Hotspur after an impressive academy career at Southampton, Gareth Bale enjoyed the most illustrious stint of his career at Real Madrid. The Welshman, one of the greatest British wingers in football history , moved to Los Blancos in the summer of 2013 and won everything there is to win at club level. Bale’s stint in Spain seems to divide opinion due to his injury record and struggles to adapt to the culture – but should he have stayed in England, who knows what he could have achieved with Manchester United? The latter struggled to find a long-term heir for Cristiano Ronaldo after he left in 2009 and Bale’s superstardom would have filled the void. The 2010s was one of the best eras of football ever, but who are the best ten players of that decade? Having just picked up the Premier League ’s Player of the Year award, his confidence was sky-high – and if Moyes had got his hands on him, there was every chance that his stint would have lasted beyond the solitary campaign. Instead, the wide man joined Real Madrid and became one of the world’s best, bamboozling defences on a week-by-week basis. That said, some argue that his exploits were not best utilised in the Spanish capital thanks to playing in Ronaldo’s shadow. Bale retired in January 2023, aged just 33, and now spends his days playing golf. Toni Kroos Pre-Moyes, Manchester United were used to having a classy operator in the midfield: Paul Scholes. The Ginger Prince left alongside Ferguson, however, leaving the then-boss with a gaping hole in the middle of the park. Toni Kroos , one of the greatest deep-lying playmakers in football history , would have been the perfect replacement – or so Moyes thought. Despite his efforts, the Scot was unable to get his hands on the German, who was 23 years of age at the time, despite having a deal in place . He, per The Guardian , said: “Toni Kroos had agreed to come in the summer. I’d agreed it and with Toni himself and his agent. It was a done deal, so that was the level I was targeting – but sometimes you don’t get deals done.” A stroke of genius missed from the Manchester United higher-ups, Griefswald-born Kroos has since emerged as one of the greatest central midfielders of modern football history – and hung up his boots as a World Cup winner and a six-time Champions League winner this summer. Manchester United nearly signed legendary midfielder Toni Kroos before David Moyes was sacked by the club. Cesc Fabregas Cesc Fabregas is a true Premier League icon, having shone for both Chelsea and Arsenal over the years, but there was every chance the Spaniard could have played for Manchester United if Moyes had his way. A creative genius who had a knack for making onerous tasks look like second nature, the two-time Premier League champion At that time, midfielder Michael Carrick was no spring chicken in the engine room – and the addition of 27-year-old Fabregas, a man in his prime, would’ve been welcomed with open arms by the Old Trafford faithful. From Ashley Cole to Bukayo Saka, here are 10 of Arsenal's greatest academy products. Plying his trade for Barcelona at the time of Moyes' interest, the cool and collected engine room operator winded up in the Premier League - but playing for Chelsea . Spain and technically gifted footballers go hand in hand and Fabregas is a perfect example of that. Deployed in the Stamford Bridge engine room between 2014 and 2019 before joining French side Monaco, there were not many footballers as talented as the 110-cap Spain international, one who was part of La Roja's World Cup-winning squad in 2010. What a player he would have been for the Red Devils. He now works as head coach of Serie A club Como, having spent a brief spell with the Italian team as a player before retiring in 2023. All statistics per Transfermarkt - correct as of 06/10/24",
+      "pubDate": "2024-10-06 13:45:06",
+      "pubDateTZ": "UTC",
+      "image_url": "https://static0.givemesportimages.com/wordpress/wp-content/uploads/2024/07/epl_moyes-loves-him-1.jpg",
+      "source_id": "givemesport",
+      "source_priority": 2165,
+      "source_name": "Givemesport",
+      "source_url": "https://www.givemesport.com",
+      "source_icon": null,
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "real madrid",
+        "man united",
+        "manchester united"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.44,
+        "neutral": 98.47,
+        "negative": 1.09
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "418a127a438cc401e315198aa36ce7b0",
+      "title": "Women's T20 World Cup: Injury scare for Harmanpreet Kaur in India's 6-wicket win over Pakistan",
+      "link": "https://www.cnbctv18.com/sports/womens-t20-world-cup-injury-scare-for-harmanpreet-kaur-in-indias-6-wicket-win-over-pakistan-19488051.htm",
+      "keywords": [
+        "sports"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "Harmanpreet Kaur walked off the field retired hurt in the closing stages of the India's clash against Pakistan in the ongoing ICC Women's T20 World Cup 2024 played in Dubai on Sunday. The Indian captain felt discomfort in her neck after losing her balance while batting. India beat Pakistan by 6 wickets.",
+      "content": "India bounced back from the defeat against New Zealand in style as they defeated arch rivals Pakistan by 6 wickets on Sunday in their second match of the ongoing ICC Women's T20 World Cup 2024. Batting first Pakistan were restricted to 105/8 in 20 overs largely due to the bowling efforts of Arundhati Reddy who bowled a match-winning spell of 3/19. Reddy was backed by Shreyanka Patil (2/12) and Renuka Singh, Deepti Sharma and Asha Sobhana all three of whom claimed a wicket each. Opener Shafali Verma's set the pace in the chase as she scored 32 off 35 balls. In the middle order Indian captain Harmanpreet Kaur played scored a steady 29 in 24 balls and almost took India home. When India needed just two more runs to win, Harmapreet felt pain in her neck and had to be attended by the physio on the field. The pain did not subside and Harmanpreet had to walk off the field retired hurt. Harmanpreet's injury could prove to be a crucial blow for India who need to win their next two fixtures against Sri Lanka (October 9) and against defending champions Australia (October 13) in order to have a chance to qualify for the semifinals. Harmanpreet is the only India to have played across all the nine editions of the ICC Women's T20 World Cup.",
+      "pubDate": "2024-10-06 13:44:35",
+      "pubDateTZ": "UTC",
+      "image_url": "https://images.cnbctv18.com/uploads/2024/10/harmanpreet-kaur-injury1-2024-10-17e6f92b281b80563951ffac35ccaa95.jpg",
+      "source_id": "cnbctv18",
+      "source_priority": 17950,
+      "source_name": "Cnbctv18",
+      "source_url": "https://www.cnbctv18.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/cnbctv18.jpg",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "pakistan,asia",
+        "india,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.2,
+        "neutral": 0.33,
+        "negative": 99.47
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "c9acf37552b198dba973b85977f76d1d",
+      "title": "India Outplay Pakistan By 6 Wickets In Women's T20 World Cup 2024",
+      "link": "https://zeenews.india.com/cricket/india-outplay-pakistan-by-6-wickets-in-womens-t20-world-cup-2024-2803474.html",
+      "keywords": null,
+      "creator": [
+        "Zee News"
+      ],
+      "video_url": null,
+      "description": "Harmanpreet retired hurt when two runs were required for victory. Sajana Sajeevan, playing her first game, finished it off with a boundary.",
+      "content": "Harmanpreet retired hurt when two runs were required for victory. Sajana Sajeevan, playing her first game, finished it off with a boundary. Skipper Harmanpreet Kaur's years of experience saved India from blushes as they huffed and puffed to a six wicket win over arch rivals Pakistan, keeping their semi-final hopes alive in the Women's T20 World Cup, here Sunday. Indian batters made a heavy weather of a paltry 106-run target as it required a 24-ball-29 from their experienced skipper to eke out the crucial win. Harmanpreet retired hurt when two runs were required for victory. Sajana Sajeevan, playing her first game, finished it off with a boundary. The defensive approach by opener Shafali Verma (32 off 35 balls) and new No. 3 Jemimah Rodrigues (23 off 28 balls) meant that India could not boost their Net Run Rate which could prove very costly in the larger context of making it to the last-four stage. Despite the victory, India's NRR is currently -1.217 and they remain below Pakistan, who are in third place with NRR of -0.555. India would need to beat both Australia and Sri Lanka by comfortable margins to harbour any hopes of a semi-final berth. The entire Indian innings had only five boundaries and none of the top three looked like getting a move on. The chase was not exactly a cakewalk as Smriti Mandhana (7 off 16 balls) was out early while Shafali and Jemimah concentrated on taking singles. The running between the wickets wasn't impressive as some easy doubles and a sure triple was not even tried, probably due to sapping heat. Even as Jemimah showed some interest in pushing fielders, Shafali's poor fitness came in the way. Despite a negative net run-rate of -2.90, there was no intent shown by the Indian batters to surpass the paltry target in a good time. Shafali could hit only three shots to the fence in her 35-ball knock and she increased the pressure on the batting unit with the below-par effort. As far as Jemimah was concerned, power isn't diminutive Mumbaikar's forte as she is more of a batter who relies on timing and ability to find gaps. Once Fatima removed both Jemimah and Richa Ghosh (0) off successive deliveries, the onus was on Harmanpreet to take the team past home. Earlier, the Indian bowling unit fired in unison against a clueless Pakistan, restricting the arch-rivals to a lowly 105 for 8. Having conceded 160 against New Zealand on a slow track under lights in their opener, the Indian bowlers read the pitch well, and more importantly, took the pace off deliveries to make stroke-making all the more difficult. Such was their control that Indian bowlers were able to deliver 58 dot balls. Seamers Renuka Singh Thakur (1/23) and Arundhati Reddy (3/19) neither erred in line nor in length while off-spinners Deepti Sharma (1/24) and Shreyanka Patil (2/12) got enough grip and bounce to keep the Pakistani batters on tenterhooks. Leg-spinner Asha Sobhana (1/24) went for a few boundaries but got rival skipper Fatima with a big leg-break after the batter was brilliantly snapped by Richa Ghosh behind the stumps. Renuka bowled a tight first over and her inswinger had Gull Feroza (0) bowled through the gate. Deepti, who gave a much better account of herself, albeit against an inferior batting lineup, decreased the pace of her deliveries and also flighted a few. Pakistan managed only 29 for 2 in the powerplay and the Indian bowlers increased their stranglehold on the opposition batters with only Nida Dar's 28 providing some resistance to take the team past 100-run mark. Stay informed on all the latest news , real-time breaking news updates, and follow all the important headlines in india news and world News on Zee News.",
+      "pubDate": "2024-10-06 13:44:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://english.cdn.zeenews.com/sites/default/files/styles/zm_700x400/public/2024/10/06/1537776-women.jpg?im=Resize%3D%28400%29",
+      "source_id": "zeenews",
+      "source_priority": 5319,
+      "source_name": "Zee News",
+      "source_url": "http://zeenews.india.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/zeenews.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "india,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 16.93,
+        "neutral": 81.36,
+        "negative": 1.71
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "35e1bbb7445ce7a6555dc6fb1a7e6fa8",
+      "title": "Russell Wilson injury update: Will Steelers QB play vs. Cowboys in Week 5? | Sporting News",
+      "link": "https://www.sportingnews.com/us/nfl/pittsburgh-steelers/news/russell-wilson-injury-update-will-steelers-qb-play-cowboys-week-5/11f9b62dfa9dce5f2355f09e",
+      "keywords": null,
+      "creator": [
+        "Mike Moraitis"
+      ],
+      "video_url": null,
+      "description": null,
+      "content": "The Pittsburgh Steelers will look to get back on the winning track in a Week 5 game against the Dallas Cowboys on Sunday night, and they will likely do so without Russell Wilson once again. Wilson, who was named the starter before the beginning of the season, has missed the first four games of the 2024 campaign due to a calf injury. He originally injured it in training camp, and then re-injured it prior to Week 1. In Wilson's absence, quarterback Justin Fields has gotten the ball and the Steelers are off to a 3-1 start with him under center. That has led many to believe that Wilson may not get his job back when healthy. A report from NFL Network's Ian Rapoport last week stated that Wilson was expected to be fully healthy this week, but it appears that is not the case, at least according to the team's injury report. Russell Wilson injury update According to the team's Week 5 injury report , Wilson is questionable to play due to his calf injury. The veteran signal-caller did not log a full practice the entire week, although he did appear to do a bit more. \"Quarterback Russell Wilson remained limited but confirmed that he started taking reps in 11-on-11 team drills and some limited 7-on-7 work, so he continues to ramp up his participation,\" Nick Farabaugh of PennLive.com wrote Thursday. “We’re listening to the doctors, listening to coach and just trying to make sure that they’re good and I’m good,” the Steelers quarterback said . “I feel strong, you know, I feel confident. I love the process that we’ve (had) in just in terms of just making sure that I’m really ready to go. And, you know, I feel like I’m right there.” On Saturday, Wilson posted a video of himself using an anti-gravity treadmill, so take that for what it's worth. Russell Wilson posted a clip of his rehab to his instagram story earlier today. Looks like he’s using an anti-gravity treadmill — which reduces the weight-bearing load on his calf — as part of his recovery. pic.twitter.com/9XuJGf5unx Will Russell Wilson play in Week 5? Despite Wilson ramping up a bit, he was limited in all three practices and draws a questionable tag. We've seen the same story every week so far this season, and each time it has led to Wilson being inactive. Expect the same this week.",
+      "pubDate": "2024-10-06 13:43:56",
+      "pubDateTZ": "UTC",
+      "image_url": "https://library.sportingnews.com/styles/crop_style_16_9_desktop/s3/2024-08/USATSI_23983302.jpg?h=220acf48&itok=oTEd_XW4",
+      "source_id": "sportingnews",
+      "source_priority": 262,
+      "source_name": "Sporting News",
+      "source_url": "http://www.sportingnews.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/sportingnews.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "american football"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "cowboys",
+        "dallas cowbo",
+        "pittsburgh steelers",
+        "sporting news"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 1.22,
+        "neutral": 98.52,
+        "negative": 0.26
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "aa8c1d2ef349f213820ecb71caf74244",
+      "title": "Parents of child shot dead at farm pay tribute to ‘kind, full of mischief’ son",
+      "link": "https://ca.news.yahoo.com/parents-child-shot-dead-farm-134351269.html",
+      "keywords": [
+        "celebrity"
+      ],
+      "creator": [
+        "PA Media: UK News"
+      ],
+      "video_url": null,
+      "description": "Jay Cartmell, eight, suffered injuries to his head and face on land north of Warcop in Cumbria, on September 28.",
+      "content": "The parents of an eight-year-old boy who was killed in a farm shooting have paid tribute to their son, remembering him as “loving, kind and full of mischief”. Jay Cartmell suffered injuries to his head and face on land near the A66, north of Warcop in Cumbria, on September 28. A man in his 60s was arrested at the scene and held on suspicion of gross negligence manslaughter before being bailed. Jay’s parents, Leigha and James Cartmell, told of their heartbreak in a statement issued by Cumbria Police. They said: “We are heartbroken at the passing of our perfect little boy – Jay Cartmell, eight years. “He was loving, kind and full of mischief, the best boy that anyone could wish for and the third corner of our beautiful family ‘triangle’. “Jay loved being outdoors, the muddier he could get the better and was starting to follow in the footsteps of his dad with his obsession for speedway at Workington, where he first attended aged one years. “He always went to the pit to fist-bump his heroes, local racers Harry and Sam McGurk. “Jay was a talented rider himself and was showing real promise for the sport.” Jay also played football, and was a defender at Whitehaven Miners Football Club, where he would “occasionally” score an own goal, “but that didn’t dampen his enthusiasm”, his parents said. His favourite player was Manchester city striker Erling Haaland and he dreamed of moving to Brazil to meet Lionel Messi, they added. They also told of how Jay enjoyed fishing and rabbiting with his father and helped care for the family pets, including four lurchers, five ferrets and his own bearded dragon named Spike. He loved school and had a talent for maths, with parents adding: “Jay was extremely loved, not only by us, but by all who met him. “He had fantastic friends and always had a smile on his face. “We will miss him every day, but his love surrounds us and his memory will never fade.” Emergency services were called at around 2.50pm on September 28 to the property where a firearm was secured. Jay, from Frizington, Cumbria, was taken by air ambulance to hospital where he died overnight.",
+      "pubDate": "2024-10-06 13:43:51",
+      "pubDateTZ": "UTC",
+      "image_url": "https://s.yimg.com/uu/api/res/1.2/SAqdn61mgErPObBcpm.d1w--~B/aD01NjI7dz0xMDAwO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/pa_viral_news_uk_120/df3002e927f3dc94bf62cd208c321d4e",
+      "source_id": "yahoo",
+      "source_priority": 17,
+      "source_name": "Yahoo! News",
+      "source_url": "https://news.yahoo.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/yahoo.png",
+      "language": "english",
+      "country": [
+        "canada"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "accidents"
+      ],
+      "ai_region": [
+        "warcop",
+        "cumbria,england,united kingdom,europe"
+      ],
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.11,
+        "neutral": 0.09,
+        "negative": 99.8
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "4f5f8eeb0b3a737e466b4c6c97576b0e",
+      "title": "Alaves v Barcelona - La Liga LIVE",
+      "link": "https://www.eurosport.com/football/la-liga/2024-2025/live-deportivo-alaves-fc-barcelona_mtc1524245/live.shtml",
+      "keywords": [
+        "eurosport",
+        "football",
+        "la liga",
+        "deportivo alavés",
+        "fc barcelona"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "\"Follow LIVE minute-by-minute updates of the La Liga clash.\"",
+      "content": null,
+      "pubDate": "2024-10-06 13:43:39",
+      "pubDateTZ": "UTC",
+      "image_url": "https://dnl.eurosport.com/sd/img/og/eurosport.jpg",
+      "source_id": "eurosport_com",
+      "source_priority": 5064,
+      "source_name": "Eurosport",
+      "source_url": "https://www.eurosport.com",
+      "source_icon": null,
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "alaves"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.08,
+        "neutral": 99.79,
+        "negative": 0.13
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "fb859aea85b86540297cd87ed6ea4eaf",
+      "title": "Baffled Kris Boyd in Nicolas Kuhn red card probe as Celtic star excuse doesn't wash with Rangers hero after wild scenes",
+      "link": "https://www.dailyrecord.co.uk/sport/football/football-news/kris-boyd-celtic-kuhn-rangers-33831321",
+      "keywords": [
+        "football"
+      ],
+      "creator": [
+        "reporters@dailyrecord.co.uk (Mark Pirie)"
+      ],
+      "video_url": null,
+      "description": "The German winger netted the winner against Ross County late in the game",
+      "content": "The German winger netted the winner against Ross County late in the game Get the latest news from Record Sport with our daily newsletter We have more newsletters Get the latest news from Record Sport with our daily newsletter We have more newsletters Mystified Kris Boyd has raised an eyebrow after Nicolas Kuhn avoided a second yellow card amid the madcap Celtic celebrations at Ross County. The winger made himself the hero in the Highlands and keep the Scottish Premiership leaders perfect start to the campaign going. After Alistair Johnston deflected the ball into the net to cancel out Ronan Hale's opener from the penalty spot, the German curled the ball into the far corner before rushing into the away end to celebrate with the fans in wild scenes. However, Kuhn had already been handed a booking by referee Kevin Clancy at Dingwall - and many expected him to be given his marching orders following the scenes after the goal. But the man in the middle kept his cards in his pocket, and immediately after the full-time whistle, Rangers hero Boyd was on the case of the winger and the whistler. He said on Sky Sports: \"Take nothing away from Celtic , it's a fantastic finish from Nicolas Kuhn. But, obviously you can just run into the crowd and celebrate and nothing happens.\" The Sky Sports team then swiftly moved on, before the wide man was put on the spot about the flashpoint during his post-match interview. Asked about the emotion of the moment and if he was thinking about the booking, Kuhn said: \"I didn't even know I had a booking. I don't know what it was for. I didn't think I did something.\" Boyd resfused to accept that answer when it cut back to the studio from the post-match area. He went on: \"The rules must have changed. I thought you got booked if you go into the crowd.\" Fellow pundit James McFadden pointed to the geography of the stadium as the real issue with the celebration: \"I know it's the rules, but it's very hard when it's three or four yards to stop yourself and go 'I'm not gonna celebrate'.\" Boyd wasn't satisfied, bluntly answering: \"Alright...\" Tune in to Hotline Live every Sunday to Thursday and have your say on the biggest issues in Scottish football.",
+      "pubDate": "2024-10-06 13:43:16",
+      "pubDateTZ": "UTC",
+      "image_url": "https://i2-prod.dailyrecord.co.uk/sport/football/football-news/article33831338.ece/ALTERNATES/s615/0_Screenshot-2024-10-06-at-142612.png",
+      "source_id": "dailyrecord",
+      "source_priority": 13708,
+      "source_name": "Daily Record",
+      "source_url": "https://www.dailyrecord.co.uk/news",
+      "source_icon": "https://i.bytvi.com/domain_icons/dailyrecord.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "sports"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "rangers",
+        "celtic"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 5.12,
+        "neutral": 91.84,
+        "negative": 3.04
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "21c1933c460218586526427b9fc4fbcb",
+      "title": "GSOC Tour Challenge on Sportsnet: Men’s Final",
+      "link": "https://watch.sportsnet.ca/event/Tour_Challenge_Mens_Final_163011",
+      "keywords": null,
+      "creator": [
+        "Sportsnet Staff"
+      ],
+      "video_url": null,
+      "description": "Team Mouat faces Team Gushue for the HearingLife Tour Challenge title. You can watch the final at 11 a.m. AT / 10 a.m. ET on Sportsnet or Sportsnet+.",
+      "content": null,
+      "pubDate": "2024-10-06 13:43:14",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.sportsnet.ca/wp-content/uploads/2024/10/2024GSOCTourChallenge-CharlottetownPE-3401.jpg",
+      "source_id": "sportsnet",
+      "source_priority": 2850,
+      "source_name": "Sportsnet",
+      "source_url": "https://www.sportsnet.ca",
+      "source_icon": "https://i.bytvi.com/domain_icons/sportsnet.png",
+      "language": "english",
+      "country": [
+        "canada"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "sports"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "sportsnet"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.12,
+        "neutral": 99.79,
+        "negative": 0.09
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "d097f8bc7ec772037b2b5d9118112324",
+      "title": "Kawhi Leonard facing delicate balancing act in 2024-25",
+      "link": "https://www.yardbarker.com/nba/articles/kawhi_leonard_facing_delicate_balancing_act_in_2024_25/s1_13132_41009549",
+      "keywords": [
+        "los angeles clippers",
+        "kawhi leonard",
+        "nba"
+      ],
+      "creator": [
+        "Adam Taylor, Yardbarker"
+      ],
+      "video_url": null,
+      "description": "Kawhi Leonard has struggled with fitness since joining the L.A. Clippers in 2019. Now, the star forward needs to strike a balance if he hopes to have the impact the Clippers need from him.",
+      "content": "Kawhi Leonard has struggled with fitness since joining the L.A. Clippers in 2019. The two-time NBA champion suffered a torn ACL in 2021 and a torn Meniscus the following season. However, he bounced back to play in 68 regular-season games during the 2023-24 campaign, only to have his playoff availability impacted by swelling and soreness. Ty Lue and his medical staff are cautiously approaching Leonard's fitness heading into the new season after he underwent an offseason procedure . The veteran forward didn't participate in the team's opening preseason game against the Golden State Warriors and is unlikely to play in any upcoming preseason contests. When speaking to ESPN at halftime on Saturday, Leonard alluded to a potential change of approach on the court. He noted that he ran more miles per game than almost every player in the league and questioned whether that needs to change moving forward. \"We got to control what we can control,\" Leonard said. \"I probably ran like top five most miles per game last year or top 10. And that was coming off [a] torn meniscus [in the 2023 playoffs]. So we got to see if that's beneficial for me or not.\" Leonard's knee injuries have sapped some of his explosiveness. His first step isn't the space-creating weapon it was during his prime. He doesn't get the same lift when jumping off two feet anymore, either. However, his movement and ability to attack angles are a primary reason he's still an elite offensive player. If Leonard has to reduce how much he moves without the ball, his tenure as an elite forward in the NBA will likely be over. He will be reduced to a three-and-D role, where he could thrive but would be unlikely to take over games the way the Clippers need him to. As such, it's unlikely he makes such a drastic adjustment to his overall approach. Instead, the focus should be on maintaining the integrity of his surgically repaired knee and taking the proper precautions before he's cleared to play. Clippers president of basketball operations, Lawerence Frank, remained coy on Leonard's health and availability heading into the new season. “I think the timing is all going to depend on how his knee responds to each phase,” Frank said, via Anthony De Leon of The Lost Angeles Times. “No one has a crystal ball. We’re trending in a really, really good direction. I know he’s super determined to have a great year, but the timing when it comes to your body and your health, I don’t think you put time frames on it. I think you just have to respond to how he responds.” Leonard can still be a game-changing force. He has all the tools to be a lock-down defender and terrifying scoring threat. But if he removes some of the movement from his game, his three-year $149 million contract will be an incredible overpay. There has to be some middle ground that protects Leonard and allows him to remain healthy while still being an elite talent in the NBA. What that middle ground is remains to be seen. However, right now, his career seems like its in the balance, and with it, the Clippers' chances of bringing success to the Intuit Dome.",
+      "pubDate": "2024-10-06 13:43:05",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.yardbarker.com/media/7/f/7f13a2779dea757ae64630057981fb66587355ff/thumb_16x9/kawhi-leonard-facing-delicate-balancing-act-2024.jpg?v=1",
+      "source_id": "yardbarker",
+      "source_priority": 1076,
+      "source_name": "Yardbarker",
+      "source_url": "https://www.yardbarker.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/yardbarker.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "basketball"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "l.a. clippers"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 3.93,
+        "neutral": 94.26,
+        "negative": 1.81
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "a002f310259913c620008f91daf4a667",
+      "title": "Huge fight at Dodgers-Padres playoff game leaves seats covered in blood",
+      "link": "https://www.dailymail.co.uk/sport/mlb/article-13929931/dodgers-padres-fight-seats-covered-blood.html?ito=1490&ns_campaign=1490&ns_mchannel=rss",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "The Dodgers fought back to seal a 7-5 win over their Californian rivals in the opening game of the NLDS Saturday evening, and tensions were running high among fans in the stands at Dodger Stadium.",
+      "content": "Huge fight at Dodgers-Padres playoff game leaves seats covered in blood READ MORE: Shohei Ohtani's historic home run ball could sell for up to $4.5M By Isabel Baldwin Published: 09:40 EDT, 6 October 2024 | Updated: 09:42 EDT, 6 October 2024 e-mail View comments A vicious brawl reportedly broke out in the stands of Dodger Stadium Saturday night during Los Angeles ' playoff game against the San Diego Padres . The Dodgers fought back to seal a 7-5 win over their Californian rivals in the opening game of the NLDS Saturday evening. But, while tensions were running high on the field in the playoff thriller, the atmosphere was just as fraught among fans with the edginess coming to a boil. A huge fight reportedly broke out in the stands, according to a fan, Josh Gitt, on social media who claimed the incident occurred in the row in front of him. Two Padres fans allegedly punched a Dodgers supporter and knocked him out, leaving blood splattered across the floor. A vicious brawl reportedly broke out in the stands of Dodger Stadium Saturday night Padres fans allegedly punched a Dodgers fan, leaving blood splattered across the floor The bleeding Dodgers fan reportedly had to be helped out, while the Padres supporters are said to have been ejected. Photos, which were shared to social media by Gitt, who witnessed the incident, showed splotches of blood across one of the seats and the ground, while spilled popcorn lay scattered over the concrete floor. It is currently unclear if any arrests were made. DailyMail.com has contacted the LAPD for comment. The incident is just the latest in a stream of fan violence that has swept through American sports in recent years. The NFL in particular has suffered an epidemic of fan brawls at stadiums across the country over the past couple of seasons. Just last week, horrific scenes played out during the Atlanta Falcons' game against the New Orleans Saints when a man threw another to the ground and repeatedly stomped on his head . The Dodgers fought back to seal a 7-5 win over the Padres in the opening game of the NLDS Meanwhile, the Dodgers and Padres will return to Dodger Stadium Sunday evening - hopefully, this time without incident. The host Dodgers will head into Game 2 of their best-of-five National League Division Series against the San Diego Padres on Sunday night after winning the opener. Shohei Ohtani hit a three-run home run in his first-ever playoff game, and five Dodgers relievers held the Padres scoreless over the final six innings in a 7-5 victory in Game 1 on Saturday. Los Angeles ended a six-game postseason losing streak after it was swept out of last year's NLDS by the Arizona Diamondbacks. MLB LA Dodgers Share or comment on this article: Huge fight at Dodgers-Padres playoff game leaves seats covered in blood e-mail Add comment",
+      "pubDate": "2024-10-06 13:42:39",
+      "pubDateTZ": "UTC",
+      "image_url": "https://i.dailymail.co.uk/1s/2024/10/06/14/90520475-0-image-a-4_1728221926947.jpg",
+      "source_id": "dailymailuk",
+      "source_priority": 135,
+      "source_name": "Mail Online",
+      "source_url": "https://www.dailymail.co.uk/home/index.html",
+      "source_icon": "https://i.bytvi.com/domain_icons/dailymailuk.png",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "american football",
+        "baseball"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "nlds",
+        "dodgers padres"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 3.09,
+        "neutral": 0.69,
+        "negative": 96.22
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "a2d33a2207e934449d7f248568dbd04b",
+      "title": "IND vs BAN: Mayank Yadav debuts for India; check Mayank's fastest ball here",
+      "link": "https://www.business-standard.com/cricket/news/ind-vs-ban-mayank-yadav-makes-india-debut-check-mayank-fastest-ball-here-124100600458_1.html",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Mayank received the debut cap from former India spinner Murali Karthik while Gautam Gambhir presented the debut cap to Nitish Kumar Reddy.",
+      "content": null,
+      "pubDate": "2024-10-06 13:42:38",
+      "pubDateTZ": "UTC",
+      "image_url": "https://bsmedia.business-standard.com/_media/bs/img/article/2024-10/06/thumb/featurecrop/400X400/1728221982-9364.jpg",
+      "source_id": "business-standard",
+      "source_priority": 9158,
+      "source_name": "Business Standard",
+      "source_url": "https://www.business-standard.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/business-standard.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "india,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 1.22,
+        "neutral": 98.6,
+        "negative": 0.18
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "1b733495f32369594afa5961f35347ef",
+      "title": "India wins toss, elect to bowl in first T20I vs Bangladesh",
+      "link": "https://www.thehindu.com/sport/cricket/india-wins-toss-elect-to-bowl-in-first-t20i-vs-bangladesh/article68725117.ece",
+      "keywords": [
+        "cricket"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "Suryakumar Yadav leads India, Najmul Hossain Shanto captains Bangladesh in series opener",
+      "content": "India skipper Suryakumar Yadav won the toss and elected to bowl in the opening T20I against Bangladesh here on Sunday (October 6, 2024). Tilak Verma, Ravi Bishnoi, Harshit Rana and Jitesh Sharma fail to find a place in the playing XI with Suryakumar going for the likes of pace bowler Mayank Yadav, wicketkeeper-batter Sanju Samson, hard-hitter Rinku Singh and Washington Sundar among others. Bangladesh skipper Najmul Hossain Shanto said he is looking forward to some good performances from his new-look side in the opening T20I game after the visitors lost the two-Test series 0-2. Teams: India: Abhishek Sharma, Sanju Samson (wk), Suryakumar Yadav (c), Riyan Parag, Nitish Kumar Reddy, Hardik Pandya, Rinku Singh, Washington Sundar, Varun Chakravarthy, Mayank Yadav, Arshdeep Singh. Bangladesh: Litton Das (wk), Najmul Hossain Shanto (c), Parvez Hossain Emon, Towhid Hridoy, Mahmudullah, Jaker Ali, Mehidy Hasan Miraz, Rishad Hossain, Taskin Ahmed, Mustafizur Rahman, Shoriful Islam. Published - October 06, 2024 07:12 pm IST Copy link Email Facebook Twitter Telegram LinkedIn WhatsApp Reddit cricket / sport / Twenty20 World Cup / Twenty20",
+      "pubDate": "2024-10-06 13:42:17",
+      "pubDateTZ": "UTC",
+      "image_url": "https://th-i.thgim.com/public/incoming/lowwt7/article68725160.ece/alternates/LANDSCAPE_1200/PTI10_06_2024_000266A.jpg",
+      "source_id": "thehindu",
+      "source_priority": 2972,
+      "source_name": "The Hindu",
+      "source_url": "https://www.thehindu.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/thehindu.png",
+      "language": "english",
+      "country": [
+        "india"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "india,asia",
+        "bangladesh,asia"
+      ],
+      "ai_org": null,
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.16,
+        "neutral": 99.7,
+        "negative": 0.14
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "5803579aa844361f47ad6420e9194670",
+      "title": "Preview: MK Dons vs. Arsenal Under-21s - prediction, team news, lineups",
+      "link": "https://www.sportsmole.co.uk/football/mk-dons/efl-trophy/preview/preview-mk-dons-vs-arsenal-u21s-prediction-team-news-lineups_554837.html",
+      "keywords": [
+        "nico lawrence",
+        "myles lewis-skelly",
+        "mehmet ali",
+        "ethan nwaneri",
+        "premier league 2 - div 1",
+        "matt dennis",
+        "league two",
+        "mk dons vs arsenal under-21s",
+        "khayon edwards",
+        "tommy setford",
+        "lucas nygaard",
+        "tommy leigh",
+        "stephen wearne",
+        "554837",
+        "ismeal kabia",
+        "josh robinson",
+        "nathan butler-oyedeji",
+        "arsenal under-21s",
+        "scott lindsey",
+        "jonathan leko",
+        "scott hogan",
+        "mk dons",
+        "anthony scully",
+        "fiacre kelleher",
+        "efl trophy",
+        "mike williamson",
+        "dan happe",
+        "brian okonkwo",
+        "football",
+        "dean lewington",
+        "jack porter",
+        "romari forde"
+      ],
+      "creator": null,
+      "video_url": null,
+      "description": "Sports Mole previews Tuesday's EFL Trophy clash between MK Dons and Arsenal Under-21s, including predictions, team news and possible lineups.",
+      "content": "Bidding to bounce back from a chastening defeat in the North London derby, Arsenal Under-21s head to Stadium MK to face MK Dons in Tuesday's EFL Trophy showdown. The two teams take up four places in Southern section Group E, where the Gunners beat Leyton Orient 2-1 in their opening tie, while their hosts lost by the same scoreline to Colchester United. © Imago Never before has a Premier League academy team gone all the way to EFL Trophy glory, but Arsenal's quest for silverware began in ideal fashion on September 3, where Mehmet Ali 's men made a true statement of intent by sinking League One Leyton Orient. Strikes from Josh Robinson and Ismeal Kabia either side of a response from Dan Happe ensured that Arsenal would be sitting pretty in first place after one matchday, as the young Gunners endeavour to progress to the second round for the fifth tournament running. That triumph early last month was the fourth of five successive wins for Arsenal's Under-21s, but with former stars Ethan Nwaneri and Myles Lewis-Skelly now fully-fledged members of the first team, Ali's men have been a shadow of their old selves in the past fortnight. Indeed, an otherwise unblemished September ended with a 3-0 home defeat to Liverpool in the Premier League 2, before Tottenham Hotspur rocked up to Arsenal's territory on Saturday and left with an emphatic 5-2 win under their belts, despite the Gunners being 2-0 ahead at the break. It made a change for Spurs to be on the right end of a 5-2 scoreline against the Gunners - Arsenal's seniors memorably won back-to-back home North London derbies by that exact margin in 2011-12 and 2012-13 - and such a calamitous collapse could set a couple of alarm bells off. © Imago One-time winners of the EFL Trophy back in the 2007-08 campaign - when it was known as the Johnstone's Paint Trophy - MK Dons are already propping up the Southern section Group E rankings on account of a narrow defeat to Colchester three weeks ago. Stephen Wearne drew first blood for the League Two side in the 34th minute, but MK Dons were only ahead for all of seven minutes, as Anthony Scully equalised from the spot before Fiacre Kelleher completed the Colchester turnaround nine minutes into the second half. That 2-1 loss proved to be Mike Williamson 's last game as head coach - the 40-year-old jumped ship for MK Dons' fourth-tier rivals Carlisle United a couple of days later - and after 900-appearance defender Dean Lewington took charge for one game, Scott Lindsey is now overseeing operations. The 52-year-old is yet to suffer defeat since taking the reins, as MK Dons made it four games unbeaten in all competitions with a 1-1 draw against Tranmere Rovers on Saturday, prior to which they ran out 5-1 victors at Harrogate Town. However, that triumph represents the hosts' only win from their last six matches in all competitions, although a four-game unbeaten home run stands them in good stead before a maiden meeting with Arsenal's proteges. © Imago Arsenal goalkeeper Tommy Setford is seemingly still sidelined with an unexplained injury - an issue that allowed 16-year-old Jack Porter to start for the seniors in the EFL Cup against Bolton Wanderers - but the latter is away on international duty this month. A straight shootout will therefore occur between Lucas Nygaard and Brian Okonkwo for the gloves, and Ali will also have 21-year-old striker Khayon Edwards back from a three-game ban. Edwards, Kabia and Romari Forde - who scored at the weekend - could form the attacking trident here, but it remains to be seen if captain Nathan Butler-Oyedeji is involved after making the bench for the first team against Southampton. As for MK Dons, on-loan Southampton defender Nico Lawrence is facing a few more weeks out after a knee operation, while Jonathan Leko has missed most of 2024 after rupturing ligaments in the same area. Striker Matt Dennis is also sidelined, but MK Dons have just added to their attacking ranks with the signing of 32-year-old Ireland international striker Scott Hogan on a free transfer. The former Aston Villa and Birmingham City striker will be eligible to make his Dons debut this week, potentially displacing Tommy Leigh at the tip of the hosts' attack. MK Dons possible starting lineup: Harness; Lewington, Tucker, Offord; Tripp, Kelly, Carroll, Tomlinson; White, Gibley; Hogan Arsenal Under-21s possible starting lineup: Okonkwo; Nichols, Kacurri, Monlouis, Heaven; Gower, Rosiak, Oulad M'Hand; Kabia, Edwards, Forde Arsenal's last two defensive displays have been highly concerning, and an MK Dons side still enjoying a new manager bounce should be able to exploit such frailties. In a reversal of fortunes from the opening matchday, we can picture the League Two outfit prevailing by a 2-1 scoreline on this occasion, as Group E is blown wide open. For data analysis of the most likely results, scorelines and more for this match please click here .",
+      "pubDate": "2024-10-06 13:42:02",
+      "pubDateTZ": "UTC",
+      "image_url": "https://sm.imgix.net/24/39/ethjos.jpg",
+      "source_id": "sportsmole",
+      "source_priority": 3238,
+      "source_name": "Sports Mole",
+      "source_url": "https://www.sportsmole.co.uk",
+      "source_icon": "https://i.bytvi.com/domain_icons/sportsmole.jpg",
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "mk dons",
+        "arsenal under-21s"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.09,
+        "neutral": 99.79,
+        "negative": 0.12
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "2b5a648e8d87e7ff047d169070674069",
+      "title": "The Brink's Company (NYSE:BCO) Delivered A Better ROE Than Its Industry",
+      "link": "https://ca.finance.yahoo.com/news/brinks-company-nyse-bco-delivered-134140690.html",
+      "keywords": [
+        "business"
+      ],
+      "creator": [
+        "Simply Wall St."
+      ],
+      "video_url": null,
+      "description": "One of the best investments we can make is in our own knowledge and skill set. With that in mind, this article will...",
+      "content": "One of the best investments we can make is in our own knowledge and skill set. With that in mind, this article will work through how we can use Return On Equity (ROE) to better understand a business. We'll use ROE to examine The Brink's Company ( ), by way of a worked example. ROE or return on equity is a useful tool to assess how effectively a company can generate returns on the investment it received from its shareholders. Simply put, it is used to assess the profitability of a company in relation to its equity capital. Return on Equity = Net Profit (from continuing operations) ÷ Shareholders' Equity So, based on the above formula, the ROE for Brink's is: 33% = US$146m ÷ US$447m (Based on the trailing twelve months to June 2024). The 'return' is the amount earned after tax over the last twelve months. That means that for every $1 worth of shareholders' equity, the company generated $0.33 in profit. By comparing a company's ROE with its industry average, we can get a quick measure of how good it is. The limitation of this approach is that some companies are quite different from others, even within the same industry classification. As is clear from the image below, Brink's has a better ROE than the average (11%) in the . That is a good sign. However, bear in mind that a high ROE doesn’t necessarily indicate efficient profit generation. Aside from changes in net income, a high ROE can also be the outcome of high debt relative to equity, which indicates risk. To know the 2 risks we have identified for Brink's visit our Companies usually need to invest money to grow their profits. That cash can come from issuing shares, retained earnings, or debt. In the first two cases, the ROE will capture this use of capital to grow. In the latter case, the use of debt will improve the returns, but will not change the equity. In this manner the use of debt will boost ROE, even though the core economics of the business stay the same. It appears that Brink's makes extensive use of debt to improve its returns, because it has an alarmingly high debt to equity ratio of 7.88. While its ROE is no doubt quite impressive, it could give a false impression about the company's returns given that its huge debt could be boosting those returns. Return on equity is one way we can compare its business quality of different companies. Companies that can achieve high returns on equity without too much debt are generally of good quality. All else being equal, a higher ROE is better. But when a business is high quality, the market often bids it up to a price that reflects this. The rate at which profits are likely to grow, relative to the expectations of profit growth reflected in the current price, must be considered, too. So you might want to check this FREE . But note: . So take a peek at this",
+      "pubDate": "2024-10-06 13:41:40",
+      "pubDateTZ": "UTC",
+      "image_url": "https://s.yimg.com/uu/api/res/1.2/B2Nh.TfO7whPMnKfrAdXvw--~B/aD00MzI7dz0xMTk0O2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/simply_wall_st__316/3b29e13c6796fd3901a28a89239a95be",
+      "source_id": "yahoo",
+      "source_priority": 17,
+      "source_name": "Yahoo! News",
+      "source_url": "https://news.yahoo.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/yahoo.png",
+      "language": "english",
+      "country": [
+        "canada"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "corporate news",
+        "startups & entrepreneurship"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "bco",
+        "brink company",
+        "nyse"
+      ],
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 99.48,
+        "neutral": 0.33,
+        "negative": 0.19
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "30669fb5d3aebb8bc983858eb4771352",
+      "title": "ICC Women's World Cup: India secure maiden victory after beating Pakistan in low-scoring match",
+      "link": "https://www.thenews.com.pk/latest/1237403-icc-women-s-world-cup-india-secure-maiden-victory-after-beating-pakistan-in-low-scoring-match",
+      "keywords": null,
+      "creator": null,
+      "video_url": null,
+      "description": "Jemimah Rodrigues plays a shot during Pakistan vs India match at Women’s T20 World Cup 2024, Dubai, October 6, 2024. — ICC DUBAI: India delivered an all-round performance against Pakistan to secure their maiden victory in the ICC Women’s T20 World Cup 2024 at the Dubai...",
+      "content": "ICC Women’s World Cup: India secure maiden victory after beating Pakistan in low-scoring match All-round batting and bowling performances help Kaur-led side overcome Green Shirts DUBAI: India delivered an all-round performance against Pakistan to secure their maiden victory in the ICC Women’s T20 World Cup 2024 at the Dubai International Stadium on Sunday. Earlier, Indian bowlers excelled with the ball and restricted Pakistan women's team to 105 in the highly-anticipated match. Fatima Sana’s decision to bat first backfired as her side could only accumulate 105/8 in the allotted 20 overs. The Green Shirts had a disastrous start to their innings as they lost opener Gull Feroza in first over of the match. Later, Sidra Amin and Omaima Sohail perished within seven overs with the scoreboard reading 33/3. Following the early debacle, Muneeba Ali offered some fight with her cautious 17-run knock before falling victim to Shreyanka Patil, leaving Pakistan in tatters at 41/4. Meanwhile, all-rounder Aliya Riaz also failed to reach double figures as she fell victim to Arundhati Reddy. Skipper Sana and Nida Dar then tried to settle things down, culminating with the former’s dismissal in the 14th over. Pakistan kept losing wickets at regular intervals, while Dar (28) ticked the scoreboard singlehandedly until finally walking back to the dugout in the last over. Syed Aroob Shah scored a 17-ball fourteen taking the Sana-led team to 105. Reddy bagged three wickets and Patil took two while Renuka Singh and Deepti Sharma and Asha Sobhana struck out one batter apiece. Dar remained the top-scorer for Pakistan with a 34-ball 28. Earlier, the Green Shirts won the toss and decided to bat first against the arch-rivals India. India have to recover quickly after facing defeat against New Zealand in the opening match while the Sana-led side won against the Asia-Cup champions Sir Lanka by 31 runs on Thursday. In regard to this match, Pakistan’s skipper, Sana while talking to ICC, said that she aims to continue the attacking brand of cricket her side has recently adapted against India. \"I have been watching that whichever team we played against — played attacking cricket,\" Sana said ahead of the big contest. Pakistan: Fatima Sana (c), Aliya Riaz, Gull Feroza, Muneeba Ali, Nashra Sundhu, Nida Dar, Omaima Sohail, Sadia Iqbal, Sidra Amin, Syeda Aroob Shah, and Tuba Hassan. India: Harmanpreet Kaur (C), Smriti Mandhana (VC), Shafali Verma, Deepti Sharma, Jemimah Rodrigues, Richa Ghosh (WK), Arundhati Reddy, Renuka Singh, Asha Sobhana, Shreyanka Patil, and Sajana Sajeevan. Pakistan announce playing XI for first England Test England look to repeat Test series sweep against Pakistan Pakistan's Muhammad Waseem beats Jaba Memishishi Zak Crawley warns England fast bowlers of tough conditions in Pakistan",
+      "pubDate": "2024-10-06 13:41:00",
+      "pubDateTZ": "UTC",
+      "image_url": "https://www.thenews.com.pk/assets/uploads/updates/2024-10-06/1237403_9938913_India-Pakistan-The-News_updates.jpg",
+      "source_id": "thenews",
+      "source_priority": 3697,
+      "source_name": "The News International",
+      "source_url": "https://www.thenews.com.pk",
+      "source_icon": "https://i.bytvi.com/domain_icons/thenews.png",
+      "language": "english",
+      "country": [
+        "pakistan"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "cricket"
+      ],
+      "ai_region": [
+        "dubai,dubai,united arab emirates,asia",
+        "india,asia",
+        "dubai,united arab emirates,asia",
+        "pakistan,asia",
+        "octo"
+      ],
+      "ai_org": null,
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 68.39,
+        "neutral": 30.57,
+        "negative": 1.04
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "2a596b502169520b4d2dce53b8e0f602",
+      "title": "Conor McGregor Demands Alex Pereira Move to Heavyweight in Deleted Video",
+      "link": "https://www.givemesport.com/conor-mcgregor-demands-alex-pereira-move-to-heavyweight-in-deleted-video/",
+      "keywords": [
+        "mma",
+        "conor mcgregor",
+        "ufc",
+        "alex pereira"
+      ],
+      "creator": [
+        "James O'Brien"
+      ],
+      "video_url": null,
+      "description": "McGregor couldn't contain his emotions while watching the champion's post-fight interview....",
+      "content": "Following Alex Pereira’s brutal victory against Khalil Rountree Jr . at UFC 307, former two division champion, Conor McGregor , took to social media to share his reaction to the Brazilian's post-fight interview. Heading into the contest, Pereira had been open about his ambitions to compete in any one of three weight classes in the future. Potential bouts at both middleweight and heavyweight were banded about prior to Saturday's pay-per-view event, but Pereira's first focus was to turn back the challenge of Rountree. The 37-year-old is the current light heavyweight champion, and initially faced one of his toughest title defences to date, after being dropped by a counter right-hand in the second round. However, as the fight progressed into the later rounds, 'Poatan' only looked to grow stronger and was eventually too much for the American striker. Towards the end of the fourth round, Rountree Jr, covered in his own blood, was under relentless pressure from Pereira, who continued to dominate. Then, with just 30 seconds remaining, the exhausted challenger finally conceded and collapsed onto the Octagon’s floor, extending the champion's four fight win streak in the world's leading MMA promotion. Alex Pereira's professional MMA record (as of 06/10/2024) 14 Fights 12 wins 2 losses By KO 10 1 By submission 0 1 By decision 2 0 The Brazilian’s UFC record now stands at nine wins against just one loss, with this victory securing him a UFC record for the shortest period between three consecutive title defences. In the aftermath of his success, McGregor had plenty to say on Pereira's future goals. Conor McGregor Screamed at his Television After Alex Pereira's Win at UFC 307 In a now deleted video posted to social media, McGregor posted a video of him watching Pereira’s post-fight interview. Despite initially being full of praise in which the Brazilian took his man out, he quickly become frustrated when Pereira hinted that he may move back down to middleweight and try and reclaim the championship he once held from Dricus du Plessis. As Joe Rogan began to ask about that fight, McGregor shouted at his television. \"Heavyweight, you call for heavyweight now!\" After his past two victories, Pereira has hinted at his ambitions to challenge for a heavyweight title shot and become the UFC’s first three-division champion. Eager to see that come to pass, McGregor was desperate for 'Poatan' to call his shot. However, on this occasion, he insisted he was very happy at light heavyweight and expressed his desire to continue to defend his title. Conor couldn't believe his ears. \"Ah, leave it if he says drop down to middleweight. Don't lie to yourself [about going down to middleweight]. It was a heavy weight cut.\" McGregor grew more agitated with each passing moment, even going as far as to state: \"I'm not watching\" when referring to a potential fight between Pereira and Du Plessis. There might be some logic in Pereira's stance, though. GIVEMESPORT's Key Statistic: Alex Pereira's entire 10-fight UFC career has taken place since Conor McGregor last fought in the Octagon. The heavyweight title is next set to be contested at UFC 309, where Jon Jones will defend against former champion Stipe Miocic. After that fight takes place on the 16th of November, the winner is then obligated to face interim heavyweight champion, Tom Aspinall. Even if he was to have demanded a move to heavyweight, the Brazilian is likely to have to wait at least a year to get a title shot in the division. For a man who has been as active as Pereira, that's a long wait. While a trip up to heavyweight may be in his future, it won't be his next destination. Khalil Rountree's nose wouldn't stop bleeding in a savage post UFC 307 interview with Joe Rogan.",
+      "pubDate": "2024-10-06 13:40:46",
+      "pubDateTZ": "UTC",
+      "image_url": "https://static0.givemesportimages.com/wordpress/wp-content/uploads/2024/06/screenshot-2024-06-26-at-2-10-35-pm-1.png",
+      "source_id": "givemesport",
+      "source_priority": 2165,
+      "source_name": "Givemesport",
+      "source_url": "https://www.givemesport.com",
+      "source_icon": null,
+      "language": "english",
+      "country": [
+        "united kingdom"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "boxing"
+      ],
+      "ai_region": null,
+      "ai_org": null,
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.1,
+        "neutral": 0.11,
+        "negative": 99.79
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "8135e5a27dc14df8836847c74b13356b",
+      "title": "Ratcliffe flies in to watch Man United at Aston Villa with severe pressure on Ten Hag",
+      "link": "https://ca.sports.yahoo.com/news/ratcliffe-flies-watch-man-united-134029667.html",
+      "keywords": [
+        "sports"
+      ],
+      "creator": [
+        "The Canadian Press"
+      ],
+      "video_url": null,
+      "description": "BIRMINGHAM, England (AP) — Manchester United minority owner Jim Ratcliffe has flown in to personally watch the team play Aston Villa in the Premier League on Sunday as the pressure mounts on manager Erik ten Hag.",
+      "content": "BIRMINGHAM, England (AP) — Manchester United minority owner Jim Ratcliffe has flown in to personally watch the team play Aston Villa in the Premier League on Sunday as the pressure mounts on manager Erik ten Hag. Ratcliffe took his seat at Villa Park alongside United’s new leadership team of chief executive Omar Berrada, technical director Jason Wilcox, sporting director Dan Ashworth as well as Dave Brailsford, a key figure at Ratcliffe’s Ineos Sport. Present in Barcelona on Friday for that earned the yacht a spot in the America’s Cup finals, Ratcliffe in which he declined to say he had faith in Ten Hag. Instead, the British billionaire, who bought a in the 20-time English champion in February, said the decision over Ten Hag’s future rested in the hands of the executive he has put in place to run the club. United started the match against Villa in 14th place in the 20-team Premier League, having lost three of its opening six games. ___ AP soccer: The Associated Press",
+      "pubDate": "2024-10-06 13:40:29",
+      "pubDateTZ": "UTC",
+      "image_url": "https://s.yimg.com/ny/api/res/1.2/xP.KpMQKLS7bGmP3s65hEw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTY0MDtjZj13ZWJw/https://media.zenfs.com/en/cp_sports_913/3b682fb41b796c9dcbbc0c103df3f9cd",
+      "source_id": "yahoo",
+      "source_priority": 17,
+      "source_name": "Yahoo! News",
+      "source_url": "https://news.yahoo.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/yahoo.png",
+      "language": "english",
+      "country": [
+        "canada"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": [
+        "aston villa",
+        "england,arkansas,united states of america,north america",
+        "birmingham,england,united kingdom,europe",
+        "england,united kingdom,europe",
+        "ap"
+      ],
+      "ai_org": [
+        "man united",
+        "manchester united"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.15,
+        "neutral": 1.05,
+        "negative": 98.8
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "aa457302b20dc3841a272154804477fb",
+      "title": "Top NFL football knockout, survivor pool picks, advice, strategy for Week 5, 2024: Fade this undefeated team",
+      "link": "https://www.cbssports.com/nfl/news/top-nfl-football-knockout-survivor-pool-picks-advice-strategy-for-week-5-2024-fade-this-undefeated-team/",
+      "keywords": null,
+      "creator": [
+        "CBS Sports Staff"
+      ],
+      "video_url": null,
+      "description": "SportsLine's advanced computer model just locked in its top Week 5 NFL survivor picks",
+      "content": "Anyone making Week 5 NFL survivor pool picks will now have to navigate bye weeks. In Week 5, you'll have four fewer teams to choose from for NFL survivor picks, including Super Bowl contenders like the Lions and Eagles, as well as an easy team to pick on, the 1-3 Titans. Did you use up all of the big dogs early on, or were you strategic with your early NFL knockout pool picks, leaving quality options for your Week 5 NFL eliminator pool picks? The Ravens looked like a juggernaut while demolishing the Bills last Sunday, but they now have a tough road matchup versus a Bengals team coming off their first win and are favored by less than a field goal. The Bills are one-point underdogs in the latest NFL odds Week 5 after being one-point favorites earlier this week. The Jaguars (-3.5) are the lone winless team in action, but their opponent, the Colts , could be without starting quarterback Anthony Richardson (oblique, abdominal), who departed last Sunday's game, and star running back Jonathan Taylor (out, ankle), who will be replaced by Trey Sermon. Before finalizing any Week 5 NFL survivor picks, see which team the red-hot SportsLine Projection Model just went all-in on . The model, which simulates every NFL game 10,000 times, is up well over $7,000 for $100 players on top-rated NFL picks since its inception. The model enters Week 5 of the 2024 NFL season on an incredible 188-131 run on top-rated NFL picks that dates back to the 2017 season. It is also on a 42-23 roll on top-rated NFL picks since Week 7 of 2022. The model also ranked in the top 10 on NFLPickWatch four of the past six years on straight-up NFL picks and beat more than 94 percent of CBS Sports Football Pick'em players four times during that span. Anyone who has followed it is way up. The model can be used to crush the Survivor Pool format, which calls for picking one team to win each week but never using the same team twice. Now, it has turned its attention to the latest Week 5 NFL odds and locked in its Week 5 survivor pool pick. You can only see who the model is backing this week at SportsLine . In Week 5 of the 2024 NFL season, the model is shying away from the Chiefs (-5.5, 43) versus New Orleans on Monday Night Football, even though Kansas City is undefeated. The Chiefs won last week versus the Chargers , but they lost leading receiver Rashee Rice to a knee injury, to add to the absences of running back Isiah Pacheco and receiver Marquise Brown . That may be putting too much pressure on Patrick Mahomes ' right arm, and it's becoming apparent. Mahomes, who has the second-highest passer rating in NFL history (103), has seen his passer rating drop below 90 in his last three games, making it the first time in five years that's occurred. The Chiefs have also seen their points total drop in every game this season, while the Saints (2-2) just suffered a somewhat fluky loss to the Falcons in which New Orleans didn't allow an offensive touchdown. New Orleans still owns the league's top scoring offense, and its No. 7 scoring defense makes the Saints just one of two teams to rank in the top eight on both sides of the ball. While the Chiefs are projected to win in over 60% of simulations, the model is saving Kansas City for another week. See which team to pick instead here . Instead, the model is backing a surprising team that wins outright in well over 70% of simulations and has a 6-0 streak on its side. The time to pick this team is now, and you can only see the play over at SportsLine . Which surprising team is a must-back in your Week 5 NFL survivor pool? Visit SportsLine now to see which team carries you to victory in Week 5, all from the advanced computer model that is up well over $7,000 since its inception .",
+      "pubDate": "2024-10-06 13:40:09",
+      "pubDateTZ": "UTC",
+      "image_url": "https://sportshub.cbsistatic.com/i/2023/12/28/566d9832-a590-4112-8552-a063e71ff6a0/patrick-mahomes-chiefs-usatsi.jpg",
+      "source_id": "cbssports",
+      "source_priority": 3259,
+      "source_name": "Cbssports",
+      "source_url": "https://www.cbssports.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/cbssports.png",
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "top",
+        "sports"
+      ],
+      "ai_tag": [
+        "american football"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "nfl",
+        "sportsline"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 0.26,
+        "neutral": 99.62,
+        "negative": 0.12
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "e36e2fc00c3a209f71b0dfd5551efc3c",
+      "title": "🎥 Liverpool forward nets first WSL goal with 30-yard screamer 🚀",
+      "link": "https://onefootball.com/en/news/liverpool-forward-nets-first-wsl-goal-with-30-yard-screamer-40135074",
+      "keywords": null,
+      "creator": [
+        "Chloe Digby"
+      ],
+      "video_url": null,
+      "description": "Liverpool’s Cornelia Kapocs only joined the club in the summer, after netting 18 goals for Linköping in her native Sweden last season.And it’s not taken her long to adjust to life in the WSL, as the 24-year-old unleashed a stunning 30-yard effort to put her side ahead over Tottenham.Cornelia Kapocs that is outrageous 🤯An outstanding debut goal for @LiverpoolFCW! 🌟#BarclaysWSL pic.twitter.com/zSx6ZuQjXI— Barclays Women's Super League (@BarclaysWSL) October 6, 2024On joining the club, the forward declared: “I like to score goals and I like to create chances for my teammates, either by combining or a one-v-one situation.”if(typeof(jQuery)==\"function\"){(function($){$.fn.fitVids=function(){}})(jQuery)};jwplayer('jwplayer_G3zd1J6D_5oNpOZgB_div').setup({\"playlist\":\"https:\\/\\/content.jwplatform.com\\/feeds\\/G3zd1J6D.json\",\"ph\":2});Well that certainly was a solo effort, and one she won’t be forgetting any time soon.",
+      "content": "Liverpool’s Cornelia Kapocs only joined the club in the summer, after netting 18 goals for Linköping in her native Sweden last season. And it’s not taken her long to adjust to life in the WSL, as the 24-year-old unleashed a stunning 30-yard effort to put her side ahead over Tottenham. On joining the club, the forward declared: “I like to score goals and I like to create chances for my teammates, either by combining or a one-v-one situation.” Well that certainly was a solo effort, and one she won’t be forgetting any time soon.",
+      "pubDate": "2024-10-06 13:39:58",
+      "pubDateTZ": "UTC",
+      "image_url": "https://image-service.onefootball.com/transform?dpr=2%E2%84%91%3Dhttps%3A%2F%2Fwp-images.onefootball.com%2Fwp-content%2Fuploads%2Fsites%2F10%2F2024%2F10%2FLiverpool-v-Leicester-City-Barclays-Womens-Super-League-1728221906-1000x667.jpg&h=210&w=280",
+      "source_id": "onefootball",
+      "source_priority": 4161,
+      "source_name": "Onefootball",
+      "source_url": "https://onefootball.com/en",
+      "source_icon": null,
+      "language": "english",
+      "country": [
+        "germany"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "soccer"
+      ],
+      "ai_region": [
+        "sweden,europe"
+      ],
+      "ai_org": [
+        "wsl"
+      ],
+      "sentiment": "neutral",
+      "sentiment_stats": {
+        "positive": 5.8,
+        "neutral": 93.76,
+        "negative": 0.44
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "fc2b0a1e8663019e7334845ef4a96110",
+      "title": "NFL has plans for three extra international games in huge schedule shake-up",
+      "link": "https://www.themirror.com/sport/american-football/nfl-international-games-london-spain-733430",
+      "keywords": [
+        "sport"
+      ],
+      "creator": [
+        "Charlie Wilson"
+      ],
+      "video_url": null,
+      "description": "The NFL looks set to announce plans to continue to play games away from the United States with potentially six different games playing on foreign soil amid the first of three London games to be played",
+      "content": "The NFL looks set to add further international games to it's schedule in the coming years with the league eyeing up three new locations away from the United States. The league will play five games away from the US in 2024, with one already being played in Brazil while the first of three London games will kick off on Sunday. Two further games will be held in London in consecutive weeks before the NFL will hold a game in Germany for the third straight year, with the league said to be exploring other opportunities. Josh Allen makes feelings clear on Stefon Diggs after claiming he does not 'miss' ex-teammate NFL makes its official stance clear on Tua Tagovailoa retirement decision Spain, France and Ireland are said to be the favorites to host an NFL game - potentially as soon as 2025 - with the Pittsburgh Steelers being a prime candidate to play in Dublin, ESPN has reported. The NFL has yet to play a game in any of the three mentioned countries, with reports continuing that they will look to expand, having regularly seen sell-out crowds in their international games. After playing a game in Brazil for the first time, Goodell had spoken about the potential of the game expanding across the world - after previously stating he'd like to see 16 international games a year. Follow us on X for the best and latest in sports news Prior to the Minnesota Vikings facing the New York Jets in London, he said: \"My perspective goes back to the '90s. We went to Japan, we went to Berlin -- what you saw were fans that didn't really understand the game. \"Now, you go over to London and you have a hard time telling whether you're in London or whether you're in the Meadowlands. The fans there are sophisticated; they understand the game, they appreciate the game. And for me, that's what I think gives us so much confidence that our game can be a global game.\" The Chicago Bears will face the Jacksonville Jaguars in London next weekend, before the Jaguars will then face the New England Patriots in the same city before the Carolina Panthers and New York Giants travel to Germany. Want to watch more live sports? Peacock has your favorite sports, shows, and more all in one place. Peacock offers plans starting at $7.99 so you can stream live sports like NFL, Premier League, and Big Ten Football.",
+      "pubDate": "2024-10-06 13:39:28",
+      "pubDateTZ": "UTC",
+      "image_url": "https://i2-prod.themirror.com/incoming/article561425.ece/ALTERNATES/n615/1_GettyImages-1464234169.jpg",
+      "source_id": "themirror",
+      "source_priority": 1903,
+      "source_name": "The Mirror Us",
+      "source_url": "https://www.themirror.com",
+      "source_icon": null,
+      "language": "english",
+      "country": [
+        "united states of america"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "american football"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "nfl"
+      ],
+      "sentiment": "positive",
+      "sentiment_stats": {
+        "positive": 98.24,
+        "neutral": 1.28,
+        "negative": 0.48
+      },
+      "duplicate": false
+    },
+    {
+      "article_id": "4fd2646d209f5fa02537e419aff92231",
+      "title": "Summit Therapeutics Inc. (SMMT): Hedge Funds Are Bullish On This NASDAQ Stock Right Now",
+      "link": "https://ca.finance.yahoo.com/news/summit-therapeutics-inc-smmt-hedge-133928881.html",
+      "keywords": [
+        "business"
+      ],
+      "creator": [
+        "Insider Monkey"
+      ],
+      "video_url": null,
+      "description": "We recently compiled a list of the 10 Best Performing NASDAQ Stocks in 2024. In this article, we are going to take a look at where Summit Therapeutics Inc. (NASDAQ:SMMT) stands against the other great performing NASDAQ stocks. Market Expectations for the Year-End Fed’s recent cut has resulted in significant outperformance in the tech sector, signaling [...]",
+      "content": "We recently compiled a list of the . In this article, we are going to take a look at where Summit Therapeutics Inc. (NASDAQ:SMMT) stands against the other great performing NASDAQ stocks. Fed's recent cut has resulted in significant outperformance in the tech sector, signaling a positive sentiment among investors. Tech stocks are thriving in this lower interest rate environment, which has contributed to a broader market rally. The strength of small-cap stocks and cyclical sectors was noticeable even before the reduction, suggesting that market confidence was building. Analysts expect ongoing growth driven by advancements in AI, which continues to be a key theme influencing investor behavior. The occurrence of rate cuts while markets are at record highs raises important questions about potential volatility. Historically, markets have shown resilience and often continue to rise even when rate cuts occur near market peaks. This suggests that much of the current optimism may already be reflected in stock prices. The recent rate cut is generally viewed as a preventive measure rather than a direct response to economic weakness, which could further enhance consumer confidence and spending. Towards the end of September, RaeAnn Mitrione, Investment Management Partner at Callan Family Office, appeared in an interview and highlighted significant market developments following the Fed’s unexpectedly larger-than-anticipated rate cut. We covered this in detail in our article on the , here's a short excerpt from it: “...Mitrione emphasized that the market is reacting favorably to lower interest rates, particularly benefiting the tech sector... Pointing at a chart, Mitrione remarked that it is unusual to see rate cuts while markets are at record highs, raising questions about potential volatility ahead. Historically, even when rate cuts occur near market peaks, stocks often continue to rise. Much of this positive sentiment has been priced in due to prior indications of the rate cut. She explained that the economy remains strong, and the rate cut serves as a preventive measure rather than a reaction to economic weakness. This supportive environment could enhance consumer confidence and spending, further improving market performance.” On September 28, DataTrek Research co-founder, Nick Colas, joined an interview on CNBC to discuss the trading day and highlight that the tech rally will have to wait until year-end. As September ended, the S&P 500 saw a remarkable increase of 20% year-to-date. In light of this performance, market participants began revisiting the post-Fed rate cut playbook following the initial easing. Nick Colas noted that one of the most encouraging aspects of September is that the market has not experienced a decline, which is typically expected during this month known for its volatility. Instead, the S&P had risen by 1.6% so far in September, demonstrating resilience despite some initial choppiness, which is particularly noteworthy given September's historical reputation for turbulence. As Colas noted, on the macroeconomic front, positive indicators are emerging. The Atlanta Fed's GDPNow model has revised its Q3 growth estimate upward to 3.1%, signaling that the economy is performing well. Additionally, gasoline demand has increased by 6% year-over-year, reflecting strong consumer activity. Initial jobless claims reported recently also show a solid performance, falling below the three-year average. These data points support the mid-cycle playbook employed by DataTrek, suggesting that the economy is continuing to progress without any significant cracks or fissures in its foundation. Despite these positive trends, questions remain about whether the market can sustain its momentum without new positive catalysts. Colas pointed out that historically, price-to-earnings multiples and stock prices tend to rise together as long as there are no major negative catalysts to disrupt the economic recovery. This correlation indicates that investor confidence remains intact and is likely to persist through the remainder of the year. Furthermore, as the market approaches traditionally strong months following elections, there are expectations for a potential old Santa Claus rally in December. However, with the volatility index elevated at around 17 and geopolitical tensions looming, especially as elections approach, investors are likely to remain cautious. Over the past two years, the NASDAQ 100 has surged approximately 67%, marking a significant recovery since its lows in October two years ago. This performance is substantially above the historical average return of around 25%. Colas emphasized that while such returns are impressive, they do not yet indicate speculative excess; historically, a doubling of the NASDAQ over two years would signal potential trouble for investors. Looking back further, Colas noted that since peaking before the bear market in November 2021, the NASDAQ 100 has only risen about 20% over three years. This suggests that there may still be room for growth compared to prior bubbles when returns were much more pronounced within shorter time frames. The ongoing rotation away from technology stocks has been observed recently, with cyclical sectors and financials performing well. Colas believes this trend may continue for now, with a potential resurgence in tech stocks expected closer to November and December as year-end approaches. Investors appear to be favoring cyclical sectors at present, which offer more immediate upside opportunities. While there are challenges ahead, the current economic indicators suggest a robust environment for continued growth in equities as long as investor confidence remains high and no major negative catalysts emerge to derail progress. Despite a recent rotation away from tech stocks, the market remains resilient, with the potential for a tech resurgence as we approach year-end, setting the stage for a bullish outlook for both tech and the NASDAQ in the coming months. When optimism about economic conditions or technological advancements rises, tech stocks typically perform well, boosting the NASDAQ. We used stock screeners to look for companies listed on NASDAQ that were trading over $10 billion. We then selected the top 10 NASDAQ stocks with the best year-to-date performance and that were also the most popular among elite hedge funds. The stocks are ranked in ascending order of their year-to-date performance. Why are we interested in the stocks that hedge funds pile into? The reason is simple: our research has shown that we can outperform the market by imitating the top stock picks of the best hedge funds. Our quarterly newsletter’s strategy selects 14 small-cap and large-cap stocks every quarter and has returned 275% since May 2014, beating its benchmark by 150 percentage points ( ). A laboratory employee in a sterile environment inspecting a microscope focused on a Clostridioides difficile infection sample. Summit Therapeutics Inc. (NASDAQ: ) Summit Therapeutics Inc. (NASDAQ:SMMT) is a biopharmaceutical company that focuses on the discovery, development, and commercialization of patient, physician, caregiver, and societal-friendly medicinal therapies in the US, and the UK. Over the past few months, the company has made significant progress in raising awareness of ivonescimab and its mission to develop innovative treatments for serious oncology needs. Its partnership with Akeso, a well-established Chinese biotech, has been instrumental in advancing ivonescimab’s development and significantly reducing development risks. Together, they conducted two successful Phase 3 clinical trials, HARMONi-A and HARMONi-2, for ivonescimab in non-small cell lung cancer (NSCLC), yielding positive data that provide strong evidence for the drug’s potential. It also announced a 5-year strategic collaboration with MD Anderson to accelerate ivonescimab’s development, complementing its ongoing collaboration with Akeso. Currently, there are 20 ongoing clinical trials evaluating ivonescimab for various cancer types. While the current Phase 3 programs focus on NSCLC, seven trials are exploring its potential in other solid tumors. Early-stage clinical trials have demonstrated the efficacy of ivonescimab in treating NSCLC. Its strong financial position allows it to allocate resources for ongoing development efforts, supported by a solid cash balance. In Q2 2024, R&D expenses remained stable, although acquired IP R&D expenses increased due to a licensing agreement amendment. Overall operating expenses remained consistent. Summit Therapeutics Inc. (NASDAQ:SMMT) appears to be a promising investment opportunity. The company’s strong pipeline, strategic partnerships, and positive clinical data position it for potential future growth. Overall SMMT on our list of the best performing NASDAQ stocks to buy. While we acknowledge the potential of SMMT as an investment, our conviction lies in the belief that AI stocks hold great promise for delivering high returns and doing so within a shorter timeframe. If you are looking for an AI stock that is more promising than SMMT but that trades at less than 5 times its earnings, check out our report about the . Disclosure: None. This article is originally published at .",
+      "pubDate": "2024-10-06 13:39:28",
+      "pubDateTZ": "UTC",
+      "image_url": "https://s.yimg.com/uu/api/res/1.2/yYXD80_pu._06O1gMEAKGA--~B/aD04MTY7dz0xNDU2O2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/insidermonkey.com/44dc03b59761c846e7a32c6f40290a9c",
+      "source_id": "yahoo",
+      "source_priority": 17,
+      "source_name": "Yahoo! News",
+      "source_url": "https://news.yahoo.com",
+      "source_icon": "https://i.bytvi.com/domain_icons/yahoo.png",
+      "language": "english",
+      "country": [
+        "canada"
+      ],
+      "category": [
+        "sports"
+      ],
+      "ai_tag": [
+        "financial markets"
+      ],
+      "ai_region": null,
+      "ai_org": [
+        "summit therapeutics inc"
+      ],
+      "sentiment": "negative",
+      "sentiment_stats": {
+        "positive": 0.3,
+        "neutral": 5.47,
+        "negative": 94.23
+      },
+      "duplicate": false
+    }
+  ],
   "search": []
 }
 
@@ -17948,6 +22369,8 @@ const initialState = {
     wealth: data.wealth,
     world: data.world,
     mutual_fund: data.mutual_fund,
+    politics: data.politics,
+    sports: data.sports,
     search: [], // New state for search results
   },
   status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
@@ -18012,6 +22435,19 @@ const newsDataSlice = createSlice({
       state.error = action.error.message;
     });
 
+    // Politics News
+    builder.addCase(fetchPoliticsNews.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(fetchPoliticsNews.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.newsData.politics = action.payload;
+    });
+    builder.addCase(fetchPoliticsNews.rejected, (state, action) => {
+      state.status = "failed";
+      state.error = action.error.message;
+    });
+
      // Tech News
      builder.addCase(fetchTechNews.pending, (state) => {
       state.status = "loading";
@@ -18060,6 +22496,19 @@ const newsDataSlice = createSlice({
       state.newsData.mutual_fund = action.payload;
     });
     builder.addCase(fetchMutualFundNews.rejected, (state, action) => {
+      state.status = "failed";
+      state.error = action.error.message;
+    });
+
+    // Sports News
+    builder.addCase(fetchSportsNews.pending, (state) => {
+      state.status = "loading";
+    });
+    builder.addCase(fetchSportsNews.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.newsData.sports = action.payload;
+    });
+    builder.addCase(fetchSportsNews.rejected, (state, action) => {
       state.status = "failed";
       state.error = action.error.message;
     });
