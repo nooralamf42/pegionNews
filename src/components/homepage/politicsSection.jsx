@@ -6,6 +6,7 @@ import { titleToSlug } from "../../utils/slugFormat";
 import StarHeader from "../starHeader";
 import fixImgUrl from "../../utils/fixImgUrl";
 import { nanoid } from "@reduxjs/toolkit";
+import NewsHeader from "../newsHeader";
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
@@ -53,7 +54,8 @@ export const PoliticsSection = () => {
   };
 
   return (
-    <section className="my-container">
+    <section className="my-container py-8">
+            <Link to={'/category/politics'}><NewsHeader text={"Politics"}/></Link>
       <div className="relative overflow-hidden py-8">
         <motion.div
           drag="x"
