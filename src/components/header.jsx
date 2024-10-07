@@ -9,8 +9,10 @@ import { useDispatch } from "react-redux";
 import { titleToSlug } from "../utils/slugFormat";
 import axios from "axios";
 import Loading from "./loading";
+import useDateTime from "../hooks/useDateTime";
 
 const menuData = [
+  { name: "Home", link: "/" },
   { name: "Business", link: "/category/business" },
   { name: "Finance", link: "/category/finance" },
   { name: "Stocks", link: "/category/stock" },
@@ -25,39 +27,16 @@ const menuData = [
 
 
 const Header = () => {
-  const [initialDateTime, setInitialDateTime] = useState(null);
-  const [dateTime, setDateTime] = useState(new Date().toUTCString());
+  const dateTime = useDateTime();
   const pathName = useLocation().pathname
   useEffect(()=>{
     window.scrollTo(0,0)
   }, [pathName])
   const navigate = useNavigate()
-  useEffect(() => {
-    // const fetchInitialDateTime = () => {
-    //   axios.get('http://worldtimeapi.org/api/timezone/America/new_york')
-    //     .then(response => {
-    //       const newDateTime = new Date(response.data.datetime);
-    //       setInitialDateTime(newDateTime);
-    //       setDateTime(newDateTime.toUTCString());
-    //     })
-    //     .catch(error => console.error('Error fetching initial date time:', error));
-    // };
 
-
-    // !initialDateTime && fetchInitialDateTime(); // Initial fetch
-
-    const timer = setInterval(() => {
-      // if (initialDateTime) {
-        const currentDateTime = new Date();
-        setDateTime(currentDateTime.toLocaleString());
-      // }
-    }, 1000); // Update every second
-
-    return () => clearInterval(timer); // Cleanup on component unmount
-  }, [initialDateTime]);
  
   return (
-    <header className="overflow-hidden bg-white border-gray-200 py-2">
+    <header className="overflow-hidden bg-white border-gray-200 py-2 flex flex-col justify-center items-center">
       <div onClick={()=>navigate('/')} className="w-fit mx-auto flex items-end justify-center cursor-pointer group">
         <div className="flex items-end animate_pegion_body relative">
         <img
@@ -71,11 +50,11 @@ const Header = () => {
         </div>
         </div>
         <span className="pirata-one-regular uppercase text-primary ~text-3xl/5xl">
-          pegion  news
+          pigeon news
         </span>
       </div>
       <div className="text-center mt-2">
-        <h1 className="news-cycle-regular text-sm font-thin text-neutral-600 uppercase">{dateTime}</h1>
+        <h1 className="ml-3 news-cycle-regular text-sm font-thin text-neutral-600 uppercase">{dateTime}</h1>
       </div>
     </header>
   );

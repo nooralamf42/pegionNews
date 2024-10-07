@@ -13,7 +13,7 @@ const WealthNewsSection = () => {
   const wealthNews = useSelector((state) => state.newsData.wealth);
 
   return (
-    <section className="news-cycle-regular mt-10">
+    <section className="news-cycle-regular mt-10 border-b">
       <div className="my-container space-y-14">
         <Link to="/category/wealth"><NewsHeader text="Wealth" /></Link>
 
@@ -34,12 +34,12 @@ const WealthNewsSection = () => {
             </Link>
             <div className="p-2 space-y-4">
               <Link
-                className="~text-2xl/5xl font-bold newsreader-700"
+                className="~text-2xl/5xl font-bold newsreader-700 line-clamp-3"
                 to={`/category/wealth/${titleToSlug(wealthNews[0].title)}`}
               >
                 {wealthNews[0].title}
               </Link>
-              <h2 className="text-xl/2xl font-bold">
+              <h2 className="text-xl/2xl font-bold line-clamp-2">
                 {wealthNews[0].description}
               </h2>
               <h3>
@@ -68,7 +68,7 @@ const WealthNewsSection = () => {
               </Link>
               <div className="p-2">
                 <Link
-                  className="newsreader-500 ~text-xl/2xl"
+                  className="newsreader-500 ~text-lg/2xl line-clamp-3"
                   to={`/category/wealth/${titleToSlug(article.title)}`}
                 >
                   {article.title}

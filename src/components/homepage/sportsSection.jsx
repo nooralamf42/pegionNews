@@ -88,7 +88,7 @@ export const SportsSection = () => {
               sportsNews.slice(3,6).map((post)=>(
                   <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
                     <img src={fixImgUrl(post.image_url)} alt={post.title} className="w-full aspect-square object-cover max-w-[100px] "/>
-                    <Link to={`/category/sports/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600">{post.title}</Link>
+                    <Link to={`/category/sports/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600 line-clamp-3">{post.title}</Link>
                   </div>
               ))
             }

@@ -82,13 +82,13 @@ export const PoliticsSection = () => {
           setImgIndex={setImgIndex}
         />
       </div>
-      <div className="border-b-4 grid grid-cols-1 md:grid-cols-3 justify-between items-center space-y-4 md:space-y-6 py-6 px-10 md:px-0 group">
+      <div className="border-y grid grid-cols-1 md:grid-cols-3 justify-between items-center space-y-4 md:space-y-6 py-6 px-10 md:px-0 group">
           <StarHeader title="More News" className="col-span-full"/>
             {
               politicsNews.slice(3,6).map((post)=>(
                   <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
                     <img src={fixImgUrl(post.image_url)} alt={post.title} className="w-full aspect-square object-cover max-w-[100px] "/>
-                    <Link to={`/category/politics/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600">{post.title}</Link>
+                    <Link to={`/category/politics/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600 line-clamp-3">{post.title}</Link>
                   </div>
               ))
             }

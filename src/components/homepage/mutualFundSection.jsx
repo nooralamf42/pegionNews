@@ -33,7 +33,7 @@ const MutualFundSection = () => {
             </Link>
             <div className="p-2 space-y-4">
               <Link
-                className="~text-2xl/5xl font-bold newsreader-700"
+                className="~text-2xl/5xl font-bold newsreader-700 line-clamp-3"
                 to={`/category/crypto/${titleToSlug(mutual_fund[0].title)}`}
               >
                 {mutual_fund[0].title}
@@ -66,7 +66,7 @@ const MutualFundSection = () => {
               </Link>
               <div className="p-2">
                 <Link
-                  className="newsreader-500 ~text-xl/2xl"
+                  className="newsreader-500 ~text-lg/2xl line-clamp-3"
                   to={`/category/crypto/${titleToSlug(article.title)}`}
                 >
                   {article.title}
@@ -77,13 +77,13 @@ const MutualFundSection = () => {
             </article>
           ))}
         </div>
-        <div className="border-t-4 border-dashed grid grid-cols-1 md:grid-cols-3 justify-between items-center space-y-4 md:space-y-6 py-6 px-10 md:px-0 group">
+        <div className="border-y grid grid-cols-1 md:grid-cols-3 justify-between items-center space-y-4 md:space-y-6 py-6 px-10 md:px-0 group">
           <StarHeader title="Trending News" className="col-span-full"/>
             {
               mutual_fund.slice(3,6).map((post)=>(
                   <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
                     <img src={fixImgUrl(post.image_url)} alt={post.title} className="w-full aspect-square object-cover max-w-[100px] "/>
-                    <Link to={`/category/business/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600">{post.title}</Link>
+                    <Link to={`/category/business/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600 line-clamp-3">{post.title}</Link>
                   </div>
               ))
             }

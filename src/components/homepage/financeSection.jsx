@@ -34,12 +34,12 @@ const FinanceNewsSection = () => {
             </Link>
             <div className="p-2 space-y-4">
               <Link
-                className="~text-2xl/5xl font-bold newsreader-700"
+                className="~text-2xl/5xl font-bold newsreader-700 line-clamp-3"
                 to={`/category/finance/${titleToSlug(financeNews[0].title)}`}
               >
                 {financeNews[0].title}
               </Link>
-              <h2 className="text-xl/2xl font-bold">
+              <h2 className="text-xl/2xl font-bold line-clamp-2">
                 {financeNews[0].description}
               </h2>
               <h3>
@@ -68,7 +68,7 @@ const FinanceNewsSection = () => {
               </Link>
               <div className="p-2">
                 <Link
-                  className="newsreader-500 ~text-xl/2xl"
+                  className="newsreader-500 ~text-md/2xl line-clamp-4"
                   to={`/category/finance/${titleToSlug(article.title)}`}
                 >
                   {article.title}

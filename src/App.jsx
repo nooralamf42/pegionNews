@@ -30,16 +30,16 @@ function App() {
   useEffect(() => {
     const fetchAll = async () => {
       await Promise.all([
-        // dispatch(fetchBusinessNews()),
-        // dispatch(fetchFinanceNews()),
-        // dispatch(fetchStockNews()),
-        // dispatch(fetchCryptoNews()),
-        // dispatch(fetchPoliticsNews())
-        // dispatch(fetchTechNews()),
-        // dispatch(fetchWealthNews()),
-        // dispatch(fetchWorldNews()),
-        // dispatch(fetchMutualFundNews())
-        // dispatch(fetchSportsNews())
+        dispatch(fetchBusinessNews()),
+        dispatch(fetchFinanceNews()),
+        dispatch(fetchStockNews()),
+        dispatch(fetchCryptoNews()),
+        dispatch(fetchPoliticsNews()),
+        dispatch(fetchTechNews()),
+        dispatch(fetchWealthNews()),
+        dispatch(fetchWorldNews()),
+        dispatch(fetchMutualFundNews()),
+        dispatch(fetchSportsNews())
       ]);
       setIsLoading(false);
     };
