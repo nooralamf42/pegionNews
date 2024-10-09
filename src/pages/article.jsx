@@ -14,7 +14,6 @@ import Loading from "../components/loading";
 import NothingFound from "../components/nothingFound";
 import { animate, easeInOut, motion } from "framer-motion";
 import updateBadImage from "../utils/updateBadImage";
-import { Helmet } from 'react-helmet';
 
 const Article = () => {
   let { articleTitle, category, query} = useParams();
@@ -25,7 +24,6 @@ const Article = () => {
   const newsData = useSelector((state) => state.newsData[category]);
   let article = newsData.find((news) => titleToSlug(news.title) === articleTitle
   );
-  const url = window.location.href
   const dispatch = useDispatch()
 
   const relatedPosts = useMemo(() => {
@@ -51,18 +49,8 @@ const Article = () => {
     return <NothingFound text="The Article the you looking for does not exist"/>
   }
 
-  console.log(article)
-
   return (
     <section className="article-section news-cycle-regular mt-10">
-       <Helmet>
-        <title>{article.title}</title>
-        <meta name="description" content={article.description} />
-        <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.description} />
-        <meta property="og:image" content={article.image_url} />
-        <meta property="og:url" content={url} />
-      </Helmet>
       <motion.div key={nanoid()} initial={{opacity:0}} transition={{duration: .75, ease: easeInOut}} animate={{opacity:1}} exit={{opacity:0}} className="my-container mx-auto px-4 pb-4">
         <NewsHeader text={`${capitalize(category)} News`} className="my-8" />
         <div className="grid grid-cols-12 lg:gap-8">
