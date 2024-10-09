@@ -7,10 +7,13 @@ import { titleToSlug } from "../../utils/slugFormat";
 import NewsHeader from "../newsHeader";
 import StarHeader from "../starHeader";
 import fixImgUrl from "../../utils/fixImgUrl";
+import updateBadImage from "../../utils/updateBadImage";
+import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 const CryptoNewsSection = () => {
   let cryptoNews = useSelector((state) => state.newsData.crypto);
-  // cryptoNews = cryptoNews.filter(news=>news.image_url!== null || '')
+  if(cryptoNews.length<=0)
+    return <NewsSkeletonLoader name={'crypto'}/>
   return (
     <section className="news-cycle-regular mt-10">
       <div className="my-container space-y-14">
@@ -27,6 +30,7 @@ const CryptoNewsSection = () => {
             >
               <img
                 src={fixImgUrl(cryptoNews[0].image_url)}
+                onError={(e)=>updateBadImage(e)}
                 alt={cryptoNews[0].title}
                 className="aspect-[16/7] w-full object-cover"
               />
@@ -60,6 +64,7 @@ const CryptoNewsSection = () => {
               >
                 <img
                   src={fixImgUrl(article.image_url)}
+                  onError={(e)=>updateBadImage(e)}
                   alt={article.title}
                   className="aspect-square w-full object-cover"
                 />
@@ -82,7 +87,7 @@ const CryptoNewsSection = () => {
             {
               cryptoNews.slice(3,6).map((post)=>(
                   <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
-                    <img src={fixImgUrl(post.image_url)} alt={post.title} className="w-full aspect-square object-cover max-w-[100px] "/>
+                    <img src={fixImgUrl(post.image_url)} alt={post.title} className="w-full aspect-square object-cover max-w-[100px]" onError={(e)=>updateBadImage(e)}/>
                     <Link to={`/category/business/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600 line-clamp-3">{post.title}</Link>
                   </div>
               ))

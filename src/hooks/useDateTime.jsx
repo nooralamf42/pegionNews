@@ -21,8 +21,7 @@ const useDateTime = () => {
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
-      hour12: true,
-      timeZone: 'Asia/Kolkata'
+      hour12: true, // 12-hour format
     };
 
     const formatter = new Intl.DateTimeFormat('en-IN', options);
@@ -38,7 +37,7 @@ const useDateTime = () => {
     const second = formatPart('second');
     const dayPeriod = formatPart('dayPeriod').toUpperCase();
 
-    return `${day} ${month}, ${year}, ${hour}:${minute}:${second} ${dayPeriod} IST`;
+    return `${day} ${month}, ${year}, ${hour}:${minute}:${second} ${dayPeriod}`;
   };
 
   return formatDateTime(dateTime);

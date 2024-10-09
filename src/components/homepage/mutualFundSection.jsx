@@ -7,10 +7,13 @@ import { titleToSlug } from "../../utils/slugFormat";
 import NewsHeader from "../newsHeader";
 import StarHeader from "../starHeader";
 import fixImgUrl from "../../utils/fixImgUrl";
+import updateBadImage from "../../utils/updateBadImage";
+import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 const MutualFundSection = () => {
-  let mutual_fund = useSelector((state) => state.newsData.crypto);
-  // mutual_fund = mutual_fund.filter(news=>news.image_url!== null || '')
+  let mutual_fund = useSelector((state) => state.newsData.mutual_fund);
+  if(mutual_fund.length<=0)
+    return <NewsSkeletonLoader name={'mutual_fund'}/>
   return (
     <section className="news-cycle-regular mt-10">
       <div className="my-container space-y-14">
@@ -27,6 +30,7 @@ const MutualFundSection = () => {
             >
               <img
                 src={fixImgUrl(mutual_fund[0].image_url)}
+                onError={(e)=>updateBadImage(e)}
                 alt={mutual_fund[0].title}
                 className="aspect-[16/7] w-full object-cover"
               />
@@ -60,6 +64,7 @@ const MutualFundSection = () => {
               >
                 <img
                   src={fixImgUrl(article.image_url)}
+                  onError={(e)=>updateBadImage(e)}
                   alt={article.title}
                   className="aspect-square w-full object-cover"
                 />
@@ -82,7 +87,7 @@ const MutualFundSection = () => {
             {
               mutual_fund.slice(3,6).map((post)=>(
                   <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
-                    <img src={fixImgUrl(post.image_url)} alt={post.title} className="w-full aspect-square object-cover max-w-[100px] "/>
+                    <img src={fixImgUrl(post.image_url)} onError={(e)=>updateBadImage(e)} alt={post.title} className="w-full aspect-square object-cover max-w-[100px] "/>
                     <Link to={`/category/business/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600 line-clamp-3">{post.title}</Link>
                   </div>
               ))

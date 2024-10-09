@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
 import { formatDate } from "../utils/dateFormat";
 import { titleToSlug, capitalize } from "../utils/slugFormat";
@@ -8,19 +8,82 @@ import LoadingScreen from "../components/loading";
 import NewsHeader from "../components/newsHeader";
 import StarHeader from "../components/starHeader";
 import { animate, easeInOut, motion } from "framer-motion";
-
+import updateBadImage from "../utils/updateBadImage";
+import fixImgUrl from "../utils/fixImgUrl";
+import {
+  fetchBusinessNews,
+  fetchCryptoNews,
+  fetchFinanceNews,
+  fetchMutualFundNews,
+  fetchPoliticsNews,
+  fetchSportsNews,
+  fetchStockNews,
+  fetchTechNews,
+  fetchWealthNews,
+  fetchWorldNews,
+} from "../feature/news/newsSlice";
 
 const NewsPosts = () => {
   let { category } = useParams();
+  const status = useSelector(state=>state.status)
+  const dispatch = useDispatch()
   category = category.toLowerCase()
   const categories = useSelector(state=>Object.keys(state.newsData))
   if(!categories.includes(category)) return <h1>category not found</h1>
   let articles = useSelector(
-    (state) => state.newsData[category]
+  (state) => state.newsData[category]
   );
   articles = articles.filter(article=>article.image_url!==null || '')
 
-  if (!articles || articles.length < 1) return <LoadingScreen />;
+
+  const fetchData = (name) => {
+    if(status=='loading') return
+    switch (name) {
+      case "business":
+        dispatch(fetchBusinessNews());
+        break;
+
+        case "stock":
+          dispatch(fetchStockNews());
+          break;
+
+      case "world":
+        dispatch(fetchWorldNews());
+        break;
+
+      case "crypto":
+        dispatch(fetchCryptoNews());
+        break;
+
+      case "finance":
+        dispatch(fetchFinanceNews());
+        break;
+
+      case "mutualFund":
+        dispatch(fetchMutualFundNews());
+        break;
+      case "politics":
+        dispatch(fetchPoliticsNews());
+        break;
+      case "sports":
+        dispatch(fetchSportsNews());
+        break;
+      case "tech":
+        dispatch(fetchTechNews());
+        break;
+      case "wealth":
+        dispatch(fetchWealthNews());
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  if (!articles || articles.length < 5) {
+    fetchData(category)
+    return <LoadingScreen />
+  }
 
   return (
     <section className="news-posts-section news-cycle-regular mt-10">
@@ -35,8 +98,9 @@ const NewsPosts = () => {
               
               <Link to={`/category/${category}/${titleToSlug(article.title)}`} className="">
                 <img 
-                  src={article.image_url} 
-                  alt={article.title} 
+                  src={fixImgUrl(article.image_url)} 
+                  alt={article.title}
+                  onError={(e)=>updateBadImage(e)} 
                   className={`object-cover mb-4 ${index > 2 ? 'w-[100px] max-w-[100px] sm:max-w-full h-[100px] sm:h-full sm:w-full md:aspect-video' : 'aspect-video sm:aspect-square w-full'}`}
                 />
               </Link>

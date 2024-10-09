@@ -50,7 +50,7 @@ const Header = () => {
         </div>
         </div>
         <span className="pirata-one-regular uppercase text-primary ~text-3xl/5xl">
-          pigeon news
+          the pigeons news
         </span>
       </div>
       <div className="text-center mt-2">

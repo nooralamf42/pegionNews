@@ -5,17 +5,20 @@ import { Link } from "react-router-dom";
 import { titleToSlug } from "../../utils/slugFormat";
 import StarHeader from "../starHeader";
 import NewsHeader from "../newsHeader";
+import fixImgUrl from "../../utils/fixImgUrl";
+import updateBadImage from "../../utils/updateBadImage";
+import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 function BusinessSection() {
   const {newsData, error, loading} = useSelector(state=>state) 
-  console.log(newsData)
-
+  if(newsData.business.length<=0)
+    return <NewsSkeletonLoader name={'business'}/>
   return (
     <section className="hero-section news-cycle-regular ~mt-5/10">
       <div className="my-container mx-auto px-4 pb-4">
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-full md:col-span-6 lg:col-span-8 mb-4">
-            <img className="w-full aspect-video object-cover" src={newsData.business[0].image_url} alt={newsData.business[0].title} />
+            <img className="w-full aspect-video object-cover" src={fixImgUrl(newsData.business[0].image_url)} alt={newsData.business[0].title} onError={(e)=>updateBadImage(e)}/>
             <div className="ml-10 relative z-20 bg-white shadow-md p-4 -mt-10 ">
             <Link to={`/category/business/${titleToSlug(newsData.business[0].title)}`}>
             <h1 className="~text-2xl/5xl line-clamp-3 font-bold newsreader-700">{newsData.business[0].title}</h1>
@@ -34,11 +37,11 @@ function BusinessSection() {
 
           <Link to={`/category/business/${titleToSlug(newsData.business[4].title)}`} className="gap-1 items-center grid grid-cols-5 border-b py-3">
             <h1 className="~text-xl/2xl line-clamp-3 col-span-full md:col-span-4 newsreader-500">{newsData.business[4].title}</h1>
-            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={newsData.business[4].image_url} alt={newsData.business[4].title} />
+            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={fixImgUrl(newsData.business[4].image_url)} alt={newsData.business[4].title} onError={(e)=>updateBadImage(e)}/>
             </Link>
             <Link to={`/category/business/${titleToSlug(newsData.business[5].title)}`} className="gap-1 items-center grid grid-cols-5 border-b py-3">
             <h1 className="~text-xl/2xl line-clamp-3 col-span-full md:col-span-4 newsreader-500">{newsData.business[5].title}</h1>
-            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={newsData.business[5].image_url} alt={newsData.business[5].title} />
+            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={fixImgUrl(newsData.business[5].image_url)} alt={newsData.business[5].title} onError={(e)=>updateBadImage(e)}/>
             </Link>
           {newsData.business.slice(5, 8).map((post) => (
             <div key={nanoid()} className={`pl-4 ${newsData.business.indexOf(post) === 7 ? '' : 'border-b'} py-1 newsreader-500`}>

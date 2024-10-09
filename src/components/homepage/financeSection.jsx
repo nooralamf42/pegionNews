@@ -7,11 +7,14 @@ import { titleToSlug } from "../../utils/slugFormat";
 import NewsHeader from "../newsHeader";
 import StarHeader from "../starHeader";
 import fixImgUrl from "../../utils/fixImgUrl";
+import updateBadImage from "../../utils/updateBadImage";
+import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 const FinanceNewsSection = () => {
   // Use useSelector to get data from the Redux store
   const financeNews = useSelector((state) => state.newsData.finance);
-
+  if(financeNews.length<=0)
+    return <NewsSkeletonLoader name={'finance'}/>
   return (
     <section className="news-cycle-regular mt-10">
       <div className="my-container space-y-14">
@@ -28,6 +31,7 @@ const FinanceNewsSection = () => {
             >
               <img
                 src={fixImgUrl(financeNews[0].image_url)}
+                onError={(e)=>updateBadImage(e)}
                 alt={financeNews[0].title}
                 className="aspect-[16/7] w-full object-cover"
               />
@@ -62,6 +66,7 @@ const FinanceNewsSection = () => {
               >
                 <img
                   src={fixImgUrl(article.image_url)}
+                  onError={(e)=>updateBadImage(e)}
                   alt={article.title}
                   className="aspect-square w-full object-cover"
                 />

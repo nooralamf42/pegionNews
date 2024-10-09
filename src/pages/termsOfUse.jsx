@@ -6,19 +6,19 @@ const TermsOfUse = () => {
         {/* <NewsHeader text="Terms of Use" className="my-8" /> */}
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-full lg:col-span-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 newsreader-700">Pigeon News Terms of Use</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 newsreader-700">The Pigeons News Terms of Use</h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 newsreader-500 mb-8">
               Welcome to Pigeon News. By accessing our website and using our services, you agree to comply with and be bound by the following terms and conditions. Please read these Terms of Use carefully before using our website.
             </p>
             
             <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 newsreader-700">1. Acceptance of Terms</h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 newsreader-500 mb-6">
-              By accessing or using Pigeon News, you agree to be bound by these Terms of Use and all applicable laws and regulations. If you do not agree with any part of these terms, you may not use our services.
+              By accessing or using The Pigeons News, you agree to be bound by these Terms of Use and all applicable laws and regulations. If you do not agree with any part of these terms, you may not use our services.
             </p>
 
             <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 newsreader-700">2. Use of Content</h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 newsreader-500 mb-6">
-              All content provided on Pigeon News is for informational purposes only. You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our website without our prior written consent.
+              All content provided on The Pigeons News is for informational purposes only. You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our website without our prior written consent.
             </p>
 
             <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 newsreader-700">3. User Contributions</h2>
@@ -28,17 +28,17 @@ const TermsOfUse = () => {
 
             <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 newsreader-700">4. Intellectual Property</h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 newsreader-500 mb-6">
-              The Pigeon News name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of Pigeon News or its affiliates. You must not use such marks without our prior written permission. All other names, logos, product and service names, designs, and slogans on this website are the trademarks of their respective owners.
+              The Pigeon News name, logo, and all related names, logos, product and service names, designs, and slogans are trademarks of The Pigeons News or its affiliates. You must not use such marks without our prior written permission. All other names, logos, product and service names, designs, and slogans on this website are the trademarks of their respective owners.
             </p>
 
             <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 newsreader-700">5. Disclaimer of Warranties</h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 newsreader-500 mb-6">
-              Pigeon News is provided on an "as is" and "as available" basis, without any warranties of any kind, either express or implied. We do not warrant that our website will be uninterrupted or error-free, that defects will be corrected, or that our website or the server that makes it available are free of viruses or other harmful components.
+              The Pigeons News is provided on an "as is" and "as available" basis, without any warranties of any kind, either express or implied. We do not warrant that our website will be uninterrupted or error-free, that defects will be corrected, or that our website or the server that makes it available are free of viruses or other harmful components.
             </p>
 
             <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 newsreader-700">6. Limitation of Liability</h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 newsreader-500 mb-6">
-              Pigeon News shall not be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the website; (ii) any conduct or content of any third party on the website; (iii) any content obtained from the website; and (iv) unauthorized access, use or alteration of your transmissions or content.
+              The Pigeons News shall not be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the website; (ii) any conduct or content of any third party on the website; (iii) any content obtained from the website; and (iv) unauthorized access, use or alteration of your transmissions or content.
             </p>
 
             <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 newsreader-700">7. Indemnification</h2>
@@ -66,7 +66,7 @@ const TermsOfUse = () => {
               If you have any questions about these Terms of Use, please contact us at:
             </p>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 newsreader-500">
-              Pigeon News<br />
+              The Pigeons News<br />
               Email: privacy@pigeonnews.com<br />
             </p>
           </div>

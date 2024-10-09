@@ -11,6 +11,7 @@ import StarHeader from "../components/starHeader";
 import Loading from "../components/loading";
 import NothingFound from "../components/nothingFound";
 import { animate, easeInOut, motion } from "framer-motion";
+import updateBadImage from "../utils/updateBadImage";
 
 
 const SearchPosts = () => {
@@ -38,7 +39,8 @@ const SearchPosts = () => {
               <Link to={`/search/${query}/${titleToSlug(article.title)}`} className="">
                 <img 
                   src={fixImgUrl(article.image_url)} 
-                  alt={article.title} 
+                  alt={article.title}
+                  onError={(e)=>updateBadImage(e)} 
                   className={`object-cover mb-4 ${index > 2 ? 'w-[100px] max-w-[100px] sm:max-w-full h-[100px] sm:h-full sm:w-full md:aspect-video' : 'aspect-video sm:aspect-square w-full'}`}
                 />
               </Link>

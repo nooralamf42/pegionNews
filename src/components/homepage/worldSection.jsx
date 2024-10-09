@@ -7,16 +7,19 @@ import { formatDate } from "../../utils/dateFormat";
 import StarHeader from "../starHeader";
 import NewsHeader from "../newsHeader";
 import fixImgUrl from "../../utils/fixImgUrl";
+import updateBadImage from "../../utils/updateBadImage";
+import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 function WorldSection() {
   const {newsData, error, loading} = useSelector(state=>state) 
-
+  if(newsData.world.length<=0)
+    return <NewsSkeletonLoader name={'world'}/>
   return (
     <section className="hero-section news-cycle-regular ~mt-5/10">
       <div className="my-container mx-auto px-4 pb-8">
         <div className="grid grid-cols-12 gap-8 pb-4 ">
           <div className="col-span-full md:col-span-6 lg:col-span-8 order-2">
-            <img className="w-full aspect-video object-cover" src={fixImgUrl(newsData.world[0].image_url)} alt={newsData.world[0].title} />
+            <img className="w-full aspect-video object-cover" onError={(e)=>updateBadImage(e)} src={fixImgUrl(newsData.world[0].image_url)} alt={newsData.world[0].title} />
             <div className="ml-10 relative z-20 bg-white shadow-md p-4 -mt-10 ">
             <Link to={`/category/world/${titleToSlug(newsData.world[0].title)}`}>
             <h1 className="~text-2xl/5xl font-bold newsreader-700 line-clamp-3">{newsData.world[0].title}</h1>
@@ -35,11 +38,11 @@ function WorldSection() {
 
           <Link to={`/category/world/${titleToSlug(newsData.world[4].title)}`} className="gap-1 items-center grid grid-cols-5 border-b py-3">
             <h1 className="~text-xl/2xl col-span-full md:col-span-4 newsreader-500 line-clamp-3">{newsData.world[4].title}</h1>
-            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={fixImgUrl(newsData.world[4].image_url)} alt={newsData.world[4].title} />
+            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={fixImgUrl(newsData.world[4].image_url)} onError={(e)=>updateBadImage(e)} alt={newsData.world[4].title} />
             </Link>
             <Link to={`/category/world/${titleToSlug(newsData.world[5].title)}`} className="gap-1 items-center grid grid-cols-5 border-b py-3">
             <h1 className="~text-xl/2xl col-span-full md:col-span-4 newsreader-500 line-clamp-3">{newsData.world[5].title}</h1>
-            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={fixImgUrl(newsData.world[5].image_url)} alt={newsData.world[5].title} />
+            <img className="w-full border aspect-video col-span-full md:col-span-1 md:aspect-[9/12] object-cover" src={fixImgUrl(newsData.world[5].image_url)} onError={(e)=>updateBadImage(e)} alt={newsData.world[5].title} />
             </Link>
           {newsData.world.slice(5, 8).map((post) => (
             <div key={nanoid()} className={`pl-4 ${newsData.world.indexOf(post) === 7 ? '' : 'border-b'} py-1 newsreader-500`}>

@@ -72,7 +72,7 @@ font-style: normal;
 
 @layer components{
     a{
-        @apply hover:underline decoration-blue-800 decoration-2 decoration-secondry transition-all duration-300;
+        @apply hover:underline decoration-blue-800 decoration-2 transition-all duration-300;
     }
 }
 
@@ -182,3 +182,21 @@ font-style: normal;
   height: 500px;
   top: -250px;
 }
+
+/* marquee */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(25%);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+.animate-marquee {
+  white-space: nowrap;
+  animation: marquee 10s linear infinite backwards alternate;
+  animation-play-state: running;
+}
+

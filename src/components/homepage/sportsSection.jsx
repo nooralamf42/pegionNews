@@ -7,6 +7,8 @@ import StarHeader from "../starHeader";
 import fixImgUrl from "../../utils/fixImgUrl";
 import { nanoid } from "@reduxjs/toolkit";
 import NewsHeader from "../newsHeader";
+import updateBadImage from "../../utils/updateBadImage";
+import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
@@ -24,6 +26,8 @@ export const SportsSection = () => {
   const sportsNews = useSelector((state) =>
     state.newsData.sports.slice(0, 8)
   );
+  if(sportsNews.length<=0)
+    return <NewsSkeletonLoader name={'sports'}/>
   const dragX = useMotionValue(0);
 
   useEffect(() => {
@@ -87,7 +91,7 @@ export const SportsSection = () => {
             {
               sportsNews.slice(3,6).map((post)=>(
                   <div className={`flex items-center justify-center gap-6 w-fit`} key={nanoid()}>
-                    <img src={fixImgUrl(post.image_url)} alt={post.title} className="w-full aspect-square object-cover max-w-[100px] "/>
+                    <img src={fixImgUrl(post.image_url)} onError={(e)=>updateBadImage(e)} alt={post.title} className="w-full aspect-square object-cover max-w-[100px] "/>
                     <Link to={`/category/sports/${titleToSlug(post.title)}`} className="md:max-w-[220px] newsreader-600 line-clamp-3">{post.title}</Link>
                   </div>
               ))
@@ -105,7 +109,7 @@ const Images = ({ imgIndex, news }) => {
           <motion.div
             key={idx}
             style={{
-              backgroundImage: `url(${image_url})`,
+              backgroundImage: `url(${fixImgUrl(image_url)})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

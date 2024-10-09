@@ -9,7 +9,7 @@ import sslPdf1 from "../public/pdfs/ssl1.pdf";
 import sslPdf2 from "../public/pdfs/ssl2.pdf";
 import sslPdf3 from "../public/pdfs/ssl3.pdf";
 import emailjs from '@emailjs/browser';
-const EMAIL_KEY = import.meta.env_VITE_EMAIL_KEY
+const EMAIL_KEY = import.meta.env.VITE_EMAIL_KEY
 
 const Footer = () => {
   const formRef = useRef(null)
@@ -74,12 +74,12 @@ const Footer = () => {
                 </div>
               </div>
               <span className="pirata-one-regular whitespace-nowrap uppercase text-white ~text-4xl/6xl">
-                pigeon news
+                the pigeons news
               </span>
             </div>
             <p className="newsreader-500">
               Stay updated with the latest news in finance, business, stocks,
-              and crypto. Pigeon.news provides you with the most relevant and
+              and crypto. Pigeons.news provides you with the most relevant and
               timely information to help you make informed decisions.
             </p>
             <div className="flex space-x-4">
@@ -209,7 +209,7 @@ const Footer = () => {
 
         <div className="mt-10 pt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <p className=" newsreader-500 text-center md:text-left">
-            Copyright © Pigeon News {new Date().getFullYear()}.{" "}
+            Copyright © The Pigeons News {new Date().getFullYear()}.{" "}
             <br className="sm:hidden" /> All rights reserved
           </p>
           <div className="mt-4 md:mt-0">

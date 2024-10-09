@@ -15,23 +15,23 @@ import { PoliticsSection } from "../components/homepage/politicsSection";
 import { SportsSection } from "../components/homepage/sportsSection";
 
 function Home() {
-  const status = useSelector(state=>state.status)
+  const news = useSelector(state=>state.newsData)
   const error = useSelector(state=>state.error)
   
  
   return (
     <motion.main key={nanoid()} initial={{opacity:0}} transition={{duration: .75, ease: easeInOut}} animate={{opacity:1}} exit={{opacity:0}} >
       <BusinessSection/>
-      <FinanceNewsSection />
+      {news.business.length>0 && <FinanceNewsSection />}
       {/* <SpringyLine/> */}
-      <StockMarketSection />
-      <CryptoSection /> 
-      <PoliticsSection/>
-      <TechSection/>
-      <WealthNewsSection/>
-      <WorldSection/>
-      <MutualFundSection/>
-      <SportsSection/>
+      {news.finance.length>0 && <StockMarketSection />}
+      {news.stock.length>0 && <CryptoSection />}
+      {news.crypto.length>0 && <PoliticsSection/>}
+      {news.politics.length>0 && <TechSection/>} 
+      {news.tech.length>0 && <WealthNewsSection/>}
+      {news.wealth.length>0 && <WorldSection/>}
+      {news.world.length>0 && <MutualFundSection/>}
+      {news.mutual_fund.length>0 && <SportsSection/>}
     </motion.main>
   );
 }

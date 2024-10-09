@@ -13,6 +13,8 @@ import { fetchCurrentPageNews } from "../feature/news/newsSlice";
 import Loading from "../components/loading";
 import NothingFound from "../components/nothingFound";
 import { animate, easeInOut, motion } from "framer-motion";
+import updateBadImage from "../utils/updateBadImage";
+import { Helmet } from 'react-helmet';
 
 const Article = () => {
   let { articleTitle, category, query} = useParams();
@@ -23,7 +25,7 @@ const Article = () => {
   const newsData = useSelector((state) => state.newsData[category]);
   let article = newsData.find((news) => titleToSlug(news.title) === articleTitle
   );
-
+  const url = window.location.href
   const dispatch = useDispatch()
 
   const relatedPosts = useMemo(() => {
@@ -51,10 +53,18 @@ const Article = () => {
 
   return (
     <section className="article-section news-cycle-regular mt-10">
+       <Helmet>
+        <title>{article.title}</title>
+        <meta name="description" content={article.description} />
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.description} />
+        <meta property="og:image" content={article.image_url} />
+        <meta property="og:url" content={url} />
+      </Helmet>
       <motion.div key={nanoid()} initial={{opacity:0}} transition={{duration: .75, ease: easeInOut}} animate={{opacity:1}} exit={{opacity:0}} className="my-container mx-auto px-4 pb-4">
         <NewsHeader text={`${capitalize(category)} News`} className="my-8" />
         <div className="grid grid-cols-12 lg:gap-8">
-          <article className="col-span-full lg:col-span-8">
+          <article className={`col-span-full ${newsData.length>5 && "lg:col-span-8"}`}>
             <h1 className="~text-3xl/5xl mb-4 newsreader-700">{article.title}</h1>
             <div className="flex flex-col justify-start items-start text-xs text-gray-900 mb-6">
               <span>By <strong className="news-cycle-bold text-sm">{article.source_name ? article.source_name : "anonymous"}</strong></span>
@@ -62,12 +72,14 @@ const Article = () => {
             </div>
             <img 
               src={fixImgUrl(article.image_url)} 
-              alt={article.title} 
+              alt={article.title}
+              onError={(e)=>updateBadImage(e)} 
               className="w-full aspect-video object-cover mb-6"
             />
           </article>
 
-          <aside className="col-span-full lg:col-span-4 order-3 lg:order-2">
+          {
+            relatedPosts.length>0 && <aside className="col-span-full lg:col-span-4 order-3 lg:order-2">
             <StarHeader title="Related News" className="mb-6" />
             <div className="space-y-6">
               {relatedPosts.map((news) => (
@@ -77,7 +89,8 @@ const Article = () => {
                   className="flex gap-4 group"
                 >
                   <img 
-                    src={fixImgUrl(news.image_url)} 
+                    src={fixImgUrl(news.image_url)}
+                    onError={(e)=>updateBadImage(e)} 
                     alt={"news image"} 
                     className="w-[100px] sm:w-[250px] lg:w-[100px] md:aspect-video object-cover"
                   />
@@ -94,6 +107,7 @@ const Article = () => {
               ))}
             </div>
           </aside>
+          }
           <article className="col-span-12 order-2 lg:order-3">
         {
               generateParagraphs(article.content ? article.content : article.description).map(article=>(
@@ -107,7 +121,8 @@ const Article = () => {
             </div>
         </article>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-start pt-6 pb-14 group gap-5 md:gap-10 ~text-xl/3xl">
+        {
+          newsData.length>5 && <div className="grid grid-cols-1 md:grid-cols-3 justify-between items-start pt-6 pb-14 group gap-5 md:gap-10 ~text-xl/3xl">
           <StarHeader title="Recent News" className="col-span-full"/>
             {
               newsData.slice(1,4).map((post)=>(
@@ -117,6 +132,7 @@ const Article = () => {
               ))
             }
         </div>
+        }
       </motion.div>
     </section>
   );

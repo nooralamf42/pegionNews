@@ -9,9 +9,9 @@ const PrivacyPolicy = () => {
         {/* <NewsHeader text="Privacy Policy" className="my-8 text-center w-full" /> */}
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-full lg:col-span-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 newsreader-700">Pigeon News Privacy Policy</h1>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-6 newsreader-700">The Pigeons News Privacy Policy</h1>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 newsreader-500 mb-8">
-              At Pigeon News, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our website and services.
+              At The Pigeons News, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you use our website and services.
             </p>
 
             <h2 className="text-xl sm:text-2xl md:text-3xl mb-4 newsreader-700">1. Information We Collect</h2>
@@ -92,7 +92,7 @@ const PrivacyPolicy = () => {
               If you have any questions or concerns about this Privacy Policy, please contact us at:
             </p>
             <p className="text-sm sm:text-base md:text-lg text-gray-700 newsreader-500 mt-2">
-              Pigeon News<br />
+              The Pigeons News<br />
               123 News Street, Cityville, State 12345<br />
               Email: privacy@pigeonnews.com<br />
               Phone: (555) 123-4567

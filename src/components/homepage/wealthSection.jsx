@@ -7,11 +7,14 @@ import { titleToSlug } from "../../utils/slugFormat";
 import NewsHeader from "../newsHeader";
 import StarHeader from "../starHeader";
 import fixImgUrl from "../../utils/fixImgUrl";
+import updateBadImage from "../../utils/updateBadImage";
+import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 const WealthNewsSection = () => {
   // Use useSelector to get data from the Redux store
   const wealthNews = useSelector((state) => state.newsData.wealth);
-
+  if(wealthNews.length<=0)
+    return <NewsSkeletonLoader name={'wealth'}/>
   return (
     <section className="news-cycle-regular mt-10 border-b">
       <div className="my-container space-y-14">
@@ -30,6 +33,7 @@ const WealthNewsSection = () => {
                 src={fixImgUrl(wealthNews[0].image_url)}
                 alt={wealthNews[0].title}
                 className="aspect-[16/7] w-full object-cover"
+                onError={(e)=>updateBadImage(e)}
               />
             </Link>
             <div className="p-2 space-y-4">
@@ -62,6 +66,7 @@ const WealthNewsSection = () => {
               >
                 <img
                   src={fixImgUrl(article.image_url)}
+                  onError={(e)=>updateBadImage(e)}
                   alt={article.title}
                   className="aspect-square w-full object-cover"
                 />

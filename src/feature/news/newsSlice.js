@@ -3,14 +3,14 @@ import axios from "axios";
 
 // Replace with your actual API key
 const API_KEY = import.meta.env.VITE_API_KEY;
-const CRYPTO_API_KEY = import.meta.env.VITE_CRYPTO_API_KEY;
+const CRYPTO_API_URL = import.meta.env.VITE_CRYPTO_API_URL;
 
 // Async thunks for fetching news
 export const fetchBusinessNews = createAsyncThunk(
   "news/fetchBusinessNews",
   async () => {
     const response = await axios.get(
-      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&q=business`
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&qInMeta=business`
     );
     return response.data.results.filter(
       (article) => article.image_url !== null || ""
@@ -22,7 +22,7 @@ export const fetchFinanceNews = createAsyncThunk(
   "news/fetchFinanceNews",
   async () => {
     const response = await axios.get(
-      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&q=finance`
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&qInMeta=finance`
     );
     return response.data.results.filter(
       (article) => article.image_url !== null || ""
@@ -34,7 +34,7 @@ export const fetchStockNews = createAsyncThunk(
   "news/fetchStockNews",
   async () => {
     const response = await axios.get(
-      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&q=stock%20market`
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&qInMeta=stock%20market`
     );
     console.log(response);
     return response.data.results.filter(
@@ -98,7 +98,7 @@ export const fetchWealthNews = createAsyncThunk(
   "news/fetchWealthNews",
   async () => {
     const response = await axios.get(
-      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&q=wealth`
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&qInMeta=wealth`
     );
     console.log(response);
     return response.data.results.filter(
@@ -111,7 +111,7 @@ export const fetchMutualFundNews = createAsyncThunk(
   "news/fetchMutualFundNews",
   async () => {
     const response = await axios.get(
-      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&q=mutual%20fund`
+      `https://newsdata.io/api/1/latest?apikey=${API_KEY}&language=en&removeduplicate=1&size=50&image=1&qInMeta=mutual%20fund`
     );
     console.log(response);
     return response.data.results.filter(
@@ -146,6 +146,8 @@ export const fetchSearchNews = createAsyncThunk(
   }
 );
 
+console.log(CRYPTO_API_URL)
+
 // Fetch current page news
 export const fetchCurrentPageNews = createAsyncThunk(
   "news/fetchCurrentPageNews",
@@ -170,6 +172,19 @@ export const fetchCryptoCoinData = createAsyncThunk(
   }
 );
 
+// Fetch crpto live price data
+export const fetchCryptoPrices = createAsyncThunk(
+  'crypto/fetchPrices',
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(CRYPTO_API_URL);
+      return response.data.usdt;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+
 const initialState = {
   newsData: {
     business: [],
@@ -187,6 +202,9 @@ const initialState = {
   status: "idle", // 'idle' | 'loading' | 'succeeded' | 'failed'
   error: null,
   searched: false,
+  cryptoPrices: {},
+  prevCryptoPrices: {},
+  priceDifferences: {},
 };
 
 const newsDataSlice = createSlice({
@@ -358,6 +376,37 @@ const newsDataSlice = createSlice({
       state.status = "failed";
       state.error = action.error.message;
     });
+
+    //crypto price 
+    builder
+      .addCase(fetchCryptoPrices.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchCryptoPrices.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.prevCryptoPrices = state.cryptoPrices;
+        state.cryptoPrices = action.payload;
+        
+        // Calculate price differences
+        state.priceDifferences = {};
+        Object.keys(action.payload).forEach(key => {
+          if (state.prevCryptoPrices[key]) {
+            state.priceDifferences[key] = ((action.payload[key] - state.prevCryptoPrices[key]) / state.prevCryptoPrices[key]) * 100;
+          }
+        });
+
+        // Update crypto news data
+        state.newsData.crypto = Object.entries(action.payload)
+          .map(([symbol, price]) => ({
+            symbol,
+            price,
+            difference: state.priceDifferences[symbol] || 0,
+          }));
+      })
+      .addCase(fetchCryptoPrices.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      });
   },
 });
 
