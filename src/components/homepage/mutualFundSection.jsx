@@ -12,7 +12,7 @@ import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 const MutualFundSection = () => {
   let mutual_fund = useSelector((state) => state.newsData.mutual_fund);
-  if(mutual_fund.length<=0)
+  if(mutual_fund.length<=40)
     return <NewsSkeletonLoader name={'mutual_fund'}/>
   return (
     <section className="news-cycle-regular mt-10">

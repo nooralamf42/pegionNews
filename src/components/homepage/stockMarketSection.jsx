@@ -12,7 +12,7 @@ import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 function StockMarketSection() {
   const {newsData, error, loading} = useSelector(state=>state) 
-  if(newsData.stock.length<=0)
+  if(newsData.stock.length<=40)
     return <NewsSkeletonLoader name={'stock'}/>
 
   return (

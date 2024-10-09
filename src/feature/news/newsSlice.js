@@ -146,14 +146,14 @@ export const fetchSearchNews = createAsyncThunk(
   }
 );
 
-console.log(CRYPTO_API_URL)
 
 // Fetch current page news
 export const fetchCurrentPageNews = createAsyncThunk(
   "news/fetchCurrentPageNews",
   async ({ query, category }) => {
+    console.log(query)
     const response = await axios.get(
-      `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=${query}`
+      `https://newsdata.io/api/1/news?apikey=${API_KEY}&qInTitle=${query}`
     );
     if (category == "search")
       return { articles: response.data.results, category };

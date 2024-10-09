@@ -13,7 +13,7 @@ import NewsSkeletonLoader from "./newsSkeletonLoader";
 const FinanceNewsSection = () => {
   // Use useSelector to get data from the Redux store
   const financeNews = useSelector((state) => state.newsData.finance);
-  if(financeNews.length<=0)
+  if(financeNews.length<=40)
     return <NewsSkeletonLoader name={'finance'}/>
   return (
     <section className="news-cycle-regular mt-10">

@@ -102,27 +102,27 @@ const Footer = () => {
             <h4 className="text-xl font-bold mb-4 newsreader-700">Resources</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/whats-new" className="hover:text-primary">
+                <Link to="/#" className="hover:text-primary">
                   What's New
                 </Link>
               </li>
               <li>
-                <Link to="/developers" className=" hover:text-primary">
+                <Link to="#" className=" hover:text-primary">
                   Developers
                 </Link>
               </li>
               <li>
-                <Link to="/releases" className="hover:text-primary">
+                <Link to="#" className="hover:text-primary">
                   Releases
                 </Link>
               </li>
               <li>
-                <Link to="/support" className="hover:text-primary">
+                <Link to="#" className="hover:text-primary">
                   Support
                 </Link>
               </li>
               <li>
-                <Link to="/cookie-policy" className=" hover:text-primary">
+                <Link to="#" className=" hover:text-primary">
                   Cookie Policy
                 </Link>
               </li>

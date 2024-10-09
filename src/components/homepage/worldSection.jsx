@@ -12,7 +12,7 @@ import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 function WorldSection() {
   const {newsData, error, loading} = useSelector(state=>state) 
-  if(newsData.world.length<=0)
+  if(newsData.world.length<=40)
     return <NewsSkeletonLoader name={'world'}/>
   return (
     <section className="hero-section news-cycle-regular ~mt-5/10">

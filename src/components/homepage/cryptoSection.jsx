@@ -12,7 +12,7 @@ import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 const CryptoNewsSection = () => {
   let cryptoNews = useSelector((state) => state.newsData.crypto);
-  if(cryptoNews.length<=0)
+  if(cryptoNews.length<=40)
     return <NewsSkeletonLoader name={'crypto'}/>
   return (
     <section className="news-cycle-regular mt-10">

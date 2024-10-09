@@ -11,7 +11,7 @@ import NewsSkeletonLoader from "./newsSkeletonLoader";
 
 function TechSection() {
   const {newsData, error, loading} = useSelector(state=>state) 
-  if(newsData.tech.length<=0)
+  if(newsData.tech.length<=40)
     return <NewsSkeletonLoader name={'tech'}/>
 
   return (

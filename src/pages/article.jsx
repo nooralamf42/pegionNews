@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { titleToSlug, capitalize } from "../utils/slugFormat";
+import { titleToSlug, capitalize, slugToTitle } from "../utils/slugFormat";
 import { useDispatch, useSelector } from "react-redux";
 import { formatDate, formatDateTime } from "../utils/dateFormat";
 import NewsHeader from "../components/newsHeader";
@@ -43,13 +43,15 @@ const Article = () => {
   }, [article, newsData]);
  
   if (!article && !searched) {
-    dispatch(fetchCurrentPageNews({query: articleTitle, category}))
+    dispatch(fetchCurrentPageNews({query: encodeURIComponent(slugToTitle(articleTitle)), category}))
     return <Loading/>
   }
 
   if(searched && !article){
     return <NothingFound text="The Article the you looking for does not exist"/>
   }
+
+  console.log(article)
 
   return (
     <section className="article-section news-cycle-regular mt-10">
@@ -109,8 +111,8 @@ const Article = () => {
           </aside>
           }
           <article className="col-span-12 order-2 lg:order-3">
-        {
-              generateParagraphs(article.content ? article.content : article.description).map(article=>(
+           {
+              generateParagraphs(article.content ? article.content : article.description ? article.description : "No description.").map(article=>(
                 <p key={nanoid()} className="mb-6 text-gray-700 newsreader-400 ~text-lg/2xl leading-snug">{article}</p>
               ))
             }

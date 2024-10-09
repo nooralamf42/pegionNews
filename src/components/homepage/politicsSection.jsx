@@ -27,7 +27,7 @@ export const PoliticsSection = () => {
   const politicsNews = useSelector((state) =>
     state.newsData.politics.slice(0, 8)
   );
-  if(politicsNews.length<=0)
+  if(politicsNews.length<=40)
     return <NewsSkeletonLoader name={'politics'}/>
   const dragX = useMotionValue(0);
 

@@ -26,7 +26,7 @@ export const SportsSection = () => {
   const sportsNews = useSelector((state) =>
     state.newsData.sports.slice(0, 8)
   );
-  if(sportsNews.length<=0)
+  if(sportsNews.length<=40)
     return <NewsSkeletonLoader name={'sports'}/>
   const dragX = useMotionValue(0);
 
